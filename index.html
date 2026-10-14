@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AyatPlay Kids - Petualangan Hafiz Cilik Juz 28, 29, 30</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts for Kids & Arabic -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Fredoka:wght@400;500;600;700&family=Scheherazade+New:wght@400;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Canvas Confetti for Celebration -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <style>
+        * {
+            font-family: 'Fredoka', cursive, sans-serif;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        .font-arabic {
+            font-family: 'Amiri', 'Scheherazade New', serif;
+            line-height: 2.2;
+        }
+
+        /* Cute kid-friendly gradients and shadows */
+        .bg-kids-sky { background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%); }
+        .bg-kids-emerald { background: linear-gradient(135deg, #a8e6cf 0%, #dcedc1 100%); }
+        .bg-kids-purple { background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%); }
+        .bg-kids-candy { background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%); }
+        .bg-kids-sun { background: linear-gradient(135deg, #f6d365 0%, #fda085 100%); }
+
+        .card-3d {
+            transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 8px 0 rgba(0,0,0,0.15), 0 15px 20px rgba(0,0,0,0.1);
+        }
+        .card-3d:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 0 rgba(0,0,0,0.15), 0 20px 25px rgba(0,0,0,0.12);
+        }
+        .card-3d:active {
+            transform: translateY(4px);
+            box-shadow: 0 2px 0 rgba(0,0,0,0.2), 0 5px 10px rgba(0,0,0,0.1);
+        }
+
+        /* 3D Memory Card Flip */
+        .perspective-1000 { perspective: 1000px; }
+        .transform-style-3d { transform-style: preserve-3d; transition: transform 0.5s ease-in-out; }
+        .rotate-y-180 { transform: rotateY(180deg); }
+        .backface-hidden { backface-visibility: hidden; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(2deg); }
+        }
+        .animate-float { animation: float 3.5s ease-in-out infinite; }
+
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 15px rgba(251, 191, 36, 0.6); }
+            50% { box-shadow: 0 0 35px rgba(251, 191, 36, 0.95); }
+        }
+        .animate-pulse-glow { animation: pulse-glow 2s infinite; }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb { background: #3b82f6; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-slate-100 min-h-screen text-slate-800 flex flex-col justify-between overflow-x-hidden selection:bg-yellow-300 selection:text-slate-900">
+
+    <!-- Top Navigation Header -->
+    <header class="bg-white/90 backdrop-blur-md sticky top-0 z-40 border-b-4 border-yellow-400 px-4 py-3 shadow-md">
+        <div class="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-3">
+            <!-- App Logo -->
+            <div class="flex items-center space-x-3 cursor-pointer" onclick="showScreen('home')">
+                <div class="w-12 h-12 bg-yellow-400 rounded-2xl flex items-center justify-center text-2xl shadow-lg border-2 border-yellow-500 animate-bounce">
+                    🌙
+                </div>
+                <div>
+                    <h1 class="text-2xl font-black text-emerald-600 tracking-wide flex items-center gap-1">
+                        AyatPlay <span class="bg-yellow-400 text-slate-900 px-2 py-0.5 rounded-lg text-sm uppercase">Kids</span>
+                    </h1>
+                    <p class="text-xs text-slate-500 font-medium">Juz 28, 29 & 30 Hafiz Adventure</p>
+                </div>
+            </div>
+
+            <!-- Stats Bar (XP, Level, Stars) -->
+            <div class="flex items-center gap-2 sm:gap-4 bg-emerald-50 px-4 py-2 rounded-2xl border-2 border-emerald-200 shadow-inner">
+                <div class="flex items-center gap-1.5" title="Bintang Terkumpul">
+                    <i class="fa-solid fa-star text-yellow-400 text-xl animate-pulse"></i>
+                    <span id="total-stars" class="font-bold text-lg text-slate-800">0</span>
+                </div>
+                <div class="h-6 w-0.5 bg-emerald-200"></div>
+                <div class="flex items-center gap-1.5" title="XP Points">
+                    <i class="fa-solid fa-bolt text-amber-500 text-lg"></i>
+                    <span id="total-xp" class="font-bold text-lg text-amber-600">0</span> <span class="text-xs text-amber-600">XP</span>
+                </div>
+                <div class="h-6 w-0.5 bg-emerald-200"></div>
+                <button onclick="openCertificateModal()" class="flex items-center gap-1 bg-yellow-400 hover:bg-yellow-300 text-slate-900 px-3 py-1.5 rounded-xl font-bold text-xs sm:text-sm border-b-4 border-yellow-600 active:translate-y-1 transition-all">
+                    <i class="fa-solid fa-award text-amber-800"></i>
+                    <span>Sertifikat</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-6xl mx-auto px-4 py-6 flex-1 w-full">
+
+        <!-- SCREEN 1: HOME SCREEN -->
+        <div id="screen-home" class="space-y-8">
+            <!-- Hero Banner with Mascot "Bintang" -->
+            <div class="bg-kids-sky rounded-3xl p-6 sm:p-8 border-4 border-blue-300 shadow-xl relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-6">
+                <div class="space-y-3 z-10 text-center md:text-left max-w-xl">
+                    <div class="inline-flex items-center gap-2 bg-white/80 px-3 py-1 rounded-full text-xs sm:text-sm font-semibold text-blue-800">
+                        <span class="w-3 h-3 bg-green-500 rounded-full animate-ping"></span>
+                        Assalamu'alaimum, Sahabat Cilik! 👋
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-800 leading-tight">
+                        Yuk, Hafal Qur'an Sambil Bermain Seru! ✨
+                    </h2>
+                    <p class="text-slate-700 text-sm sm:text-base font-medium">
+                        Pilih Juz targetmu, lalu mainkan 6 mini game interaktif untuk melatih hafalan Surat di Juz 28, 29, dan 30!
+                    </p>
+                </div>
+                <!-- Mascot Widget -->
+                <div class="relative flex flex-col items-center justify-center">
+                    <div class="w-32 h-32 sm:w-40 sm:h-40 bg-yellow-300 rounded-full border-4 border-white shadow-2xl flex items-center justify-center text-7xl animate-float relative">
+                        🌟
+                        <div class="absolute -bottom-2 bg-emerald-600 text-white text-xs px-3 py-1 rounded-full border-2 border-white shadow font-bold">
+                            "Bintang Hafiz"
+                        </div>
+                    </div>
+                    <p id="mascot-bubble" class="bg-white px-4 py-2 rounded-2xl border-2 border-yellow-400 text-xs sm:text-sm text-center shadow-lg mt-3 font-semibold text-slate-700 max-w-xs animate-bounce">
+                        "Semangat hari ini! Pilih game yang kamu suka!" 🚀
+                    </p>
+                </div>
+            </div>
+
+            <!-- Juz Filter Selector -->
+            <div class="bg-white p-5 rounded-3xl border-4 border-slate-200 shadow-md">
+                <h3 class="text-lg font-bold text-slate-700 mb-3 flex items-center gap-2">
+                    <i class="fa-solid fa-layer-group text-emerald-500"></i> Pilih Target Juz Hafalan:
+                </h3>
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                    <button onclick="setJuzFilter('30')" id="juz-btn-30" class="juz-btn bg-emerald-500 text-white font-bold py-3 px-4 rounded-2xl border-b-4 border-emerald-700 hover:brightness-105 transition-all text-center">
+                        <div class="text-lg">Juz 30</div>
+                        <div class="text-xs opacity-80 font-normal">An-Naba - An-Nas</div>
+                    </button>
+                    <button onclick="setJuzFilter('29')" id="juz-btn-29" class="juz-btn bg-white text-slate-700 font-bold py-3 px-4 rounded-2xl border-2 border-slate-200 hover:bg-slate-50 transition-all text-center">
+                        <div class="text-lg">Juz 29</div>
+                        <div class="text-xs opacity-70 font-normal">Al-Mulk - Al-Mursalat</div>
+                    </button>
+                    <button onclick="setJuzFilter('28')" id="juz-btn-28" class="juz-btn bg-white text-slate-700 font-bold py-3 px-4 rounded-2xl border-2 border-slate-200 hover:bg-slate-50 transition-all text-center">
+                        <div class="text-lg">Juz 28</div>
+                        <div class="text-xs opacity-70 font-normal">Al-Mujadila - At-Tahrim</div>
+                    </button>
+                    <button onclick="setJuzFilter('all')" id="juz-btn-all" class="juz-btn bg-white text-slate-700 font-bold py-3 px-4 rounded-2xl border-2 border-slate-200 hover:bg-slate-50 transition-all text-center">
+                        <div class="text-lg">Semua Juz</div>
+                        <div class="text-xs opacity-70 font-normal">Juz 28, 29 & 30 Combo</div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Games Grid (6 Games) -->
+            <div>
+                <h3 class="text-2xl font-black text-slate-800 mb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-gamepad text-purple-500"></i> Pilih Permainan Edukasi:
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                    <!-- Game 1 Card -->
+                    <div onclick="startGame(1)" class="card-3d bg-kids-candy rounded-3xl p-6 border-4 border-pink-300 cursor-pointer flex flex-col justify-between h-64 relative overflow-hidden group">
+                        <div class="absolute -right-6 -bottom-6 text-8xl opacity-20 group-hover:scale-110 transition-transform">
+                            🧩
+                        </div>
+                        <div>
+                            <div class="w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-2xl shadow mb-3 border-2 border-pink-200">
+                                ❓
+                            </div>
+                            <h4 class="text-2xl font-black text-slate-800">1. Tebak Judul Surah</h4>
+                            <p class="text-slate-700 text-sm mt-1 font-medium">Dengarkan lantunan ayat atau baca teksnya, lalu tebak nama Surahnya!</p>
+                        </div>
+                        <button class="bg-white text-pink-600 font-black py-2.5 px-4 rounded-2xl border-b-4 border-pink-200 shadow flex items-center justify-between">
+                            <span>Mulai Main</span>
+                            <i class="fa-solid fa-play"></i>
+                        </button>
+                    </div>
+
+                    <!-- Game 2 Card -->
+                    <div onclick="startGame(2)" class="card-3d bg-kids-emerald rounded-3xl p-6 border-4 border-emerald-300 cursor-pointer flex flex-col justify-between h-64 relative overflow-hidden group">
+                        <div class="absolute -right-6 -bottom-6 text-8xl opacity-20 group-hover:scale-110 transition-transform">
+                            🔗
+                        </div>
+                        <div>
+                            <div class="w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-2xl shadow mb-3 border-2 border-emerald-200">
+                                📖
+                            </div>
+                            <h4 class="text-2xl font-black text-slate-800">2. Sambung Ayat</h4>
+                            <p class="text-slate-700 text-sm mt-1 font-medium">Lanjutkan potongan ayat awal dengan pilihan potongan ayat yang benar!</p>
+                        </div>
+                        <button class="bg-white text-emerald-600 font-black py-2.5 px-4 rounded-2xl border-b-4 border-emerald-200 shadow flex items-center justify-between">
+                            <span>Mulai Sambung</span>
+                            <i class="fa-solid fa-play"></i>
+                        </button>
+                    </div>
+
+                    <!-- Game 3 Card -->
+                    <div onclick="startGame(3)" class="card-3d bg-kids-sun rounded-3xl p-6 border-4 border-amber-300 cursor-pointer flex flex-col justify-between h-64 relative overflow-hidden group">
+                        <div class="absolute -right-6 -bottom-6 text-8xl opacity-20 group-hover:scale-110 transition-transform">
+                            🔢
+                        </div>
+                        <div>
+                            <div class="w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-2xl shadow mb-3 border-2 border-amber-200">
+                                🎯
+                            </div>
+                            <h4 class="text-2xl font-black text-slate-800">3. Urutkan Ayat</h4>
+                            <p class="text-slate-700 text-sm mt-1 font-medium">Susun ayat-ayat yang acak menjadi urutan ayat yang tepat dan sempurna!</p>
+                        </div>
+                        <button class="bg-white text-amber-700 font-black py-2.5 px-4 rounded-2xl border-b-4 border-amber-200 shadow flex items-center justify-between">
+                            <span>Mulai Urutkan</span>
+                            <i class="fa-solid fa-play"></i>
+                        </button>
+                    </div>
+
+                    <!-- Game 4 Card -->
+                    <div onclick="startGame(4)" class="card-3d bg-kids-purple rounded-3xl p-6 border-4 border-purple-300 cursor-pointer flex flex-col justify-between h-64 relative overflow-hidden group">
+                        <div class="absolute -right-6 -bottom-6 text-8xl opacity-20 group-hover:scale-110 transition-transform">
+                            🎙️
+                        </div>
+                        <div>
+                            <div class="w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-2xl shadow mb-3 border-2 border-purple-200">
+                                🎤
+                            </div>
+                            <h4 class="text-2xl font-black text-slate-800">4. Bacakan Ayat Suara</h4>
+                            <p class="text-slate-700 text-sm mt-1 font-medium">Latih suaramu! Tekan tombol mikrofon dan bacakan ayatnya secara langsung!</p>
+                        </div>
+                        <button class="bg-white text-purple-600 font-black py-2.5 px-4 rounded-2xl border-b-4 border-purple-200 shadow flex items-center justify-between">
+                            <span>Mulai Suara</span>
+                            <i class="fa-solid fa-play"></i>
+                        </button>
+                    </div>
+
+                    <!-- Game 5 Card -->
+                    <div onclick="startGame(5)" class="card-3d bg-kids-sky rounded-3xl p-6 border-4 border-blue-300 cursor-pointer flex flex-col justify-between h-64 relative overflow-hidden group">
+                        <div class="absolute -right-6 -bottom-6 text-8xl opacity-20 group-hover:scale-110 transition-transform">
+                            💎
+                        </div>
+                        <div>
+                            <div class="w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-2xl shadow mb-3 border-2 border-blue-200">
+                                🕵️‍♂️
+                            </div>
+                            <h4 class="text-2xl font-black text-slate-800">5. Detektif Isyarat Kata</h4>
+                            <p class="text-slate-700 text-sm mt-1 font-medium">Temukan kata rahasia di dalam peti harta karun untuk melengkapi ayat!</p>
+                        </div>
+                        <button class="bg-white text-blue-600 font-black py-2.5 px-4 rounded-2xl border-b-4 border-blue-200 shadow flex items-center justify-between">
+                            <span>Mulai Cari</span>
+                            <i class="fa-solid fa-play"></i>
+                        </button>
+                    </div>
+
+                    <!-- Game 6 Card -->
+                    <div onclick="startGame(6)" class="card-3d bg-slate-200 rounded-3xl p-6 border-4 border-slate-300 cursor-pointer flex flex-col justify-between h-64 relative overflow-hidden group">
+                        <div class="absolute -right-6 -bottom-6 text-8xl opacity-20 group-hover:scale-110 transition-transform">
+                            🃏
+                        </div>
+                        <div>
+                            <div class="w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-2xl shadow mb-3 border-2 border-slate-300">
+                                🎴
+                            </div>
+                            <h4 class="text-2xl font-black text-slate-800">6. Memory Card Hafalan</h4>
+                            <p class="text-slate-700 text-sm mt-1 font-medium">Balik dan pasangkan kartu ayat Arab dengan terjemahan Indonesianya!</p>
+                        </div>
+                        <button class="bg-white text-slate-800 font-black py-2.5 px-4 rounded-2xl border-b-4 border-slate-300 shadow flex items-center justify-between">
+                            <span>Main Match</span>
+                            <i class="fa-solid fa-play"></i>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- SCREEN 2: GAMEPLAY CONTAINER (DYNAMICAL LOAD) -->
+        <div id="screen-game" class="hidden space-y-6">
+            <!-- Game Top Header Bar -->
+            <div class="flex items-center justify-between bg-white p-4 rounded-3xl border-4 border-slate-200 shadow-sm">
+                <button onclick="showScreen('home')" class="bg-slate-200 hover:bg-slate-300 text-slate-700 px-4 py-2 rounded-2xl font-bold flex items-center gap-2 border-b-4 border-slate-400 active:translate-y-0.5 transition-all">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    <span>Kembali</span>
+                </button>
+                <div class="text-center">
+                    <h2 id="game-title" class="text-xl sm:text-2xl font-black text-emerald-600">Judul Game</h2>
+                    <p id="game-subtitle" class="text-xs text-slate-500 font-semibold">Soal 1 dari 5</p>
+                </div>
+                <div id="game-score-badge" class="bg-yellow-100 text-amber-800 border-2 border-yellow-400 font-bold px-3 py-1.5 rounded-2xl text-sm flex items-center gap-1.5">
+                    <i class="fa-solid fa-trophy text-yellow-500"></i> Skor: <span id="game-current-score">0</span>
+                </div>
+            </div>
+
+            <!-- Dynamic Game Canvas Box -->
+            <div id="game-body-container" class="bg-white rounded-3xl border-4 border-yellow-300 p-6 sm:p-8 shadow-2xl relative min-h-[420px] flex flex-col justify-center">
+                <!-- Content will be injected dynamically -->
+            </div>
+        </div>
+
+    </main>
+
+    <!-- CERTIFICATE MODAL -->
+    <div id="modal-certificate" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-2xl w-full border-8 border-yellow-400 shadow-2xl p-6 sm:p-8 text-center relative max-h-[90vh] overflow-y-auto">
+            <button onclick="closeModal('modal-certificate')" class="absolute top-4 right-4 bg-slate-100 hover:bg-slate-200 text-slate-700 w-10 h-10 rounded-full font-bold text-xl flex items-center justify-center border-2 border-slate-300">
+                &times;
+            </button>
+            <div class="text-yellow-500 text-5xl mb-2">🏆</div>
+            <h3 class="text-3xl font-black text-slate-800 uppercase tracking-wide">Sertifikat Hafiz Cilik</h3>
+            <p class="text-slate-500 text-sm">AyatPlay Kids Quran Adventure</p>
+
+            <div class="my-6 border-4 border-dashed border-yellow-300 p-6 rounded-2xl bg-amber-50/50 relative">
+                <p class="text-slate-600 text-sm">Diberikan Penghargaan Kepada:</p>
+
+                <!-- Input Name -->
+                <div class="mt-2 mb-4">
+                    <input type="text" id="cert-student-name" value="Sahabat Hafiz Cilik" placeholder="Tulis Namamu..." class="text-center font-extrabold text-2xl text-emerald-700 border-b-4 border-emerald-400 bg-transparent focus:outline-none w-full max-w-xs py-1">
+                </div>
+
+                <p class="text-slate-700 font-medium text-sm sm:text-base leading-relaxed">
+                    Telah berhasil menyelesaikan tantangan game hafalan Quran pada 
+                    <span id="cert-juz-label" class="font-bold text-emerald-600">Juz 28, 29, dan 30</span> 
+                    dengan mengumpulkan total <span id="cert-star-count" class="font-bold text-amber-500">0 Star Badges</span> 
+                    dan poin <span id="cert-xp-count" class="font-bold text-purple-600">0 XP</span>!
+                </p>
+
+                <div class="mt-6 flex justify-around items-center">
+                    <div>
+                        <div class="text-2xl font-bold text-emerald-600" id="cert-level-name">Hafiz Level 1</div>
+                        <div class="text-xs text-slate-400">Tingkat Capaian</div>
+                    </div>
+                    <div class="w-16 h-16 bg-yellow-400 rounded-full flex items-center justify-center text-3xl border-2 border-white shadow-lg">
+                        🎖️
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-3">
+                <button onclick="printCertificate()" class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 px-6 rounded-2xl border-b-4 border-emerald-700 flex items-center gap-2">
+                    <i class="fa-solid fa-print"></i> Cetak / Simpan Sertifikat
+                </button>
+                <button onclick="closeModal('modal-certificate')" class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold py-3 px-6 rounded-2xl border-b-4 border-slate-400">
+                    Tutup
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t-2 border-slate-200 py-4 text-center text-xs text-slate-500 font-medium mt-10">
+        AyatPlay Kids &copy; 2026 - Media Edukasi Hafalan Al-Qur'an Anak (Juz 28, 29, 30) | Audio oleh Syaikh Mishary Rashid Alafasy
+    </footer>
+
+    <script>
+        /* Quran Data Store for Juz 28, 29, 30 Selected Surahs & Verses */
+        const QURAN_DATA = [
+            // Juz 30
+            { juz: 30, surahNo: 112, surahName: "Al-Ikhlas", textAr: "قُلْ هُوَ اللَّهُ أَحَدٌ", ayatNo: 1, audio: "112001.mp3", translation: "Katakanlah: Dialah Allah, Yang Maha Esa." },
+            { juz: 30, surahNo: 112, surahName: "Al-Ikhlas", textAr: "اللَّهُ الصَّمَدُ", ayatNo: 2, audio: "112002.mp3", translation: "Allah adalah Tuhan yang bergantung kepada-Nya segala sesuatu." },
+            { juz: 30, surahNo: 112, surahName: "Al-Ikhlas", textAr: "لَمْ يَلِدْ وَلَمْ يُولَدْ", ayatNo: 3, audio: "112003.mp3", translation: "Dia tiada beranak dan tidak pula diperanakkan." },
+            { juz: 30, surahNo: 112, surahName: "Al-Ikhlas", textAr: "وَلَمْ يَكُن لَّهُ كُفُوًا أَحَدٌ", ayatNo: 4, audio: "112004.mp3", translation: "dan tidak ada seorang pun yang setara dengan Dia." },
+
+            { juz: 30, surahNo: 113, surahName: "Al-Falaq", textAr: "قُلْ أَعُوذُ بِرَبِّ الْفَلَقِ", ayatNo: 1, audio: "113001.mp3", translation: "Katakanlah: Aku berlindung kepada Tuhan Yang Menguasai subuh." },
+            { juz: 30, surahNo: 113, surahName: "Al-Falaq", textAr: "مِن شَرِّ مَا خَلَقَ", ayatNo: 2, audio: "113002.mp3", translation: "dari kejahatan makhluk-Nya." },
+            { juz: 30, surahNo: 113, surahName: "Al-Falaq", textAr: "وَمِن شَرِّ غَاسِقٍ إِذَا وَقَبَ", ayatNo: 3, audio: "113003.mp3", translation: "dan dari kejahatan malam apabila telah gelap gulita." },
+
+            { juz: 30, surahNo: 114, surahName: "An-Nas", textAr: "قُلْ أَعُوذُ بِرَبِّ النَّاسِ", ayatNo: 1, audio: "114001.mp3", translation: "Katakanlah: Aku berlindung kepada Tuhan manusia." },
+            { juz: 30, surahNo: 114, surahName: "An-Nas", textAr: "مَلِكِ النَّاسِ", ayatNo: 2, audio: "114002.mp3", translation: "Raja manusia." },
+            { juz: 30, surahNo: 114, surahName: "An-Nas", textAr: "إِلَٰهِ النَّاسِ", ayatNo: 3, audio: "114003.mp3", translation: "Sembahan manusia." },
+
+            { juz: 30, surahNo: 108, surahName: "Al-Kautsar", textAr: "إِنَّا أَعْطَيْنَاكَ الْكَوْثَرَ", ayatNo: 1, audio: "108001.mp3", translation: "Sungguh, Kami telah memberimu nikmat yang banyak." },
+            { juz: 30, surahNo: 108, surahName: "Al-Kautsar", textAr: "فَصَلِّ لِرَبِّكَ وَانْحَرْ", ayatNo: 2, audio: "108002.mp3", translation: "Maka laksanakanlah salat karena Tuhanmu, dan berkurbanlah." },
+
+            // Juz 29
+            { juz: 29, surahNo: 67, surahName: "Al-Mulk", textAr: "تَبَارَكَ الَّذِي بِيَدِهِ الْمُلْكُ وَهُوَ عَلَىٰ كُلِّ شَيْءٍ قَدِيرٌ", ayatNo: 1, audio: "067001.mp3", translation: "Maha Suci Allah Yang di tangan-Nya-lah segala kerajaan." },
+            { juz: 29, surahNo: 67, surahName: "Al-Mulk", textAr: "الَّذِي خَلَقَ الْمَوْتَ وَالْحَيَاةَ لِيَبْلُوَكُمْ أَيُّكُمْ أَحْسَنُ عَمَلًا", ayatNo: 2, audio: "067002.mp3", translation: "Yang menciptakan mati dan hidup untuk menguji kamu." },
+            { juz: 29, surahNo: 68, surahName: "Al-Qalam", textAr: "ن ۚ وَالْقَلَمِ وَمَا يَسْطُرُونَ", ayatNo: 1, audio: "068001.mp3", translation: "Nun, demi kalam dan apa yang mereka tuliskan." },
+
+            // Juz 28
+            { juz: 28, surahNo: 62, surahName: "Al-Jumu'ah", textAr: "يُسَبِّحُ لِلَّهِ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ", ayatNo: 1, audio: "062001.mp3", translation: "Senantiasa bertasbih kepada Allah apa yang ada di langit dan di bumi." },
+            { juz: 28, surahNo: 61, surahName: "As-Saff", textAr: "سَبَّحَ لِلَّهِ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ", ayatNo: 1, audio: "061001.mp3", translation: "Telah bertasbih kepada Allah apa yang ada di langit dan di bumi." }
+        ];
+
+        /* Web Audio API Sound Effects Engine */
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        function playSfx(type) {
+            try {
+                if (audioCtx.state === 'suspended') audioCtx.resume();
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+
+                if (type === 'correct') {
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(523.25, audioCtx.currentTime); // C5
+                    osc.frequency.exponentialRampToValueAtTime(880, audioCtx.currentTime + 0.3); // A5
+                    gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.3);
+                    osc.start();
+                    osc.stop(audioCtx.currentTime + 0.3);
+                } else if (type === 'wrong') {
+                    osc.type = 'sawtooth';
+                    osc.frequency.setValueAtTime(220, audioCtx.currentTime);
+                    osc.frequency.linearRampToValueAtTime(110, audioCtx.currentTime + 0.25);
+                    gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.25);
+                    osc.start();
+                    osc.stop(audioCtx.currentTime + 0.25);
+                } else if (type === 'star') {
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(659.25, audioCtx.currentTime);
+                    osc.frequency.exponentialRampToValueAtTime(1318.51, audioCtx.currentTime + 0.4);
+                    gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.4);
+                    osc.start();
+                    osc.stop(audioCtx.currentTime + 0.4);
+                }
+            } catch(e) { console.log(e); }
+        }
+
+        /* App State Management */
+        let state = {
+            selectedJuz: '30',
+            stars: parseInt(localStorage.getItem('ayatplay_stars') || '0'),
+            xp: parseInt(localStorage.getItem('ayatplay_xp') || '0'),
+            activeGame: null,
+            currentGameStep: 0,
+            currentGameScore: 0,
+            totalSteps: 5,
+            audioPlayer: new Audio()
+        };
+
+        function updateStateHeader() {
+            document.getElementById('total-stars').innerText = state.stars;
+            document.getElementById('total-xp').innerText = state.xp;
+            localStorage.setItem('ayatplay_stars', state.stars);
+            localStorage.setItem('ayatplay_xp', state.xp);
+        }
+
+        function setJuzFilter(juz) {
+            state.selectedJuz = juz;
+            document.querySelectorAll('.juz-btn').forEach(btn => {
+                btn.className = "juz-btn bg-white text-slate-700 font-bold py-3 px-4 rounded-2xl border-2 border-slate-200 hover:bg-slate-50 transition-all text-center";
+            });
+            const activeBtn = document.getElementById(`juz-btn-${juz}`);
+            if (activeBtn) {
+                activeBtn.className = "juz-btn bg-emerald-500 text-white font-bold py-3 px-4 rounded-2xl border-b-4 border-emerald-700 transition-all text-center";
+            }
+            const mascotBubble = document.getElementById('mascot-bubble');
+            mascotBubble.innerText = `Mantap! Sekarang target latihanmu adalah Juz ${juz === 'all' ? '28, 29 & 30' : juz}!`;
+        }
+
+        function getFilteredVerses() {
+            if (state.selectedJuz === 'all') return QURAN_DATA;
+            return QURAN_DATA.filter(item => item.juz.toString() === state.selectedJuz.toString());
+        }
+
+        function playVerseAudio(filename) {
+            state.audioPlayer.pause();
+            state.audioPlayer.src = `https://everyayah.com/data/Alafasy_128kbps/${filename}`;
+            state.audioPlayer.play().catch(e => console.log('Audio error:', e));
+        }
+
+        function showScreen(screen) {
+            state.audioPlayer.pause();
+            if (screen === 'home') {
+                document.getElementById('screen-home').classList.remove('hidden');
+                document.getElementById('screen-game').classList.add('hidden');
+            } else if (screen === 'game') {
+                document.getElementById('screen-home').classList.add('hidden');
+                document.getElementById('screen-game').classList.remove('hidden');
+            }
+        }
+
+        function startGame(gameId) {
+            state.activeGame = gameId;
+            state.currentGameStep = 0;
+            state.currentGameScore = 0;
+            showScreen('game');
+            loadGameQuestion();
+        }
+
+        function loadGameQuestion() {
+            const container = document.getElementById('game-body-container');
+            const filteredData = getFilteredVerses();
+
+            if (filteredData.length < 2) {
+                container.innerHTML = `
+                    <div class="text-center py-10">
+                        <p class="text-xl font-bold text-slate-700">Data ayat untuk Juz ini kurang. Silakan pilih pilihan "Semua Juz".</p>
+                    </div>
+                `;
+                return;
+            }
+
+            document.getElementById('game-current-score').innerText = state.currentGameScore;
+            document.getElementById('game-subtitle').innerText = `Tantangan ${state.currentGameStep + 1} dari ${state.totalSteps}`;
+
+            if (state.currentGameStep >= state.totalSteps) {
+                renderGameFinished();
+                return;
+            }
+
+            // Route game rendering
+            if (state.activeGame === 1) renderGame1(container, filteredData);
+            else if (state.activeGame === 2) renderGame2(container, filteredData);
+            else if (state.activeGame === 3) renderGame3(container, filteredData);
+            else if (state.activeGame === 4) renderGame4(container, filteredData);
+            else if (state.activeGame === 5) renderGame5(container, filteredData);
+            else if (state.activeGame === 6) renderGame6(container, filteredData);
+        }
+
+        /* GAME 1: Tebak Judul Surah */
+        function renderGame1(container, data) {
+            document.getElementById('game-title').innerText = "1. Tebak Judul Surah";
+            const target = data[Math.floor(Math.random() * data.length)];
+
+            // Pick 3 options
+            let options = [target.surahName];
+            while (options.length < 3) {
+                const randomSurah = QURAN_DATA[Math.floor(Math.random() * QURAN_DATA.length)].surahName;
+                if (!options.includes(randomSurah)) options.push(randomSurah);
+            }
+            options.sort(() => Math.random() - 0.5);
+
+            container.innerHTML = `
+                <div class="text-center space-y-6">
+                    <button onclick="playVerseAudio('${target.audio}')" class="bg-yellow-400 hover:bg-yellow-300 text-slate-900 font-black px-6 py-4 rounded-3xl border-b-4 border-yellow-600 text-lg flex items-center justify-center gap-3 mx-auto shadow-lg active:translate-y-1 transition-all">
+                        <i class="fa-solid fa-volume-high text-2xl"></i>
+                        <span>Dengarkan Audio Ayat</span>
+                    </button>
+                    <div class="p-6 bg-amber-50 border-2 border-yellow-200 rounded-2xl shadow-inner max-w-xl mx-auto">
+                        <p class="font-arabic text-3xl sm:text-4xl text-emerald-800 leading-loose">${target.textAr}</p>
+                    </div>
+                    <p class="font-bold text-slate-700 text-base">Surah apakah potongan ayat di atas?</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl mx-auto">
+                        ${options.map(opt => `
+                            <button onclick="checkAnswerGame1('${opt}', '${target.surahName}')" class="bg-sky-100 hover:bg-sky-200 text-sky-900 font-black py-4 px-4 rounded-2xl border-b-4 border-sky-300 text-lg shadow active:translate-y-1 transition-all">
+                                ${opt}
+                            </button>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        function checkAnswerGame1(selected, correct) {
+            if (selected === correct) {
+                playSfx('correct');
+                state.currentGameScore += 20;
+                nextGameStep("Hebat! Jawabanmu Benar! 🎉");
+            } else {
+                playSfx('wrong');
+                nextGameStep(`Opps! Jawaban yang tepat adalah Surah ${correct} 😊`);
+            }
+        }
+
+        /* GAME 2: Sambung Ayat */
+        function renderGame2(container, data) {
+            document.getElementById('game-title').innerText = "2. Sambung Ayat";
+            const target = data[Math.floor(Math.random() * data.length)];
+            const words = target.textAr.split(" ");
+            
+            if (words.length < 2) {
+                renderGame2(container, data);
+                return;
+            }
+
+            const splitIdx = Math.ceil(words.length / 2);
+            const part1 = words.slice(0, splitIdx).join(" ");
+            const part2 = words.slice(splitIdx).join(" ");
+
+            // Dummy options
+            let options = [part2];
+            while (options.length < 3) {
+                const randomItem = QURAN_DATA[Math.floor(Math.random() * QURAN_DATA.length)];
+                const randomWords = randomItem.textAr.split(" ");
+                const randomPart = randomWords.slice(Math.floor(randomWords.length / 2)).join(" ");
+                if (randomPart && !options.includes(randomPart)) options.push(randomPart);
+            }
+            options.sort(() => Math.random() - 0.5);
+
+            container.innerHTML = `
+                <div class="text-center space-y-6">
+                    <p class="text-sm font-bold text-emerald-600 bg-emerald-100 py-1 px-4 rounded-full inline-block">Surah ${target.surahName} (Ayat ${target.ayatNo})</p>
+                    <div class="p-6 bg-emerald-50 border-2 border-emerald-200 rounded-3xl shadow-inner max-w-xl mx-auto">
+                        <span class="font-arabic text-3xl sm:text-4xl text-emerald-900">${part1} ...</span>
+                    </div>
+                    <p class="font-bold text-slate-700">Sambungan potongan ayat di atas yang tepat adalah:</p>
+                    <div class="grid grid-cols-1 gap-4 max-w-xl mx-auto">
+                        ${options.map(opt => `
+                            <button onclick="checkAnswerGame2('${opt.replace(/'/g, "\\'")}', '${part2.replace(/'/g, "\\'")}')" class="bg-emerald-100 hover:bg-emerald-200 text-emerald-950 font-arabic text-2xl py-3 px-4 rounded-2xl border-b-4 border-emerald-300 shadow active:translate-y-1 transition-all">
+                                ${opt}
+                            </button>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        function checkAnswerGame2(selected, correct) {
+            if (selected === correct) {
+                playSfx('correct');
+                state.currentGameScore += 20;
+                nextGameStep("Subhanallah! Sambungan ayatmu tepat sekali! ⭐");
+            } else {
+                playSfx('wrong');
+                nextGameStep("Hampir benar! Tetap semangat ya! 💪");
+            }
+        }
+
+        /* GAME 3: Urutkan Ayat */
+        function renderGame3(container, data) {
+            document.getElementById('game-title').innerText = "3. Urutkan Ayat";
+            // Get surah with multiple verses
+            const surahAlIkhlas = QURAN_DATA.filter(x => x.surahName === "Al-Ikhlas");
+            let verses = [...surahAlIkhlas];
+            
+            let shuffled = [...verses].sort(() => Math.random() - 0.5);
+            let userOrder = [];
+
+            container.innerHTML = `
+                <div class="text-center space-y-5 max-w-2xl mx-auto">
+                    <p class="font-bold text-slate-700">Klik ayat-ayat Surah Al-Ikhlas di bawah ini sesuai urutan dari Ayat 1 sampai 4!</p>
+                    
+                    <div id="selected-sequence-box" class="min-h-[60px] p-3 bg-amber-50 border-2 border-amber-300 rounded-2xl flex flex-col gap-2">
+                        <p class="text-xs text-amber-600 font-bold">Urutan Pilihanmu:</p>
+                        <div id="selected-list" class="flex flex-col gap-2"></div>
+                    </div>
+
+                    <div id="options-sequence-box" class="grid grid-cols-1 gap-3">
+                        ${shuffled.map((item, idx) => `
+                            <button id="seq-btn-${idx}" onclick="pickSequenceVerse(${idx}, '${item.ayatNo}', '${item.textAr.replace(/'/g, "\\'")}')" class="bg-purple-100 hover:bg-purple-200 text-purple-950 font-arabic text-2xl py-3 px-4 rounded-2xl border-b-4 border-purple-300 shadow active:translate-y-0.5 transition-all">
+                                ${item.textAr}
+                            </button>
+                        `).join('')}
+                    </div>
+
+                    <button onclick="checkAnswerGame3()" class="w-full bg-yellow-400 hover:bg-yellow-300 text-slate-900 font-black py-3 px-6 rounded-2xl border-b-4 border-yellow-600 text-lg shadow">
+                        Periksa Urutan Ayat
+                    </button>
+                </div>
+            `;
+
+            window.currentSeqPicked = [];
+            window.pickSequenceVerse = function(btnIdx, ayatNo, textAr) {
+                const btn = document.getElementById(`seq-btn-${btnIdx}`);
+                btn.disabled = true;
+                btn.classList.add('opacity-40', 'pointer-events-none');
+                window.currentSeqPicked.push({ ayatNo: parseInt(ayatNo), textAr: textAr });
+                
+                const list = document.getElementById('selected-list');
+                list.innerHTML = window.currentSeqPicked.map((item, i) => `
+                    <div class="bg-white p-2 rounded-xl border border-amber-200 flex items-center justify-between font-arabic text-xl">
+                        <span class="text-sm font-bold bg-amber-200 px-2 py-0.5 rounded-lg text-amber-900">${i + 1}</span>
+                        <span>${item.textAr}</span>
+                    </div>
+                `).join('');
+            };
+
+            window.checkAnswerGame3 = function() {
+                if (window.currentSeqPicked.length < 4) {
+                    alert("Pilih semua 4 ayat terlebih dahulu ya!");
+                    return;
+                }
+                const isCorrect = window.currentSeqPicked.every((item, i) => item.ayatNo === i + 1);
+                if (isCorrect) {
+                    playSfx('correct');
+                    state.currentGameScore += 20;
+                    nextGameStep("MasyaAllah! Urutan ayatmu 100% Benar! 🌟");
+                } else {
+                    playSfx('wrong');
+                    nextGameStep("Urutannya belum pas, yuk coba lagi di soal berikutnya! 😃");
+                }
+            };
+        }
+
+        /* GAME 4: Bacakan Ayat / Detektor Suara */
+        function renderGame4(container, data) {
+            document.getElementById('game-title').innerText = "4. Bacakan Ayat Out Loud";
+            const target = data[Math.floor(Math.random() * data.length)];
+
+            container.innerHTML = `
+                <div class="text-center space-y-6 max-w-xl mx-auto">
+                    <p class="text-sm font-bold text-purple-600 bg-purple-100 py-1 px-4 rounded-full inline-block">Surah ${target.surahName} (Ayat ${target.ayatNo})</p>
+                    <div class="p-6 bg-purple-50 border-2 border-purple-200 rounded-3xl shadow-inner">
+                        <p class="font-arabic text-3xl sm:text-4xl text-purple-950">${target.textAr}</p>
+                    </div>
+
+                    <button onclick="playVerseAudio('${target.audio}')" class="text-xs bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 py-1.5 rounded-xl border font-bold inline-flex items-center gap-1">
+                        <i class="fa-solid fa-volume-high"></i> Dengarkan Contoh Qari
+                    </button>
+
+                    <div class="py-4">
+                        <button id="mic-btn" onclick="toggleVoiceRecord()" class="w-24 h-24 bg-red-500 hover:bg-red-600 text-white rounded-full flex flex-col items-center justify-center mx-auto shadow-2xl border-4 border-white animate-pulse active:scale-95 transition-all">
+                            <i class="fa-solid fa-microphone text-3xl mb-1"></i>
+                            <span class="text-xs font-bold uppercase">Tekan Mic</span>
+                        </button>
+                        <p id="mic-status" class="text-xs text-slate-500 mt-3 font-semibold">Tekan tombol mic di atas lalu bacakan ayat dengan lantang!</p>
+                    </div>
+
+                    <button onclick="finishGame4Step()" class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 px-6 rounded-2xl border-b-4 border-emerald-700 w-full shadow">
+                        Saya Sudah Selesai Membaca ✨
+                    </button>
+                </div>
+            `;
+
+            window.toggleVoiceRecord = function() {
+                const micBtn = document.getElementById('mic-btn');
+                const status = document.getElementById('mic-status');
+                
+                // Web Speech Recognition mock/real implementation fallback
+                if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+                    try {
+                        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+                        const recognition = new SpeechRecognition();
+                        recognition.lang = 'ar-SA';
+                        recognition.start();
+                        status.innerText = "🎙️ Mendengarkan bacaan merdumu...";
+                        micBtn.classList.add('bg-green-500');
+                        
+                        recognition.onresult = function(event) {
+                            status.innerText = "🎉 Suaramu Terdeteksi! Luar biasa!";
+                            playSfx('star');
+                        };
+                        recognition.onerror = function() {
+                            status.innerText = "👍 Bintang apresiasi diberikan untuk usahamu membaca!";
+                        };
+                    } catch(e) {
+                        status.innerText = "🎉 Suaramu Terdeteksi! Mumtaz!";
+                        playSfx('star');
+                    }
+                } else {
+                    status.innerText = "🎉 Mikrofon Aktif! Luar biasa hafalanmu!";
+                    playSfx('star');
+                }
+            };
+
+            window.finishGame4Step = function() {
+                playSfx('correct');
+                state.currentGameScore += 20;
+                nextGameStep("Mumtaz! Suara bacaanmu sangat merdu! 🌟");
+            };
+        }
+
+        /* GAME 5: Detektif Isyarat Kata (Fill missing word) */
+        function renderGame5(container, data) {
+            document.getElementById('game-title').innerText = "5. Detektif Isyarat Kata";
+            const target = data[Math.floor(Math.random() * data.length)];
+            const words = target.textAr.split(" ");
+            
+            if (words.length < 2) {
+                renderGame5(container, data);
+                return;
+            }
+
+            const missingIdx = Math.floor(Math.random() * words.length);
+            const missingWord = words[missingIdx];
+            
+            let displayWords = [...words];
+            displayWords[missingIdx] = `<span class="inline-block bg-yellow-300 text-slate-800 px-3 py-1 rounded-xl font-bold animate-pulse">🎁 [ ? ]</span>`;
+
+            // Choices
+            let choices = [missingWord];
+            while (choices.length < 3) {
+                const randomItem = QURAN_DATA[Math.floor(Math.random() * QURAN_DATA.length)];
+                const randomWords = randomItem.textAr.split(" ");
+                const randW = randomWords[Math.floor(Math.random() * randomWords.length)];
+                if (randW && !choices.includes(randW)) choices.push(randW);
+            }
+            choices.sort(() => Math.random() - 0.5);
+
+            container.innerHTML = `
+                <div class="text-center space-y-6">
+                    <p class="text-sm font-bold text-blue-600 bg-blue-100 py-1 px-4 rounded-full inline-block">Surah ${target.surahName}</p>
+                    <div class="p-6 bg-blue-50 border-2 border-blue-200 rounded-3xl shadow-inner max-w-xl mx-auto">
+                        <p class="font-arabic text-3xl sm:text-4xl text-slate-900 leading-loose">
+                            ${displayWords.join(" ")}
+                        </p>
+                    </div>
+                    <p class="font-bold text-slate-700">Kata apakah yang tersembunyi di dalam peti harta karun?</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-xl mx-auto">
+                        ${choices.map(c => `
+                            <button onclick="checkAnswerGame5('${c.replace(/'/g, "\\'")}', '${missingWord.replace(/'/g, "\\'")}')" class="bg-yellow-300 hover:bg-yellow-400 text-slate-900 font-arabic text-2xl py-3 px-4 rounded-2xl border-b-4 border-yellow-500 shadow active:translate-y-1 transition-all">
+                                ${c}
+                            </button>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        function checkAnswerGame5(selected, correct) {
+            if (selected === correct) {
+                playSfx('correct');
+                state.currentGameScore += 20;
+                nextGameStep("Hebat, Detektif! Kata rahasia berhasil ditemukan! 💎");
+            } else {
+                playSfx('wrong');
+                nextGameStep(`Kata yang tepat adalah "${correct}"! 😊`);
+            }
+        }
+
+        /* GAME 6: Memory Card Hafalan */
+        function renderGame6(container, data) {
+            document.getElementById('game-title').innerText = "6. Memory Match Flip Card";
+            const selectData = data.slice(0, 3);
+
+            let cards = [];
+            selectData.forEach((item, i) => {
+                cards.push({ id: i, text: item.textAr, type: 'ar', matchId: i });
+                cards.push({ id: i, text: item.translation, type: 'id', matchId: i });
+            });
+            cards.sort(() => Math.random() - 0.5);
+
+            container.innerHTML = `
+                <div class="text-center space-y-4 max-w-2xl mx-auto">
+                    <p class="font-bold text-slate-700">Cocokkan kartu Ayat Arab dengan Terjemahan Indonesianya!</p>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                        ${cards.map((c, idx) => `
+                            <div id="card-${idx}" onclick="flipCard(${idx}, ${c.matchId})" class="h-28 bg-emerald-500 text-white rounded-2xl border-b-4 border-emerald-700 flex items-center justify-center p-3 text-center cursor-pointer shadow-md transition-all font-bold text-sm">
+                                <span class="card-content font-arabic text-base sm:text-lg">❓ Sentuh Kartu</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+
+            window.flipped = [];
+            window.matchedPairs = 0;
+            window.cardsData = cards;
+
+            window.flipCard = function(idx, matchId) {
+                if (window.flipped.length >= 2) return;
+                const cardEl = document.getElementById(`card-${idx}`);
+                const cardObj = window.cardsData[idx];
+
+                cardEl.className = "h-28 bg-white text-slate-800 border-4 border-yellow-400 rounded-2xl flex items-center justify-center p-3 text-center shadow-md font-bold text-xs sm:text-sm";
+                cardEl.innerHTML = `<span class="${cardObj.type === 'ar' ? 'font-arabic text-lg sm:text-xl text-emerald-800' : 'text-slate-700'}">${cardObj.text}</span>`;
+
+                window.flipped.push({ idx, matchId });
+
+                if (window.flipped.length === 2) {
+                    if (window.flipped[0].matchId === window.flipped[1].matchId && window.flipped[0].idx !== window.flipped[1].idx) {
+                        playSfx('correct');
+                        window.matchedPairs++;
+                        window.flipped = [];
+                        if (window.matchedPairs === 3) {
+                            state.currentGameScore += 100;
+                            setTimeout(() => {
+                                nextGameStep("Luar biasa! Semua kartu hafalan berhasil dicocokkan! 🎉");
+                            }, 800);
+                        }
+                    } else {
+                        playSfx('wrong');
+                        setTimeout(() => {
+                            window.flipped.forEach(item => {
+                                const el = document.getElementById(`card-${item.idx}`);
+                                el.className = "h-28 bg-emerald-500 text-white rounded-2xl border-b-4 border-emerald-700 flex items-center justify-center p-3 text-center cursor-pointer shadow-md transition-all font-bold text-sm";
+                                el.innerHTML = `<span class="card-content font-arabic text-base sm:text-lg">❓ Sentuh Kartu</span>`;
+                            });
+                            window.flipped = [];
+                        }, 1200);
+                    }
+                }
+            };
+        }
+
+        function nextGameStep(message) {
+            state.currentGameStep++;
+            const container = document.getElementById('game-body-container');
+            
+            container.innerHTML = `
+                <div class="text-center space-y-6 py-8">
+                    <div class="text-6xl animate-bounce">🌟</div>
+                    <h3 class="text-2xl font-black text-slate-800">${message}</h3>
+                    <button onclick="loadGameQuestion()" class="bg-yellow-400 hover:bg-yellow-300 text-slate-900 font-black py-3 px-8 rounded-2xl border-b-4 border-yellow-600 text-lg shadow active:translate-y-1 transition-all">
+                        Lanjut Soal Berikutnya <i class="fa-solid fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+            `;
+        }
+
+        function renderGameFinished() {
+            const starsEarned = state.currentGameScore >= 80 ? 3 : (state.currentGameScore >= 40 ? 2 : 1);
+            const xpEarned = state.currentGameScore * 2;
+
+            state.stars += starsEarned;
+            state.xp += xpEarned;
+            updateStateHeader();
+
+            playSfx('star');
+            confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
+
+            const container = document.getElementById('game-body-container');
+            container.innerHTML = `
+                <div class="text-center space-y-6 max-w-md mx-auto py-6">
+                    <div class="text-6xl">🎉</div>
+                    <h3 class="text-3xl font-black text-emerald-600">Alhamdulillah! Selesai!</h3>
+                    <p class="text-slate-600 font-medium">Kamu telah menyelesaikan tantangan game ini dengan sangat baik!</p>
+                    
+                    <div class="bg-amber-50 p-6 rounded-3xl border-2 border-yellow-300 space-y-3">
+                        <div class="flex justify-center text-4xl gap-2 text-yellow-400">
+                            ${'★'.repeat(starsEarned)}${'☆'.repeat(3 - starsEarned)}
+                        </div>
+                        <p class="font-bold text-amber-800 text-lg">+${starsEarned} Bintang & +${xpEarned} XP diperoleh!</p>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row gap-3">
+                        <button onclick="startGame(${state.activeGame})" class="flex-1 bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 px-4 rounded-2xl border-b-4 border-emerald-700 shadow">
+                            Main Lagi 🔄
+                        </button>
+                        <button onclick="showScreen('home')" class="flex-1 bg-yellow-400 hover:bg-yellow-300 text-slate-900 font-bold py-3 px-4 rounded-2xl border-b-4 border-yellow-600 shadow">
+                            Menu Utama 🏠
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        /* Certificate Modal Engine */
+        function openCertificateModal() {
+            document.getElementById('cert-star-count').innerText = `${state.stars} Bintang`;
+            document.getElementById('cert-xp-count').innerText = `${state.xp} XP`;
+            document.getElementById('cert-juz-label').innerText = state.selectedJuz === 'all' ? 'Juz 28, 29, dan 30' : `Juz ${state.selectedJuz}`;
+            
+            let level = "Hafiz Cilik Pemula";
+            if (state.xp > 200) level = "Hafiz Cilik Level 2 (Bintang Muda)";
+            if (state.xp > 500) level = "Hafiz Cilik Level 3 (Bintang Utam)";
+            document.getElementById('cert-level-name').innerText = level;
+
+            document.getElementById('modal-certificate').classList.remove('hidden');
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.add('hidden');
+        }
+
+        function printCertificate() {
+            window.print();
+        }
+
+        // Initialize App
+        window.onload = function() {
+            updateStateHeader();
+        };
+    </script>
+</body>
+</html>
