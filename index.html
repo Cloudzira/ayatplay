@@ -4,7 +4,32 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#1F2A68">
-<title>AyatPlay Kids - Petualangan Hafiz Cilik (Juz 28, 29, 30)</title>
+<meta name="description" content="Game hafalan Al-Qur'an untuk anak: seluruh surah Juz 28, 29, 30, 10 game seru, level, dan audio qari.">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/svg+xml" href="icons/icon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="AyatPlay">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="apple-touch-startup-image" media="(device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="splash/splash-1290x2796.png">
+<link rel="apple-touch-startup-image" media="(device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="splash/splash-1179x2556.png">
+<link rel="apple-touch-startup-image" media="(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="splash/splash-1284x2778.png">
+<link rel="apple-touch-startup-image" media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="splash/splash-1170x2532.png">
+<link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="splash/splash-1125x2436.png">
+<link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="splash/splash-1242x2688.png">
+<link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="splash/splash-828x1792.png">
+<link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="splash/splash-1242x2208.png">
+<link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="splash/splash-750x1334.png">
+<script>
+/* ===== FIREBASE: isi dengan konfigurasi proyek Anda =====
+   Firebase Console > Project settings > Your apps > Web app > SDK setup and configuration.
+   Selama masih berisi "ISI_...", fitur login/cloud otomatis nonaktif dan aplikasi berjalan lokal. */
+window.AYATPLAY_FIREBASE={apiKey:"ISI_API_KEY",authDomain:"ISI_PROJECT_ID.firebaseapp.com",projectId:"ISI_PROJECT_ID",storageBucket:"ISI_PROJECT_ID.appspot.com",messagingSenderId:"ISI_SENDER_ID",appId:"ISI_APP_ID"};
+</script>
+
+<title>AyatPlay Kids - Petualangan Hafiz Cilik</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Scheherazade+New:wght@400;700&family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -278,6 +303,34 @@ body.in-game .bottom{display:none}
 .cert h3{font-size:1.8rem;color:var(--night)}
 .cert .nm{font-family:var(--f-disp);font-weight:800;font-size:2rem;color:var(--mint-d);border-bottom:3px solid var(--sun);display:inline-block;padding:0 18px;justify-self:center}
 .cert .ar{font-size:1.7rem}
+
+/* ===== splash screen ===== */
+#splash{position:fixed;inset:0;z-index:200;display:grid;place-items:center;background:radial-gradient(circle at 50% 38%,#4254C9 0,#2A3787 55%,#171F55 100%);color:#fff;overflow:hidden;transition:opacity .55s ease,transform .55s ease}
+#splash.out{opacity:0;transform:scale(1.06);pointer-events:none}
+.sp-stars{position:absolute;inset:0;width:100%;height:100%}
+.sp-stars circle{animation:tw 2.6s ease-in-out infinite}
+@keyframes tw{0%,100%{opacity:.2}50%{opacity:1}}
+.sp-center{position:relative;display:grid;justify-items:center;gap:6px;padding:20px;margin-top:-6vh}
+.sp-mark{width:min(66vw,310px);height:auto;filter:drop-shadow(0 16px 26px rgba(0,0,0,.35));animation:spPop .95s cubic-bezier(.2,1.4,.4,1) both}
+@keyframes spPop{0%{transform:scale(.3) rotate(-12deg);opacity:0}100%{transform:none;opacity:1}}
+.sp-star{animation:spBob 2.4s ease-in-out .95s infinite;transform-box:fill-box;transform-origin:50% 85%}
+@keyframes spBob{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-9px) rotate(2deg)}}
+.sp-sp{animation:tw 1.8s ease-in-out infinite}
+.sp-mark .eye{transform-box:fill-box;transform-origin:center;animation:blink 4s 1.6s infinite}
+.sp-title{font-family:var(--f-disp);font-weight:800;font-size:clamp(2.5rem,12vw,3.8rem);display:flex;line-height:1;text-shadow:0 4px 0 rgba(0,0,0,.28)}
+.sp-title span{display:inline-block;animation:spLetter .6s cubic-bezier(.2,1.6,.4,1) both}
+@keyframes spLetter{0%{transform:translateY(26px) scale(.4);opacity:0}100%{transform:none;opacity:1}}
+.sp-kids{font-family:var(--f-disp);font-weight:800;font-size:1.15rem;background:var(--sun);color:#3b2b00;border-radius:12px;padding:0 16px;border-bottom:4px solid var(--sun-d);animation:spLetter .6s 1.35s cubic-bezier(.2,1.6,.4,1) both}
+.sp-tag{margin-top:6px;font-weight:700;opacity:.92;animation:spFade .8s 1.5s both}
+@keyframes spFade{from{opacity:0}to{opacity:.92}}
+.sp-load{position:absolute;left:0;right:0;bottom:calc(7vh + env(safe-area-inset-bottom,0px));display:grid;justify-items:center;gap:10px}
+.sp-load p{margin:0;font-weight:700;font-size:.92rem;opacity:.9}
+.sp-bar{width:min(62vw,260px);height:12px;border-radius:99px;background:rgba(255,255,255,.2);overflow:hidden}
+.sp-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#FFC93C,#FFE48A);border-radius:99px;animation:spLoad 2.2s ease-out forwards}
+@keyframes spLoad{to{width:100%}}
+.btn-danger{color:var(--bad);border-color:#F5C2C4}
+.small{font-size:.85rem;line-height:1.45}
+@media(prefers-reduced-motion:reduce){.sp-bar i{width:100%}}
 @media print{
   @page{size:landscape;margin:10mm}
   body *{visibility:hidden}
@@ -290,23 +343,82 @@ body.in-game .bottom{display:none}
   .mascot{width:84px;height:84px;flex:none}
   .bubble:before{top:50%;left:-8px;margin:-8px 0 0;border:8px solid transparent;border-left:0;border-right-color:#fff}
   .brand small{display:none}
-  .chip{padding:3px 8px;font-size:.85rem}
+  .chip{padding:3px 7px;font-size:.82rem;gap:3px}
+  .chips{gap:4px}
+  .icon-btn{width:34px;height:34px;font-size:1rem}
+  .brand b{font-size:1.15rem}
 }
+@media(max-width:380px){.brand>span{display:none}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+<linearGradient id="bg" x1="0" y1="0" x2=".55" y2="1"><stop offset="0" stop-color="#5566E0"/><stop offset=".55" stop-color="#2E3C8F"/><stop offset="1" stop-color="#1B245C"/></linearGradient>
+<linearGradient id="st" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFE470"/><stop offset="1" stop-color="#FFB300"/></linearGradient>
+<linearGradient id="cv" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#20C9A6"/><stop offset="1" stop-color="#0B7F68"/></linearGradient>
+<mask id="cm"><rect width="512" height="512" fill="#fff"/><circle cx="380" cy="130" r="47" fill="#000"/></mask>
+</defs><symbol id="logo-icon" viewBox="0 0 512 512"><rect width="512" height="512" rx="116" fill="url(#bg)"/>
+<circle cx="352" cy="148" r="57" fill="#FFE48A" mask="url(#cm)"/>
+<path transform="translate(150 150) scale(1.15)" d="M0 -14 C2 -4 4 -2 14 0 C4 2 2 4 0 14 C-2 4 -4 2 -14 0 C-4 -2 -2 -4 0 -14Z" fill="#fff" opacity="1"/><path transform="translate(412 262) scale(0.8)" d="M0 -14 C2 -4 4 -2 14 0 C4 2 2 4 0 14 C-2 4 -4 2 -14 0 C-4 -2 -2 -4 0 -14Z" fill="#FFE48A" opacity="1"/><path transform="translate(112 262) scale(0.65)" d="M0 -14 C2 -4 4 -2 14 0 C4 2 2 4 0 14 C-2 4 -4 2 -14 0 C-4 -2 -2 -4 0 -14Z" fill="#fff" opacity="0.9"/><path transform="translate(300 84) scale(0.55)" d="M0 -14 C2 -4 4 -2 14 0 C4 2 2 4 0 14 C-2 4 -4 2 -14 0 C-4 -2 -2 -4 0 -14Z" fill="#fff" opacity="0.85"/>
+<circle cx="84" cy="96" r="3.5" fill="#fff" opacity=".8"/><circle cx="436" cy="190" r="3" fill="#fff" opacity=".7"/><circle cx="64" cy="200" r="2.6" fill="#fff" opacity=".6"/>
+<path d="M256 348 C218 320 148 312 86 332 L86 418 C150 398 220 406 256 436 C292 406 362 398 426 418 L426 332 C364 312 294 320 256 348Z" fill="url(#cv)"/>
+<path d="M256 336 C220 308 150 300 98 318 L98 400 C150 384 220 392 256 420Z" fill="#fff"/>
+<path d="M256 336 C292 308 362 300 414 318 L414 400 C362 384 292 392 256 420Z" fill="#F2FBF8"/>
+<path d="M256 336 L256 420" stroke="#BFE7DB" stroke-width="4"/>
+<g fill="none" stroke="#9AD9C6" stroke-width="7" stroke-linecap="round">
+<path d="M122 344 C160 336 205 342 236 360"/><path d="M122 364 C160 356 205 362 236 380"/><path d="M122 384 C160 376 196 380 222 394"/>
+<path d="M390 344 C352 336 307 342 276 360"/><path d="M390 364 C352 356 307 362 276 380"/><path d="M390 384 C352 376 316 380 290 394"/></g>
+<ellipse cx="256" cy="334" rx="84" ry="11" fill="#0B3B5A" opacity=".28"/>
+<g transform="translate(151 138) scale(2.1)">
+<path d="M50 6 61.8 36.5 94.5 38.4 69 58.9 77.5 90.5 50 72.8 22.5 90.5 31 58.9 5.5 38.4 38.2 36.5Z" fill="url(#st)" stroke="#E8A000" stroke-width="6" stroke-linejoin="round"/>
+<path d="M46.5 17 L43.2 28" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".75"/>
+<ellipse class="eye" cx="40" cy="50" rx="4.4" ry="5.5" fill="#1E2347"/><ellipse class="eye" cx="60" cy="50" rx="4.4" ry="5.5" fill="#1E2347"/>
+<circle cx="41.6" cy="48" r="1.5" fill="#fff"/><circle cx="61.6" cy="48" r="1.5" fill="#fff"/>
+<ellipse cx="31" cy="58" rx="5.2" ry="3.2" fill="#FF7F7F" opacity=".75"/><ellipse cx="69" cy="58" rx="5.2" ry="3.2" fill="#FF7F7F" opacity=".75"/>
+<path d="M41 60.5 Q50 70 59 60.5 Q50 63.5 41 60.5Z" fill="#B23A48" stroke="#1E2347" stroke-width="3" stroke-linejoin="round"/>
+</g></symbol></svg>
+<div id="splash" role="status" aria-label="Memuat AyatPlay Kids">
+<svg class="sp-stars" aria-hidden="true"><circle cx="65.0%" cy="90.4%" r="1.7" fill="#fff" style="animation-delay:0.27s"/><circle cx="22.8%" cy="75.9%" r="1.5" fill="#fff" style="animation-delay:0.85s"/><circle cx="80.2%" cy="33.9%" r="2.5" fill="#fff" style="animation-delay:2.19s"/><circle cx="95.3%" cy="51.9%" r="1.7" fill="#fff" style="animation-delay:1.18s"/><circle cx="44.5%" cy="58.4%" r="1.6" fill="#fff" style="animation-delay:2.11s"/><circle cx="11.8%" cy="78.1%" r="1.1" fill="#fff" style="animation-delay:0.82s"/><circle cx="44.1%" cy="54.1%" r="2.4" fill="#fff" style="animation-delay:1.70s"/><circle cx="73.5%" cy="37.1%" r="3.0" fill="#fff" style="animation-delay:0.10s"/><circle cx="6.2%" cy="40.7%" r="3.1" fill="#fff" style="animation-delay:0.22s"/><circle cx="78.1%" cy="63.7%" r="3.1" fill="#fff" style="animation-delay:0.97s"/><circle cx="76.6%" cy="78.8%" r="2.4" fill="#fff" style="animation-delay:1.74s"/><circle cx="30.3%" cy="88.6%" r="2.8" fill="#fff" style="animation-delay:2.12s"/><circle cx="63.9%" cy="47.4%" r="2.8" fill="#fff" style="animation-delay:0.72s"/><circle cx="20.5%" cy="50.2%" r="1.5" fill="#fff" style="animation-delay:0.98s"/><circle cx="50.8%" cy="88.3%" r="2.0" fill="#fff" style="animation-delay:0.46s"/><circle cx="68.3%" cy="71.8%" r="3.2" fill="#fff" style="animation-delay:0.09s"/><circle cx="71.8%" cy="17.8%" r="1.9" fill="#fff" style="animation-delay:2.15s"/><circle cx="34.1%" cy="6.6%" r="2.1" fill="#fff" style="animation-delay:2.17s"/><circle cx="57.8%" cy="3.6%" r="1.2" fill="#fff" style="animation-delay:0.81s"/><circle cx="97.1%" cy="48.4%" r="2.6" fill="#fff" style="animation-delay:1.77s"/><circle cx="47.1%" cy="10.0%" r="2.4" fill="#fff" style="animation-delay:1.19s"/><circle cx="99.2%" cy="9.5%" r="3.1" fill="#fff" style="animation-delay:2.00s"/><circle cx="63.2%" cy="8.6%" r="3.0" fill="#fff" style="animation-delay:1.59s"/><circle cx="56.4%" cy="65.3%" r="2.1" fill="#fff" style="animation-delay:1.84s"/><circle cx="59.1%" cy="56.2%" r="3.2" fill="#fff" style="animation-delay:0.21s"/><circle cx="36.7%" cy="65.1%" r="2.3" fill="#fff" style="animation-delay:0.73s"/><circle cx="28.7%" cy="39.1%" r="2.7" fill="#fff" style="animation-delay:0.66s"/><circle cx="4.2%" cy="10.2%" r="3.3" fill="#fff" style="animation-delay:2.37s"/><circle cx="84.3%" cy="84.6%" r="2.0" fill="#fff" style="animation-delay:0.93s"/><circle cx="30.6%" cy="98.1%" r="1.2" fill="#fff" style="animation-delay:1.98s"/><circle cx="1.2%" cy="38.3%" r="2.5" fill="#fff" style="animation-delay:2.41s"/><circle cx="72.6%" cy="33.7%" r="1.4" fill="#fff" style="animation-delay:1.33s"/><circle cx="28.7%" cy="8.9%" r="1.4" fill="#fff" style="animation-delay:2.35s"/><circle cx="16.6%" cy="7.2%" r="2.4" fill="#fff" style="animation-delay:2.07s"/><circle cx="68.3%" cy="79.1%" r="2.0" fill="#fff" style="animation-delay:1.05s"/><circle cx="89.9%" cy="38.3%" r="2.6" fill="#fff" style="animation-delay:0.88s"/><circle cx="17.3%" cy="83.5%" r="2.3" fill="#fff" style="animation-delay:0.47s"/><circle cx="38.1%" cy="87.5%" r="3.0" fill="#fff" style="animation-delay:1.83s"/><circle cx="80.7%" cy="52.8%" r="1.5" fill="#fff" style="animation-delay:1.91s"/><circle cx="69.8%" cy="33.8%" r="1.2" fill="#fff" style="animation-delay:1.96s"/><circle cx="48.6%" cy="25.5%" r="1.3" fill="#fff" style="animation-delay:0.20s"/><circle cx="67.7%" cy="19.2%" r="2.3" fill="#fff" style="animation-delay:1.99s"/><circle cx="40.8%" cy="24.9%" r="3.2" fill="#fff" style="animation-delay:0.46s"/><circle cx="66.5%" cy="59.8%" r="3.2" fill="#fff" style="animation-delay:0.50s"/><circle cx="17.8%" cy="4.1%" r="1.6" fill="#fff" style="animation-delay:0.23s"/><circle cx="97.0%" cy="23.4%" r="2.8" fill="#fff" style="animation-delay:0.31s"/></svg>
+<div class="sp-center">
+<svg class="sp-mark" viewBox="0 0 512 512" aria-hidden="true">
+<circle cx="352" cy="148" r="57" fill="#FFE48A" mask="url(#cm)"/>
+<path class="sp-sp" transform="translate(150 150) scale(1.15)" d="M0 -14 C2 -4 4 -2 14 0 C4 2 2 4 0 14 C-2 4 -4 2 -14 0 C-4 -2 -2 -4 0 -14Z" fill="#fff" opacity="1"/><path class="sp-sp" transform="translate(412 262) scale(0.8)" d="M0 -14 C2 -4 4 -2 14 0 C4 2 2 4 0 14 C-2 4 -4 2 -14 0 C-4 -2 -2 -4 0 -14Z" fill="#FFE48A" opacity="1"/><path class="sp-sp" transform="translate(112 262) scale(0.65)" d="M0 -14 C2 -4 4 -2 14 0 C4 2 2 4 0 14 C-2 4 -4 2 -14 0 C-4 -2 -2 -4 0 -14Z" fill="#fff" opacity="0.9"/><path class="sp-sp" transform="translate(300 84) scale(0.55)" d="M0 -14 C2 -4 4 -2 14 0 C4 2 2 4 0 14 C-2 4 -4 2 -14 0 C-4 -2 -2 -4 0 -14Z" fill="#fff" opacity="0.85"/>
+<circle cx="84" cy="96" r="3.5" fill="#fff" opacity=".8"/><circle cx="436" cy="190" r="3" fill="#fff" opacity=".7"/><circle cx="64" cy="200" r="2.6" fill="#fff" opacity=".6"/>
+<path d="M256 348 C218 320 148 312 86 332 L86 418 C150 398 220 406 256 436 C292 406 362 398 426 418 L426 332 C364 312 294 320 256 348Z" fill="url(#cv)"/>
+<path d="M256 336 C220 308 150 300 98 318 L98 400 C150 384 220 392 256 420Z" fill="#fff"/>
+<path d="M256 336 C292 308 362 300 414 318 L414 400 C362 384 292 392 256 420Z" fill="#F2FBF8"/>
+<path d="M256 336 L256 420" stroke="#BFE7DB" stroke-width="4"/>
+<g fill="none" stroke="#9AD9C6" stroke-width="7" stroke-linecap="round">
+<path d="M122 344 C160 336 205 342 236 360"/><path d="M122 364 C160 356 205 362 236 380"/><path d="M122 384 C160 376 196 380 222 394"/>
+<path d="M390 344 C352 336 307 342 276 360"/><path d="M390 364 C352 356 307 362 276 380"/><path d="M390 384 C352 376 316 380 290 394"/></g>
+<ellipse cx="256" cy="334" rx="84" ry="11" fill="#0B3B5A" opacity=".28"/>
+<g class="sp-star"><g transform="translate(151 138) scale(2.1)">
+<path d="M50 6 61.8 36.5 94.5 38.4 69 58.9 77.5 90.5 50 72.8 22.5 90.5 31 58.9 5.5 38.4 38.2 36.5Z" fill="url(#st)" stroke="#E8A000" stroke-width="6" stroke-linejoin="round"/>
+<path d="M46.5 17 L43.2 28" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".75"/>
+<ellipse class="eye" cx="40" cy="50" rx="4.4" ry="5.5" fill="#1E2347"/><ellipse class="eye" cx="60" cy="50" rx="4.4" ry="5.5" fill="#1E2347"/>
+<circle cx="41.6" cy="48" r="1.5" fill="#fff"/><circle cx="61.6" cy="48" r="1.5" fill="#fff"/>
+<ellipse cx="31" cy="58" rx="5.2" ry="3.2" fill="#FF7F7F" opacity=".75"/><ellipse cx="69" cy="58" rx="5.2" ry="3.2" fill="#FF7F7F" opacity=".75"/>
+<path d="M41 60.5 Q50 70 59 60.5 Q50 63.5 41 60.5Z" fill="#B23A48" stroke="#1E2347" stroke-width="3" stroke-linejoin="round"/>
+</g></g></svg>
+<div class="sp-title" aria-hidden="true"><span style="animation-delay:0.75s">A</span><span style="animation-delay:0.81s">y</span><span style="animation-delay:0.87s">a</span><span style="animation-delay:0.93s">t</span><span style="animation-delay:0.99s">P</span><span style="animation-delay:1.05s">l</span><span style="animation-delay:1.11s">a</span><span style="animation-delay:1.17s">y</span></div>
+<div class="sp-kids" aria-hidden="true">Kids</div>
+<div class="sp-tag">Petualangan Hafiz Cilik</div>
+</div>
+<div class="sp-load"><div class="sp-bar"><i></i></div><p id="splash-msg">Bismillah… 🌙</p></div>
+</div>
 
 <header class="top" id="top">
   <div class="wrap">
     <button class="brand" data-act="nav" data-to="home" aria-label="Ke beranda">
-      <svg class="mascot-mini" width="40" height="40" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 6 61.8 36.5 94.5 38.4 69 58.9 77.5 90.5 50 72.8 22.5 90.5 31 58.9 5.5 38.4 38.2 36.5Z" fill="#FFC93C" stroke="#E8A200" stroke-width="6" stroke-linejoin="round"/></svg>
+      <svg width="42" height="42" aria-hidden="true"><use href="#logo-icon"/></svg>
       <span><b>AyatPlay</b><small>Petualangan Hafiz Cilik</small></span>
     </button>
     <div class="chips">
       <div class="chip" title="Hari beruntun">🔥 <span id="h-streak">0</span></div>
       <div class="chip" title="Bintang terkumpul">⭐ <span id="h-stars">0</span></div>
       <button class="chip" data-act="nav" data-to="profile" title="Level kamu">Lv <span id="h-lv">1</span></button>
+      <button class="icon-btn hidden" id="h-cloud" data-act="nav" data-to="profile" aria-label="Status cloud">☁️</button>
       <button class="icon-btn" data-act="sound" id="h-sound" aria-label="Nyalakan atau matikan suara">🔊</button>
     </div>
   </div>
@@ -537,6 +649,119 @@ const RAW = [
 ["وَآخَرِينَ مِنْهُمْ لَمَّا يَلْحَقُوا بِهِمْ ۚ وَهُوَ الْعَزِيزُ الْحَكِيمُ","dan (juga) kepada kaum yang lain dari mereka yang belum berhubungan dengan mereka. Dan Dialah Yang Mahaperkasa, Mahabijaksana."],
 ["ذَٰلِكَ فَضْلُ اللَّهِ يُؤْتِيهِ مَن يَشَاءُ ۚ وَاللَّهُ ذُو الْفَضْلِ الْعَظِيمِ","Demikianlah karunia Allah, diberikan-Nya kepada siapa yang Dia kehendaki. Dan Allah memiliki karunia yang besar."]]}
 ];
+
+/* =====================================================================
+   SELURUH SURAH JUZ 28-30  —  dimuat otomatis dari sumber resmi
+   (api.alquran.cloud: teks Utsmani + terjemah Kemenag), divalidasi
+   jumlah ayatnya, lalu disimpan di perangkat (cache) agar bisa offline.
+   Data bawaan (RAW di atas) tetap dipakai sebagai cadangan.
+   ===================================================================== */
+const AYAT_COUNT={58:22,59:24,60:13,61:14,62:11,63:11,64:18,65:12,66:12,
+67:30,68:52,69:52,70:44,71:28,72:28,73:20,74:56,75:40,76:31,77:50,
+78:40,79:46,80:42,81:29,82:19,83:36,84:25,85:22,86:17,87:19,88:26,89:30,90:20,91:15,92:21,
+93:11,94:8,95:8,96:19,97:5,98:8,99:8,100:11,101:11,102:8,103:3,104:9,105:5,106:4,107:7,108:3,109:6,110:3,111:5,112:4,113:5,114:6};
+const SURAH_META={
+58:["Al-Mujadilah","المجادلة","Wanita yang Menggugat"],59:["Al-Hasyr","الحشر","Pengusiran"],60:["Al-Mumtahanah","الممتحنة","Wanita yang Diuji"],
+61:["As-Saff","الصف","Barisan"],62:["Al-Jumu'ah","الجمعة","Hari Jumat"],63:["Al-Munafiqun","المنافقون","Orang-orang Munafik"],
+64:["At-Taghabun","التغابن","Hari Dinampakkan Kesalahan"],65:["At-Talaq","الطلاق","Talak"],66:["At-Tahrim","التحريم","Mengharamkan"],
+67:["Al-Mulk","الملك","Kerajaan"],68:["Al-Qalam","القلم","Pena"],69:["Al-Haqqah","الحاقة","Hari Kiamat yang Pasti"],
+70:["Al-Ma'arij","المعارج","Tempat-tempat Naik"],71:["Nuh","نوح","Nabi Nuh"],72:["Al-Jinn","الجن","Jin"],
+73:["Al-Muzzammil","المزمل","Orang yang Berselimut"],74:["Al-Muddatsir","المدثر","Orang yang Berkemul"],75:["Al-Qiyamah","القيامة","Hari Kiamat"],
+76:["Al-Insan","الإنسان","Manusia"],77:["Al-Mursalat","المرسلات","Malaikat yang Diutus"],
+78:["An-Naba'","النبأ","Berita Besar"],79:["An-Nazi'at","النازعات","Malaikat yang Mencabut"],80:["'Abasa","عبس","Ia Bermuka Masam"],
+81:["At-Takwir","التكوير","Menggulung"],82:["Al-Infithar","الانفطار","Terbelah"],83:["Al-Muthaffifin","المطففين","Orang yang Curang"],
+84:["Al-Insyiqaq","الانشقاق","Terbelah"],85:["Al-Buruj","البروج","Gugusan Bintang"],86:["At-Thariq","الطارق","Yang Datang di Malam Hari"],
+87:["Al-A'la","الأعلى","Yang Mahatinggi"],88:["Al-Ghasyiyah","الغاشية","Hari Pembalasan"],89:["Al-Fajr","الفجر","Fajar"],
+90:["Al-Balad","البلد","Negeri"],91:["Asy-Syams","الشمس","Matahari"],92:["Al-Lail","الليل","Malam"],
+93:["Ad-Duha","الضحى","Waktu Duha"],94:["Al-Insyirah","الشرح","Kelapangan"],95:["At-Tin","التين","Buah Tin"],
+96:["Al-Alaq","العلق","Segumpal Darah"],97:["Al-Qadr","القدر","Kemuliaan"],98:["Al-Bayyinah","البينة","Bukti yang Nyata"],
+99:["Az-Zalzalah","الزلزلة","Guncangan"],100:["Al-Adiyat","العاديات","Kuda Perang"],101:["Al-Qari'ah","القارعة","Hari Kiamat"],
+102:["At-Takatsur","التكاثر","Bermegah-megahan"],103:["Al-Asr","العصر","Masa"],104:["Al-Humazah","الهمزة","Pengumpat"],
+105:["Al-Fil","الفيل","Gajah"],106:["Quraisy","قريش","Suku Quraisy"],107:["Al-Ma'un","الماعون","Barang yang Berguna"],
+108:["Al-Kautsar","الكوثر","Nikmat yang Banyak"],109:["Al-Kafirun","الكافرون","Orang-orang Kafir"],110:["An-Nasr","النصر","Pertolongan"],
+111:["Al-Masad","المسد","Sabut"],112:["Al-Ikhlas","الإخلاص","Memurnikan Keesaan Allah"],113:["Al-Falaq","الفلق","Waktu Subuh"],114:["An-Nas","الناس","Manusia"]};
+const juzOf=no=>no>=78?30:no>=67?29:28;
+const TOTAL_AYAT=Object.values(AYAT_COUNT).reduce((a,b)=>a+b,0);   // 1132
+const QAPI='https://api.alquran.cloud/v1/juz/';
+const DATA_KEY='ayatplay_quran_v1';
+let dataStatus='builtin';        // builtin | loading | full | error
+let pendingData=null;
+
+const BASMALA='بسم الله الرحمن الرحيم';
+function cleanAr(text,n,no){
+  let t=String(text).replace(/\u06DE/g,'').replace(/\s+/g,' ').trim();   // buang tanda hizb ۞
+  if(n===1&&no!==1&&no!==9){                                            // buang basmalah yang kadang ikut di ayat 1
+    const parts=t.split(' ');
+    if(parts.length>4&&normAr(parts.slice(0,4).join(' '))===BASMALA) t=parts.slice(4).join(' ');
+  }
+  return t;
+}
+/* Rakit & validasi: kembalikan daftar surah lengkap, atau lempar error bila ada yang janggal */
+function assembleQuran(arAyahs,idAyahs){
+  const by={};
+  const add=(list,field)=>list.forEach(a=>{
+    const no=a&&a.surah&&a.surah.number, n=a&&a.numberInSurah;
+    if(!AYAT_COUNT[no]||!Number.isInteger(n)||typeof a.text!=='string') throw new Error('format ayat tidak dikenal');
+    (by[no]=by[no]||{})[n]=by[no][n]||{}; by[no][n][field]=a.text;
+  });
+  add(arAyahs,'ar'); add(idAyahs,'id');
+  const out=[];
+  for(const key of Object.keys(AYAT_COUNT)){
+    const no=+key, cnt=AYAT_COUNT[no], o=by[no];
+    if(!o||Object.keys(o).length!==cnt) throw new Error(`jumlah ayat surah ${no} tidak sesuai`);
+    const v=[];
+    for(let n=1;n<=cnt;n++){
+      const e=o[n]; if(!e||!e.ar||!e.id) throw new Error(`ayat ${no}:${n} tidak lengkap`);
+      const ar=cleanAr(e.ar,n,no); if(!ar) throw new Error(`ayat ${no}:${n} kosong`);
+      v.push([ar,String(e.id).replace(/\s+/g,' ').trim()]);
+    }
+    out.push({no,v});
+  }
+  return out;
+}
+const toRaw=list=>list.map(s=>{const m=SURAH_META[s.no];return {no:s.no,name:m[0],ar:m[1],mean:m[2],juz:juzOf(s.no),v:s.v};});
+function readCache(){
+  try{
+    const c=JSON.parse(localStorage.getItem(DATA_KEY)||'null');
+    if(!c||!Array.isArray(c.s)||c.s.length!==Object.keys(AYAT_COUNT).length) return null;
+    for(const [no,v] of c.s){ if(!AYAT_COUNT[no]||!Array.isArray(v)||v.length!==AYAT_COUNT[no]||v.some(p=>!p[0]||!p[1])) return null; }
+    return c.s.map(([no,v])=>({no,v}));
+  }catch(e){return null;}
+}
+async function fetchJuz(j,ed){
+  const ctl=new AbortController(), t=setTimeout(()=>ctl.abort(),25000);
+  try{
+    const r=await fetch(QAPI+j+'/'+ed,{signal:ctl.signal});
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    const d=await r.json(), a=d&&d.data&&d.data.ayahs;
+    if(!Array.isArray(a)||!a.length) throw new Error('respons kosong');
+    return a;
+  } finally{ clearTimeout(t); }
+}
+function applyData(list){
+  rebuildData(toRaw(list));
+  if(S.scope.surah&&!SURAHS[S.scope.surah]) S.scope.surah='';
+  dataStatus='full';
+}
+async function loadFullData(){
+  if(dataStatus==='loading') return;
+  const was=dataStatus; dataStatus='loading'; refreshDataUI();
+  try{
+    const res=await Promise.all([28,29,30].flatMap(j=>[fetchJuz(j,'quran-uthmani'),fetchJuz(j,'id.indonesian')]));
+    const list=assembleQuran([...res[0],...res[2],...res[4]],[...res[1],...res[3],...res[5]]);
+    try{ localStorage.setItem(DATA_KEY,JSON.stringify({t:Date.now(),s:list.map(s=>[s.no,s.v])})); }catch(e){}
+    if(curView==='game'){ pendingData=list; dataStatus='full'; }
+    else{ applyData(list); toast(`📚 Semua surah Juz 28-30 siap: ${VERSES.length} ayat!`,'gold'); }
+  }catch(e){
+    console.warn('Gagal memuat seluruh surah:',e);
+    dataStatus=(was==='full')?'full':'error';
+  }
+  refreshDataUI();
+}
+function refreshDataUI(){
+  if(curView==='home'){ const el=$('#scope-slot'); if(el) el.innerHTML=scopeCard(); }
+  else if(curView==='learn'&&!learnState.surah) renderLearn();
+}
 /* =====================================================================
    INTI APLIKASI
    ===================================================================== */
@@ -561,23 +786,28 @@ function tokenize(text){
 }
 const normAr=s=>s.replace(/[\u064B-\u065F\u0670\u06D6-\u06ED\u0640]/g,'').replace(/[أإآٱ]/g,'ا').replace(/ى/g,'ي').replace(/ة/g,'ه').replace(/\s+/g,' ').trim();
 
-const SURAHS={}, SURAH_LIST=[], VERSES=[];
-RAW.forEach(s=>{
-  const from=s.from||1;
-  const o={no:s.no,name:s.name,ar:s.ar,mean:s.mean,juz:s.juz,verses:[]};
-  s.v.forEach((p,i)=>{
-    const n=from+i;
-    const v={key:s.no+':'+n,s:s.no,sName:s.name,sAr:s.ar,juz:s.juz,n,i,ar:p[0],id:p[1],audio:pad(s.no)+pad(n)+'.mp3'};
-    v.words=tokenize(v.ar);
-    o.verses.push(v);VERSES.push(v);
+const SURAHS={}, SURAH_LIST=[], VERSES=[], VMAP=new Map();
+function rebuildData(rawList){
+  Object.keys(SURAHS).forEach(k=>delete SURAHS[k]); SURAH_LIST.length=0; VERSES.length=0; VMAP.clear();
+  const rank=s=>s.juz===30?[0,-s.no]:[s.juz===29?1:2,s.no];     // Juz 30 dari An-Nas ke atas, Juz 29 & 28 berurutan
+  [...rawList].sort((x,y)=>{const a=rank(x),b=rank(y);return a[0]-b[0]||a[1]-b[1];}).forEach(s=>{
+    const from=s.from||1;
+    const o={no:s.no,name:s.name,ar:s.ar,mean:s.mean,juz:s.juz,verses:[]};
+    s.v.forEach((p,i)=>{
+      const n=from+i;
+      const v={key:s.no+':'+n,s:s.no,sName:s.name,sAr:s.ar,juz:s.juz,n,i,ar:p[0],id:p[1],audio:pad(s.no)+pad(n)+'.mp3'};
+      v.words=tokenize(v.ar);
+      o.verses.push(v);VERSES.push(v);VMAP.set(v.key,v);
+    });
+    SURAHS[s.no]=o;SURAH_LIST.push(o);
   });
-  SURAHS[s.no]=o;SURAH_LIST.push(o);
-});
-const vById=key=>VERSES.find(v=>v.key===key);
+}
+rebuildData(RAW);
+const vById=key=>VMAP.get(key);
 
 /* ---------- penyimpanan ---------- */
 const KEY='ayatplay_v2';
-const defaults=()=>({name:'',xp:0,streak:0,best:0,last:'',today:{date:'',rounds:0},prog:{},memorized:{},badges:{},played:{},listened:0,plays:0,sound:true,scope:{juz:'30',surah:''}});
+const defaults=()=>({name:'',xp:0,streak:0,best:0,last:'',today:{date:'',rounds:0},prog:{},memorized:{},unmem:{},resetAt:0,nameAt:0,badges:{},played:{},listened:0,plays:0,sound:true,scope:{juz:'30',surah:''}});
 function loadState(){
   let s=defaults();
   try{
@@ -591,7 +821,7 @@ function loadState(){
   return s;
 }
 let S=loadState();
-function save(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){} if(typeof cloudSchedule==='function') cloudSchedule();}
 
 /* ---------- tanggal, streak, target harian ---------- */
 const dstr=(d=new Date())=>d.getFullYear()+'-'+pad(d.getMonth()+1,2)+'-'+pad(d.getDate(),2);
@@ -702,6 +932,11 @@ function scopePool(){
 }
 const scopeSurahs=()=>SURAH_LIST.filter(s=>S.scope.juz==='all'||String(s.juz)===String(S.scope.juz));
 const JUZ_PILLS=[['30','Juz 30'],['29','Juz 29'],['28','Juz 28'],['all','Semua Juz']];
+function dataLine(){
+  if(dataStatus==='full') return `<div class="scope-info">✅ Materi lengkap: ${VERSES.length} ayat dari ${SURAH_LIST.length} surah (Juz 28, 29, 30)</div>`;
+  if(dataStatus==='loading') return `<div class="scope-info">⏳ Memuat semua surah Juz 28-30…</div>`;
+  return `<div class="scope-info">📶 Saat ini memakai ${VERSES.length} ayat bawaan. Sambungkan internet untuk membuka semua surah. <button class="btn btn-ghost btn-sm" data-act="load-data" style="margin-top:6px">Muat semua surah</button></div>`;
+}
 function scopeCard(){
   const pool=scopePool(), ns=new Set(pool.map(v=>v.s)).size;
   return `<div class="card scope">
@@ -710,6 +945,7 @@ function scopeCard(){
     <label class="sr" for="surah-sel">Pilih surah</label>
     <select class="sel" id="surah-sel"><option value="">Semua surah di pilihan ini</option>${scopeSurahs().map(s=>`<option value="${s.no}" ${String(S.scope.surah)===String(s.no)?'selected':''}>${s.no}. ${esc(s.name)} — ${esc(s.mean)}</option>`).join('')}</select>
     <div class="scope-info">📌 ${pool.length} ayat dari ${ns} surah siap dimainkan</div>
+    ${dataLine()}
   </div>`;
 }
 
@@ -723,6 +959,7 @@ function updateHeader(){
 let curView='home';
 function nav(to){
   stopAudio(); studyToken++; clearGameTimers();
+  if(pendingData&&to!=='game'){ applyData(pendingData); pendingData=null; toast(`📚 Semua surah Juz 28-30 siap: ${VERSES.length} ayat!`,'gold'); }
   curView=to;
   $$('main > section').forEach(s=>s.classList.add('hidden'));
   $('#v-'+to).classList.remove('hidden');
@@ -818,7 +1055,7 @@ function ayatCard(v){
   const mem=!!S.memorized[v.key];
   return `<article class="ayat ${mem?'mem':''} ${learnState.cover?'cover':''}" id="ay-${v.s}-${v.n}" data-key="${v.key}">
     <div class="ayat-top"><span class="no">Ayat ${v.n}</span><span style="display:flex;gap:6px;flex-wrap:wrap"><button class="play" data-act="play-one" data-key="${v.key}">🔊 Dengar</button><button class="tick ${mem?'on':''}" data-act="mem" data-key="${v.key}" aria-pressed="${mem}">${mem?'✅ Sudah hafal':'⬜ Sudah hafal?'}</button></span></div>
-    <div class="ar ar-lg cov userselect" lang="ar" dir="rtl" data-act="reveal">${v.ar}</div>
+    <div class="ar ${v.words.length>18?'ar-md':'ar-lg'} cov userselect" lang="ar" dir="rtl" data-act="reveal">${v.ar}</div>
     <div class="tr">${esc(v.id)}</div></article>`;
 }
 function markNow(key){
@@ -842,7 +1079,7 @@ async function playList(list){
 }
 function toggleMem(key){
   const v=vById(key);
-  if(S.memorized[key]) delete S.memorized[key]; else { S.memorized[key]=1; touchStreak(); sfx('star'); }
+  if(S.memorized[key]){ delete S.memorized[key]; S.unmem[key]=Date.now(); } else { S.memorized[key]=Date.now(); delete S.unmem[key]; touchStreak(); sfx('star'); }
   save();
   const el=$(`#ay-${v.s}-${v.n}`);
   if(el){ const on=!!S.memorized[key]; el.classList.toggle('mem',on); const b=$('.tick',el); b.classList.toggle('on',on); b.setAttribute('aria-pressed',on); b.textContent=on?'✅ Sudah hafal':'⬜ Sudah hafal?'; }
@@ -870,9 +1107,11 @@ function renderProfile(){
     <div class="stat-row"><span class="stat">⭐ ${totalStars()} bintang</span><span class="stat">🔥 ${liveStreak()} hari beruntun</span><span class="stat">🏆 Rekor ${S.best} hari</span><span class="stat">📗 ${memCount()} ayat hafal</span></div>
     <button class="btn btn-sun" data-act="cert">🎓 Lihat Sertifikat</button>
   </div>
+  <div id="cloud-slot" data-user="${FB.user?FB.user.uid:''}">${cloudCard()}</div>
+  ${installCard()}
   <div class="card" style="margin-top:16px;display:grid;gap:8px">
     <h3>ℹ️ Tentang AyatPlay</h3>
-    <p class="muted" style="margin:0;font-weight:600">Audio bacaan oleh Syaikh Mishary Rashid Alafasy (EveryAyah.com), sehingga butuh internet. Kemajuanmu tersimpan di perangkat ini. Orang tua atau guru sebaiknya ikut mengoreksi bacaan anak langsung dengan guru ngaji.</p>
+    <p class="muted" style="margin:0;font-weight:600">Audio bacaan oleh Syaikh Mishary Rashid Alafasy (EveryAyah.com), sehingga butuh internet. Kemajuanmu tersimpan di perangkat ini dan, jika orang tua masuk akun, juga di cloud. Orang tua atau guru sebaiknya ikut mengoreksi bacaan anak langsung dengan guru ngaji.</p>
     <button class="btn btn-ghost btn-sm" data-act="reset" style="justify-self:start">🔄 Atur ulang semua progres</button>
   </div>`;
 }
@@ -912,7 +1151,8 @@ const ACTIONS={
   mem:t=>toggleMem(t.dataset.key),
   cert:()=>openCert(),
   print:()=>window.print(),
-  reset:()=>{ if(confirm('Hapus semua bintang, XP, lencana, dan hafalan di perangkat ini?')){ S=defaults(); save(); updateHeader(); nav('profile'); toast('Progres sudah diatur ulang.'); } }
+  'load-data':()=>loadFullData(),
+  reset:()=>{ if(confirm('Hapus semua bintang, XP, lencana, dan hafalan? Jika kamu masuk akun, data di cloud ikut dihapus.')){ const keep={name:S.name,nameAt:Date.now(),scope:S.scope,sound:S.sound}; S=Object.assign(defaults(),keep,{resetAt:Date.now()}); save(); cloudPushNow&&cloudPushNow(); updateHeader(); nav('profile'); toast('Progres sudah diatur ulang.'); } }
 };
 document.addEventListener('click',e=>{
   const t=e.target.closest('[data-act]'); if(!t||t.disabled) return;
@@ -921,7 +1161,7 @@ document.addEventListener('click',e=>{
 document.addEventListener('change',e=>{
   if(e.target.id==='surah-sel'){ S.scope.surah=e.target.value; save(); $('#scope-slot').innerHTML=scopeCard(); }
 });
-document.addEventListener('input',e=>{ if(e.target.id==='nm'){ S.name=e.target.value.trim().slice(0,30); save(); } });
+document.addEventListener('input',e=>{ if(e.target.id==='nm'){ S.name=e.target.value.trim().slice(0,30); S.nameAt=Date.now(); save(); } });
 $('#overlay').addEventListener('click',e=>{ if(e.target.id==='overlay') closeSheet(); });
 document.addEventListener('keydown',e=>{ if(e.key==='Escape'&&!$('#overlay').classList.contains('hidden')) closeSheet(); });
 /* =====================================================================
@@ -931,19 +1171,25 @@ let run=null;
 const later=(fn,ms)=>{ const id=setTimeout(fn,ms); if(run) run.tms.push(id); return id; };
 function clearGameTimers(){ if(run){ run.tms.forEach(clearTimeout); run.tms=[]; } }
 const arSpan=(t,c='ar-md')=>`<span class="ar ${c}" lang="ar" dir="rtl">${t}</span>`;
-const mushaf=(inner,o={})=>`<div class="mushaf ${o.blur?'blur':''}">${o.badge?`<span class="badge-n">${esc(o.badge)}</span>`:''}<div class="ar ar-xl" lang="ar" dir="rtl">${inner}</div></div>`;
+const szOf=v=>v.words.length>16?'ar-md':v.words.length>9?'ar-lg':'ar-xl';
+const mushaf=(inner,o={})=>`<div class="mushaf ${o.blur?'blur':''}">${o.badge?`<span class="badge-n">${esc(o.badge)}</span>`:''}<div class="ar ${o.v?szOf(o.v):'ar-xl'}" lang="ar" dir="rtl">${inner}</div></div>`;
 const listenBtn=v=>`<button class="btn btn-sun btn-sm listen" data-act="gplay" data-key="${v.key}">🔊 Dengarkan</button>`;
 
 /* ---------- pengambil materi ---------- */
+const MAXQ=22;   // ayat yang dijadikan soal dibatasi agar nyaman dibaca anak
 function pickV(filter=()=>true){
-  let list=scopePool().filter(filter);
+  const f=x=>filter(x)&&x.words.length<=MAXQ;
+  let list=scopePool().filter(f);
+  if(!list.length) list=VERSES.filter(f);
+  if(!list.length) list=scopePool().filter(filter);
   if(!list.length) list=VERSES.filter(filter);
   if(!list.length) list=VERSES;
   let fresh=list.filter(v=>!run.used.has(v.key)); if(!fresh.length) fresh=list;
   const v=pick(fresh); run.used.add(v.key); return v;
 }
 function others(v,f=()=>true){
-  return {same:SURAHS[v.s].verses.filter(x=>x.key!==v.key&&f(x)),scope:scopePool().filter(x=>x.key!==v.key&&f(x)),all:VERSES.filter(x=>x.key!==v.key&&f(x))};
+  const g=x=>x.key!==v.key&&x.words.length<=30&&f(x);
+  return {same:SURAHS[v.s].verses.filter(g),scope:scopePool().filter(g),all:VERSES.filter(g)};
 }
 function distract(correctKey,n,groups,keyFn){
   const seen=new Set([correctKey]),out=[];
@@ -1047,7 +1293,7 @@ function r1(el,cfg,l){
   const wrong=distract(t.no,cfg.opts-1,[pool,SURAH_LIST],s=>s.no);
   const opts=shuffle([t,...wrong]);
   run.q={v};
-  el.innerHTML=`<div class="q-text">Ayat ini ada di surah apa?</div>${mushaf(v.ar)}
+  el.innerHTML=`<div class="q-text">Ayat ini ada di surah apa?</div>${mushaf(v.ar,{v})}
     <div style="text-align:center">${listenBtn(v)}</div>
     <div class="opts c3">${OPTS(opts.map(s=>({ok:s.no===t.no,html:`<span>${esc(s.name)}</span><span class="ar opt-ar" lang="ar">${s.ar}</span>`})))}</div>`;
   run.q.wrong=`Jawaban yang benar: Surah ${esc(t.name)}.`;
@@ -1064,17 +1310,17 @@ function r2(el,cfg,l){
     const wrong=distract(tail,cfg.opts-1,l===1?[mk(o.scope),mk(o.all)]:[mk(o.same),mk(o.scope),mk(o.all)],z=>z.t);
     const opts=shuffle([{t:tail,ok:1},...wrong.map(z=>({t:z.t,ok:0}))]);
     run.q={v};
-    el.innerHTML=`<div class="q-text">Lanjutkan ayatnya! 🔗</div>${mushaf(`${head} <span style="color:#E8A200">…</span>`,{badge:`${v.sName} · ayat ${v.n}`})}
+    el.innerHTML=`<div class="q-text">Lanjutkan ayatnya! 🔗</div>${mushaf(`${head} <span style="color:#E8A200">…</span>`,{v,badge:`${v.sName} · ayat ${v.n}`})}
       <div style="text-align:center">${listenBtn(v)}</div>
       <div class="opts">${OPTS(opts.map(z=>({ok:z.ok,html:arSpan(z.t)})))}</div>`;
   } else {
-    const f=x=>!!SURAHS[x.s].verses[x.i+1], v=pickV(f), nx=SURAHS[v.s].verses[v.i+1];
+    const f=x=>{const n=SURAHS[x.s].verses[x.i+1];return !!n&&n.words.length<=30;}, v=pickV(f), nx=SURAHS[v.s].verses[v.i+1];
     const same=SURAHS[v.s].verses.filter(x=>x.key!==v.key&&x.key!==nx.key);
     const sc=scopePool().filter(x=>x.key!==v.key), al=VERSES.filter(x=>x.key!==v.key);
     const wrong=distract(nx.ar,cfg.opts-1,[same,sc,al],x=>x.ar);
     const opts=shuffle([{t:nx.ar,ok:1},...wrong.map(x=>({t:x.ar,ok:0}))]);
     run.q={v:[v,nx]};
-    el.innerHTML=`<div class="q-text">Ayat apa yang datang SETELAH ayat ini? ➡️</div>${mushaf(v.ar,{badge:`${v.sName} · ayat ${v.n}`})}
+    el.innerHTML=`<div class="q-text">Ayat apa yang datang SETELAH ayat ini? ➡️</div>${mushaf(v.ar,{v,badge:`${v.sName} · ayat ${v.n}`})}
       <div style="text-align:center">${listenBtn(v)}</div>
       <div class="opts">${OPTS(opts.map(z=>({ok:z.ok,html:arSpan(z.t)})))}</div>`;
   }
@@ -1085,9 +1331,16 @@ function r2(el,cfg,l){
 /* 3. Urutkan Ayat */
 function r3(el,cfg,l){
   const k=[3,4,5][l-1];
-  const all=[...new Set(scopePool().map(x=>x.s))].map(n=>SURAHS[n]).filter(s=>s.verses.length>=2);
-  let cand=all.filter(s=>s.verses.length>=k); if(!cand.length) cand=all.length?all:SURAH_LIST.filter(s=>s.verses.length>=k);
-  const s=pick(cand), kk=Math.min(k,s.verses.length), st=rnd(s.verses.length-kk+1), win=s.verses.slice(st,st+kk);
+  const inScope=[...new Set(scopePool().map(x=>x.s))].map(n=>SURAHS[n]);
+  const windows=(list,kk)=>{ const out=[]; list.forEach(s=>{ for(let st=0;st+kk<=s.verses.length;st++){ const w=s.verses.slice(st,st+kk); if(w.reduce((n,v)=>n+v.words.length,0)<=70) out.push(w); } }); return out; };
+  let win=null;
+  for(const list of [inScope,SURAH_LIST]) for(let kk=k;kk>=2&&!win;kk--){
+    let ws=windows(list,kk); const fresh=ws.filter(w=>!run.used.has(w[0].key)); if(fresh.length) ws=fresh;
+    if(ws.length) win=pick(ws);
+  }
+  if(!win) win=SURAH_LIST[0].verses.slice(0,2);
+  run.used.add(win[0].key);
+  const s=SURAHS[win[0].s];
   let items=shuffle(win),tries=0; while(items.every((v,i)=>v.ar===win[i].ar)&&tries++<12) items=shuffle(win);
   const q=run.q={v:win,sel:[],done:null};
   const draw=()=>{
@@ -1102,10 +1355,10 @@ function r3(el,cfg,l){
 /* 4. Bacakan Ayat */
 const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
 function r4(el,cfg,l){
-  const f=l===1?x=>x.words.length<=5:l===2?x=>x.words.length>=3&&x.words.length<=9:x=>x.words.length>=4;
+  const f=l===1?x=>x.words.length<=5:l===2?x=>x.words.length>=3&&x.words.length<=9:x=>x.words.length>=4&&x.words.length<=16;
   const v=pickV(f), hide=l===3; run.q={v,att:0};
   el.innerHTML=`<div class="q-text">${hide?'Bacakan ayat ini dari ingatanmu!':'Bacakan ayat ini dengan suara merdu!'}</div>
-    <div id="mus">${mushaf(v.ar,{badge:`${v.sName} · ayat ${v.n}`,blur:hide})}</div>
+    <div id="mus">${mushaf(v.ar,{v,badge:`${v.sName} · ayat ${v.n}`,blur:hide})}</div>
     <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap">${listenBtn(v)}${hide?'<button class="btn btn-ghost btn-sm" data-act="peek">👀 Intip ayat</button>':''}</div>
     ${SR?`<div><button class="mic" id="mic" data-act="mic" aria-label="Mulai merekam bacaan">🎤</button><div class="hint" id="mic-msg" style="margin-top:10px">Tekan mikrofon, lalu bacakan ayatnya dengan lantang.</div></div>`
         :`<div class="hint">Perangkat ini belum mendukung pengenalan suara, jadi nilai bacaanmu sendiri ya. Baca keras-keras dulu!</div>`}
@@ -1144,7 +1397,7 @@ function r5(el,cfg,l){
     let k=0;
     const line=w.map((t,j)=>{ if(blanks.includes(j)){ const kk=k++, f=q.fills[kk]; const cls=q.done?(chips[f]===answers[kk]?'ok':'bad'):''; return `<button class="slot ${f!==null?'fill':''} ${cls}" data-act="o5un" data-k="${kk}" ${q.done?'disabled':''} aria-label="Kata hilang ${kk+1}">${f!==null?chips[f]:'؟'}</button>`; } return `<span>${t}</span>`; }).join(' ');
     el.innerHTML=`<div class="q-text">🔍 Temukan ${nb>1?'2 kata':'kata'} yang hilang!</div>
-      <div class="mushaf"><span class="badge-n">${esc(v.sName)} · ayat ${v.n}</span><div class="ar ar-xl" lang="ar" dir="rtl">${line}</div></div>
+      <div class="mushaf"><span class="badge-n">${esc(v.sName)} · ayat ${v.n}</span><div class="ar ${szOf(v)}" lang="ar" dir="rtl">${line}</div></div>
       <div style="text-align:center">${listenBtn(v)}</div>
       <div class="tray">${chips.map((c,i)=>`<button class="chip-w ar ${q.fills.includes(i)?'used':''}" data-act="o5pick" data-i="${i}" ${q.done?'disabled':''}>${c}</button>`).join('')}</div>
       <div class="hint">${nb>1?'Isi dari kata hilang pertama (paling kanan). ':''}Ketuk kotak yang sudah terisi untuk mengganti.</div>`;
@@ -1205,7 +1458,7 @@ function r8(el,cfg,l){
   const opts=shuffle([v,...wrong]);
   run.q={v,wrong:rev?'Ayat yang cocok dengan artinya ada di bawah ini.':'Arti yang tepat ada di bawah ini.'};
   el.innerHTML=`<div class="q-text">${rev?'Mana ayat yang artinya seperti ini?':'Apa arti ayat ini?'}</div>
-    ${rev?`<div class="mushaf"><div style="font-weight:800;font-size:1.15rem;line-height:1.6;padding:6px 4px">“${esc(v.id)}”</div></div>`:`${mushaf(v.ar,{badge:`${v.sName} · ayat ${v.n}`})}<div style="text-align:center">${listenBtn(v)}</div>`}
+    ${rev?`<div class="mushaf"><div style="font-weight:800;font-size:1.15rem;line-height:1.6;padding:6px 4px">“${esc(v.id)}”</div></div>`:`${mushaf(v.ar,{v,badge:`${v.sName} · ayat ${v.n}`})}<div style="text-align:center">${listenBtn(v)}</div>`}
     <div class="opts">${OPTS(opts.map(x=>({ok:x.key===v.key,cls:rev?'':'txt',html:rev?arSpan(x.ar):esc(x.id)})))}</div>`;
   if(cfg.timer) startTimer(cfg.timer);
 }
@@ -1225,13 +1478,13 @@ function r9(el,cfg,l){
 
 /* 10. Kata Menghilang (teknik hafalan bertahap) */
 function r10(el,cfg,l){
-  const f=l===1?x=>x.words.length>=3&&x.words.length<=6:l===2?x=>x.words.length>=4&&x.words.length<=8:x=>x.words.length>=6;
+  const f=l===1?x=>x.words.length>=3&&x.words.length<=6:l===2?x=>x.words.length>=4&&x.words.length<=8:x=>x.words.length>=6&&x.words.length<=18;
   const v=pickV(f), w=v.words, order=shuffle(w.map((_,i)=>i));
   const fr=[[.34,.67,1],[.25,.5,.75,1],[.5,.75,1]][l-1];
   const q=run.q={v,stage:-1,peek:new Set(),all:false};
   const draw=()=>{
     if(q.stage<0){
-      el.innerHTML=`<div class="q-text">Tahap awal: baca & dengar 👂</div>${mushaf(v.ar,{badge:`${v.sName} · ayat ${v.n}`})}
+      el.innerHTML=`<div class="q-text">Tahap awal: baca & dengar 👂</div>${mushaf(v.ar,{v,badge:`${v.sName} · ayat ${v.n}`})}
         <div class="hint" style="font-size:.95rem">Artinya: “${esc(v.id)}”</div>
         <div style="text-align:center">${listenBtn(v)}</div>
         <div class="hint">Baca ayat ini keras-keras 3 kali bersama qari. Setelah itu, kata-katanya akan menghilang pelan-pelan!</div>
@@ -1241,7 +1494,7 @@ function r10(el,cfg,l){
     const n=Math.min(w.length,Math.max(1,Math.ceil(fr[q.stage]*w.length))), hidden=new Set(order.slice(0,n)), last=q.stage===fr.length-1;
     const line=w.map((t,j)=>hidden.has(j)&&!q.peek.has(j)&&!q.all?`<button class="ghost" data-act="g10peek" data-j="${j}" style="min-width:${Math.max(46,normAr(t).length*12)}px" aria-label="Kata tersembunyi. Ketuk untuk mengintip"></button>`:`<span ${hidden.has(j)&&!q.all?'style="color:#E8A200"':''}>${t}</span>`).join(' ');
     el.innerHTML=`<div class="q-text">Tahap ${q.stage+1} dari ${fr.length} · ${Math.round(n/w.length*100)}% kata disembunyikan</div>
-      <div class="mushaf"><span class="badge-n">${esc(v.sName)} · ayat ${v.n}</span><div class="ar ar-xl" lang="ar" dir="rtl">${line}</div></div>
+      <div class="mushaf"><span class="badge-n">${esc(v.sName)} · ayat ${v.n}</span><div class="ar ${szOf(v)}" lang="ar" dir="rtl">${line}</div></div>
       <div style="text-align:center">${listenBtn(v)}</div>
       <div class="hint">${q.all?'Apakah bacaanmu tadi sudah benar semua?':'Ucapkan ayatnya dari ingatan. Ketuk kotak kosong kalau lupa.'}</div>
       ${q.all?`<div style="display:grid;gap:10px;max-width:520px;margin:0 auto;width:100%"><button class="btn btn-mint btn-block" data-act="selfok">Benar semua ✅</button><button class="btn btn-ghost btn-block" data-act="selfno">Masih ada yang salah 🔁</button></div>`
@@ -1311,9 +1564,201 @@ Object.assign(ACTIONS,{
     const ok=q.done.every(Boolean); ans(ok,q.v,ok?'':'Susunan yang benar ada di bawah ini. Coba baca bersama qari ya!'); }
 });
 
+
+/* =====================================================================
+   FIREBASE  —  login orang tua + sinkronisasi progres (local-first)
+   Aplikasi tetap berjalan penuh tanpa login. Isi konfigurasi di
+   <script> "AYATPLAY_FIREBASE" pada bagian <head> untuk mengaktifkan.
+   ===================================================================== */
+const FB_CDN='https://www.gstatic.com/firebasejs/10.14.1/';
+const FB_COL='ayatplayUsers';
+const FB={cfg:window.AYATPLAY_FIREBASE||{},m:null,app:null,auth:null,db:null,user:null,status:'off',msg:'',last:0,unsub:null,timer:null,sig:'',deleting:false};
+const fbConfigured=()=>{const c=FB.cfg;return !!(c.apiKey&&c.projectId&&c.appId&&!/^(ISI|YOUR)/i.test(c.apiKey));};
+
+const CLOUD_FIELDS=['name','nameAt','xp','streak','best','last','today','prog','memorized','unmem','badges','played','listened','plays','resetAt'];
+const pickFields=s=>{const o={};CLOUD_FIELDS.forEach(k=>{if(s&&s[k]!==undefined)o[k]=s[k];});return o;};
+const stable=o=>JSON.stringify(o,(k,v)=>v&&typeof v==='object'&&!Array.isArray(v)?Object.keys(v).sort().reduce((r,x)=>(r[x]=v[x],r),{}):v);
+const norm=x=>{const o=defaults();Object.keys(x||{}).forEach(k=>{if(x[k]!==undefined)o[k]=x[k];});return pickFields(o);};
+const sigOf=s=>stable(norm(s));
+const saveLocal=()=>{try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}};
+
+/* Gabung dua progres tanpa menghilangkan kemajuan (hanya naik, bukan turun) */
+function mergeStates(a,b){
+  if(!b) return norm(a);
+  let A=norm(a),B=norm(b); const r=Math.max(A.resetAt||0,B.resetAt||0);
+  const blank=x=>Object.assign(norm({}),{resetAt:r,name:x.name,nameAt:x.nameAt});
+  if((A.resetAt||0)<r) A=blank(A); if((B.resetAt||0)<r) B=blank(B);
+  const o={resetAt:r};
+  o.name=(B.nameAt||0)>(A.nameAt||0)?B.name:A.name; o.nameAt=Math.max(A.nameAt||0,B.nameAt||0);
+  ['xp','best','listened','plays'].forEach(k=>o[k]=Math.max(A[k]||0,B[k]||0));
+  o.prog={};
+  new Set([...Object.keys(A.prog),...Object.keys(B.prog)]).forEach(g=>{
+    const pa=A.prog[g]||{},pb=B.prog[g]||{}; o.prog[g]={};
+    new Set([...Object.keys(pa),...Object.keys(pb)]).forEach(l=>{o.prog[g][l]=Math.max(pa[l]||0,pb[l]||0);});
+  });
+  o.memorized={};o.unmem={};
+  new Set([...Object.keys(A.memorized),...Object.keys(B.memorized),...Object.keys(A.unmem),...Object.keys(B.unmem)]).forEach(k=>{
+    const m=Math.max(A.memorized[k]||0,B.memorized[k]||0),u=Math.max(A.unmem[k]||0,B.unmem[k]||0);
+    if(m>u) o.memorized[k]=m; else if(u>0) o.unmem[k]=u;
+  });
+  o.badges=Object.assign({},B.badges,A.badges);
+  Object.keys(B.badges).forEach(k=>{ if(A.badges[k]&&B.badges[k]<A.badges[k]) o.badges[k]=B.badges[k]; });
+  o.played=Object.assign({},B.played,A.played);
+  if((B.last||'')>(A.last||'')){o.streak=B.streak;o.last=B.last;}
+  else if((B.last||'')<(A.last||'')){o.streak=A.streak;o.last=A.last;}
+  else{o.streak=Math.max(A.streak||0,B.streak||0);o.last=A.last;}
+  const ta=A.today||{date:'',rounds:0},tb=B.today||{date:'',rounds:0};
+  o.today=ta.date>tb.date?ta:tb.date>ta.date?tb:{date:ta.date,rounds:Math.max(ta.rounds||0,tb.rounds||0)};
+  return o;
+}
+
+const FB_ERR={
+  'auth/invalid-email':'Format email belum benar.','auth/missing-password':'Kata sandi belum diisi.','auth/weak-password':'Kata sandi terlalu pendek (minimal 6 karakter).',
+  'auth/email-already-in-use':'Email ini sudah terdaftar. Silakan tekan Masuk.','auth/invalid-credential':'Email atau kata sandi belum cocok.','auth/wrong-password':'Email atau kata sandi belum cocok.',
+  'auth/user-not-found':'Email ini belum terdaftar. Silakan tekan Daftar.','auth/too-many-requests':'Terlalu banyak percobaan. Tunggu sebentar lalu coba lagi.',
+  'auth/network-request-failed':'Tidak ada koneksi internet.','auth/popup-closed-by-user':'Jendela masuk ditutup sebelum selesai.','auth/cancelled-popup-request':'Jendela masuk ditutup sebelum selesai.',
+  'auth/operation-not-allowed':'Metode masuk ini belum diaktifkan di Firebase.','auth/unauthorized-domain':'Domain situs ini belum didaftarkan di Firebase (Authorized domains).',
+  'auth/popup-blocked':'Pop-up diblokir browser. Izinkan pop-up lalu coba lagi.','permission-denied':'Akses ditolak. Periksa aturan keamanan Firestore.','unavailable':'Server sedang tidak terjangkau.',
+  'auth/requires-recent-login':'Demi keamanan, masuk ulang dulu lalu coba lagi.'
+};
+const cloudErr=e=>FB_ERR[e&&e.code]||('Terjadi kendala: '+((e&&e.code)||(e&&e.message)||'tidak diketahui'));
+
+async function fbInit(){
+  if(!fbConfigured()||FB.m){ cloudUI(); return; }
+  FB.status='loading'; cloudUI();
+  try{
+    const [A,Au,Fs]=await Promise.all([import(FB_CDN+'firebase-app.js'),import(FB_CDN+'firebase-auth.js'),import(FB_CDN+'firebase-firestore.js')]);
+    FB.m=Object.assign({},A,Au,Fs);
+    FB.app=FB.m.initializeApp(FB.cfg); FB.auth=FB.m.getAuth(FB.app); FB.db=FB.m.getFirestore(FB.app);
+    FB.m.onAuthStateChanged(FB.auth,onAuth);
+  }catch(e){ FB.m=null; FB.status='error'; FB.msg='Belum bisa terhubung ke Firebase. Progres tetap tersimpan di perangkat ini.'; cloudUI(); }
+}
+function onAuth(user){
+  FB.user=user; if(FB.unsub){FB.unsub();FB.unsub=null;}
+  if(!user){ FB.status='out'; FB.msg=''; cloudUI(); return; }
+  FB.status='syncing'; FB.msg=''; cloudUI();
+  const ref=FB.m.doc(FB.db,FB_COL,user.uid);
+  FB.unsub=FB.m.onSnapshot(ref,onRemote,e=>{FB.status='error';FB.msg=cloudErr(e);cloudUI();});
+}
+function onRemote(snap){
+  if(FB.deleting||!FB.user) return;
+  if(snap.metadata&&snap.metadata.hasPendingWrites) return;      // gema dari tulisan lokal kita sendiri
+  const remote=snap.exists()?snap.data():null;
+  const merged=mergeStates(S,remote);
+  if(sigOf(merged)!==sigOf(S)){ CLOUD_FIELDS.forEach(k=>{S[k]=merged[k];}); saveLocal(); updateHeader(); softRender(); }
+  FB.sig=remote?sigOf(remote):'';
+  if(sigOf(S)!==FB.sig) cloudPushNow(); else { FB.status='ok'; FB.last=Date.now(); cloudUI(); }
+}
+async function cloudPushNow(){
+  if(!FB.user||!FB.m||FB.deleting) return;
+  clearTimeout(FB.timer);
+  try{
+    FB.status='syncing'; cloudUI();
+    await FB.m.setDoc(FB.m.doc(FB.db,FB_COL,FB.user.uid),Object.assign({v:1,updatedAt:FB.m.serverTimestamp()},norm(S)));
+    FB.sig=sigOf(S); FB.status='ok'; FB.last=Date.now(); FB.msg='';
+  }catch(e){ FB.status='error'; FB.msg=cloudErr(e); }
+  cloudUI();
+}
+function cloudSchedule(){
+  if(!FB.user||!FB.m||FB.deleting||sigOf(S)===FB.sig) return;
+  clearTimeout(FB.timer); FB.timer=setTimeout(cloudPushNow,2500);
+}
+function softRender(){
+  const f=document.activeElement; if(f&&/INPUT|SELECT/.test(f.tagName)) return;
+  if(curView==='home') renderHome(); else if(curView==='badges') renderBadges(); else if(curView==='profile') renderProfile();
+}
+const cloudStatText=()=>{
+  if(FB.status==='syncing'||FB.status==='loading') return '🔄 Menyinkronkan…';
+  if(FB.status==='ok') return '✅ Tersimpan di cloud';
+  if(FB.status==='error') return '⚠️ '+(FB.msg||'Ada kendala.');
+  return FB.msg?('ℹ️ '+FB.msg):'';
+};
+function cloudUI(){
+  const h=$('#h-cloud'); if(h){
+    h.classList.toggle('hidden',!fbConfigured());
+    h.textContent=FB.status==='error'?'⚠️':FB.status==='syncing'||FB.status==='loading'?'🔄':'☁️';
+    h.style.filter=FB.user?'none':'grayscale(1)'; h.title=FB.user?'Terhubung ke cloud':'Belum masuk akun';
+  }
+  if(curView!=='profile') return;
+  const slot=$('#cloud-slot'); if(!slot) return;
+  const f=document.activeElement;
+  if(f&&slot.contains(f)&&/INPUT/.test(f.tagName)&&slot.dataset.user===(FB.user?FB.user.uid:'')){ const st=$('#cloud-stat'); if(st) st.textContent=cloudStatText(); }
+  else{ slot.dataset.user=FB.user?FB.user.uid:''; slot.innerHTML=cloudCard(); }
+}
+function cloudCard(){
+  if(!fbConfigured()) return '';
+  const stat=`<div class="hint" id="cloud-stat" role="status" style="text-align:left">${esc(cloudStatText())}</div>`;
+  if(FB.user){
+    return `<div class="card" style="margin-top:16px;display:grid;gap:10px"><h3>☁️ Terhubung ke cloud</h3>
+      <div style="font-weight:800">👤 ${esc(FB.user.email||FB.user.displayName||'Akun')}</div>
+      <p class="muted small">Bintang, XP, lencana, dan hafalanmu otomatis tersimpan dan bisa dibuka di HP atau tablet lain.</p>${stat}
+      <div class="row"><button class="btn btn-mint btn-sm" data-act="fb-sync">🔄 Sinkronkan sekarang</button><button class="btn btn-ghost btn-sm" data-act="fb-out">Keluar</button></div>
+      <button class="btn btn-ghost btn-sm btn-danger" data-act="fb-del" style="justify-self:start">🗑️ Hapus akun & data cloud</button></div>`;
+  }
+  const loading=FB.status==='loading';
+  return `<div class="card" style="margin-top:16px;display:grid;gap:12px"><h3>☁️ Simpan progres di cloud</h3>
+    <p class="muted small" style="margin:0">Untuk orang tua/wali: masuk agar progres anak aman dan bisa dibuka di perangkat lain. Tanpa masuk pun aplikasi tetap bisa dipakai.</p>
+    <button class="btn btn-ghost btn-block" data-act="fb-google" ${loading?'disabled':''}>🔐 Masuk dengan Google</button>
+    <div class="field"><label for="fb-email" style="font-weight:800">Email</label><input id="fb-email" type="email" autocomplete="email" inputmode="email" placeholder="nama@email.com"></div>
+    <div class="field"><label for="fb-pw" style="font-weight:800">Kata sandi</label><input id="fb-pw" type="password" autocomplete="current-password" placeholder="Minimal 6 karakter"></div>
+    <div class="row"><button class="btn btn-mint" data-act="fb-in" ${loading?'disabled':''}>Masuk</button><button class="btn btn-sun" data-act="fb-up" ${loading?'disabled':''}>Daftar baru</button><button class="btn btn-ghost btn-sm" data-act="fb-reset">Lupa kata sandi?</button></div>
+    ${stat}
+    <p class="muted small" style="margin:0">Yang disimpan hanya nama panggilan, bintang, XP, lencana, dan hafalan. Gunakan nama panggilan, bukan nama lengkap anak.</p></div>`;
+}
+const fbSay=m=>{ FB.msg=m; const st=$('#cloud-stat'); if(st) st.textContent='ℹ️ '+m; };
+async function fbGuard(fn){ if(!FB.m){ await fbInit(); } if(!FB.m){ fbSay('Belum bisa terhubung ke Firebase. Cek koneksi internet.'); return; } try{ await fn(); }catch(e){ fbSay(cloudErr(e)); } }
+Object.assign(ACTIONS,{
+  'fb-google':()=>fbGuard(()=>FB.m.signInWithPopup(FB.auth,new FB.m.GoogleAuthProvider())),
+  'fb-in':()=>fbGuard(async()=>{const e=$('#fb-email').value.trim(),p=$('#fb-pw').value; if(!e||!p) return fbSay('Isi email dan kata sandi dulu ya.'); await FB.m.signInWithEmailAndPassword(FB.auth,e,p);}),
+  'fb-up':()=>fbGuard(async()=>{const e=$('#fb-email').value.trim(),p=$('#fb-pw').value; if(!e||!p) return fbSay('Isi email dan kata sandi dulu ya.'); await FB.m.createUserWithEmailAndPassword(FB.auth,e,p);}),
+  'fb-reset':()=>fbGuard(async()=>{const e=$('#fb-email').value.trim(); if(!e) return fbSay('Tulis emailmu dulu, lalu tekan Lupa kata sandi.'); await FB.m.sendPasswordResetEmail(FB.auth,e); fbSay('Tautan atur ulang kata sandi sudah dikirim ke emailmu.');}),
+  'fb-sync':()=>cloudPushNow(),
+  'fb-out':()=>fbGuard(async()=>{ await FB.m.signOut(FB.auth); toast('Kamu sudah keluar. Progres tetap ada di perangkat ini.'); }),
+  'fb-del':()=>{ if(!FB.user||!confirm('Hapus akun dan semua data di cloud? Progres di perangkat ini tetap ada.')) return;
+    fbGuard(async()=>{
+      FB.deleting=true; if(FB.unsub){FB.unsub();FB.unsub=null;}
+      const ref=FB.m.doc(FB.db,FB_COL,FB.user.uid);
+      try{ await FB.m.deleteDoc(ref); await FB.m.deleteUser(FB.auth.currentUser); toast('Akun dan data cloud sudah dihapus.'); }
+      catch(e){ if(e&&e.code==='auth/requires-recent-login'){ await FB.m.signOut(FB.auth); fbSay('Data cloud sudah dihapus. Untuk menghapus akunnya juga, masuk ulang lalu tekan Hapus lagi.'); } else throw e; }
+      finally{ FB.deleting=false; }
+    }); },
+  install:async()=>{ if(!installEvt) return; installEvt.prompt(); try{await installEvt.userChoice;}catch(e){} installEvt=null; if(curView==='profile') renderProfile(); }
+});
+document.addEventListener('keydown',e=>{ if(e.key==='Enter'&&e.target.id==='fb-pw') ACTIONS['fb-in'](); });
+
+/* ---------- pasang sebagai aplikasi (PWA) ---------- */
+let installEvt=null;
+addEventListener('beforeinstallprompt',e=>{ e.preventDefault(); installEvt=e; if(curView==='profile') renderProfile(); });
+const isStandalone=()=>matchMedia('(display-mode: standalone)').matches||navigator.standalone===true;
+function installCard(){
+  if(isStandalone()) return '';
+  const ios=/iphone|ipad|ipod/i.test(navigator.userAgent);
+  if(installEvt) return `<div class="card" style="margin-top:16px;display:flex;gap:12px;align-items:center;flex-wrap:wrap"><img src="icons/icon-192.png" width="56" height="56" alt="" style="border-radius:14px"><div style="flex:1;min-width:180px"><h3>📲 Pasang di layar utama</h3><p class="muted small" style="margin:2px 0 0">Buka AyatPlay seperti aplikasi, lebih cepat dan layar penuh.</p></div><button class="btn btn-sun" data-act="install">Pasang</button></div>`;
+  if(ios) return `<div class="card" style="margin-top:16px"><h3>📲 Pasang di layar utama</h3><p class="muted small" style="margin:4px 0 0">Di Safari, ketuk tombol Bagikan lalu pilih “Tambahkan ke Layar Utama”.</p></div>`;
+  return '';
+}
+function registerSW(){ if('serviceWorker' in navigator&&/^https?:$/.test(location.protocol)) navigator.serviceWorker.register('sw.js').catch(()=>{}); }
+
+/* ---------- splash screen ---------- */
+function runSplash(){
+  const el=$('#splash'); if(!el) return;
+  const msgs=['Bismillah… 🌙','Menyiapkan bintang-bintang ⭐','Membuka buku ayat 📖'], m=$('#splash-msg'); let i=0;
+  const iv=setInterval(()=>{ i=(i+1)%msgs.length; if(m) m.textContent=msgs[i]; },750);
+  const minMs=matchMedia('(prefers-reduced-motion: reduce)').matches?250:2300;
+  const fonts=Promise.race([document.fonts?document.fonts.ready:Promise.resolve(),wait(2600)]);
+  Promise.all([fonts,wait(Math.max(0,minMs-performance.now()))]).then(()=>{
+    clearInterval(iv); el.classList.add('out'); setTimeout(()=>el.remove(),650);
+  });
+}
+
 /* ---------- mulai ---------- */
-updateHeader();
-nav('home');
+(function boot(){
+  const cached=readCache(); if(cached) applyData(cached);
+  updateHeader(); nav('home'); runSplash(); cloudUI();
+  if(dataStatus!=='full') loadFullData();
+  fbInit(); registerSW();
+  addEventListener('online',()=>{ if(dataStatus!=='full') loadFullData(); if(fbConfigured()&&!FB.m) fbInit(); });
+})();
 </script>
 </body>
 </html>

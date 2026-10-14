@@ -1,0 +1,20 @@
+// Tambahkan blok "match /ayatplayUsers/{uid}" ini ke aturan Firestore proyek Anda.
+// JANGAN menimpa aturan yang sudah ada jika proyek ini dipakai aplikasi lain.
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    match /ayatplayUsers/{uid} {
+      allow read, delete: if request.auth != null && request.auth.uid == uid;
+      allow create, update: if request.auth != null && request.auth.uid == uid
+        && request.resource.data.keys().hasOnly(['v','updatedAt','name','nameAt','xp','streak','best','last','today','prog','memorized','unmem','badges','played','listened','plays','resetAt'])
+        && request.resource.data.xp is number && request.resource.data.xp >= 0 && request.resource.data.xp < 10000000
+        && (!('name' in request.resource.data) || request.resource.data.name.size() <= 30);
+    }
+
+    // Selain itu, tolak semuanya (hapus bagian ini bila proyek punya koleksi lain).
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
