@@ -1,6 +1,6 @@
 /* Service worker AyatPlay Kids: aplikasi tetap terbuka saat offline.
    Audio qari, API Qur'an, dan Firebase sengaja TIDAK di-cache di sini. */
-const V = 'ayatplay-v3';
+const V = 'ayatplay-v3.1';
 const SHELL = ['./', 'index.html', 'manifest.webmanifest', 'icons/icon-192.png', 'icons/icon-512.png', 'icons/favicon-32.png', 'icons/apple-touch-icon.png'];
 
 self.addEventListener('install', e => {
