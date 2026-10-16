@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#1F2A68">
+<meta name="theme-color" content="#0F3D42">
 <meta name="description" content="Game hafalan Al-Qur'an untuk anak: seluruh surah Juz 28, 29, 30, 10 game seru, level, dan audio qari.">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/svg+xml" href="icons/icon.svg">
@@ -26,7 +26,7 @@
 /* ===== FIREBASE: isi dengan konfigurasi proyek Anda =====
    Firebase Console > Project settings > Your apps > Web app > SDK setup and configuration.
    Selama masih berisi "ISI_...", fitur login/cloud otomatis nonaktif dan aplikasi berjalan lokal. */
-window.AYATPLAY_FIREBASE={apiKey:"AIzaSyC-Ef2eI6wHGmp9SHIPvO3atUkrkFey6P8",authDomain:"ayatplay-16f8e.firebaseapp.com",projectId:"ayatplay-16f8e",storageBucket:"ayatplay-16f8e.firebasestorage.app",messagingSenderId:"751918187653",appId:"1:751918187653:web:79125e59eea91dc5ed95ec"};
+window.AYATPLAY_FIREBASE={apiKey:"ISI_API_KEY",authDomain:"ISI_PROJECT_ID.firebaseapp.com",projectId:"ISI_PROJECT_ID",storageBucket:"ISI_PROJECT_ID.appspot.com",messagingSenderId:"ISI_SENDER_ID",appId:"ISI_APP_ID"};
 </script>
 
 <title>AyatPlay Kids - Petualangan Hafiz Cilik</title>
@@ -36,15 +36,15 @@ window.AYATPLAY_FIREBASE={apiKey:"AIzaSyC-Ef2eI6wHGmp9SHIPvO3atUkrkFey6P8",authD
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js" defer></script>
 <style>
 :root{
-  --night:#1F2A68; --night2:#2E3C8F; --ink:#1E2347; --muted:#5B6190;
-  --sky:#EAF3FF; --line:#D5E2F7; --paper:#FFFFFF;
-  --sun:#FFC93C; --sun-d:#E8A200; --mint:#19B394; --mint-d:#0E8A71;
-  --coral:#FF6F61; --coral-d:#D9483B; --grape:#7C5CFF; --grape-d:#5A3DD6;
+  --night:#0F3D42; --night2:#176A66; --ink:#17322F; --muted:#557470;
+  --sky:#EDF5EE; --line:#CFE2D6; --paper:#FFFFFF;
+  --sun:#E8B63A; --sun-d:#B8860B; --mint:#12936F; --mint-d:#0A6B52;
+  --coral:#D9653B; --coral-d:#B84A26; --grape:#4B5FB8; --grape-d:#34469A;
   --ok:#17A673; --ok-bg:#DDF7EC; --bad:#E5484D; --bad-bg:#FFE4E4;
   --r:20px; --r-sm:14px;
   --f-ui:'Nunito',system-ui,-apple-system,'Segoe UI',sans-serif;
   --f-disp:'Baloo 2','Nunito',system-ui,sans-serif;
-  --f-ar:'Scheherazade New','Amiri Quran','Noto Naskh Arabic','Traditional Arabic','Geeza Pro','Al Bayan',serif;
+  --pat:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Cg fill='none' stroke='%230A6B52' stroke-opacity='.11' stroke-width='1.4'%3E%3Crect x='20' y='20' width='24' height='24'/%3E%3Crect x='20' y='20' width='24' height='24' transform='rotate(45 32 32)'/%3E%3Ccircle cx='32' cy='32' r='3'/%3E%3C/g%3E%3C/svg%3E");--pat-w:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Cg fill='none' stroke='%23fff' stroke-opacity='.08' stroke-width='1.4'%3E%3Crect x='20' y='20' width='24' height='24'/%3E%3Crect x='20' y='20' width='24' height='24' transform='rotate(45 32 32)'/%3E%3Ccircle cx='32' cy='32' r='3'/%3E%3C/g%3E%3C/svg%3E");--strip:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='9' viewBox='0 0 16 9'%3E%3Cpath d='M8 0.5L14 4.5 8 8.5 2 4.5z' fill='%23E0AE2E'/%3E%3C/svg%3E");--strip2:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='10' viewBox='0 0 14 10'%3E%3Cpath d='M7 1L12 5 7 9 2 5z' fill='none' stroke='%23E0AE2E' stroke-width='1.4'/%3E%3C/svg%3E");--star-g:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpolygon points='50.0,2.0 64.1,16.1 83.9,16.1 83.9,35.9 98.0,50.0 83.9,64.1 83.9,83.9 64.1,83.9 50.0,98.0 35.9,83.9 16.1,83.9 16.1,64.1 2.0,50.0 16.1,35.9 16.1,16.1 35.9,16.1' fill='%23F7CF55' stroke='%23B8860B' stroke-width='2.5' stroke-linejoin='round'/%3E%3C/svg%3E");--star-e:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpolygon points='50.0,2.0 64.1,16.1 83.9,16.1 83.9,35.9 98.0,50.0 83.9,64.1 83.9,83.9 64.1,83.9 50.0,98.0 35.9,83.9 16.1,83.9 16.1,64.1 2.0,50.0 16.1,35.9 16.1,16.1 35.9,16.1' fill='%2319A27D' stroke='%230A6B52' stroke-width='2.5' stroke-linejoin='round'/%3E%3C/svg%3E");--star-x:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpolygon points='50.0,2.0 64.1,16.1 83.9,16.1 83.9,35.9 98.0,50.0 83.9,64.1 83.9,83.9 64.1,83.9 50.0,98.0 35.9,83.9 16.1,83.9 16.1,64.1 2.0,50.0 16.1,35.9 16.1,16.1 35.9,16.1' fill='%23E3ECE7' stroke='%23B7C8BF' stroke-width='2.5' stroke-linejoin='round'/%3E%3C/svg%3E");--star-w:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpolygon points='50.0,2.0 64.1,16.1 83.9,16.1 83.9,35.9 98.0,50.0 83.9,64.1 83.9,83.9 64.1,83.9 50.0,98.0 35.9,83.9 16.1,83.9 16.1,64.1 2.0,50.0 16.1,35.9 16.1,16.1 35.9,16.1' fill='%23FFFFFF' stroke='%23E0AE2E' stroke-width='2.5' stroke-linejoin='round'/%3E%3C/svg%3E");--f-ar:'Scheherazade New','Amiri Quran','Noto Naskh Arabic','Traditional Arabic','Geeza Pro','Al Bayan',serif;
   --ar-w:600;--ar-lh:2.5;--ar-ws:.22em;--ar-scale:1.15;--ar-s2:1.09;
 }
 *{box-sizing:border-box}
@@ -105,7 +105,7 @@ h1,h2,h3,h4{font-family:var(--f-disp);margin:0;line-height:1.15}
 
 /* ===== hero ===== */
 .hero{position:relative;overflow:hidden;border-radius:28px;color:#fff;padding:24px 22px;
-  background:radial-gradient(circle at 85% 20%,#4b5bd6 0,transparent 45%),linear-gradient(160deg,#1F2A68 0%,#2E3C8F 60%,#3C4FB5 100%);
+  background:radial-gradient(circle at 85% 20%,#4b5bd6 0,transparent 45%),linear-gradient(160deg,#0F3D42 0%,#176A66 60%,#3C4FB5 100%);
   display:grid;grid-template-columns:1fr auto;gap:18px;align-items:center;border:4px solid #fff;box-shadow:0 10px 30px rgba(31,42,104,.25)}
 .hero .stars-bg{position:absolute;inset:0;pointer-events:none;opacity:.85}
 .hero h2{font-size:clamp(1.6rem,4.6vw,2.4rem);position:relative}
@@ -142,7 +142,7 @@ select.sel{width:100%;padding:12px 14px;border-radius:14px;border:2px solid var(
 .gcard:active{transform:translateY(4px);box-shadow:0 2px 0 var(--bd)}
 .gicon{width:54px;height:54px;border-radius:16px;background:#fff;display:grid;place-items:center;font-size:1.9rem;border:3px solid var(--bd)}
 .gcard h3{font-size:1.1rem;color:var(--ink)}
-.gcard p{margin:0;font-size:.8rem;color:#3a3f6b;font-weight:600;line-height:1.35;flex:1}
+.gcard p{margin:0;font-size:.8rem;color:#3E5A57;font-weight:600;line-height:1.35;flex:1}
 .gstars{display:flex;gap:4px;align-items:center}
 .gstars i{font-style:normal;font-size:.95rem;filter:grayscale(1) opacity(.45)}
 .gstars i.on{filter:none}
@@ -156,7 +156,7 @@ select.sel{width:100%;padding:12px 14px;border-radius:14px;border:2px solid var(
 .sheet-head{display:flex;gap:12px;align-items:center;margin-bottom:6px}
 .sheet-head .gicon{flex:none}
 .lv{display:flex;align-items:center;gap:12px;padding:12px;border-radius:18px;border:3px solid var(--line);margin-top:10px;background:#fff;width:100%;text-align:left}
-.lv.locked{opacity:.55;background:#F4F6FC}
+.lv.locked{opacity:.55;background:#F1F5F2}
 .lv-emo{font-size:1.8rem;width:48px;height:48px;border-radius:14px;background:var(--sky);display:grid;place-items:center;flex:none}
 .lv b{font-family:var(--f-disp);font-size:1.1rem;display:block;line-height:1.2}
 .lv small{color:var(--muted);font-weight:700}
@@ -187,14 +187,14 @@ select.sel{width:100%;padding:12px 14px;border-radius:14px;border:2px solid var(
 .opts{display:grid;gap:12px;max-width:720px;margin:0 auto;width:100%}
 .opts.c3{grid-template-columns:repeat(auto-fit,minmax(min(150px,100%),1fr))}
 .opt{display:flex;flex-direction:column;gap:2px;align-items:center;justify-content:center;text-align:center;padding:12px 14px;border-radius:18px;
-  background:#EEF4FF;border:3px solid #CFE0FF;border-bottom-width:6px;font-weight:800;font-size:1.05rem;min-height:60px;transition:transform .08s}
+  background:#EAF6F0;border:3px solid #BFDCCD;border-bottom-width:6px;font-weight:800;font-size:1.05rem;min-height:60px;transition:transform .08s}
 .opt:active{transform:translateY(3px);border-bottom-width:3px}
 .opt.txt{font-weight:700;font-size:.98rem;line-height:1.4}
 .opt.ok{background:var(--ok-bg);border-color:var(--ok);color:#0B5C40}
 .opt.bad{background:var(--bad-bg);border-color:var(--bad);color:#8A1F23}
 .opt.dim{opacity:.55}
 .opt .opt-ar{font-size:calc(1.3rem*var(--ar-s2,1))}
-.chip-w{display:inline-flex;align-items:center;justify-content:center;min-width:54px;padding:2px 14px;border-radius:16px;background:#F0EBFF;border:3px solid #D5C9FF;border-bottom-width:6px;color:#2A1B6B;font-size:calc(1.6rem*var(--ar-s2,1));line-height:2}
+.chip-w{display:inline-flex;align-items:center;justify-content:center;min-width:54px;padding:2px 14px;border-radius:16px;background:#E8F4EE;border:3px solid #B8DCCB;border-bottom-width:6px;color:#0F4A3C;font-size:calc(1.6rem*var(--ar-s2,1));line-height:2}
 .chip-w:active{transform:translateY(3px)}
 .chip-w.used{opacity:.25;pointer-events:none}
 .tray{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;direction:rtl}
@@ -202,7 +202,7 @@ select.sel{width:100%;padding:12px 14px;border-radius:14px;border:2px solid var(
 .slot{display:inline-flex;align-items:center;justify-content:center;min-width:64px;min-height:56px;padding:0 12px;border-radius:14px;border:3px dashed var(--sun-d);background:#FFF3C4;color:#7a5200;font-size:calc(1.5rem*var(--ar-s2,1));line-height:1.9}
 .slot.fill{border-style:solid;background:#fff;color:#12313a}
 .slot.ok{border-color:var(--ok);background:var(--ok-bg)} .slot.bad{border-color:var(--bad);background:var(--bad-bg)}
-.seq-item{display:flex;align-items:center;gap:10px;width:100%;padding:8px 12px;border-radius:16px;background:#F4EFFF;border:3px solid #D5C9FF;border-bottom-width:6px;text-align:center}
+.seq-item{display:flex;align-items:center;gap:10px;width:100%;padding:8px 12px;border-radius:16px;background:#EAF6F0;border:3px solid #B8DCCB;border-bottom-width:6px;text-align:center}
 .seq-item .ar{flex:1}
 .seq-item.used{opacity:.25;pointer-events:none}
 .seq-n{flex:none;background:var(--night);color:#fff;border-radius:50%;width:28px;height:28px;display:grid;place-items:center;font-family:var(--f-disp);font-weight:700;font-size:.9rem}
@@ -232,7 +232,7 @@ select.sel{width:100%;padding:12px 14px;border-radius:14px;border:2px solid var(
 .mcard .f .ar{font-size:1rem;line-height:1.8;padding:0}
 
 /* fading words */
-.ghost{display:inline-block;min-width:44px;height:52px;border-radius:12px;border:3px dashed #B9C3E6;background:#F1F4FC;vertical-align:middle}
+.ghost{display:inline-block;min-width:44px;height:52px;border-radius:12px;border:3px dashed #B9C3E6;background:#EEF3F0;vertical-align:middle}
 .ghost.peek{border:0;background:none;height:auto}
 
 /* feedback */
@@ -242,7 +242,7 @@ select.sel{width:100%;padding:12px 14px;border-radius:14px;border:2px solid var(
 .fb h3{font-size:1.25rem}
 .vrow{background:#fff;border-radius:16px;padding:8px 12px;border:2px solid rgba(0,0,0,.06);display:grid;gap:2px}
 .vrow .meta{display:flex;justify-content:space-between;align-items:center;gap:8px;font-weight:800;font-size:.8rem;color:var(--muted)}
-.vrow .tr{font-size:.88rem;color:#3a3f6b;font-weight:600}
+.vrow .tr{font-size:.88rem;color:#3E5A57;font-weight:600}
 .play{display:inline-flex;align-items:center;gap:6px;background:var(--sun);color:#3b2b00;border-radius:12px;padding:4px 12px;font-weight:800;font-size:.85rem;border-bottom:3px solid var(--sun-d)}
 
 /* results */
@@ -269,7 +269,7 @@ select.sel{width:100%;padding:12px 14px;border-radius:14px;border:2px solid var(
 .ayat.mem{border-color:#9ADFCD}
 .ayat-top{display:flex;justify-content:space-between;align-items:center;gap:8px}
 .ayat-top .no{white-space:nowrap;background:var(--night);color:#fff;border-radius:99px;padding:1px 12px;font-family:var(--f-disp);font-weight:700;font-size:.85rem}
-.ayat .tr{color:#3a3f6b;font-size:.92rem;font-weight:600;text-align:center}
+.ayat .tr{color:#3E5A57;font-size:.92rem;font-weight:600;text-align:center}
 .ayat.cover .cov{filter:blur(10px);cursor:pointer}
 .tick{display:inline-flex;align-items:center;gap:6px;font-weight:800;font-size:.85rem;padding:5px 12px;border-radius:99px;border:2px solid var(--line);background:#fff}
 .tick.on{background:var(--ok-bg);border-color:var(--ok);color:#0B5C40}
@@ -278,7 +278,7 @@ select.sel{width:100%;padding:12px 14px;border-radius:14px;border:2px solid var(
 .badges{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
 .badge{background:#fff;border:3px solid var(--line);border-radius:20px;padding:14px 10px;text-align:center;display:grid;gap:4px;justify-items:center}
 .badge .e{font-size:2.4rem;width:62px;height:62px;display:grid;place-items:center;border-radius:50%;background:#FFF4CC;border:3px solid var(--sun)}
-.badge.lock{opacity:.6} .badge.lock .e{filter:grayscale(1);background:#EEF1F8;border-color:var(--line)}
+.badge.lock{opacity:.6} .badge.lock .e{filter:grayscale(1);background:#EAF0EC;border-color:var(--line)}
 .badge b{font-family:var(--f-disp);font-size:1rem;line-height:1.1} .badge small{color:var(--muted);font-weight:700;font-size:.76rem;line-height:1.25}
 .field{display:grid;gap:6px}
 .field input{padding:12px 14px;border-radius:14px;border:2px solid var(--line);font:inherit;font-weight:800;font-size:1.1rem;color:var(--night)}
@@ -292,7 +292,7 @@ select.sel{width:100%;padding:12px 14px;border-radius:14px;border:2px solid var(
 .bottom .in{max-width:520px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
 .tab{display:grid;justify-items:center;gap:0;padding:6px 4px;border-radius:16px;color:var(--muted);font-weight:800;font-size:.72rem}
 .tab span{font-size:1.5rem;line-height:1.3;filter:grayscale(.7)}
-.tab.on{background:#EEF6FF;color:var(--night)} .tab.on span{filter:none}
+.tab.on{background:#E3F2EA;color:var(--night)} .tab.on span{filter:none}
 body.in-game .bottom{display:none}
 
 .toast-box{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(96px + env(safe-area-inset-bottom,0px));z-index:90;display:grid;gap:8px;width:min(92vw,420px);pointer-events:none}
@@ -358,11 +358,109 @@ body.in-game .bottom{display:none}
 .need i.goal{outline:3px solid var(--sun);outline-offset:1px}
 .missed{width:100%;display:grid;gap:8px;text-align:left}
 .result .hint{max-width:42ch}
+/* ============ TEMA ISLAMI: zamrud, emas, pola geometris ============ */
+body{background-color:var(--sky);background-image:var(--pat)}
+.view{padding-top:28px}
+.top{background:linear-gradient(180deg,#0B3340,#136A66);border-bottom:3px solid var(--sun);color:#fff}
+.top::after{content:"";position:absolute;left:0;right:0;bottom:-13px;height:9px;background:var(--strip) repeat-x center/16px 9px;pointer-events:none}
+.brand b{color:#fff}.brand small{color:#BFE3DA}
+.chip,.icon-btn{background:rgba(255,255,255,.13);border-color:rgba(255,255,255,.3);color:#fff}
+.hero{background:radial-gradient(circle at 88% 12%,rgba(46,170,148,.55) 0,transparent 42%),linear-gradient(165deg,#0B3340 0%,#0F4E52 55%,#146A63 100%);padding-bottom:92px;border-color:#fff;box-shadow:0 10px 30px rgba(11,51,64,.3)}
+.hero::before{content:"";position:absolute;inset:0;background:var(--pat-w);pointer-events:none}
+.hero .skyline{position:absolute;left:0;right:0;bottom:0;width:100%;height:96px;pointer-events:none}
+.hero .lant{position:absolute;top:0;width:34px;transform-origin:50% 0;animation:sway 4.2s ease-in-out infinite;pointer-events:none}
+.hero .lant.l1{right:26%}.hero .lant.l2{right:16%;width:28px;animation-delay:-1.4s;margin-top:-14px}
+@keyframes sway{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(5deg)}}
+.lant-glow{animation:glow 2.6s ease-in-out infinite}
+@keyframes glow{0%,100%{opacity:.75}50%{opacity:1}}
+.hero h2,.hero p,.goal,.hero-cta{position:relative;z-index:1}
+.mascot-box{position:relative;z-index:1}
+.sec-title{color:var(--night)}
+.sec-title::after{content:"";flex:1;height:10px;background:var(--strip2) repeat-x left center/14px 10px;opacity:.85}
+.card{border-radius:22px}
+.pill.on{background:var(--mint);border-color:var(--mint-d)}
+.gicon{width:52px;height:60px;border-radius:26px 26px 12px 12px;background:#fff}
+.gcard{border-radius:24px}
+.gbar{display:block;height:8px;background:rgba(0,0,0,.09);border-radius:99px;overflow:hidden}
+.gbar>i{display:block;height:100%;background:linear-gradient(90deg,var(--mint),#46C9A3);border-radius:99px}
+.gmeta{display:flex;justify-content:space-between;align-items:center;font-size:.78rem;font-weight:800;color:var(--ink)}
+.mushaf{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpolygon points='50.0,2.0 64.1,16.1 83.9,16.1 83.9,35.9 98.0,50.0 83.9,64.1 83.9,83.9 64.1,83.9 50.0,98.0 35.9,83.9 16.1,83.9 16.1,64.1 2.0,50.0 16.1,35.9 16.1,16.1 35.9,16.1' fill='%23E9C76B'/%3E%3C/svg%3E") left 8px top 8px/15px 15px no-repeat,url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpolygon points='50.0,2.0 64.1,16.1 83.9,16.1 83.9,35.9 98.0,50.0 83.9,64.1 83.9,83.9 64.1,83.9 50.0,98.0 35.9,83.9 16.1,83.9 16.1,64.1 2.0,50.0 16.1,35.9 16.1,16.1 35.9,16.1' fill='%23E9C76B'/%3E%3C/svg%3E") right 8px top 8px/15px 15px no-repeat,url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpolygon points='50.0,2.0 64.1,16.1 83.9,16.1 83.9,35.9 98.0,50.0 83.9,64.1 83.9,83.9 64.1,83.9 50.0,98.0 35.9,83.9 16.1,83.9 16.1,64.1 2.0,50.0 16.1,35.9 16.1,16.1 35.9,16.1' fill='%23E9C76B'/%3E%3C/svg%3E") left 8px bottom 8px/15px 15px no-repeat,url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpolygon points='50.0,2.0 64.1,16.1 83.9,16.1 83.9,35.9 98.0,50.0 83.9,64.1 83.9,83.9 64.1,83.9 50.0,98.0 35.9,83.9 16.1,83.9 16.1,64.1 2.0,50.0 16.1,35.9 16.1,16.1 35.9,16.1' fill='%23E9C76B'/%3E%3C/svg%3E") right 8px bottom 8px/15px 15px no-repeat,linear-gradient(#fff,#FFFDF3);border-color:#D9B04A;box-shadow:inset 0 0 0 5px #fff,inset 0 0 0 7px #F1DE9C}
+.mushaf .badge-n{background:linear-gradient(180deg,#136A66,#0F3D42);border:2px solid var(--sun);padding:2px 14px}
+.stage{position:relative;border-color:var(--sun);background:#fff}
+.stage::before{content:"";position:absolute;top:-18px;left:50%;width:34px;height:34px;margin-left:-17px;background:var(--star-w) center/contain no-repeat;filter:drop-shadow(0 2px 0 rgba(0,0,0,.18));z-index:2}
+.bsm{font-size:1.35rem;text-align:center;color:var(--sun-d);line-height:1.9;margin:0 0 6px;display:flex;align-items:center;justify-content:center;gap:10px}
+.bsm::before,.bsm::after{content:"";flex:1;height:10px;background:var(--strip2) repeat-x center/14px 10px;opacity:.8;max-width:80px}
+.med{display:inline-grid;place-items:center;width:34px;height:34px;background:var(--star-g) center/contain no-repeat;font-style:normal;font-family:var(--f-disp);font-weight:800;font-size:.8rem;color:#3b2b00;line-height:1}
+.ayat-top .no{background:none;padding:0;display:inline-flex;align-items:center;gap:6px;color:var(--night);font-family:var(--f-disp);font-weight:700}
+.scard .no{background:var(--star-e) center/contain no-repeat;border-radius:0;min-width:40px;height:40px;color:#fff;font-size:.85rem}
+.lvgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:4px 0 12px}
+.lvnode{position:relative;aspect-ratio:1;display:grid;place-items:center;background:var(--star-x) center/100% 100% no-repeat;font-family:var(--f-disp);font-weight:800;font-size:1.25rem;color:#8AA399;transition:transform .12s}
+.lvnode.open{background-image:var(--star-e);color:#fff}
+.lvnode.done{background-image:var(--star-g);color:#3b2b00}
+.lvnode.sel{transform:scale(1.14);filter:drop-shadow(0 3px 0 rgba(184,134,11,.6))}
+.lvnode .lvn{margin-top:-6px}
+.lvnode .lvst{position:absolute;bottom:13%;left:0;right:0;text-align:center;font-size:.55rem;color:#7a5200;line-height:1}
+.lvnode.lock .lvn{font-size:1rem}
+.lvinfo{background:#F6FBF8;border:3px solid var(--line);border-radius:18px;padding:12px 14px}
+.sticker.t4{--tb:#1FA9BD;--tbg:#DDF9FC}
+.sticker.t4::after{content:"✦";position:absolute;top:4px;left:8px;color:#1FA9BD;font-size:1rem}
+.stkset{margin:0 0 14px}.stkhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.stkhead small{color:var(--muted);font-weight:800}
+.stkrow{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+@media(min-width:700px){.stkrow{grid-template-columns:repeat(10,1fr)}}
+.stkrow .sticker{padding:8px 2px 6px}.stkrow .stk-e{font-size:1.9rem}.stkrow small{font-size:.66rem;line-height:1.2}
+.ucapan{background:linear-gradient(#FFF8DD,#FFF1BF);border:3px solid var(--sun);border-radius:20px;padding:4px 18px 8px;display:grid;text-align:center;color:var(--night);width:100%;max-width:420px}
+.ucapan small{font-weight:800;color:#6b5200}
+.bottom{border-top:3px solid var(--sun)}
+.tab.on{background:#E3F2EA;color:var(--night)}
+#splash{background:radial-gradient(circle at 50% 44%,#1D8A78 0,#0F4E52 55%,#082A33 100%)}
+#splash::before{content:"";position:absolute;inset:0;background:var(--pat-w)}
+.sp-bsm{position:absolute;top:calc(4.5vh + env(safe-area-inset-top,0px));left:0;right:0;text-align:center;font-size:clamp(1.5rem,6.4vw,2.1rem);color:#F6DF8E;animation:spFade 1s .3s both;z-index:1}
+.sp-lant{position:absolute;top:0;width:clamp(34px,9vw,52px);transform-origin:50% 0;animation:sway 4s ease-in-out infinite;z-index:1}
+.sp-lant.l1{left:9%;margin-top:clamp(40px,9vh,72px)}.sp-lant.l2{right:9%;animation-delay:-1.5s;margin-top:clamp(70px,14vh,110px)}
+.sp-sky{position:absolute;left:0;right:0;bottom:0;width:100%;height:clamp(110px,24vh,200px);z-index:1}
+.sp-center{z-index:2}
+.sp-load{bottom:calc(clamp(110px,24vh,200px) + 14px);z-index:2}
+.sp-bar i{background:linear-gradient(90deg,#E8B63A,#F6DF8E)}
+.sp-kids{background:var(--sun);border-bottom-color:var(--sun-d)}
+@media(max-width:560px){.hero h2{padding-right:70px}.hero .lant.l1{right:20%}.hero .lant.l2{right:8%}}
+.cert-wrap{max-width:760px}
+.cert{position:relative;border:0;border-radius:18px;padding:0;background:#fff;display:block;color:var(--ink)}
+.cert-frame{padding:20px;border-radius:18px;background:linear-gradient(135deg,#0F3D42,#176A66);position:relative}
+.cert-frame::before{content:"";position:absolute;inset:0;border-radius:18px;background:var(--pat-w)}
+.cert-in{position:relative;background:linear-gradient(#fffefa,#FFF9E6);border:3px solid #D9B04A;border-radius:10px;padding:22px 18px 16px;text-align:center;display:grid;gap:8px;box-shadow:inset 0 0 0 6px #fff,inset 0 0 0 8px #F1DE9C}
+.cert-in .corner{position:absolute;width:34px;height:34px;background:var(--star-g) center/contain no-repeat}
+.cert-in .c1{top:-19px;left:-19px}.cert-in .c2{top:-19px;right:-19px}.cert-in .c3{bottom:-19px;left:-19px}.cert-in .c4{bottom:-19px;right:-19px}
+.cert-bsm{font-size:1.5rem;color:#9A6F0B;line-height:2}
+.cert-emblem{display:flex;justify-content:center}
+.cert h3{font-size:1.9rem;color:var(--night)}
+.cert-sub{color:var(--mint-d);font-weight:800}
+.cert-given{color:var(--muted);font-weight:700}
+.cert .nm{font-family:var(--f-disp);font-weight:800;font-size:2.1rem;color:var(--mint-d);border-bottom:3px solid var(--sun);display:inline-block;padding:0 22px;justify-self:center;line-height:1.3}
+.cert p{margin:2px 8px;font-weight:700}
+.cert-quote{background:#F1F8F4;border-radius:14px;padding:4px 12px 8px;margin:4px 6px}
+.cert-quote small{font-weight:700;color:var(--muted)}
+.cert-sign{display:grid;grid-template-columns:1fr auto 1fr;gap:14px;align-items:end;margin-top:6px}
+.cert-sign div{display:grid;gap:2px;justify-items:center}.cert-sign span{display:block;width:100%;max-width:170px;border-bottom:2px solid #8A9C95;height:26px}
+.cert-sign small{color:var(--muted);font-weight:800}.cert-date{font-weight:800;color:var(--night)}
+@media(max-width:560px){.cert-sign{grid-template-columns:1fr 1fr}.cert-date{grid-column:1/-1;order:-1}.cert h3{font-size:1.5rem}.cert .nm{font-size:1.6rem}}
+
+
+.sheet.wide{max-width:780px}
+.certgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.certcard{display:grid;justify-items:center;gap:2px;padding:12px 8px;border-radius:18px;border:3px solid #D9B04A;background:linear-gradient(#FFFDF3,#FFF3CF);text-align:center}
+.certcard .e{font-size:1.8rem}.certcard b{font-family:var(--f-disp);font-size:.98rem;line-height:1.15}.certcard small{color:var(--muted);font-weight:800}
+.certcard.lock{border-color:var(--line);background:#F4F8F5;filter:grayscale(.8);opacity:.75}
+
+.hero{grid-template-columns:minmax(0,1fr) auto}
+.hero h2{font-size:clamp(1.35rem,6.2vw,2.4rem)}
+@media(max-width:560px){.hero{grid-template-columns:minmax(0,1fr)}}
 @media print{
   @page{size:landscape;margin:10mm}
   body *{visibility:hidden}
   #cert,#cert *{visibility:visible}
-  #cert{position:fixed;inset:0;margin:auto;height:max-content;width:90%;border-width:14px}
+  #cert{position:fixed;inset:0;margin:auto;height:max-content;width:92%}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
 }
 @media(max-width:560px){
   .hero{grid-template-columns:1fr;text-align:left}
@@ -388,14 +486,27 @@ body.in-game .bottom{display:none}
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
-<linearGradient id="bg" x1="0" y1="0" x2=".55" y2="1"><stop offset="0" stop-color="#5566E0"/><stop offset=".55" stop-color="#2E3C8F"/><stop offset="1" stop-color="#1B245C"/></linearGradient>
+<linearGradient id="bg" x1="0" y1="0" x2=".6" y2="1"><stop offset="0" stop-color="#1B8F79"/><stop offset=".5" stop-color="#0F5A5B"/><stop offset="1" stop-color="#0A2F3C"/></linearGradient>
 <linearGradient id="st" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFE470"/><stop offset="1" stop-color="#FFB300"/></linearGradient>
 <linearGradient id="cv" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#20C9A6"/><stop offset="1" stop-color="#0B7F68"/></linearGradient>
+<linearGradient id="wd" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#C98846"/><stop offset="1" stop-color="#8A5526"/></linearGradient>
 <mask id="cm"><rect width="512" height="512" fill="#fff"/><circle cx="380" cy="130" r="47" fill="#000"/></mask>
-</defs><symbol id="logo-icon" viewBox="0 0 512 512"><rect width="512" height="512" rx="116" fill="url(#bg)"/>
+<pattern id="pt" width="64" height="64" patternUnits="userSpaceOnUse"><g fill="none" stroke="#fff" stroke-opacity=".09" stroke-width="1.6"><rect x="20" y="20" width="24" height="24"/><rect x="20" y="20" width="24" height="24" transform="rotate(45 32 32)"/><circle cx="32" cy="32" r="3.5"/></g></pattern>
+</defs><symbol id="logo-icon" viewBox="0 0 512 512"><rect width="512" height="512" rx="116" fill="url(#bg)"/><rect width="512" height="512" rx="116" fill="url(#pt)"/><g transform="translate(0 -26)">
+<g fill="#0A4249">
+<path d="M52 430V250H72V430Z"/><path d="M49 250L62 212 75 250Z"/><path d="M45 276H79V285H45Z"/><path d="M62 212V196" stroke="#0A4249" stroke-width="4"/>
+<path d="M96 430V330Q96 268 140 262Q184 268 184 330V430Z"/><path d="M140 262V242" stroke="#0A4249" stroke-width="4"/>
+<path d="M196 430V300Q196 232 256 224Q316 232 316 300V430Z"/>
+<path d="M328 430V330Q328 268 372 262Q416 268 416 330V430Z"/><path d="M372 262V242" stroke="#0A4249" stroke-width="4"/>
+<path d="M440 430V250H460V430Z"/><path d="M437 250L450 212 463 250Z"/><path d="M433 276H467V285H433Z"/><path d="M450 212V196" stroke="#0A4249" stroke-width="4"/>
+</g>
+<circle cx="62" cy="194" r="5" fill="#FFD24D"/><circle cx="140" cy="240" r="4.5" fill="#FFD24D"/><circle cx="372" cy="240" r="4.5" fill="#FFD24D"/><circle cx="450" cy="194" r="5" fill="#FFD24D"/>
+<g fill="#FFD24D" opacity=".75"><path d="M130 330v-14a10 10 0 0 1 20 0v14z"/><path d="M362 330v-14a10 10 0 0 1 20 0v14z"/></g>
 <circle cx="352" cy="148" r="57" fill="#FFE48A" mask="url(#cm)"/>
 <path transform="translate(150 150) scale(1.15)" d="M0 -14 C2 -4 4 -2 14 0 C4 2 2 4 0 14 C-2 4 -4 2 -14 0 C-4 -2 -2 -4 0 -14Z" fill="#fff" opacity="1"/><path transform="translate(412 262) scale(0.8)" d="M0 -14 C2 -4 4 -2 14 0 C4 2 2 4 0 14 C-2 4 -4 2 -14 0 C-4 -2 -2 -4 0 -14Z" fill="#FFE48A" opacity="1"/><path transform="translate(112 262) scale(0.65)" d="M0 -14 C2 -4 4 -2 14 0 C4 2 2 4 0 14 C-2 4 -4 2 -14 0 C-4 -2 -2 -4 0 -14Z" fill="#fff" opacity="0.9"/><path transform="translate(300 84) scale(0.55)" d="M0 -14 C2 -4 4 -2 14 0 C4 2 2 4 0 14 C-2 4 -4 2 -14 0 C-4 -2 -2 -4 0 -14Z" fill="#fff" opacity="0.85"/>
-<circle cx="84" cy="96" r="3.5" fill="#fff" opacity=".8"/><circle cx="436" cy="190" r="3" fill="#fff" opacity=".7"/><circle cx="64" cy="200" r="2.6" fill="#fff" opacity=".6"/>
+<circle cx="84" cy="96" r="3.5" fill="#fff" opacity=".8"/><circle cx="436" cy="190" r="3" fill="#fff" opacity=".7"/><circle cx="64" cy="170" r="2.6" fill="#fff" opacity=".6"/>
+<path d="M186 428L326 490M326 428L186 490" stroke="url(#wd)" stroke-width="16" stroke-linecap="round"/>
+<path d="M186 428L326 490M326 428L186 490" stroke="#fff" stroke-opacity=".18" stroke-width="3" stroke-linecap="round" transform="translate(-2 -3)"/>
 <path d="M256 348 C218 320 148 312 86 332 L86 418 C150 398 220 406 256 436 C292 406 362 398 426 418 L426 332 C364 312 294 320 256 348Z" fill="url(#cv)"/>
 <path d="M256 336 C220 308 150 300 98 318 L98 400 C150 384 220 392 256 420Z" fill="#fff"/>
 <path d="M256 336 C292 308 362 300 414 318 L414 400 C362 384 292 392 256 420Z" fill="#F2FBF8"/>
@@ -403,7 +514,7 @@ body.in-game .bottom{display:none}
 <g fill="none" stroke="#9AD9C6" stroke-width="7" stroke-linecap="round">
 <path d="M122 344 C160 336 205 342 236 360"/><path d="M122 364 C160 356 205 362 236 380"/><path d="M122 384 C160 376 196 380 222 394"/>
 <path d="M390 344 C352 336 307 342 276 360"/><path d="M390 364 C352 356 307 362 276 380"/><path d="M390 384 C352 376 316 380 290 394"/></g>
-<ellipse cx="256" cy="334" rx="84" ry="11" fill="#0B3B5A" opacity=".28"/>
+<ellipse cx="256" cy="334" rx="84" ry="11" fill="#06263A" opacity=".3"/>
 <g transform="translate(151 138) scale(2.1)">
 <path d="M50 6 61.8 36.5 94.5 38.4 69 58.9 77.5 90.5 50 72.8 22.5 90.5 31 58.9 5.5 38.4 38.2 36.5Z" fill="url(#st)" stroke="#E8A000" stroke-width="6" stroke-linejoin="round"/>
 <path d="M46.5 17 L43.2 28" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".75"/>
@@ -411,14 +522,33 @@ body.in-game .bottom{display:none}
 <circle cx="41.6" cy="48" r="1.5" fill="#fff"/><circle cx="61.6" cy="48" r="1.5" fill="#fff"/>
 <ellipse cx="31" cy="58" rx="5.2" ry="3.2" fill="#FF7F7F" opacity=".75"/><ellipse cx="69" cy="58" rx="5.2" ry="3.2" fill="#FF7F7F" opacity=".75"/>
 <path d="M41 60.5 Q50 70 59 60.5 Q50 63.5 41 60.5Z" fill="#B23A48" stroke="#1E2347" stroke-width="3" stroke-linejoin="round"/>
-</g></symbol></svg>
+</g></g></symbol></svg>
 <div id="splash" role="status" aria-label="Memuat AyatPlay Kids">
-<svg class="sp-stars" aria-hidden="true"><circle cx="65.0%" cy="90.4%" r="1.7" fill="#fff" style="animation-delay:0.27s"/><circle cx="22.8%" cy="75.9%" r="1.5" fill="#fff" style="animation-delay:0.85s"/><circle cx="80.2%" cy="33.9%" r="2.5" fill="#fff" style="animation-delay:2.19s"/><circle cx="95.3%" cy="51.9%" r="1.7" fill="#fff" style="animation-delay:1.18s"/><circle cx="44.5%" cy="58.4%" r="1.6" fill="#fff" style="animation-delay:2.11s"/><circle cx="11.8%" cy="78.1%" r="1.1" fill="#fff" style="animation-delay:0.82s"/><circle cx="44.1%" cy="54.1%" r="2.4" fill="#fff" style="animation-delay:1.70s"/><circle cx="73.5%" cy="37.1%" r="3.0" fill="#fff" style="animation-delay:0.10s"/><circle cx="6.2%" cy="40.7%" r="3.1" fill="#fff" style="animation-delay:0.22s"/><circle cx="78.1%" cy="63.7%" r="3.1" fill="#fff" style="animation-delay:0.97s"/><circle cx="76.6%" cy="78.8%" r="2.4" fill="#fff" style="animation-delay:1.74s"/><circle cx="30.3%" cy="88.6%" r="2.8" fill="#fff" style="animation-delay:2.12s"/><circle cx="63.9%" cy="47.4%" r="2.8" fill="#fff" style="animation-delay:0.72s"/><circle cx="20.5%" cy="50.2%" r="1.5" fill="#fff" style="animation-delay:0.98s"/><circle cx="50.8%" cy="88.3%" r="2.0" fill="#fff" style="animation-delay:0.46s"/><circle cx="68.3%" cy="71.8%" r="3.2" fill="#fff" style="animation-delay:0.09s"/><circle cx="71.8%" cy="17.8%" r="1.9" fill="#fff" style="animation-delay:2.15s"/><circle cx="34.1%" cy="6.6%" r="2.1" fill="#fff" style="animation-delay:2.17s"/><circle cx="57.8%" cy="3.6%" r="1.2" fill="#fff" style="animation-delay:0.81s"/><circle cx="97.1%" cy="48.4%" r="2.6" fill="#fff" style="animation-delay:1.77s"/><circle cx="47.1%" cy="10.0%" r="2.4" fill="#fff" style="animation-delay:1.19s"/><circle cx="99.2%" cy="9.5%" r="3.1" fill="#fff" style="animation-delay:2.00s"/><circle cx="63.2%" cy="8.6%" r="3.0" fill="#fff" style="animation-delay:1.59s"/><circle cx="56.4%" cy="65.3%" r="2.1" fill="#fff" style="animation-delay:1.84s"/><circle cx="59.1%" cy="56.2%" r="3.2" fill="#fff" style="animation-delay:0.21s"/><circle cx="36.7%" cy="65.1%" r="2.3" fill="#fff" style="animation-delay:0.73s"/><circle cx="28.7%" cy="39.1%" r="2.7" fill="#fff" style="animation-delay:0.66s"/><circle cx="4.2%" cy="10.2%" r="3.3" fill="#fff" style="animation-delay:2.37s"/><circle cx="84.3%" cy="84.6%" r="2.0" fill="#fff" style="animation-delay:0.93s"/><circle cx="30.6%" cy="98.1%" r="1.2" fill="#fff" style="animation-delay:1.98s"/><circle cx="1.2%" cy="38.3%" r="2.5" fill="#fff" style="animation-delay:2.41s"/><circle cx="72.6%" cy="33.7%" r="1.4" fill="#fff" style="animation-delay:1.33s"/><circle cx="28.7%" cy="8.9%" r="1.4" fill="#fff" style="animation-delay:2.35s"/><circle cx="16.6%" cy="7.2%" r="2.4" fill="#fff" style="animation-delay:2.07s"/><circle cx="68.3%" cy="79.1%" r="2.0" fill="#fff" style="animation-delay:1.05s"/><circle cx="89.9%" cy="38.3%" r="2.6" fill="#fff" style="animation-delay:0.88s"/><circle cx="17.3%" cy="83.5%" r="2.3" fill="#fff" style="animation-delay:0.47s"/><circle cx="38.1%" cy="87.5%" r="3.0" fill="#fff" style="animation-delay:1.83s"/><circle cx="80.7%" cy="52.8%" r="1.5" fill="#fff" style="animation-delay:1.91s"/><circle cx="69.8%" cy="33.8%" r="1.2" fill="#fff" style="animation-delay:1.96s"/><circle cx="48.6%" cy="25.5%" r="1.3" fill="#fff" style="animation-delay:0.20s"/><circle cx="67.7%" cy="19.2%" r="2.3" fill="#fff" style="animation-delay:1.99s"/><circle cx="40.8%" cy="24.9%" r="3.2" fill="#fff" style="animation-delay:0.46s"/><circle cx="66.5%" cy="59.8%" r="3.2" fill="#fff" style="animation-delay:0.50s"/><circle cx="17.8%" cy="4.1%" r="1.6" fill="#fff" style="animation-delay:0.23s"/><circle cx="97.0%" cy="23.4%" r="2.8" fill="#fff" style="animation-delay:0.31s"/></svg>
+<svg class="sp-stars" aria-hidden="true"><circle cx="65.0%" cy="63.3%" r="1.7" fill="#fff" style="animation-delay:0.27s"/><circle cx="22.8%" cy="53.2%" r="1.5" fill="#fff" style="animation-delay:0.85s"/><circle cx="80.2%" cy="23.7%" r="2.5" fill="#fff" style="animation-delay:2.19s"/><circle cx="95.3%" cy="36.3%" r="1.7" fill="#fff" style="animation-delay:1.18s"/><circle cx="44.5%" cy="40.9%" r="1.6" fill="#fff" style="animation-delay:2.11s"/><circle cx="11.8%" cy="54.6%" r="1.1" fill="#fff" style="animation-delay:0.82s"/><circle cx="44.1%" cy="37.9%" r="2.4" fill="#fff" style="animation-delay:1.70s"/><circle cx="73.5%" cy="26.0%" r="3.0" fill="#fff" style="animation-delay:0.10s"/><circle cx="6.2%" cy="28.5%" r="3.1" fill="#fff" style="animation-delay:0.22s"/><circle cx="78.1%" cy="44.6%" r="3.1" fill="#fff" style="animation-delay:0.97s"/><circle cx="76.6%" cy="55.2%" r="2.4" fill="#fff" style="animation-delay:1.74s"/><circle cx="30.3%" cy="62.0%" r="2.8" fill="#fff" style="animation-delay:2.12s"/><circle cx="63.9%" cy="33.2%" r="2.8" fill="#fff" style="animation-delay:0.72s"/><circle cx="20.5%" cy="35.1%" r="1.5" fill="#fff" style="animation-delay:0.98s"/><circle cx="50.8%" cy="61.8%" r="2.0" fill="#fff" style="animation-delay:0.46s"/><circle cx="68.3%" cy="50.3%" r="3.2" fill="#fff" style="animation-delay:0.09s"/><circle cx="71.8%" cy="12.5%" r="1.9" fill="#fff" style="animation-delay:2.15s"/><circle cx="34.1%" cy="4.6%" r="2.1" fill="#fff" style="animation-delay:2.17s"/><circle cx="57.8%" cy="2.5%" r="1.2" fill="#fff" style="animation-delay:0.81s"/><circle cx="97.1%" cy="33.9%" r="2.6" fill="#fff" style="animation-delay:1.77s"/><circle cx="47.1%" cy="7.0%" r="2.4" fill="#fff" style="animation-delay:1.19s"/><circle cx="99.2%" cy="6.7%" r="3.1" fill="#fff" style="animation-delay:2.00s"/><circle cx="63.2%" cy="6.0%" r="3.0" fill="#fff" style="animation-delay:1.59s"/><circle cx="56.4%" cy="45.7%" r="2.1" fill="#fff" style="animation-delay:1.84s"/><circle cx="59.1%" cy="39.3%" r="3.2" fill="#fff" style="animation-delay:0.21s"/><circle cx="36.7%" cy="45.6%" r="2.3" fill="#fff" style="animation-delay:0.73s"/><circle cx="28.7%" cy="27.4%" r="2.7" fill="#fff" style="animation-delay:0.66s"/><circle cx="4.2%" cy="7.1%" r="3.3" fill="#fff" style="animation-delay:2.37s"/><circle cx="84.3%" cy="59.2%" r="2.0" fill="#fff" style="animation-delay:0.93s"/><circle cx="30.6%" cy="68.7%" r="1.2" fill="#fff" style="animation-delay:1.98s"/><circle cx="1.2%" cy="26.8%" r="2.5" fill="#fff" style="animation-delay:2.41s"/><circle cx="72.6%" cy="23.6%" r="1.4" fill="#fff" style="animation-delay:1.33s"/><circle cx="28.7%" cy="6.3%" r="1.4" fill="#fff" style="animation-delay:2.35s"/><circle cx="16.6%" cy="5.0%" r="2.4" fill="#fff" style="animation-delay:2.07s"/><circle cx="68.3%" cy="55.4%" r="2.0" fill="#fff" style="animation-delay:1.05s"/><circle cx="89.9%" cy="26.8%" r="2.6" fill="#fff" style="animation-delay:0.88s"/><circle cx="17.3%" cy="58.4%" r="2.3" fill="#fff" style="animation-delay:0.47s"/><circle cx="38.1%" cy="61.2%" r="3.0" fill="#fff" style="animation-delay:1.83s"/><circle cx="80.7%" cy="37.0%" r="1.5" fill="#fff" style="animation-delay:1.91s"/><circle cx="69.8%" cy="23.7%" r="1.2" fill="#fff" style="animation-delay:1.96s"/><circle cx="48.6%" cy="17.8%" r="1.3" fill="#fff" style="animation-delay:0.20s"/><circle cx="67.7%" cy="13.5%" r="2.3" fill="#fff" style="animation-delay:1.99s"/><circle cx="40.8%" cy="17.4%" r="3.2" fill="#fff" style="animation-delay:0.46s"/><circle cx="66.5%" cy="41.9%" r="3.2" fill="#fff" style="animation-delay:0.50s"/><circle cx="17.8%" cy="2.9%" r="1.6" fill="#fff" style="animation-delay:0.23s"/><circle cx="97.0%" cy="16.4%" r="2.8" fill="#fff" style="animation-delay:0.31s"/></svg>
+<div class="sp-bsm ar" lang="ar" dir="rtl" aria-hidden="true">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+<svg class="sp-lant l1" viewBox="0 0 60 130" aria-hidden="true"><path d="M30 0V24" stroke="#D9B04A" stroke-width="2"/><circle cx="30" cy="26" r="4" fill="#D9B04A"/>
+<path d="M16 46Q30 18 44 46Z" fill="#C9962A"/><path d="M13 46H47L53 82L45 100H15L7 82Z" fill="#F0C14B" stroke="#B8860B" stroke-width="2" stroke-linejoin="round"/>
+<path class="lant-glow" d="M22 56Q30 42 38 56V88H22Z" fill="#FFF4B8"/><path d="M30 46V100M13 66H47" stroke="#B8860B" stroke-width="1.6" opacity=".7"/>
+<path d="M17 100H43V107H17Z" fill="#C9962A"/><path d="M30 107V124" stroke="#D9B04A" stroke-width="2"/><circle cx="30" cy="126" r="3.5" fill="#F0C14B"/></svg><svg class="sp-lant l2" viewBox="0 0 60 130" aria-hidden="true"><path d="M30 0V24" stroke="#D9B04A" stroke-width="2"/><circle cx="30" cy="26" r="4" fill="#D9B04A"/>
+<path d="M16 46Q30 18 44 46Z" fill="#C9962A"/><path d="M13 46H47L53 82L45 100H15L7 82Z" fill="#F0C14B" stroke="#B8860B" stroke-width="2" stroke-linejoin="round"/>
+<path class="lant-glow" d="M22 56Q30 42 38 56V88H22Z" fill="#FFF4B8"/><path d="M30 46V100M13 66H47" stroke="#B8860B" stroke-width="1.6" opacity=".7"/>
+<path d="M17 100H43V107H17Z" fill="#C9962A"/><path d="M30 107V124" stroke="#D9B04A" stroke-width="2"/><circle cx="30" cy="126" r="3.5" fill="#F0C14B"/></svg>
 <div class="sp-center">
-<svg class="sp-mark" viewBox="0 0 512 512" aria-hidden="true">
+<svg class="sp-mark" viewBox="0 0 512 512" aria-hidden="true"><g transform="translate(0 -26)">
+<g fill="#0A4249">
+<path d="M52 430V250H72V430Z"/><path d="M49 250L62 212 75 250Z"/><path d="M45 276H79V285H45Z"/><path d="M62 212V196" stroke="#0A4249" stroke-width="4"/>
+<path d="M96 430V330Q96 268 140 262Q184 268 184 330V430Z"/><path d="M140 262V242" stroke="#0A4249" stroke-width="4"/>
+<path d="M196 430V300Q196 232 256 224Q316 232 316 300V430Z"/>
+<path d="M328 430V330Q328 268 372 262Q416 268 416 330V430Z"/><path d="M372 262V242" stroke="#0A4249" stroke-width="4"/>
+<path d="M440 430V250H460V430Z"/><path d="M437 250L450 212 463 250Z"/><path d="M433 276H467V285H433Z"/><path d="M450 212V196" stroke="#0A4249" stroke-width="4"/>
+</g>
+<circle cx="62" cy="194" r="5" fill="#FFD24D"/><circle cx="140" cy="240" r="4.5" fill="#FFD24D"/><circle cx="372" cy="240" r="4.5" fill="#FFD24D"/><circle cx="450" cy="194" r="5" fill="#FFD24D"/>
+<g fill="#FFD24D" opacity=".75"><path d="M130 330v-14a10 10 0 0 1 20 0v14z"/><path d="M362 330v-14a10 10 0 0 1 20 0v14z"/></g>
 <circle cx="352" cy="148" r="57" fill="#FFE48A" mask="url(#cm)"/>
 <path class="sp-sp" transform="translate(150 150) scale(1.15)" d="M0 -14 C2 -4 4 -2 14 0 C4 2 2 4 0 14 C-2 4 -4 2 -14 0 C-4 -2 -2 -4 0 -14Z" fill="#fff" opacity="1"/><path class="sp-sp" transform="translate(412 262) scale(0.8)" d="M0 -14 C2 -4 4 -2 14 0 C4 2 2 4 0 14 C-2 4 -4 2 -14 0 C-4 -2 -2 -4 0 -14Z" fill="#FFE48A" opacity="1"/><path class="sp-sp" transform="translate(112 262) scale(0.65)" d="M0 -14 C2 -4 4 -2 14 0 C4 2 2 4 0 14 C-2 4 -4 2 -14 0 C-4 -2 -2 -4 0 -14Z" fill="#fff" opacity="0.9"/><path class="sp-sp" transform="translate(300 84) scale(0.55)" d="M0 -14 C2 -4 4 -2 14 0 C4 2 2 4 0 14 C-2 4 -4 2 -14 0 C-4 -2 -2 -4 0 -14Z" fill="#fff" opacity="0.85"/>
-<circle cx="84" cy="96" r="3.5" fill="#fff" opacity=".8"/><circle cx="436" cy="190" r="3" fill="#fff" opacity=".7"/><circle cx="64" cy="200" r="2.6" fill="#fff" opacity=".6"/>
+<circle cx="84" cy="96" r="3.5" fill="#fff" opacity=".8"/><circle cx="436" cy="190" r="3" fill="#fff" opacity=".7"/><circle cx="64" cy="170" r="2.6" fill="#fff" opacity=".6"/>
+<path d="M186 428L326 490M326 428L186 490" stroke="url(#wd)" stroke-width="16" stroke-linecap="round"/>
+<path d="M186 428L326 490M326 428L186 490" stroke="#fff" stroke-opacity=".18" stroke-width="3" stroke-linecap="round" transform="translate(-2 -3)"/>
 <path d="M256 348 C218 320 148 312 86 332 L86 418 C150 398 220 406 256 436 C292 406 362 398 426 418 L426 332 C364 312 294 320 256 348Z" fill="url(#cv)"/>
 <path d="M256 336 C220 308 150 300 98 318 L98 400 C150 384 220 392 256 420Z" fill="#fff"/>
 <path d="M256 336 C292 308 362 300 414 318 L414 400 C362 384 292 392 256 420Z" fill="#F2FBF8"/>
@@ -426,7 +556,7 @@ body.in-game .bottom{display:none}
 <g fill="none" stroke="#9AD9C6" stroke-width="7" stroke-linecap="round">
 <path d="M122 344 C160 336 205 342 236 360"/><path d="M122 364 C160 356 205 362 236 380"/><path d="M122 384 C160 376 196 380 222 394"/>
 <path d="M390 344 C352 336 307 342 276 360"/><path d="M390 364 C352 356 307 362 276 380"/><path d="M390 384 C352 376 316 380 290 394"/></g>
-<ellipse cx="256" cy="334" rx="84" ry="11" fill="#0B3B5A" opacity=".28"/>
+<ellipse cx="256" cy="334" rx="84" ry="11" fill="#06263A" opacity=".3"/>
 <g class="sp-star"><g transform="translate(151 138) scale(2.1)">
 <path d="M50 6 61.8 36.5 94.5 38.4 69 58.9 77.5 90.5 50 72.8 22.5 90.5 31 58.9 5.5 38.4 38.2 36.5Z" fill="url(#st)" stroke="#E8A000" stroke-width="6" stroke-linejoin="round"/>
 <path d="M46.5 17 L43.2 28" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".75"/>
@@ -434,11 +564,21 @@ body.in-game .bottom{display:none}
 <circle cx="41.6" cy="48" r="1.5" fill="#fff"/><circle cx="61.6" cy="48" r="1.5" fill="#fff"/>
 <ellipse cx="31" cy="58" rx="5.2" ry="3.2" fill="#FF7F7F" opacity=".75"/><ellipse cx="69" cy="58" rx="5.2" ry="3.2" fill="#FF7F7F" opacity=".75"/>
 <path d="M41 60.5 Q50 70 59 60.5 Q50 63.5 41 60.5Z" fill="#B23A48" stroke="#1E2347" stroke-width="3" stroke-linejoin="round"/>
-</g></g></svg>
+</g></g></g></svg>
 <div class="sp-title" aria-hidden="true"><span style="animation-delay:0.75s">A</span><span style="animation-delay:0.81s">y</span><span style="animation-delay:0.87s">a</span><span style="animation-delay:0.93s">t</span><span style="animation-delay:0.99s">P</span><span style="animation-delay:1.05s">l</span><span style="animation-delay:1.11s">a</span><span style="animation-delay:1.17s">y</span></div>
 <div class="sp-kids" aria-hidden="true">Kids</div>
 <div class="sp-tag">Petualangan Hafiz Cilik</div>
 </div>
+<svg class="sp-sky" viewBox="0 0 600 150" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><g fill="#062F38">
+<path d="M0 150V112H44V96Q44 78 66 76Q88 78 88 96V150Z"/><path d="M100 150V58H116V150Z"/><path d="M97 58L108 26 119 58Z"/><path d="M92 82H124V89H92Z"/>
+<path d="M140 150V104Q140 70 190 62Q240 70 240 104V150Z"/><path d="M190 62V40" stroke="#062F38" stroke-width="4"/>
+<path d="M252 150V70H268V150Z"/><path d="M249 70L260 36 271 70Z"/><path d="M244 94H276V101H244Z"/>
+<path d="M286 150V120H340V150Z"/>
+<path d="M350 150V96Q350 52 410 44Q470 52 470 96V150Z"/><path d="M410 44V18" stroke="#062F38" stroke-width="4"/>
+<path d="M482 150V64H498V150Z"/><path d="M479 64L490 30 501 64Z"/><path d="M474 88H506V95H474Z"/>
+<path d="M516 150V108H560V92Q560 76 580 74Q600 76 600 92V150Z"/></g>
+<g fill="#FFD24D"><circle cx="190" cy="38" r="4"/><circle cx="410" cy="16" r="4"/><circle cx="108" cy="24" r="3.5"/><circle cx="260" cy="34" r="3.5"/><circle cx="490" cy="28" r="3.5"/></g>
+<g fill="#FFD24D" opacity=".8"><path d="M174 150v-24a16 16 0 0 1 32 0v24z"/><path d="M394 150v-26a16 16 0 0 1 32 0v26z"/><rect x="300" y="128" width="8" height="12" rx="4"/><rect x="318" y="128" width="8" height="12" rx="4"/></g></svg>
 <div class="sp-load"><div class="sp-bar"><i></i></div><p id="splash-msg">Bismillah… 🌙</p></div>
 </div>
 
@@ -468,10 +608,10 @@ body.in-game .bottom{display:none}
 
 <nav class="bottom" aria-label="Menu utama">
   <div class="in">
-    <button class="tab on" data-act="nav" data-to="home"><span>🏠</span>Beranda</button>
+    <button class="tab on" data-act="nav" data-to="home"><span>🕌</span>Beranda</button>
     <button class="tab" data-act="nav" data-to="learn"><span>📖</span>Belajar</button>
-    <button class="tab" data-act="nav" data-to="badges"><span>🏅</span>Lencana</button>
-    <button class="tab" data-act="nav" data-to="profile"><span>😊</span>Aku</button>
+    <button class="tab" data-act="nav" data-to="badges"><span>🎁</span>Hadiah</button>
+    <button class="tab" data-act="nav" data-to="profile"><span>🌙</span>Aku</button>
   </div>
 </nav>
 
@@ -870,8 +1010,8 @@ function goalState(){ if(S.today.date!==dstr()) S.today={date:dstr(),rounds:0}; 
 /* ---------- level pemain, bintang, lencana ---------- */
 const TITLES=['Santri Baru','Pencari Ilmu','Pembaca Cilik','Penjaga Ayat','Bintang Hafalan','Pahlawan Surah','Hafiz Muda','Hafiz Cerdas','Hafiz Hebat','Hafiz Bintang Juz'];
 function levelInfo(xp){
-  let L=1; while(L<10&&xp>=100*L*(L+1)/2) L++;
-  const start=100*(L-1)*L/2, end=100*L*(L+1)/2;
+  let L=1; while(L<10&&xp>=200*L*(L+1)/2) L++;
+  const start=200*(L-1)*L/2, end=200*L*(L+1)/2;
   return {L,title:TITLES[L-1],start,end,pct:L>=10?100:Math.round((xp-start)/(end-start)*100)};
 }
 const PASS_MIN=6;
@@ -881,12 +1021,30 @@ const unlocked=(g,l)=>l===1||stars(g,l-1)>=1;
 const totalStars=()=>Object.values(S.prog).reduce((a,p)=>a+Object.values(p).reduce((x,y)=>x+y,0),0);
 const memCount=()=>Object.keys(S.memorized).length;
 const surahsDone=()=>SURAH_LIST.filter(s=>s.verses.every(v=>S.memorized[v.key])).length;
-const STICKERS=[{e:'🦉',n:'Hantu Bijak'},{e:'🐘',n:'Gajah Ingatan'},{e:'🐝',n:'Lebah Rapi'},{e:'🐦',n:'Burung Merdu'},{e:'🦊',n:'Rubah Detektif'},{e:'🐢',n:'Kura-kura Sabar'},{e:'🐜',n:'Semut Tekun'},{e:'🐬',n:'Lumba-lumba Cerdas'},{e:'🐰',n:'Kelinci Pendengar'},{e:'🦋',n:'Kupu-kupu Ajaib'}];
-const stickerCount=()=>GAMES.reduce((n,G)=>n+[1,2,3].filter(l=>stars(G.id,l)>=1).length,0);
+/* ---------- level, stiker, ucapan (10 level per game) ---------- */
+const MAXL=10;
+const RANKS=['Pemula','Santri','Pembaca','Penghafal','Penjaga Ayat','Mahir','Cendekia','Fasih','Hafiz','Hafiz Juara'];
+const BAND=l=>l<=3?'Mudah':l<=6?'Sedang':l<=9?'Sulit':'Tantangan Hafiz';
+const tierOf=l=>l<=3?1:l<=6?2:l<=9?3:4;           // 1 perunggu, 2 perak, 3 emas, 4 berlian
+const TIER_NAME=['','Perunggu','Perak','Emas','Berlian'];
+const MOTIFS=[{e:'🕌',n:'Masjid Cilik'},{e:'🌙',n:'Hilal Terang'},{e:'📖',n:'Mushaf Mulia'},{e:"🕋",n:"Ka'bah Mungil"},{e:'🌴',n:'Pohon Kurma'},{e:'🐪',n:'Unta Setia'},{e:'🕯️',n:'Pelita Ilmu'},{e:'📿',n:'Tasbih Indah'},{e:'🤲',n:'Doa Tulus'},{e:'🌟',n:'Bintang Cahaya'}];
+const UCAPAN=[
+  {ar:'مَا شَاءَ اللَّهُ',id:'Masya Allah, atas kehendak Allah, hebat sekali!'},
+  {ar:'الْحَمْدُ لِلَّهِ',id:'Alhamdulillah, segala puji bagi Allah.'},
+  {ar:'بَارَكَ اللَّهُ فِيكُمْ',id:'Barakallahu fiikum, semoga Allah memberkahimu.'},
+  {ar:'جَزَاكُمُ اللَّهُ خَيْرًا',id:'Jazakumullahu khairan, semoga Allah membalasmu dengan kebaikan.'},
+  {ar:'رَبِّ زِدْنِي عِلْمًا',id:'“Ya Tuhanku, tambahkanlah ilmu kepadaku.” (QS Thaha: 114)'}];
+const allLevels=g=>{for(let l=1;l<=MAXL;l++) if(stars(g,l)<1) return false; return true;};
+const doneLevels=g=>{let n=0;for(let l=1;l<=MAXL;l++) if(stars(g,l)>=1) n++; return n;};
+const stickerCount=()=>GAMES.reduce((n,G)=>n+doneLevels(G.id),0);
+const gameStars=g=>{let n=0;for(let l=1;l<=MAXL;l++) n+=stars(g,l);return n;};
+const nextLevelFor=g=>{for(let l=1;l<=MAXL;l++) if(stars(g,l)<1) return l; for(let l=1;l<=MAXL;l++) if(stars(g,l)<3) return l; return MAXL;};
 const BADGES=[
   {id:'retry',e:'💪',n:'Pantang Menyerah',d:'Lulus level setelah mencoba lagi',t:()=>(S.retryWins||0)>=1},
-  {id:'stk10',e:'🎁',n:'Kolektor Stiker',d:'Kumpulkan 10 stiker',t:()=>stickerCount()>=10},
-  {id:'stk30',e:'🏆',n:'Juara Koleksi',d:'Kumpulkan semua 30 stiker',t:()=>stickerCount()>=30},
+  {id:'stk25',e:'🎁',n:'Kolektor Stiker',d:'Kumpulkan 25 stiker',t:()=>stickerCount()>=25},
+  {id:'stk50',e:'🏺',n:'Penjaga Koleksi',d:'Kumpulkan 50 stiker',t:()=>stickerCount()>=50},
+  {id:'stk100',e:'🏆',n:'Juara Koleksi',d:'Kumpulkan semua 100 stiker',t:()=>stickerCount()>=100},
+  {id:'gdone',e:'🎓',n:'Tamat Satu Game',d:'Selesaikan 10 level di satu game',t:()=>GAMES.some(G=>allLevels(G.id))},
   {id:'first',e:'🚀',n:'Langkah Pertama',d:'Selesaikan 1 permainan',t:()=>S.plays>=1},
   {id:'listener',e:'🎧',n:'Pendengar Setia',d:'Dengarkan 25 ayat di mode Belajar',t:()=>S.listened>=25},
   {id:'h10',e:'📗',n:'Penghafal Cilik',d:'Tandai 10 ayat sudah hafal',t:()=>memCount()>=10},
@@ -896,8 +1054,9 @@ const BADGES=[
   {id:'s7',e:'🌋',n:'Pekan Istiqomah',d:'Belajar 7 hari berturut-turut',t:()=>S.best>=7},
   {id:'perfect',e:'💯',n:'Nilai Sempurna',d:'Raih 3 bintang di satu level',t:()=>Object.values(S.prog).some(p=>Object.values(p).some(x=>x>=3))},
   {id:'all',e:'🎮',n:'Penjelajah Game',d:'Coba semua 10 game',t:()=>Object.keys(S.played).length>=10},
-  {id:'king',e:'👑',n:'Raja Level 3',d:'Selesaikan Level 3 di satu game',t:()=>Object.values(S.prog).some(p=>(p[3]||0)>=1)},
+  {id:'king',e:'👑',n:'Raja Level 10',d:'Selesaikan Level 10 di satu game',t:()=>Object.values(S.prog).some(p=>(p[10]||0)>=1)},
   {id:'st30',e:'🌟',n:'Kolektor Bintang',d:'Kumpulkan 30 bintang',t:()=>totalStars()>=30},
+  {id:'st150',e:'🌠',n:'Pemburu Bintang',d:'Kumpulkan 150 bintang',t:()=>totalStars()>=150},
   {id:'xp1000',e:'⚡',n:'Pemburu XP',d:'Kumpulkan 1000 XP',t:()=>S.xp>=1000}
 ];
 function checkBadges(){
@@ -980,9 +1139,14 @@ const CHEER=['MasyaAllah, hebat!','Mumtaz! Pertahankan ya!','Bagus sekali, terus
 const TRYAGAIN=['Tidak apa-apa, salah itu bagian dari belajar.','Dengarkan lagi ayatnya, lalu coba lagi ya!','Hampir! Kamu pasti bisa.','Yuk perhatikan jawabannya, nanti pasti ingat.'];
 function starsBg(){
   let s='';for(let i=0;i<26;i++){const x=rnd(100),y=rnd(100),r=(.5+Math.random()*1.6).toFixed(1);s+=`<circle cx="${x}%" cy="${y}%" r="${r}" fill="#fff" opacity="${(.35+Math.random()*.6).toFixed(2)}"/>`;}
-  return `<svg class="stars-bg" width="100%" height="100%" aria-hidden="true">${s}<svg x="84%" y="6%" width="44" height="44" viewBox="0 0 40 40"><path d="M26 4a16 16 0 1 0 10 28 13 13 0 1 1-10-28z" fill="#FFE48A" opacity=".9"/></svg></svg>`;
+  return `<svg class="stars-bg" width="100%" height="100%" aria-hidden="true">${s}</svg>`;
 }
 
+
+const STAR8="50.0,2.0 64.1,16.1 83.9,16.1 83.9,35.9 98.0,50.0 83.9,64.1 83.9,83.9 64.1,83.9 50.0,98.0 35.9,83.9 16.1,83.9 16.1,64.1 2.0,50.0 16.1,35.9 16.1,16.1 35.9,16.1";
+const lanternSVG=cls=>`<svg class="lant ${cls}" viewBox="0 0 60 130" aria-hidden="true"><path d="M30 0V24" stroke="#D9B04A" stroke-width="2"/><circle cx="30" cy="26" r="4" fill="#D9B04A"/><path d="M16 46Q30 18 44 46Z" fill="#C9962A"/><path d="M13 46H47L53 82L45 100H15L7 82Z" fill="#F0C14B" stroke="#B8860B" stroke-width="2" stroke-linejoin="round"/><path class="lant-glow" d="M22 56Q30 42 38 56V88H22Z" fill="#FFF4B8"/><path d="M30 46V100M13 66H47" stroke="#B8860B" stroke-width="1.6" opacity=".7"/><path d="M17 100H43V107H17Z" fill="#C9962A"/><path d="M30 107V124" stroke="#D9B04A" stroke-width="2"/><circle cx="30" cy="126" r="3.5" fill="#F0C14B"/></svg>`;
+const skylineHero=()=>`<svg class="skyline" viewBox="0 0 600 150" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><g fill="#062F38"><path d="M0 150V112H44V96Q44 78 66 76Q88 78 88 96V150Z"/><path d="M100 150V58H116V150Z"/><path d="M97 58L108 26 119 58Z"/><path d="M92 82H124V89H92Z"/><path d="M140 150V104Q140 70 190 62Q240 70 240 104V150Z"/><path d="M252 150V70H268V150Z"/><path d="M249 70L260 36 271 70Z"/><path d="M244 94H276V101H244Z"/><path d="M286 150V120H340V150Z"/><path d="M350 150V96Q350 52 410 44Q470 52 470 96V150Z"/><path d="M482 150V64H498V150Z"/><path d="M479 64L490 30 501 64Z"/><path d="M474 88H506V95H474Z"/><path d="M516 150V108H560V92Q560 76 580 74Q600 76 600 92V150Z"/></g><g fill="#F0C14B"><path d="M190 60V46" stroke="#F0C14B" stroke-width="3"/><path d="M196 30a9 9 0 1 0 0 16 7 7 0 1 1 0-16z"/><path d="M410 42V28" stroke="#F0C14B" stroke-width="3"/><path d="M416 14a9 9 0 1 0 0 16 7 7 0 1 1 0-16z"/><circle cx="108" cy="24" r="3.5"/><circle cx="260" cy="34" r="3.5"/><circle cx="490" cy="28" r="3.5"/></g><g fill="#FFD24D" opacity=".8"><path d="M174 150v-24a16 16 0 0 1 32 0v24z"/><path d="M394 150v-26a16 16 0 0 1 32 0v26z"/><rect x="300" y="128" width="8" height="12" rx="4"/><rect x="318" y="128" width="8" height="12" rx="4"/></g></svg>`;
+const emblemSVG=()=>`<svg width="88" height="88" viewBox="0 0 100 100" aria-hidden="true"><defs><linearGradient id="emg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFE470"/><stop offset="1" stop-color="#E8A000"/></linearGradient></defs><polygon points="${STAR8}" fill="url(#emg)" stroke="#B8860B" stroke-width="2" stroke-linejoin="round"/><circle cx="50" cy="50" r="31" fill="#0F4E52" stroke="#F6DF8E" stroke-width="2"/><mask id="emm"><rect width="100" height="100" fill="#fff"/><circle cx="59" cy="45" r="17" fill="#000"/></mask><circle cx="48" cy="52" r="20" fill="#F6DF8E" mask="url(#emm)"/><path d="M61 37l2.4 5.2 5.6.6-4.1 3.9 1.1 5.6-5-2.8-5 2.8 1.1-5.6-4.1-3.9 5.6-.6z" fill="#F6DF8E"/></svg>`;
 /* ---------- scope materi ---------- */
 function scopePool(){
   const {juz,surah}=S.scope; let p=VERSES;
@@ -1031,14 +1195,15 @@ function nav(to){
 }
 
 /* ---------- BERANDA ---------- */
-const GCOL=[['#FFE3DF','#FF9C92'],['#D9F6EE','#6FD6BE'],['#FFF1C7','#F2C34C'],['#E9E2FF','#B3A0FF'],['#DCEEFF','#84BFFF'],['#FFE0EE','#FF9CC8'],['#D6F5F7','#6CD0D8'],['#FFE8D2','#FFB06B'],['#E0E5FF','#8E9BFF'],['#E8F7D3','#A5D96A']];
+const GCOL=[['#D8F3E8','#4DBB93'],['#FFF1C9','#E0AE2E'],['#D5F2F2','#4FB8BC'],['#DFE6FA','#7F93DB'],['#FADDE3','#E58AA0'],['#FBE4D3','#E39A6B'],['#E6F1CF','#9FC05A'],['#E8E0F7','#A48BD6'],['#D3E8EC','#5C9AA6'],['#FFEBC2','#EBA928']];
 function renderHome(){
   const lv=levelInfo(S.xp), g=goalState(), pct=Math.round(g.n/g.goal*100);
   const total=VERSES.length, mem=memCount(), mp=Math.round(mem/total*100);
   $('#v-home').innerHTML=`
   <div class="hero">
-    ${starsBg()}
+    ${starsBg()}${skylineHero()}${lanternSVG('l1')}${lanternSVG('l2')}
     <div style="position:relative">
+      <div class="ar ar-md" lang="ar" dir="rtl" style="color:#F6DF8E;text-align:left;line-height:1.9;position:relative">السَّلَامُ عَلَيْكُمْ</div>
       <h2>Assalamu'alaikum, ${esc(S.name||'Sahabat Cilik')}! 👋</h2>
       <p>Hafal Al-Qur'an sambil bermain. Dengarkan ayatnya dulu, lalu taklukkan 10 game seru dan naik level!</p>
       <div class="goal"><div class="goal-row"><span>🎯 Target hari ini</span><span>${g.n}/${g.goal} permainan</span></div><div class="bar"><i style="width:${pct}%"></i></div></div>
@@ -1062,24 +1227,30 @@ function renderHome(){
 
   <h2 class="sec-title" id="games">🎮 Pilih permainan</h2>
   <div class="gal">${GAMES.map((G,i)=>{
-    const done=[1,2,3].filter(l=>stars(G.id,l)>=1).length;
-    return `<button class="gcard" data-act="game" data-g="${G.id}" style="--bg:${GCOL[i][0]};--bd:${GCOL[i][1]}" aria-label="${esc(G.name)}. Level selesai ${done} dari 3">
+    const done=doneLevels(G.id), gs=gameStars(G.id);
+    return `<button class="gcard" data-act="game" data-g="${G.id}" style="--bg:${GCOL[i][0]};--bd:${GCOL[i][1]}" aria-label="${esc(G.name)}. Level selesai ${done} dari 10">
       <span class="gnum">#${G.id}</span><span class="gicon" aria-hidden="true">${G.emoji}</span>
       <h3>${esc(G.name)}</h3><p>${esc(G.short)}</p>
-      <span class="gstars" aria-hidden="true">${[1,2,3].map(l=>`<i class="${stars(G.id,l)>=1?'on':''}">⭐</i>`).join('')}</span>
+      <span class="gbar" aria-hidden="true"><i style="width:${done*10}%"></i></span>
+      <span class="gmeta" aria-hidden="true"><b>Level ${done}/10</b><span>⭐ ${gs}/30</span></span>
     </button>`;}).join('')}</div>`;
 }
-function openSheet(html){ $('#sheet').innerHTML=html; $('#overlay').classList.remove('hidden'); }
-function closeSheet(){ $('#overlay').classList.add('hidden'); $('#sheet').innerHTML=''; }
-const LEVELS=[{e:'🌱',n:'Pemula',d:'Mudah'},{e:'🌿',n:'Pintar',d:'Sedang'},{e:'🌳',n:'Hafiz',d:'Menantang'}];
-function openLevelSheet(g){
-  const G=GAMES[g-1], i=g-1;
-  openSheet(`<div class="sheet-head"><span class="gicon" style="border-color:${GCOL[i][1]};background:${GCOL[i][0]}">${G.emoji}</span><div><h3>${esc(G.name)}</h3><small class="muted" style="font-weight:700">Pilih level permainan</small></div></div>
-  <p style="margin:6px 0 4px;font-weight:700;color:#3a3f6b">${esc(G.how)}</p>
-  ${[1,2,3].map(l=>{const ok=unlocked(g,l),st=stars(g,l);return `<button class="lv ${ok?'':'locked'}" ${ok?'':'disabled'} data-act="start" data-g="${g}" data-l="${l}">
-    <span class="lv-emo">${LEVELS[l-1].e}</span><span><b>Level ${l} · ${LEVELS[l-1].n}</b><small>${LEVELS[l-1].d} · ${esc(G.levels[l-1].desc)}</small><br><span aria-label="${st} bintang">${[1,2,3].map(x=>`<span style="${x<=st?'':'filter:grayscale(1) opacity(.35)'}">⭐</span>`).join('')}</span></span>
-    <span class="go">${ok?'Main ▶':'🔒'}</span></button>`;}).join('')}
-  <p class="hint" style="margin-top:12px">Setiap level berisi 10 soal berbeda. Lulus jika benar minimal 6 soal, lalu kamu mendapat stiker dan level berikutnya terbuka. 🎁</p>
+function openSheet(html,cls=''){ $('#sheet').className='sheet '+cls; $('#sheet').innerHTML=html; $('#overlay').classList.remove('hidden'); }
+function closeSheet(){ $('#overlay').classList.add('hidden'); $('#sheet').innerHTML=''; $('#sheet').className='sheet'; }
+let sheetG=0, sheetSel=1;
+function openLevelSheet(g,sel){
+  const G=GAMES[g-1], i=g-1; sheetG=g; sheetSel=sel||nextLevelFor(g);
+  const l=sheetSel, ok=unlocked(g,l), st=stars(g,l), M=MOTIFS[i], own=st>=1, tr=tierOf(l);
+  openSheet(`<div class="sheet-head"><span class="gicon" style="border-color:${GCOL[i][1]};background:${GCOL[i][0]}">${G.emoji}</span><div><h3>${esc(G.name)}</h3><small class="muted" style="font-weight:800">${doneLevels(g)} dari ${MAXL} level selesai · ⭐ ${gameStars(g)}/${MAXL*3}</small></div></div>
+  <p style="margin:6px 0 10px;font-weight:700;color:#3E5A57">${esc(G.how)}</p>
+  <div class="lvgrid" role="group" aria-label="Pilih level">${Array.from({length:MAXL},(_,k)=>k+1).map(n=>{const o=unlocked(g,n),s=stars(g,n);return `<button class="lvnode ${o?(s?'done':'open'):'lock'} ${n===l?'sel':''}" data-act="lvsel" data-g="${g}" data-l="${n}" aria-label="Level ${n}, ${o?(s?s+' bintang':'terbuka'):'terkunci'}"><span class="lvn">${o?n:'🔒'}</span><span class="lvst" aria-hidden="true">${s?'★'.repeat(s):''}</span></button>`;}).join('')}</div>
+  <div class="lvinfo">
+    <div class="row" style="gap:10px;justify-content:space-between;flex-wrap:nowrap"><div style="flex:1;min-width:0"><b style="font-family:var(--f-disp);font-size:1.2rem">Level ${l} · ${RANKS[l-1]}</b><br><span class="tag">${BAND(l)}</span></div>
+      <div class="sticker sm t${tr} ${own?'':'lock'}" style="min-width:92px;flex:none" aria-label="Stiker ${esc(M.n)} level ${l}"><span class="stk-e">${own?M.e:'🔒'}</span><small>${own?'Stikermu':'Hadiah'}</small></div></div>
+    <p style="margin:8px 0 0;font-weight:700;color:#3E5A57">${esc(G.levels[l-1].desc)}</p>
+  </div>
+  <button class="btn btn-mint btn-block" data-act="start" data-g="${g}" data-l="${l}" ${ok?'':'disabled'} style="margin-top:12px">${ok?`Mulai Level ${l} ▶`:'🔒 Selesaikan level sebelumnya dulu'}</button>
+  <p class="hint" style="margin-top:10px">Tiap level berisi 10 soal berbeda. Lulus jika benar minimal 6 soal, lalu kamu mendapat stiker dan level berikutnya terbuka.</p>
   <button class="btn btn-ghost btn-block" data-act="close" style="margin-top:6px">Tutup</button>`);
 }
 
@@ -1116,7 +1287,7 @@ function renderSurah(no){
 function ayatCard(v){
   const mem=!!S.memorized[v.key];
   return `<article class="ayat ${mem?'mem':''} ${learnState.cover?'cover':''}" id="ay-${v.s}-${v.n}" data-key="${v.key}">
-    <div class="ayat-top"><span class="no">Ayat ${v.n}</span><span style="display:flex;gap:6px;flex-wrap:wrap"><button class="play" data-act="play-one" data-key="${v.key}">🔊 Dengar</button><button class="tick ${mem?'on':''}" data-act="mem" data-key="${v.key}" aria-pressed="${mem}">${mem?'✅ Sudah hafal':'⬜ Sudah hafal?'}</button></span></div>
+    <div class="ayat-top"><span class="no"><i class="med">${v.n}</i>Ayat</span><span style="display:flex;gap:6px;flex-wrap:wrap"><button class="play" data-act="play-one" data-key="${v.key}">🔊 Dengar</button><button class="tick ${mem?'on':''}" data-act="mem" data-key="${v.key}" aria-pressed="${mem}">${mem?'✅ Sudah hafal':'⬜ Sudah hafal?'}</button></span></div>
     <div class="ar ${v.words.length>18?'ar-md':'ar-lg'} cov userselect" lang="ar" dir="rtl" data-act="reveal">${v.ar}</div>
     <div class="tr">${esc(v.id)}</div></article>`;
 }
@@ -1153,12 +1324,16 @@ function toggleMem(key){
 /* ---------- LENCANA ---------- */
 function renderBadges(){
   const got=BADGES.filter(b=>S.badges[b.id]).length;
-  $('#v-badges').innerHTML=`<h2 class="sec-title" style="margin-top:6px">🏅 Lencana Hafiz</h2>
-  <p class="muted" style="font-weight:700;margin-top:-4px">${got} dari ${BADGES.length} lencana terbuka. Terus belajar untuk membuka semuanya!</p>
-  <h3 style="margin:16px 0 4px">🎁 Koleksi Stiker (${stickerCount()}/30)</h3>
-  <p class="muted small" style="margin:0 0 10px">Selesaikan setiap level untuk mendapat stikernya. Ada 3 tingkat: perunggu, perak, dan emas.</p>
-  <div class="stkgrid">${GAMES.map(G=>[1,2,3].map(l=>{const own=stars(G.id,l)>=1,s=STICKERS[G.id-1];return `<div class="sticker sm t${l} ${own?'':'lock'}" role="img" aria-label="${esc(s.n)} ${STK_TIER[l-1]}${own?'':', belum didapat'}"><span class="stk-e">${own?s.e:'🔒'}</span><b>${esc(s.n)}</b><small>${STK_TIER[l-1]}${own?' · '+'⭐'.repeat(stars(G.id,l)):''}</small></div>`;}).join('')).join('')}</div>
-  <h3 style="margin:22px 0 8px">🏅 Lencana</h3>
+  $('#v-badges').innerHTML=`<h2 class="sec-title" style="margin-top:6px">🎁 Hadiah Hafiz</h2>
+  <p class="muted" style="font-weight:700;margin-top:-4px">Sertifikat, stiker, dan lencana dari perjalanan hafalanmu. Terus belajar untuk membuka semuanya!</p>
+  <h3 style="margin:16px 0 8px">🎓 Sertifikat</h3>
+  <button class="btn btn-sun btn-block" data-act="cert">🎓 Sertifikat Hafiz Cilik</button>
+  <p class="muted small" style="margin:10px 0 8px">Selesaikan 10 level sebuah game untuk mendapat sertifikat tamat game tersebut.</p>
+  <div class="certgrid">${GAMES.map(G=>{const d=doneLevels(G.id),ok=d>=MAXL;return `<button class="certcard ${ok?'':'lock'}" data-act="cert-game" data-g="${G.id}"><span class="e">${ok?'🎓':'🔒'}</span><b>${esc(G.name)}</b><small>${ok?'Lihat sertifikat':d+'/'+MAXL+' level'}</small></button>`;}).join('')}</div>
+  <h3 style="margin:22px 0 4px">🎁 Koleksi Stiker (${stickerCount()}/${GAMES.length*MAXL})</h3>
+  <p class="muted small" style="margin:0 0 10px">Selesaikan tiap level untuk mendapat stikernya. Tingkatnya: perunggu (1-3), perak (4-6), emas (7-9), dan berlian (10).</p>
+  ${GAMES.map(G=>{const M=MOTIFS[G.id-1];return `<div class="stkset"><div class="stkhead"><b>${G.emoji} ${esc(G.name)} · ${esc(M.n)}</b><small>${doneLevels(G.id)}/${MAXL}</small></div><div class="stkrow">${Array.from({length:MAXL},(_,k)=>k+1).map(l=>{const own=stars(G.id,l)>=1;return `<div class="sticker sm t${tierOf(l)} ${own?'':'lock'}" role="img" aria-label="${esc(M.n)} level ${l}${own?'':', belum didapat'}"><span class="stk-e">${own?M.e:'🔒'}</span><small>Lv ${l}${own?' · '+'⭐'.repeat(stars(G.id,l)):''}</small></div>`;}).join('')}</div></div>`;}).join('')}
+  <h3 style="margin:22px 0 4px">🏅 Lencana (${got}/${BADGES.length})</h3>
   <div class="badges" style="margin-top:12px">${BADGES.map(b=>{const on=!!S.badges[b.id];return `<div class="badge ${on?'':'lock'}"><span class="e">${on?b.e:'🔒'}</span><b>${esc(b.n)}</b><small>${esc(b.d)}</small></div>`;}).join('')}</div>`;
 }
 
@@ -1187,19 +1362,34 @@ function renderProfile(){
     <button class="btn btn-ghost btn-sm" data-act="reset" style="justify-self:start">🔄 Atur ulang semua progres</button>
   </div>`;
 }
-function openCert(){
-  const lv=levelInfo(S.xp);
-  openSheet(`<div class="cert-wrap"><div class="cert" id="cert">
-    <div style="font-size:2.6rem">🏆</div>
-    <h3>Sertifikat Hafiz Cilik</h3><div class="muted" style="font-weight:700">AyatPlay Kids · Petualangan Hafiz Cilik</div>
-    <div class="ar" lang="ar" style="font-size:1.6rem">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
-    <div class="muted">Diberikan kepada</div>
+function certHTML(o){
+  return `<div class="cert-wrap"><div class="cert" id="cert"><div class="cert-frame"><div class="cert-in">
+    <span class="corner c1"></span><span class="corner c2"></span><span class="corner c3"></span><span class="corner c4"></span>
+    <div class="cert-bsm ar" lang="ar" dir="rtl">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+    <div class="cert-emblem">${emblemSVG()}</div>
+    <h3>${o.title}</h3><div class="cert-sub">${o.sub}</div>
+    <div class="cert-given">Dengan bangga diberikan kepada</div>
     <div class="nm">${esc(S.name||'Sahabat Hafiz Cilik')}</div>
-    <p style="margin:4px 0;font-weight:700">yang telah giat belajar dan bermain untuk menghafal Al-Qur'an<br>dengan <b style="color:#E8A200">${totalStars()} bintang</b>, <b style="color:#5A3DD6">${S.xp} XP</b>, dan <b style="color:#0E8A71">${memCount()} ayat</b> yang sudah dihafal.</p>
-    <div style="font-family:var(--f-disp);font-size:1.5rem;color:var(--mint-d);font-weight:800">Level ${lv.L} · ${esc(lv.title)}</div>
-    <small class="muted" style="font-weight:700">${new Date().toLocaleDateString('id-ID',{day:'numeric',month:'long',year:'numeric'})}</small>
-  </div>
-  <div class="row" style="margin-top:12px;justify-content:center"><button class="btn btn-mint" data-act="print">🖨️ Cetak / Simpan PDF</button><button class="btn btn-ghost" data-act="close">Tutup</button></div></div>`);
+    <p>${o.body}</p>
+    <div class="stat-row">${o.stats.map(x=>`<span class="stat">${x}</span>`).join('')}</div>
+    <div class="cert-quote"><div class="ar ar-md" lang="ar" dir="rtl">خَيْرُكُمْ مَنْ تَعَلَّمَ الْقُرْآنَ وَعَلَّمَهُ</div><small>“Sebaik-baik kalian adalah orang yang belajar Al-Qur'an dan mengajarkannya.” (HR. Bukhari)</small></div>
+    <div class="cert-sign"><div><span></span><small>Orang Tua / Wali</small></div><div class="cert-date">${new Date().toLocaleDateString('id-ID',{day:'numeric',month:'long',year:'numeric'})}</div><div><span></span><small>Ustaz / Ustazah</small></div></div>
+  </div></div></div>
+  <div class="row" style="margin-top:12px;justify-content:center"><button class="btn btn-mint" data-act="print">🖨️ Cetak / Simpan PDF</button><button class="btn btn-ghost" data-act="close">Tutup</button></div></div>`;
+}
+function openCert(kind,g){
+  if(kind==='game'){
+    const G=GAMES[g-1];
+    if(!allLevels(g)){ toast(`🔒 Selesaikan ${MAXL} level ${G.name} dulu untuk membuka sertifikat ini.`); return; }
+    openSheet(certHTML({title:'Sertifikat Tamat Game',sub:`${G.emoji} ${esc(G.name)}`,
+      body:`telah menuntaskan seluruh ${MAXL} level permainan <b>${esc(G.name)}</b> dengan penuh semangat dan ketekunan. Barakallahu fiikum!`,
+      stats:[`⭐ ${gameStars(g)}/${MAXL*3} bintang`,`${MOTIFS[g-1].e} ${MAXL} stiker ${esc(MOTIFS[g-1].n)}`,`🏆 Level ${MAXL}: ${RANKS[MAXL-1]}`]}),'wide');
+    return;
+  }
+  const lv=levelInfo(S.xp);
+  openSheet(certHTML({title:'Sertifikat Hafiz Cilik',sub:'AyatPlay Kids · Petualangan Hafiz Cilik',
+    body:'yang telah giat belajar dan bermain untuk menghafal Al-Qur\'an (Juz 28, 29, 30). Semoga Allah memberkahi ilmu dan hafalanmu.',
+    stats:[`⭐ ${totalStars()} bintang`,`⚡ ${S.xp} XP`,`📗 ${memCount()} ayat hafal`,`🎁 ${stickerCount()}/${GAMES.length*MAXL} stiker`,`🏅 Level ${lv.L}: ${esc(lv.title)}`]}),'wide');
 }
 
 /* ---------- aksi (event delegation) ---------- */
@@ -1221,7 +1411,8 @@ const ACTIONS={
   cover:()=>{ learnState.cover=!learnState.cover; renderLearn(); },
   reveal:t=>{ const a=t.closest('.ayat'); if(a&&a.classList.contains('cover')) a.classList.remove('cover'); },
   mem:t=>toggleMem(t.dataset.key),
-  cert:()=>openCert(),
+  cert:()=>openCert('main'),
+  'cert-game':t=>openCert('game',+t.dataset.g),
   print:()=>window.print(),
   'load-data':()=>loadFullData(),
   arfont:t=>{ S.arFont=t.dataset.k; save(); applyArabic(); syncArabicUI(); sfx('tap'); },
@@ -1292,8 +1483,9 @@ function startRun(g,l){
   nav('game');
   $('#v-game').innerHTML=`<div class="ghead">
       <button class="btn btn-ghost btn-sm" data-act="quit" aria-label="Keluar dari permainan">✕ Keluar</button>
-      <div><h2>${G.emoji} ${esc(G.name)}</h2><small>Level ${l} · ${LEVELS[l-1].n}</small></div>
+      <div><h2>${G.emoji} ${esc(G.name)}</h2><small>Level ${l} · ${RANKS[l-1]}</small></div>
       <span class="score" aria-label="Jawaban benar">⭐ <b id="g-score">0</b></span></div>
+    <div class="bsm ar" lang="ar" dir="rtl" aria-hidden="true">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
     <div class="prog" id="g-prog" aria-hidden="true"></div>
     <div id="g-timer"></div>
     <div class="stage" id="stage"></div>
@@ -1343,14 +1535,13 @@ const MOTIVE=[{k:'94:6'},{k:'94:7'},{k:'96:1'},
   {t:'Tidak apa-apa salah. Setiap salah membuatmu makin dekat dengan hafal!'},
   {t:'Pahlawan hafalan bukan yang tidak pernah salah, tapi yang mau mencoba lagi.'},
   {t:'Ulang sedikit demi sedikit setiap hari, lama-lama ayatnya melekat di hati.'}];
-const STK_TIER=['Pemula','Pintar','Hafiz'];
 function finishRun(){
   const {g,l,total,correct,G}=run, st=starsFor(correct,total), pass=st>=1, key=g+'-'+l;
-  const prev=stars(g,l), hadAll=[1,2,3].every(x=>stars(g,x)>=1);
+  const prev=stars(g,l), hadAll=allLevels(g);
   S.prog[g]=S.prog[g]||{}; if(st>prev) S.prog[g][l]=st;
-  const first=pass&&prev<1, gained=Math.max(0,st-prev), mult=[1,1.5,2][l-1];
+  const first=pass&&prev<1, gained=Math.max(0,st-prev), mult=1+.25*(l-1);
   const xp=Math.round((correct*10+st*10+(st===3?10:0))*mult);
-  const bonus=first?20*l:0, master=(first&&!hadAll&&[1,2,3].every(x=>stars(g,x)>=1))?50:0;
+  const bonus=first?10+5*l:0, master=(first&&!hadAll&&allLevels(g))?200:0;
   S.fails=S.fails||{}; let retry=false;
   if(pass){ if(first&&S.fails[key]>0){ S.retryWins=(S.retryWins||0)+1; retry=true; } S.fails[key]=0; }
   else S.fails[key]=(S.fails[key]||0)+1;
@@ -1359,24 +1550,27 @@ function finishRun(){
   addXP(xp+bonus+master); save(); checkBadges(); updateHeader(); save();
   clearGameTimers(); $('#fb').innerHTML=''; $('#g-timer').innerHTML=''; drawProg();
   window.scrollTo({top:0,behavior:'smooth'});
+  const full=allLevels(g);
   if(pass){
     sfx('win'); burst({particleCount:150,spread:90}); if(st===3||master) later(()=>burst({particleCount:120,angle:60,spread:70,origin:{x:0,y:.7}}),350);
     for(let i=0;i<st;i++) later(()=>sfx('star'),500+i*350);
-    const stk=STICKERS[g-1], done3=[1,2,3].every(x=>stars(g,x)>=1);
-    const title=(l===3&&done3)?`Game ${esc(G.name)} Tamat! 👑`:`Level ${l} Selesai! 🎉`;
+    const M=MOTIFS[g-1], tr=tierOf(l), u=pick(UCAPAN), tamat=(l===MAXL&&full);
+    const title=tamat?`Game ${esc(G.name)} Tamat! 👑`:`Level ${l} Selesai!`;
     $('#stage').innerHTML=`<div class="result win">${mascotSVG('cheer')}
-      <h2 style="font-size:1.8rem;color:var(--night)">${title}</h2>
-      <p class="muted" style="margin:0;font-weight:700">MasyaAllah, kamu lulus dengan ${correct} dari ${total} soal benar!</p>
+      <div class="ucapan"><div class="ar ar-lg" lang="ar" dir="rtl">${u.ar}</div><small>${esc(u.id)}</small></div>
+      <h2 style="font-size:1.7rem;color:var(--night)">${title}</h2>
+      <p class="muted" style="margin:0;font-weight:700">Kamu lulus dengan ${correct} dari ${total} soal benar!</p>
       <div class="big-stars" role="img" aria-label="${st} dari 3 bintang">${[1,2,3].map(x=>`<span class="${x<=st?'pop':'off'}" style="--i:${x}">⭐</span>`).join('')}</div>
-      <div class="sticker t${l}" role="img" aria-label="Stiker ${esc(stk.n)} ${STK_TIER[l-1]}"><span class="stk-new">${first?'Baru!':'Koleksi'}</span><span class="stk-e">${stk.e}</span><b>${esc(stk.n)}</b><small>Level ${l} · ${STK_TIER[l-1]}</small></div>
+      <div class="sticker t${tr}" role="img" aria-label="Stiker ${esc(M.n)} level ${l}"><span class="stk-new">${first?'Baru!':'Koleksi'}</span><span class="stk-e">${M.e}</span><b>${esc(M.n)}</b><small>Level ${l} · ${RANKS[l-1]} · ${TIER_NAME[tr]}</small></div>
       <div class="stat-row"><span class="stat">✅ ${correct}/${total} benar</span><span class="stat">⚡ +${xp} XP</span>${bonus?`<span class="stat">🎁 Bonus lulus +${bonus} XP</span>`:''}${master?`<span class="stat">👑 Bonus tamat +${master} XP</span>`:''}${gained?`<span class="stat">🌟 +${gained} bintang</span>`:''}</div>
-      ${first&&l<3?`<div class="tag" style="font-size:1rem">🔓 Level ${l+1} (${LEVELS[l].n}) terbuka!</div>`:''}
+      ${first&&l<MAXL?`<div class="tag" style="font-size:1rem">🔓 Level ${l+1} (${RANKS[l]}) terbuka!</div>`:''}
       ${retry?'<div class="tag" style="font-size:1rem">💪 Pantang menyerah! Berhasil setelah mencoba lagi.</div>':''}
       ${st<3?`<p class="hint" style="margin:0">Dapat ${Math.ceil(total*.9)} benar untuk meraih 3 bintang ⭐⭐⭐</p>`:'<p class="hint" style="margin:0">Nilai sempurna! Kamu luar biasa!</p>'}
       <div style="display:grid;gap:10px;width:100%">
-        ${l<3?`<button class="btn btn-mint btn-block" data-act="start" data-g="${g}" data-l="${l+1}">Lanjut ke Level ${l+1} ➡️</button>`:`<button class="btn btn-mint btn-block" data-act="nav" data-to="home">🎮 Pilih game lain</button>`}
-        <button class="btn btn-sun btn-block" data-act="start" data-g="${g}" data-l="${l}">🔄 Main lagi${st<3?' (kejar 3 bintang)':''}</button>
-        <button class="btn btn-ghost btn-block" data-act="nav" data-to="badges">🏅 Lihat koleksi stikerku</button>
+        ${tamat?`<button class="btn btn-sun btn-block" data-act="cert-game" data-g="${g}">🎓 Ambil sertifikat ${esc(G.name)}</button>`:''}
+        ${l<MAXL?`<button class="btn btn-mint btn-block" data-act="start" data-g="${g}" data-l="${l+1}">Lanjut ke Level ${l+1} ➡️</button>`:`<button class="btn btn-mint btn-block" data-act="nav" data-to="home">🎮 Pilih game lain</button>`}
+        <button class="btn btn-ghost btn-block" data-act="start" data-g="${g}" data-l="${l}">🔄 Main lagi${st<3?' (kejar 3 bintang)':''}</button>
+        <button class="btn btn-ghost btn-block" data-act="nav" data-to="badges">🎁 Lihat hadiahku</button>
       </div></div>`;
   } else {
     sfx('wrong');
@@ -1385,9 +1579,9 @@ function finishRun(){
     const surahs=[...new Map(run.missed.map(v=>[v.s,v])).values()].slice(0,3);
     $('#stage').innerHTML=`<div class="result lose">${mascotSVG()}
       <h2 style="font-size:1.7rem;color:var(--night)">${head}</h2>
-      <p style="margin:0;font-weight:800">Kamu benar ${correct} dari ${total}. Butuh ${PASS_MIN} benar untuk lulus${l<3?` dan membuka Level ${l+1}`:''}, kurang <span style="color:var(--coral-d)">${need}</span> lagi!</p>
+      <p style="margin:0;font-weight:800">Kamu benar ${correct} dari ${total}. Butuh ${PASS_MIN} benar untuk lulus${l<MAXL?` dan membuka Level ${l+1}`:''}, kurang <span style="color:var(--coral-d)">${need}</span> lagi!</p>
       <div class="need" role="img" aria-label="${correct} dari ${PASS_MIN} benar yang dibutuhkan">${Array.from({length:total},(_,i)=>`<i class="${i<correct?'on':''} ${i===PASS_MIN-1?'goal':''}"></i>`).join('')}</div>
-      <small class="muted" style="font-weight:700;margin-top:-6px">Garis kuning = batas lulus</small>
+      <small class="muted" style="font-weight:700;margin-top:-6px">Garis emas = batas lulus</small>
       <div class="mot">${mv?`<div class="ar ar-md" lang="ar" dir="rtl">${mv.ar}</div><small>“${esc(mv.id)}” (QS ${esc(mv.sName)}: ${mv.n})</small>`:`<b>${esc(m.t)}</b>`}</div>
       ${tries>=2?`<div class="tag" style="font-size:.95rem">💛 Sudah ${tries} kali mencoba. Kamu hebat karena tidak menyerah!</div>`:''}
       <p class="hint" style="margin:0">💡 Tips: ${esc(G.tip)}</p>
@@ -1401,6 +1595,20 @@ function finishRun(){
   }
 }
 
+/* ---------- tabel kesulitan: 10 level per game, naik sedikit demi sedikit ---------- */
+const LV={
+ 1:{opts:[3,3,3,4,4,4,4,5,5,5],timer:[0,0,0,0,25,22,20,18,15,12],maxw:[5,6,7,9,11,13,16,19,22,22],near:[99,99,99,10,8,6,5,4,3,2]},
+ 2:{opts:[3,3,3,4,4,4,4,4,4,4],timer:[0,0,0,0,40,35,35,30,25,20],frac:[.7,.65,.6,.55,.5,.45,0,0,0,0]},
+ 3:{k:[2,3,3,4,4,4,5,5,6,6]},
+ 4:{min:[1,2,3,3,4,4,5,5,6,6],max:[3,4,5,6,7,8,9,10,12,14],hide:[0,0,0,0,0,1,1,1,1,1],peek:[1,1,1,1,1,1,1,0,0,0]},
+ 5:{nb:[1,1,1,1,2,2,2,2,3,3],opts:[3,3,4,4,4,5,5,6,6,7],same:[0,0,1,1,1,1,1,1,1,1]},
+ 6:{pairs:[2,2,3,3,3,4,4,4,5,5],peek:[4,3.5,3,2.5,2,2,1.5,1.5,1,1]},
+ 7:{min:[3,3,3,4,4,5,5,6,6,7],max:[3,4,5,5,6,6,7,8,9,10],mean:[1,1,1,1,1,1,1,0,0,0]},
+ 8:{opts:[3,3,3,4,4,4,4,4,5,5],rev:[0,0,0,.2,.3,.4,.5,.5,.6,.7],timer:[0,0,0,0,0,30,28,25,22,20]},
+ 9:{opts:[3,3,3,4,4,4,4,5,5,5],mode:[0,0,0,1,1,1,2,2,2,2],timer:[0,0,0,0,0,40,35,30,30,25],maxw:[6,8,10,12,14,16,18,20,22,22]},
+ 10:{n:[3,3,3,4,4,4,5,5,5,6],min:[3,3,3,4,4,4,5,5,6,6],max:[4,5,6,6,7,8,9,10,11,12]}
+};
+
 /* =====================================================================
    10 GAME
    ===================================================================== */
@@ -1408,10 +1616,10 @@ const OPTS=(arr)=>arr.map(o=>`<button class="opt ${o.cls||''}" data-act="opt" da
 
 /* 1. Tebak Surah */
 function r1(el,cfg,l){
-  const v=pickV(l===1?x=>x.words.length<=7:l===2?x=>x.words.length<=14:()=>true), t=SURAHS[v.s];
+  const P=LV[1], v=pickV(x=>x.words.length<=P.maxw[l-1]), t=SURAHS[v.s];
   const pool=[...new Set(scopePool().map(x=>x.s))].map(n=>SURAHS[n]);
-  const near=n=>SURAH_LIST.filter(s=>s.no!==t.no&&Math.abs(s.no-t.no)<=n);
-  const wrong=distract(t.no,cfg.opts-1,l===1?[pool,SURAH_LIST]:[near(l===2?6:3),pool,SURAH_LIST],s=>s.no);
+  const nd=P.near[l-1], near=SURAH_LIST.filter(s=>s.no!==t.no&&Math.abs(s.no-t.no)<=nd);
+  const wrong=distract(t.no,cfg.opts-1,nd>=99?[pool,SURAH_LIST]:[near,pool,SURAH_LIST],s=>s.no);
   const opts=shuffle([t,...wrong]);
   run.q={v};
   el.innerHTML=`<div class="q-text">Ayat ini ada di surah apa?</div>${mushaf(v.ar,{v})}
@@ -1423,15 +1631,16 @@ function r1(el,cfg,l){
 
 /* 2. Sambung Ayat */
 function r2(el,cfg,l){
-  if(l<=2){
-    const f=x=>x.words.length>=2, v=pickV(f), w=v.words, frac=l===1?.6:.4;
+  const frac=LV[2].frac[l-1];
+  if(frac){
+    const f=x=>x.words.length>=2, v=pickV(f), w=v.words;
     const cutOf=ww=>Math.min(ww.length-1,Math.max(1,Math.round(ww.length*frac)));
     const c=cutOf(w), head=w.slice(0,c).join(' '), tail=w.slice(c).join(' ');
     const o=others(v,f), mk=a=>a.map(x=>({x,t:x.words.slice(cutOf(x.words)).join(' ')}));
-    const wrong=distract(tail,cfg.opts-1,l===1?[mk(o.scope),mk(o.all)]:[mk(o.same),mk(o.scope),mk(o.all)],z=>z.t);
+    const wrong=distract(tail,cfg.opts-1,l<=3?[mk(o.scope),mk(o.all)]:[mk(o.same),mk(o.scope),mk(o.all)],z=>z.t);
     const opts=shuffle([{t:tail,ok:1},...wrong.map(z=>({t:z.t,ok:0}))]);
     run.q={v};
-    el.innerHTML=`<div class="q-text">Lanjutkan ayatnya! 🔗</div>${mushaf(`${head} <span style="color:#E8A200">…</span>`,{v,badge:`${v.sName} · ayat ${v.n}`})}
+    el.innerHTML=`<div class="q-text">Lanjutkan ayatnya! 🔗</div>${mushaf(`${head} <span style="color:#B8860B">…</span>`,{v,badge:`${v.sName} · ayat ${v.n}`})}
       <div style="text-align:center">${listenBtn(v)}</div>
       <div class="opts">${OPTS(opts.map(z=>({ok:z.ok,html:arSpan(z.t)})))}</div>`;
   } else {
@@ -1451,9 +1660,9 @@ function r2(el,cfg,l){
 
 /* 3. Urutkan Ayat */
 function r3(el,cfg,l){
-  const k=[3,4,5][l-1];
+  const k=LV[3].k[l-1];
   const inScope=[...new Set(scopePool().map(x=>x.s))].map(n=>SURAHS[n]);
-  const windows=(list,kk)=>{ const out=[]; list.forEach(s=>{ for(let st=0;st+kk<=s.verses.length;st++){ const w=s.verses.slice(st,st+kk); if(w.reduce((n,v)=>n+v.words.length,0)<=70) out.push(w); } }); return out; };
+  const windows=(list,kk)=>{ const out=[]; list.forEach(s=>{ for(let st=0;st+kk<=s.verses.length;st++){ const w=s.verses.slice(st,st+kk); if(w.reduce((n,v)=>n+v.words.length,0)<=40+14*kk) out.push(w); } }); return out; };
   let win=null;
   const juzList=SURAH_LIST.filter(s=>S.scope.juz==='all'||String(s.juz)===String(S.scope.juz));
   for(const list of [inScope,juzList,SURAH_LIST]) for(let kk=k;kk>=2&&!win;kk--){
@@ -1477,11 +1686,11 @@ function r3(el,cfg,l){
 /* 4. Bacakan Ayat */
 const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
 function r4(el,cfg,l){
-  const f=l===1?x=>x.words.length<=5:l===2?x=>x.words.length>=3&&x.words.length<=9:x=>x.words.length>=4&&x.words.length<=16;
-  const v=pickV(f), hide=l===3; run.q={v,att:0};
+  const P=LV[4], i=l-1;
+  const v=pickV(x=>x.words.length>=P.min[i]&&x.words.length<=P.max[i]), hide=!!P.hide[i]; run.q={v,att:0};
   el.innerHTML=`<div class="q-text">${hide?'Bacakan ayat ini dari ingatanmu!':'Bacakan ayat ini dengan suara merdu!'}</div>
     <div id="mus">${mushaf(v.ar,{v,badge:`${v.sName} · ayat ${v.n}`,blur:hide})}</div>
-    <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap">${listenBtn(v)}${hide?'<button class="btn btn-ghost btn-sm" data-act="peek">👀 Intip ayat</button>':''}</div>
+    <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap">${listenBtn(v)}${hide&&P.peek[i]?'<button class="btn btn-ghost btn-sm" data-act="peek">👀 Intip ayat</button>':''}</div>
     ${SR?`<div><button class="mic" id="mic" data-act="mic" aria-label="Mulai merekam bacaan">🎤</button><div class="hint" id="mic-msg" style="margin-top:10px">Tekan mikrofon, lalu bacakan ayatnya dengan lantang.</div></div>`
         :`<div class="hint">Perangkat ini belum mendukung pengenalan suara, jadi nilai bacaanmu sendiri ya. Baca keras-keras dulu!</div>`}
     <div style="display:grid;gap:10px;max-width:520px;margin:0 auto;width:100%">
@@ -1495,7 +1704,7 @@ function startMic(){
   mic.classList.add('rec'); msg.textContent='🎙️ Mendengarkan… silakan membaca!';
   rec.onresult=e=>{
     got=true; const alts=[...e.results[0]].map(a=>a.transcript), sim=Math.max(...alts.map(a=>similarity(a,q.v.ar))), pc=Math.round(sim*100); q.att++;
-    if(sim>=.5) ans(true,q.v,`Kemiripan bacaanmu ±${pc}%. (Penilaian suara hanya perkiraan.)`);
+    if(sim>=.42+.015*run.l) ans(true,q.v,`Kemiripan bacaanmu ±${pc}%. (Penilaian suara hanya perkiraan.)`);
     else if(q.att>=2) ans(false,q.v,`Kemiripan ±${pc}%. Dengarkan contoh qari lalu coba lagi nanti ya.`);
     else msg.textContent=`Kemiripan ±${pc}%. Coba sekali lagi, pelan-pelan dan jelas ya!`;
   };
@@ -1506,11 +1715,11 @@ function startMic(){
 
 /* 5. Detektif Kata */
 function r5(el,cfg,l){
-  const nb=l===3?2:1, v=pickV(x=>x.words.length>=(nb===2?3:2)), w=v.words;
+  const P=LV[5], nb=P.nb[l-1], v=pickV(x=>x.words.length>=Math.max(2,nb+1)), w=v.words;
   let cand=shuffle(w.map((_,i)=>i)).filter(i=>normAr(w[i]).length>=3); if(cand.length<nb) cand=shuffle(w.map((_,i)=>i));
   const blanks=cand.slice(0,nb).sort((a,b)=>a-b), answers=blanks.map(i=>w[i]);
   const o=others(v), words=a=>a.flatMap(x=>x.words);
-  const groups=l===1?[words(o.scope),words(o.all)]:[words(o.same),words(o.scope),words(o.all)];
+  const groups=P.same[l-1]?[words(o.same),words(o.scope),words(o.all)]:[words(o.scope),words(o.all)];
   const seen=new Set(w.map(normAr)), wrong=[];
   for(const g of groups){ for(const c of shuffle(g)){ if(wrong.length>=cfg.opts-nb) break; const k=normAr(c); if(!seen.has(k)){seen.add(k);wrong.push(c);} } }
   const chips=shuffle([...answers,...wrong]);
@@ -1518,7 +1727,7 @@ function r5(el,cfg,l){
   const draw=()=>{
     let k=0;
     const line=w.map((t,j)=>{ if(blanks.includes(j)){ const kk=k++, f=q.fills[kk]; const cls=q.done?(chips[f]===answers[kk]?'ok':'bad'):''; return `<button class="slot ${f!==null?'fill':''} ${cls}" data-act="o5un" data-k="${kk}" ${q.done?'disabled':''} aria-label="Kata hilang ${kk+1}">${f!==null?chips[f]:'؟'}</button>`; } return `<span>${t}</span>`; }).join(' ');
-    el.innerHTML=`<div class="q-text">🔍 Temukan ${nb>1?'2 kata':'kata'} yang hilang!</div>
+    el.innerHTML=`<div class="q-text">🔍 Temukan ${nb>1?nb+' kata':'kata'} yang hilang!</div>
       <div class="mushaf"><span class="badge-n">${esc(v.sName)} · ayat ${v.n}</span><div class="ar ${szOf(v)}" lang="ar" dir="rtl">${line}</div></div>
       <div style="text-align:center">${listenBtn(v)}</div>
       <div class="tray">${chips.map((c,i)=>`<button class="chip-w ar ${q.fills.includes(i)?'used':''}" data-act="o5pick" data-i="${i}" ${q.done?'disabled':''}>${c}</button>`).join('')}</div>
@@ -1529,7 +1738,7 @@ function r5(el,cfg,l){
 
 /* 6. Memory Card */
 function r6(el,cfg,l){
-  const pairs=[2,3,4][l-1], peek=[3.5,2.5,1.5][l-1];
+  const pairs=LV[6].pairs[l-1], peek=LV[6].peek[l-1];
   const ok=x=>x.words.length<=5&&x.id.length<=60;
   const chosen=[], seen=new Set();
   const src=[...shuffle(scopePool().filter(ok).filter(x=>!run.used.has(x.key))),...shuffle(scopePool().filter(ok)),...shuffle(VERSES.filter(ok))];
@@ -1557,13 +1766,13 @@ function flipCard(i){
 
 /* 7. Susun Kata */
 function r7(el,cfg,l){
-  const f=l===1?x=>x.words.length>=3&&x.words.length<=4:l===2?x=>x.words.length>=4&&x.words.length<=6:x=>x.words.length>=5&&x.words.length<=8;
+  const P=LV[7], f=x=>x.words.length>=P.min[l-1]&&x.words.length<=P.max[l-1];
   const v=pickV(f), w=v.words;
   let items=shuffle(w.map((t,i)=>({t,i}))),tries=0; while(items.every((it,i)=>it.t===w[i])&&tries++<12) items=shuffle(w.map((t,i)=>({t,i})));
   const q=run.q={v,items,sel:[],done:null};
   const draw=()=>{
     el.innerHTML=`<div class="q-text">Susun kata-kata menjadi ayat yang benar 🧩</div>
-      ${l<=2?`<div class="hint" style="font-size:.95rem">Artinya: “${esc(v.id)}”</div>`:`<div class="hint">Tanpa petunjuk arti. Ingat-ingat bacaannya!</div>`}
+      ${P.mean[l-1]?`<div class="hint" style="font-size:.95rem">Artinya: “${esc(v.id)}”</div>`:`<div class="hint">Tanpa petunjuk arti. Ingat-ingat bacaannya!</div>`}
       <div style="text-align:center">${listenBtn(v)}</div>
       <div class="slotrow">${q.sel.length?q.sel.map((idx,pos)=>`<button class="chip-w ar ${q.done?(q.done[pos]?'ok':'bad'):''}" data-act="o7un" data-pos="${pos}" ${q.done?'disabled':''}>${items[idx].t}</button>`).join(''):'<span class="hint" style="direction:ltr">Ketuk kata di bawah, mulai dari kata pertama (paling kanan)</span>'}</div>
       <div class="tray">${items.map((it,idx)=>`<button class="chip-w ar ${q.sel.includes(idx)?'used':''}" data-act="o7pick" data-idx="${idx}" ${q.done?'disabled':''}>${it.t}</button>`).join('')}</div>
@@ -1574,9 +1783,9 @@ function r7(el,cfg,l){
 
 /* 8. Tebak Arti */
 function r8(el,cfg,l){
-  const rev=l===3?Math.random()<.5:(l===2?Math.random()<.25:false), v=pickV(), o=others(v);
+  const rev=Math.random()<LV[8].rev[l-1], v=pickV(), o=others(v);
   const key=rev?(x=>x.ar):(x=>x.id);
-  const wrong=distract(key(v),cfg.opts-1,l===1?[o.scope,o.all]:[o.same,o.scope,o.all],key);
+  const wrong=distract(key(v),cfg.opts-1,l<=2?[o.scope,o.all]:[o.same,o.scope,o.all],key);
   const opts=shuffle([v,...wrong]);
   run.q={v,wrong:rev?'Ayat yang cocok dengan artinya ada di bawah ini.':'Arti yang tepat ada di bawah ini.'};
   el.innerHTML=`<div class="q-text">${rev?'Mana ayat yang artinya seperti ini?':'Apa arti ayat ini?'}</div>
@@ -1587,9 +1796,9 @@ function r8(el,cfg,l){
 
 /* 9. Dengar & Pilih */
 function r9(el,cfg,l){
-  const v=pickV(), o=others(v);
+  const P=LV[9], mode=P.mode[l-1], v=pickV(x=>x.words.length<=P.maxw[l-1]), o=others(v);
   const near=a=>a.map(x=>[Math.abs(x.words.length-v.words.length)+Math.random()*1.5,x]).sort((p,q)=>p[0]-q[0]).map(z=>z[1]);
-  const wrong=distract(v.ar,cfg.opts-1,l===1?[o.scope,o.all]:l===2?[o.same,o.scope,o.all]:[near(o.same),near(o.scope),near(o.all)],x=>x.ar,l===3);
+  const wrong=distract(v.ar,cfg.opts-1,mode===0?[o.scope,o.all]:mode===1?[o.same,o.scope,o.all]:[near(o.same),near(o.scope),near(o.all)],x=>x.ar,mode===2);
   const opts=shuffle([v,...wrong]);
   run.q={v,wrong:'Ini ayat yang kamu dengar tadi.'};
   el.innerHTML=`<div class="q-text">Dengarkan baik-baik, lalu pilih ayat yang kamu dengar 🎧</div>
@@ -1601,9 +1810,9 @@ function r9(el,cfg,l){
 
 /* 10. Kata Menghilang (teknik hafalan bertahap) */
 function r10(el,cfg,l){
-  const f=l===1?x=>x.words.length>=3&&x.words.length<=6:l===2?x=>x.words.length>=4&&x.words.length<=8:x=>x.words.length>=5&&x.words.length<=12;
-  const v=pickV(f), w=v.words, order=shuffle(w.map((_,i)=>i));
-  const fr=[[.34,.67,1],[.25,.5,.75,1],[.4,.6,.8,1]][l-1];
+  const P=LV[10], i=l-1;
+  const v=pickV(x=>x.words.length>=P.min[i]&&x.words.length<=P.max[i]), w=v.words, order=shuffle(w.map((_,k)=>k));
+  const fr=Array.from({length:P.n[i]},(_,k)=>(k+1)/P.n[i]);
   const q=run.q={v,stage:-1,peek:new Set(),all:false};
   const draw=()=>{
     if(q.stage<0){
@@ -1615,7 +1824,7 @@ function r10(el,cfg,l){
       return;
     }
     const n=Math.min(w.length,Math.max(1,Math.ceil(fr[q.stage]*w.length))), hidden=new Set(order.slice(0,n)), last=q.stage===fr.length-1;
-    const line=w.map((t,j)=>hidden.has(j)&&!q.peek.has(j)&&!q.all?`<button class="ghost" data-act="g10peek" data-j="${j}" style="min-width:${Math.max(46,normAr(t).length*12)}px" aria-label="Kata tersembunyi. Ketuk untuk mengintip"></button>`:`<span ${hidden.has(j)&&!q.all?'style="color:#E8A200"':''}>${t}</span>`).join(' ');
+    const line=w.map((t,j)=>hidden.has(j)&&!q.peek.has(j)&&!q.all?`<button class="ghost" data-act="g10peek" data-j="${j}" style="min-width:${Math.max(46,normAr(t).length*12)}px" aria-label="Kata tersembunyi. Ketuk untuk mengintip"></button>`:`<span ${hidden.has(j)&&!q.all?'style="color:#B8860B"':''}>${t}</span>`).join(' ');
     el.innerHTML=`<div class="q-text">Tahap ${q.stage+1} dari ${fr.length} · ${Math.round(n/w.length*100)}% kata disembunyikan</div>
       <div class="mushaf"><span class="badge-n">${esc(v.sName)} · ayat ${v.n}</span><div class="ar ${szOf(v)}" lang="ar" dir="rtl">${line}</div></div>
       <div style="text-align:center">${listenBtn(v)}</div>
@@ -1628,32 +1837,38 @@ function r10(el,cfg,l){
 }
 
 /* ---------- daftar game ---------- */
+const tm=(t)=>t?` · ${t} detik`:'';
+const D={
+ 1:i=>`ayat ≤${LV[1].maxw[i]} kata · ${LV[1].opts[i]} pilihan${tm(LV[1].timer[i])}`,
+ 2:i=>LV[2].frac[i]?`sambung kata · ${Math.round(LV[2].frac[i]*100)}% ayat tampil · ${LV[2].opts[i]} pilihan${tm(LV[2].timer[i])}`:`tebak ayat berikutnya · ${LV[2].opts[i]} pilihan${tm(LV[2].timer[i])}`,
+ 3:i=>`urutkan ${LV[3].k[i]} ayat`,
+ 4:i=>`ayat ${LV[4].min[i]}-${LV[4].max[i]} kata · ${LV[4].hide[i]?'ayat disamarkan, baca dari ingatan':'ayat terlihat'}`,
+ 5:i=>`${LV[5].nb[i]} kata hilang · ${LV[5].opts[i]} pilihan${LV[5].same[i]?' mirip':''}`,
+ 6:i=>`${LV[6].pairs[i]} pasang kartu · intip ${LV[6].peek[i]} detik`,
+ 7:i=>`ayat ${LV[7].min[i]}-${LV[7].max[i]} kata · ${LV[7].mean[i]?'ada arti':'tanpa arti'}`,
+ 8:i=>`${LV[8].opts[i]} pilihan · ${LV[8].rev[i]?Math.round(LV[8].rev[i]*100)+'% soal dari arti ke ayat':'ayat ke arti'}${tm(LV[8].timer[i])}`,
+ 9:i=>`${LV[9].opts[i]} pilihan · ${['acak','satu surah','satu surah, panjang mirip'][LV[9].mode[i]]}${tm(LV[9].timer[i])}`,
+ 10:i=>`${LV[10].n[i]} tahap · ayat ${LV[10].min[i]}-${LV[10].max[i]} kata`
+};
+const mkLevels=id=>Array.from({length:MAXL},(_,i)=>({q:10,opts:LV[id].opts&&LV[id].opts[i],timer:(LV[id].timer&&LV[id].timer[i])||0,desc:D[id](i)}));
 const GAMES=[
- {id:1,emoji:'❓',name:'Tebak Surah',short:'Ayat ini dari surah apa? Baca, dengar, lalu tebak!',how:'Lihat atau dengarkan potongan ayat, lalu pilih nama surahnya.',tip:'Dengarkan ayatnya, lalu ingat kata pertama dan bunyi akhirnya.',render:r1,
-  levels:[{q:10,opts:3,desc:'10 soal · ayat pendek · 3 pilihan'},{q:10,opts:4,desc:'10 soal · ayat sedang · 4 pilihan, surah mirip'},{q:10,opts:4,timer:20,desc:'10 soal · semua ayat · 4 pilihan · 20 detik'}]},
- {id:2,emoji:'🔗',name:'Sambung Ayat',short:'Lanjutkan potongan ayat atau tebak ayat berikutnya.',how:'Pilih sambungan yang tepat. Di Level 3 kamu menebak ayat yang datang setelahnya.',tip:'Ucapkan potongan ayat berulang-ulang, biasanya lanjutannya langsung terasa.',render:r2,
-  levels:[{q:10,opts:3,desc:'10 soal · sambung kata · petunjuk banyak'},{q:10,opts:4,desc:'10 soal · sambung kata · petunjuk sedikit'},{q:10,opts:4,timer:30,desc:'10 soal · tebak ayat berikutnya · 30 detik'}]},
- {id:3,emoji:'🔢',name:'Urutkan Ayat',short:'Susun ayat-ayat acak menjadi urutan yang benar.',how:'Ketuk ayat satu per satu mulai dari ayat yang pertama.',tip:'Cari dulu ayat pembuka surah, lalu tebak ayat yang datang setelahnya.',render:r3,
-  levels:[{q:10,desc:'10 soal · urutkan 3 ayat'},{q:10,desc:'10 soal · urutkan 4 ayat'},{q:10,desc:'10 soal · urutkan 5 ayat'}]},
- {id:4,emoji:'🎤',name:'Bacakan Ayat',short:'Baca dengan suaramu, mikrofon ikut mendengarkan.',how:'Dengarkan contoh qari, lalu bacakan ayatnya. Di Level 3 ayat disamarkan.',tip:'Dengarkan contoh qari 3 kali dulu, lalu tirukan pelan-pelan.',render:r4,
-  levels:[{q:10,desc:'10 ayat pendek · ayat terlihat'},{q:10,desc:'10 ayat sedang · ayat terlihat'},{q:10,desc:'10 ayat · ayat disamarkan, baca dari ingatan'}]},
- {id:5,emoji:'🕵️',name:'Detektif Kata',short:'Temukan kata yang hilang di dalam ayat.',how:'Ketuk kata yang tepat untuk mengisi kotak yang hilang.',tip:'Baca ayatnya dari awal, kata yang hilang biasanya terasa janggal saat dilewati.',render:r5,
-  levels:[{q:10,opts:3,desc:'10 soal · 1 kata hilang · 3 pilihan'},{q:10,opts:4,desc:'10 soal · 1 kata hilang · 4 pilihan mirip'},{q:10,opts:5,desc:'10 soal · 2 kata hilang · 5 pilihan'}]},
- {id:6,emoji:'🃏',name:'Kartu Ingatan',short:'Balik kartu, pasangkan ayat dengan artinya.',how:'Ingat posisi kartu, lalu cocokkan ayat Arab dengan terjemahannya.',tip:'Ucapkan isi kartu dalam hati saat kartu terbuka supaya mudah diingat.',render:r6,
-  levels:[{q:10,desc:'10 ronde · 2 pasang kartu · intip lama'},{q:10,desc:'10 ronde · 3 pasang kartu'},{q:10,desc:'10 ronde · 4 pasang kartu · intip sebentar'}]},
- {id:7,emoji:'🧩',name:'Susun Kata',short:'Rangkai kata-kata acak menjadi ayat utuh.',how:'Ketuk kata-kata sesuai urutan bacaan, mulai dari kata pertama.',tip:'Tekan Dengarkan, lalu susun kata sesuai urutan bunyinya.',render:r7,
-  levels:[{q:10,desc:'10 soal · ayat 3-4 kata · ada arti'},{q:10,desc:'10 soal · ayat 4-6 kata · ada arti'},{q:10,desc:'10 soal · ayat 5-8 kata · tanpa arti'}]},
- {id:8,emoji:'💡',name:'Tebak Arti',short:'Pahami makna ayat supaya hafalan makin kuat.',how:'Pilih arti yang cocok dengan ayat, atau ayat yang cocok dengan arti.',tip:'Baca arti ayat di menu Belajar. Kalau paham maknanya, hafalan jadi lebih mudah.',render:r8,
-  levels:[{q:10,opts:3,desc:'10 soal · ayat ke arti · 3 pilihan'},{q:10,opts:4,desc:'10 soal · ayat ke arti, kadang sebaliknya · 4 pilihan'},{q:10,opts:4,timer:25,desc:'10 soal · dua arah · 4 pilihan · 25 detik'}]},
- {id:9,emoji:'🎧',name:'Dengar & Pilih',short:'Dengarkan qari, lalu pilih ayat yang dibaca.',how:'Putar suara, simak baik-baik, lalu pilih tulisan ayat yang sama.',tip:'Perhatikan kata pertama yang dibaca qari, lalu cocokkan dengan tulisannya.',render:r9,
-  levels:[{q:10,opts:3,desc:'10 soal · 3 pilihan'},{q:10,opts:4,desc:'10 soal · 4 pilihan dari surah yang sama'},{q:10,opts:4,timer:30,desc:'10 soal · pilihan panjangnya mirip · 30 detik'}]},
- {id:10,emoji:'🪄',name:'Kata Menghilang',short:'Kata-kata lenyap bertahap sampai kamu hafal.',how:'Baca bersama qari. Tiap tahap, makin banyak kata yang menghilang. Ucapkan dari ingatan!',tip:'Baca ayat keras-keras 3 kali sebelum mulai, lalu coba ucapkan tanpa mengintip.',render:r10,
-  levels:[{q:10,desc:'10 ayat · 3 tahap · ayat pendek'},{q:10,desc:'10 ayat · 4 tahap'},{q:10,desc:'10 ayat · 4 tahap · ayat lebih panjang'}]}
+ {id:1,emoji:'❓',name:'Tebak Surah',short:'Ayat ini dari surah apa? Baca, dengar, lalu tebak!',how:'Lihat atau dengarkan potongan ayat, lalu pilih nama surahnya.',tip:'Dengarkan ayatnya, lalu ingat kata pertama dan bunyi akhirnya.',render:r1},
+ {id:2,emoji:'🔗',name:'Sambung Ayat',short:'Lanjutkan potongan ayat atau tebak ayat berikutnya.',how:'Pilih sambungan yang tepat. Di level akhir kamu menebak ayat yang datang setelahnya.',tip:'Ucapkan potongan ayat berulang-ulang, biasanya lanjutannya langsung terasa.',render:r2},
+ {id:3,emoji:'🔢',name:'Urutkan Ayat',short:'Susun ayat-ayat acak menjadi urutan yang benar.',how:'Ketuk ayat satu per satu mulai dari ayat yang pertama.',tip:'Cari dulu ayat pembuka surah, lalu tebak ayat yang datang setelahnya.',render:r3},
+ {id:4,emoji:'🎤',name:'Bacakan Ayat',short:'Baca dengan suaramu, mikrofon ikut mendengarkan.',how:'Dengarkan contoh qari, lalu bacakan ayatnya. Di level tinggi ayat disamarkan.',tip:'Dengarkan contoh qari 3 kali dulu, lalu tirukan pelan-pelan.',render:r4},
+ {id:5,emoji:'🕵️',name:'Detektif Kata',short:'Temukan kata yang hilang di dalam ayat.',how:'Ketuk kata yang tepat untuk mengisi kotak yang hilang.',tip:'Baca ayatnya dari awal, kata yang hilang biasanya terasa janggal saat dilewati.',render:r5},
+ {id:6,emoji:'🃏',name:'Kartu Ingatan',short:'Balik kartu, pasangkan ayat dengan artinya.',how:'Ingat posisi kartu, lalu cocokkan ayat Arab dengan terjemahannya.',tip:'Ucapkan isi kartu dalam hati saat kartu terbuka supaya mudah diingat.',render:r6},
+ {id:7,emoji:'🧩',name:'Susun Kata',short:'Rangkai kata-kata acak menjadi ayat utuh.',how:'Ketuk kata-kata sesuai urutan bacaan, mulai dari kata pertama.',tip:'Tekan Dengarkan, lalu susun kata sesuai urutan bunyinya.',render:r7},
+ {id:8,emoji:'💡',name:'Tebak Arti',short:'Pahami makna ayat supaya hafalan makin kuat.',how:'Pilih arti yang cocok dengan ayat, atau ayat yang cocok dengan arti.',tip:'Baca arti ayat di menu Belajar. Kalau paham maknanya, hafalan jadi lebih mudah.',render:r8},
+ {id:9,emoji:'🎧',name:'Dengar & Pilih',short:'Dengarkan qari, lalu pilih ayat yang dibaca.',how:'Putar suara, simak baik-baik, lalu pilih tulisan ayat yang sama.',tip:'Perhatikan kata pertama yang dibaca qari, lalu cocokkan dengan tulisannya.',render:r9},
+ {id:10,emoji:'🪄',name:'Kata Menghilang',short:'Kata-kata lenyap bertahap sampai kamu hafal.',how:'Baca bersama qari. Tiap tahap, makin banyak kata yang menghilang. Ucapkan dari ingatan!',tip:'Baca ayat keras-keras 3 kali sebelum mulai, lalu coba ucapkan tanpa mengintip.',render:r10}
 ];
+GAMES.forEach(G=>{G.levels=mkLevels(G.id);});
 
 /* ---------- aksi game ---------- */
 Object.assign(ACTIONS,{
   start:t=>startRun(+t.dataset.g,+t.dataset.l),
+  lvsel:t=>openLevelSheet(+t.dataset.g,+t.dataset.l),
   'study-surah':t=>{ learnState.surah=+t.dataset.s; nav('learn'); },
   quit:()=>{ if(!run||run.locked||confirm('Keluar dari permainan? Skor ronde ini tidak disimpan.')) nav('home'); },
   next:()=>{ run.idx++; nextQ(); },
