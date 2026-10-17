@@ -313,7 +313,7 @@ body.in-game .bottom{display:none}
 .sp-stars circle{animation:tw 2.6s ease-in-out infinite}
 @keyframes tw{0%,100%{opacity:.2}50%{opacity:1}}
 .sp-center{position:relative;display:grid;justify-items:center;gap:6px;padding:20px;margin-top:-6vh}
-.sp-mark{width:min(66vw,310px);height:auto;filter:drop-shadow(0 16px 26px rgba(0,0,0,.35));animation:spPop .95s cubic-bezier(.2,1.4,.4,1) both}
+.sp-mark{width:min(66vw,310px,36vh);height:auto;filter:drop-shadow(0 16px 26px rgba(0,0,0,.35));animation:spPop .95s cubic-bezier(.2,1.4,.4,1) both}
 @keyframes spPop{0%{transform:scale(.3) rotate(-12deg);opacity:0}100%{transform:none;opacity:1}}
 .sp-star{animation:spBob 2.4s ease-in-out .95s infinite;transform-box:fill-box;transform-origin:50% 85%}
 @keyframes spBob{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-9px) rotate(2deg)}}
@@ -325,14 +325,9 @@ body.in-game .bottom{display:none}
 .sp-kids{font-family:var(--f-disp);font-weight:800;font-size:1.15rem;background:var(--sun);color:#3b2b00;border-radius:12px;padding:0 16px;border-bottom:4px solid var(--sun-d);animation:spLetter .6s 1.35s cubic-bezier(.2,1.6,.4,1) both}
 .sp-tag{margin-top:6px;font-weight:700;opacity:.92;animation:spFade .8s 1.5s both}
 @keyframes spFade{from{opacity:0}to{opacity:.92}}
-.sp-load{position:absolute;left:0;right:0;bottom:calc(7vh + env(safe-area-inset-bottom,0px));display:grid;justify-items:center;gap:10px}
-.sp-load p{margin:0;font-weight:700;font-size:.92rem;opacity:.9}
-.sp-bar{width:min(62vw,260px);height:12px;border-radius:99px;background:rgba(255,255,255,.2);overflow:hidden}
-.sp-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#FFC93C,#FFE48A);border-radius:99px;animation:spLoad 2.2s ease-out forwards}
-@keyframes spLoad{to{width:100%}}
 .btn-danger{color:var(--bad);border-color:#F5C2C4}
 .small{font-size:.85rem;line-height:1.45}
-@media(prefers-reduced-motion:reduce){.sp-bar i{width:100%}}
+@media(prefers-reduced-motion:reduce){}
 
 /* ===== hadiah & motivasi ===== */
 .big-stars span.pop{display:inline-block;animation:starPop .6s cubic-bezier(.2,1.7,.4,1) both;animation-delay:calc(var(--i)*.35s + .2s)}
@@ -369,7 +364,7 @@ body{background-color:var(--sky);background-image:var(--pat)}
 .hero::before{content:"";position:absolute;inset:0;background:var(--pat-w);pointer-events:none}
 .hero .skyline{position:absolute;left:0;right:0;bottom:0;width:100%;height:96px;pointer-events:none}
 .hero .lant{position:absolute;top:0;width:34px;transform-origin:50% 0;animation:sway 4.2s ease-in-out infinite;pointer-events:none}
-.hero .lant.l1{right:26%}.hero .lant.l2{right:16%;width:28px;animation-delay:-1.4s;margin-top:-14px}
+.hero .lant.l1{right:4%}.hero .lant.l2{right:11%;width:28px;animation-delay:-1.4s;margin-top:-14px}
 @keyframes sway{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(5deg)}}
 .lant-glow{animation:glow 2.6s ease-in-out infinite}
 @keyframes glow{0%,100%{opacity:.75}50%{opacity:1}}
@@ -417,10 +412,7 @@ body{background-color:var(--sky);background-image:var(--pat)}
 #splash::before{content:"";position:absolute;inset:0;background:var(--pat-w)}
 .sp-lant{position:absolute;top:0;width:clamp(34px,9vw,52px);transform-origin:50% 0;animation:sway 4s ease-in-out infinite;z-index:1}
 .sp-lant.l1{left:9%;margin-top:clamp(40px,9vh,72px)}.sp-lant.l2{right:9%;animation-delay:-1.5s;margin-top:clamp(70px,14vh,110px)}
-.sp-sky{position:absolute;left:0;right:0;bottom:0;width:100%;height:clamp(110px,24vh,200px);z-index:1}
 .sp-center{z-index:2;margin-top:-4vh}
-.sp-load{bottom:calc(clamp(110px,24vh,200px) + 14px);z-index:2}
-.sp-bar i{background:linear-gradient(90deg,#E8B63A,#F6DF8E)}
 .sp-kids{background:var(--sun);border-bottom-color:var(--sun-d)}
 @media(max-width:560px){.hero h2{padding-right:44px}.hero .lant.l1{right:6%}.hero .lant.l2{display:none}}
 .cert-wrap{max-width:760px}
@@ -470,6 +462,7 @@ body{background-color:var(--sky);background-image:var(--pat)}
 .dlg-info{background:#FFF8DD;border:2px solid var(--sun);border-radius:99px;padding:3px 16px;font-weight:800;color:#6b5200;font-size:.92rem}
 .dlg-btns{display:grid;gap:8px;width:100%;margin-top:6px}
 .dlg-risk{color:var(--coral-d);border-color:#F1C9BC}
+.sp-msg{margin:12px 0 0;font-weight:700;font-size:.95rem;opacity:.85;animation:spFade .8s 1.6s both}
 @media print{
   @page{size:landscape;margin:10mm}
   body *{visibility:hidden}
@@ -542,10 +535,10 @@ body{background-color:var(--sky);background-image:var(--pat)}
 <svg class="sp-stars" aria-hidden="true"><circle cx="65.0%" cy="63.3%" r="1.7" fill="#fff" style="animation-delay:0.27s"/><circle cx="22.8%" cy="53.2%" r="1.5" fill="#fff" style="animation-delay:0.85s"/><circle cx="80.2%" cy="23.7%" r="2.5" fill="#fff" style="animation-delay:2.19s"/><circle cx="95.3%" cy="36.3%" r="1.7" fill="#fff" style="animation-delay:1.18s"/><circle cx="44.5%" cy="40.9%" r="1.6" fill="#fff" style="animation-delay:2.11s"/><circle cx="11.8%" cy="54.6%" r="1.1" fill="#fff" style="animation-delay:0.82s"/><circle cx="44.1%" cy="37.9%" r="2.4" fill="#fff" style="animation-delay:1.70s"/><circle cx="73.5%" cy="26.0%" r="3.0" fill="#fff" style="animation-delay:0.10s"/><circle cx="6.2%" cy="28.5%" r="3.1" fill="#fff" style="animation-delay:0.22s"/><circle cx="78.1%" cy="44.6%" r="3.1" fill="#fff" style="animation-delay:0.97s"/><circle cx="76.6%" cy="55.2%" r="2.4" fill="#fff" style="animation-delay:1.74s"/><circle cx="30.3%" cy="62.0%" r="2.8" fill="#fff" style="animation-delay:2.12s"/><circle cx="63.9%" cy="33.2%" r="2.8" fill="#fff" style="animation-delay:0.72s"/><circle cx="20.5%" cy="35.1%" r="1.5" fill="#fff" style="animation-delay:0.98s"/><circle cx="50.8%" cy="61.8%" r="2.0" fill="#fff" style="animation-delay:0.46s"/><circle cx="68.3%" cy="50.3%" r="3.2" fill="#fff" style="animation-delay:0.09s"/><circle cx="71.8%" cy="12.5%" r="1.9" fill="#fff" style="animation-delay:2.15s"/><circle cx="34.1%" cy="4.6%" r="2.1" fill="#fff" style="animation-delay:2.17s"/><circle cx="57.8%" cy="2.5%" r="1.2" fill="#fff" style="animation-delay:0.81s"/><circle cx="97.1%" cy="33.9%" r="2.6" fill="#fff" style="animation-delay:1.77s"/><circle cx="47.1%" cy="7.0%" r="2.4" fill="#fff" style="animation-delay:1.19s"/><circle cx="99.2%" cy="6.7%" r="3.1" fill="#fff" style="animation-delay:2.00s"/><circle cx="63.2%" cy="6.0%" r="3.0" fill="#fff" style="animation-delay:1.59s"/><circle cx="56.4%" cy="45.7%" r="2.1" fill="#fff" style="animation-delay:1.84s"/><circle cx="59.1%" cy="39.3%" r="3.2" fill="#fff" style="animation-delay:0.21s"/><circle cx="36.7%" cy="45.6%" r="2.3" fill="#fff" style="animation-delay:0.73s"/><circle cx="28.7%" cy="27.4%" r="2.7" fill="#fff" style="animation-delay:0.66s"/><circle cx="4.2%" cy="7.1%" r="3.3" fill="#fff" style="animation-delay:2.37s"/><circle cx="84.3%" cy="59.2%" r="2.0" fill="#fff" style="animation-delay:0.93s"/><circle cx="30.6%" cy="68.7%" r="1.2" fill="#fff" style="animation-delay:1.98s"/><circle cx="1.2%" cy="26.8%" r="2.5" fill="#fff" style="animation-delay:2.41s"/><circle cx="72.6%" cy="23.6%" r="1.4" fill="#fff" style="animation-delay:1.33s"/><circle cx="28.7%" cy="6.3%" r="1.4" fill="#fff" style="animation-delay:2.35s"/><circle cx="16.6%" cy="5.0%" r="2.4" fill="#fff" style="animation-delay:2.07s"/><circle cx="68.3%" cy="55.4%" r="2.0" fill="#fff" style="animation-delay:1.05s"/><circle cx="89.9%" cy="26.8%" r="2.6" fill="#fff" style="animation-delay:0.88s"/><circle cx="17.3%" cy="58.4%" r="2.3" fill="#fff" style="animation-delay:0.47s"/><circle cx="38.1%" cy="61.2%" r="3.0" fill="#fff" style="animation-delay:1.83s"/><circle cx="80.7%" cy="37.0%" r="1.5" fill="#fff" style="animation-delay:1.91s"/><circle cx="69.8%" cy="23.7%" r="1.2" fill="#fff" style="animation-delay:1.96s"/><circle cx="48.6%" cy="17.8%" r="1.3" fill="#fff" style="animation-delay:0.20s"/><circle cx="67.7%" cy="13.5%" r="2.3" fill="#fff" style="animation-delay:1.99s"/><circle cx="40.8%" cy="17.4%" r="3.2" fill="#fff" style="animation-delay:0.46s"/><circle cx="66.5%" cy="41.9%" r="3.2" fill="#fff" style="animation-delay:0.50s"/><circle cx="17.8%" cy="2.9%" r="1.6" fill="#fff" style="animation-delay:0.23s"/><circle cx="97.0%" cy="16.4%" r="2.8" fill="#fff" style="animation-delay:0.31s"/></svg>
 <svg class="sp-lant l1" viewBox="0 0 60 130" aria-hidden="true"><path d="M30 0V24" stroke="#D9B04A" stroke-width="2"/><circle cx="30" cy="26" r="4" fill="#D9B04A"/>
 <path d="M16 46Q30 18 44 46Z" fill="#C9962A"/><path d="M13 46H47L53 82L45 100H15L7 82Z" fill="#F0C14B" stroke="#B8860B" stroke-width="2" stroke-linejoin="round"/>
-<path class="lant-glow" d="M22 56Q30 42 38 56V88H22Z" fill="#FFF4B8"/><path d="M30 46V100M13 66H47" stroke="#B8860B" stroke-width="1.6" opacity=".7"/>
+<path class="lant-glow" d="M22 56Q30 42 38 56V88H22Z" fill="#FFF4B8"/>
 <path d="M17 100H43V107H17Z" fill="#C9962A"/><path d="M30 107V124" stroke="#D9B04A" stroke-width="2"/><circle cx="30" cy="126" r="3.5" fill="#F0C14B"/></svg><svg class="sp-lant l2" viewBox="0 0 60 130" aria-hidden="true"><path d="M30 0V24" stroke="#D9B04A" stroke-width="2"/><circle cx="30" cy="26" r="4" fill="#D9B04A"/>
 <path d="M16 46Q30 18 44 46Z" fill="#C9962A"/><path d="M13 46H47L53 82L45 100H15L7 82Z" fill="#F0C14B" stroke="#B8860B" stroke-width="2" stroke-linejoin="round"/>
-<path class="lant-glow" d="M22 56Q30 42 38 56V88H22Z" fill="#FFF4B8"/><path d="M30 46V100M13 66H47" stroke="#B8860B" stroke-width="1.6" opacity=".7"/>
+<path class="lant-glow" d="M22 56Q30 42 38 56V88H22Z" fill="#FFF4B8"/>
 <path d="M17 100H43V107H17Z" fill="#C9962A"/><path d="M30 107V124" stroke="#D9B04A" stroke-width="2"/><circle cx="30" cy="126" r="3.5" fill="#F0C14B"/></svg>
 <div class="sp-center">
 <svg class="sp-mark" viewBox="0 0 512 512" aria-hidden="true"><g transform="translate(0 -26)">
@@ -581,19 +574,9 @@ body{background-color:var(--sky);background-image:var(--pat)}
 </g></g></g></svg>
 <div class="sp-title" aria-hidden="true"><span style="animation-delay:0.75s">A</span><span style="animation-delay:0.81s">y</span><span style="animation-delay:0.87s">a</span><span style="animation-delay:0.93s">t</span><span style="animation-delay:0.99s">P</span><span style="animation-delay:1.05s">l</span><span style="animation-delay:1.11s">a</span><span style="animation-delay:1.17s">y</span></div>
 <div class="sp-kids" aria-hidden="true">Kids</div>
-<div class="sp-tag">.</div>
+<div class="sp-tag">Petualangan Hafiz Cilik</div>
+<p id="splash-msg" class="sp-msg">Bismillah… 🌙</p>
 </div>
-<svg class="sp-sky" viewBox="0 0 600 150" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><g fill="#062F38">
-<path d="M0 150V112H44V96Q44 78 66 76Q88 78 88 96V150Z"/><path d="M100 150V58H116V150Z"/><path d="M97 58L108 26 119 58Z"/><path d="M92 82H124V89H92Z"/>
-<path d="M140 150V104Q140 70 190 62Q240 70 240 104V150Z"/><path d="M190 62V40" stroke="#062F38" stroke-width="4"/>
-<path d="M252 150V70H268V150Z"/><path d="M249 70L260 36 271 70Z"/><path d="M244 94H276V101H244Z"/>
-<path d="M286 150V120H340V150Z"/>
-<path d="M350 150V96Q350 52 410 44Q470 52 470 96V150Z"/><path d="M410 44V18" stroke="#062F38" stroke-width="4"/>
-<path d="M482 150V64H498V150Z"/><path d="M479 64L490 30 501 64Z"/><path d="M474 88H506V95H474Z"/>
-<path d="M516 150V108H560V92Q560 76 580 74Q600 76 600 92V150Z"/></g>
-<g fill="#FFD24D"><circle cx="190" cy="38" r="4"/><circle cx="410" cy="16" r="4"/><circle cx="108" cy="24" r="3.5"/><circle cx="260" cy="34" r="3.5"/><circle cx="490" cy="28" r="3.5"/></g>
-<g fill="#FFD24D" opacity=".8"><path d="M174 150v-24a16 16 0 0 1 32 0v24z"/><path d="M394 150v-26a16 16 0 0 1 32 0v26z"/><rect x="300" y="128" width="8" height="12" rx="4"/><rect x="318" y="128" width="8" height="12" rx="4"/></g></svg>
-<div class="sp-load"><div class="sp-bar"><i></i></div><p id="splash-msg">🌙</p></div>
 </div>
 
 <header class="top" id="top">
@@ -1500,8 +1483,8 @@ function starsBg(){
 
 
 const STAR8="50.0,2.0 64.1,16.1 83.9,16.1 83.9,35.9 98.0,50.0 83.9,64.1 83.9,83.9 64.1,83.9 50.0,98.0 35.9,83.9 16.1,83.9 16.1,64.1 2.0,50.0 16.1,35.9 16.1,16.1 35.9,16.1";
-const lanternSVG=cls=>`<svg class="lant ${cls}" viewBox="0 0 60 130" aria-hidden="true"><path d="M30 0V24" stroke="#D9B04A" stroke-width="2"/><circle cx="30" cy="26" r="4" fill="#D9B04A"/><path d="M16 46Q30 18 44 46Z" fill="#C9962A"/><path d="M13 46H47L53 82L45 100H15L7 82Z" fill="#F0C14B" stroke="#B8860B" stroke-width="2" stroke-linejoin="round"/><path class="lant-glow" d="M22 56Q30 42 38 56V88H22Z" fill="#FFF4B8"/><path d="M30 46V100M13 66H47" stroke="#B8860B" stroke-width="1.6" opacity=".7"/><path d="M17 100H43V107H17Z" fill="#C9962A"/><path d="M30 107V124" stroke="#D9B04A" stroke-width="2"/><circle cx="30" cy="126" r="3.5" fill="#F0C14B"/></svg>`;
-const skylineHero=()=>`<svg class="skyline" viewBox="0 0 600 150" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><g fill="#062F38"><path d="M0 150V112H44V96Q44 78 66 76Q88 78 88 96V150Z"/><path d="M100 150V58H116V150Z"/><path d="M97 58L108 26 119 58Z"/><path d="M92 82H124V89H92Z"/><path d="M140 150V104Q140 70 190 62Q240 70 240 104V150Z"/><path d="M252 150V70H268V150Z"/><path d="M249 70L260 36 271 70Z"/><path d="M244 94H276V101H244Z"/><path d="M286 150V120H340V150Z"/><path d="M350 150V96Q350 52 410 44Q470 52 470 96V150Z"/><path d="M482 150V64H498V150Z"/><path d="M479 64L490 30 501 64Z"/><path d="M474 88H506V95H474Z"/><path d="M516 150V108H560V92Q560 76 580 74Q600 76 600 92V150Z"/></g><g fill="#F0C14B"><path d="M190 60V46" stroke="#F0C14B" stroke-width="3"/><path d="M196 30a9 9 0 1 0 0 16 7 7 0 1 1 0-16z"/><path d="M410 42V28" stroke="#F0C14B" stroke-width="3"/><path d="M416 14a9 9 0 1 0 0 16 7 7 0 1 1 0-16z"/><circle cx="108" cy="24" r="3.5"/><circle cx="260" cy="34" r="3.5"/><circle cx="490" cy="28" r="3.5"/></g><g fill="#FFD24D" opacity=".8"><path d="M174 150v-24a16 16 0 0 1 32 0v24z"/><path d="M394 150v-26a16 16 0 0 1 32 0v26z"/><rect x="300" y="128" width="8" height="12" rx="4"/><rect x="318" y="128" width="8" height="12" rx="4"/></g></svg>`;
+const lanternSVG=cls=>`<svg class="lant ${cls}" viewBox="0 0 60 130" aria-hidden="true"><path d="M30 0V24" stroke="#D9B04A" stroke-width="2"/><circle cx="30" cy="26" r="4" fill="#D9B04A"/><path d="M16 46Q30 18 44 46Z" fill="#C9962A"/><path d="M13 46H47L53 82L45 100H15L7 82Z" fill="#F0C14B" stroke="#B8860B" stroke-width="2" stroke-linejoin="round"/><path class="lant-glow" d="M22 56Q30 42 38 56V88H22Z" fill="#FFF4B8"/><path d="M17 100H43V107H17Z" fill="#C9962A"/><path d="M30 107V124" stroke="#D9B04A" stroke-width="2"/><circle cx="30" cy="126" r="3.5" fill="#F0C14B"/></svg>`;
+const skylineHero=()=>`<svg class="skyline" viewBox="0 0 600 150" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><g fill="#062F38"><path d="M0 150V112H44V96Q44 78 66 76Q88 78 88 96V150Z"/><path d="M100 150V58H116V150Z"/><path d="M97 58L108 26 119 58Z"/><path d="M140 150V104Q140 70 190 62Q240 70 240 104V150Z"/><path d="M252 150V70H268V150Z"/><path d="M249 70L260 36 271 70Z"/><path d="M286 150V120H340V150Z"/><path d="M350 150V96Q350 52 410 44Q470 52 470 96V150Z"/><path d="M482 150V64H498V150Z"/><path d="M479 64L490 30 501 64Z"/><path d="M516 150V108H560V92Q560 76 580 74Q600 76 600 92V150Z"/></g><g fill="#F0C14B"><path d="M190 60V46" stroke="#F0C14B" stroke-width="3"/><path d="M196 30a9 9 0 1 0 0 16 7 7 0 1 1 0-16z"/><path d="M410 42V28" stroke="#F0C14B" stroke-width="3"/><path d="M416 14a9 9 0 1 0 0 16 7 7 0 1 1 0-16z"/><circle cx="108" cy="24" r="3.5"/><circle cx="260" cy="34" r="3.5"/><circle cx="490" cy="28" r="3.5"/></g><g fill="#FFD24D" opacity=".8"><path d="M174 150v-24a16 16 0 0 1 32 0v24z"/><path d="M394 150v-26a16 16 0 0 1 32 0v26z"/><rect x="300" y="128" width="8" height="12" rx="4"/><rect x="318" y="128" width="8" height="12" rx="4"/></g></svg>`;
 const emblemSVG=()=>`<svg width="88" height="88" viewBox="0 0 100 100" aria-hidden="true"><defs><linearGradient id="emg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFE470"/><stop offset="1" stop-color="#E8A000"/></linearGradient></defs><polygon points="${STAR8}" fill="url(#emg)" stroke="#B8860B" stroke-width="2" stroke-linejoin="round"/><circle cx="50" cy="50" r="31" fill="#0F4E52" stroke="#F6DF8E" stroke-width="2"/><mask id="emm"><rect width="100" height="100" fill="#fff"/><circle cx="59" cy="45" r="17" fill="#000"/></mask><circle cx="48" cy="52" r="20" fill="#F6DF8E" mask="url(#emm)"/><path d="M61 37l2.4 5.2 5.6.6-4.1 3.9 1.1 5.6-5-2.8-5 2.8 1.1-5.6-4.1-3.9 5.6-.6z" fill="#F6DF8E"/></svg>`;
 /* ---------- scope materi ---------- */
 function scopePool(){
@@ -2474,7 +2457,7 @@ function registerSW(){ if('serviceWorker' in navigator&&/^https?:$/.test(locatio
 /* ---------- splash screen ---------- */
 function runSplash(){
   const el=$('#splash'); if(!el) return;
-  const msgs=['Bismillah… 🌙',' ⭐',' 📖'], m=$('#splash-msg'); let i=0;
+  const msgs=['Bismillah… 🌙','Menyiapkan bintang-bintang ⭐','Membuka buku ayat 📖'], m=$('#splash-msg'); let i=0;
   const iv=setInterval(()=>{ i=(i+1)%msgs.length; if(m) m.textContent=msgs[i]; },750);
   const minMs=matchMedia('(prefers-reduced-motion: reduce)').matches?250:2300;
   const fonts=Promise.race([document.fonts?document.fonts.ready:Promise.resolve(),wait(2600)]);
