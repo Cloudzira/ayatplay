@@ -491,6 +491,36 @@ body{background-color:var(--sky);background-image:var(--pat)}
 @media(max-width:380px){.brand>span{display:none}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
 </style>
+<!-- Font Awesome untuk ikon medsos & footer (Kurniapedia) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+    .glass-panel {
+        background: rgba(15, 23, 42, 0.65);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    }
+    /* Efek warna neon khusus saat kursor diarahkan (hover) */
+    .kurnia-icon {
+        width: 2rem;
+        height: 2rem;
+        border-radius: 9999px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #cbd5e1;
+        font-size: 0.75rem;
+        transition: all 0.3s ease;
+        text-decoration: none;
+    }
+    .kurnia-icon.ig:hover { color: #00f2fe; border-color: rgba(0, 242, 254, 0.6); }
+    .kurnia-icon.tt:hover { color: #bd00ff; border-color: rgba(189, 0, 255, 0.6); }
+    .kurnia-icon.web:hover { color: #ff007f; border-color: rgba(255, 0, 127, 0.6); }
+    .kurnia-icon.wa:hover { color: #00ff87; border-color: rgba(0, 255, 135, 0.6); }
+    body.in-game .kurnia-footer { display: none !important; }
+    @media print { .kurnia-footer { display: none !important; } }
+</style>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
@@ -602,6 +632,32 @@ body{background-color:var(--sky);background-image:var(--pat)}
   <section id="v-profile" class="view hidden"></section>
   <section id="v-game" class="view hidden"></section>
 </main>
+
+<!-- Bagian Bawah Halaman (Social Media & Footer) -->
+<div class="kurnia-footer" style="width: 100%; padding: 24px 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px;">
+
+    <!-- Social Media Icon Bar -->
+    <div id="socialMediaRow" style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+        <a href="https://instagram.com/kurniapedia" target="_blank" rel="noopener noreferrer" class="glass-panel kurnia-icon ig" aria-label="Instagram Kurniapedia">
+            <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="https://tiktok.com/@kurniapedia" target="_blank" rel="noopener noreferrer" class="glass-panel kurnia-icon tt" aria-label="TikTok Kurniapedia">
+            <i class="fa-brands fa-tiktok"></i>
+        </a>
+        <a href="https://kurniapedia.my.id" target="_blank" rel="noopener noreferrer" class="glass-panel kurnia-icon web" aria-label="Website Kurniapedia">
+            <i class="fa-solid fa-globe"></i>
+        </a>
+        <a href="https://wa.me/+6285870906050" target="_blank" rel="noopener noreferrer" class="glass-panel kurnia-icon wa" aria-label="WhatsApp Kurniapedia">
+            <i class="fa-brands fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer style="text-align: center; font-size: 11px; color: #64748b; font-family: sans-serif;">
+         <p style="margin: 0;">Crafted with <span style="color: #ff007f;">♥</span> by <span style="color: #00f2fe; font-weight: 600; text-shadow: 0 0 10px rgba(0,242,254,0.4);">Kurniapedia</span> 2026</p>
+    </footer>
+
+</div>
 
 <nav class="bottom" aria-label="Menu utama">
   <div class="in">
