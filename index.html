@@ -25,8 +25,8 @@
 <script>
 /* ===== FIREBASE: isi dengan konfigurasi proyek Anda =====
    Firebase Console > Project settings > Your apps > Web app > SDK setup and configuration.
-   Selama masih berisi "ISI_...", fitur login/cloud otomatis nonaktif dan aplikasi berjalan lokal. */
-window.AYATPLAY_FIREBASE={apiKey:"ISI_API_KEY",authDomain:"ISI_PROJECT_ID.firebaseapp.com",projectId:"ISI_PROJECT_ID",storageBucket:"ISI_PROJECT_ID.appspot.com",messagingSenderId:"ISI_SENDER_ID",appId:"ISI_APP_ID"};
+   Bila kosong atau masih berisi "ISI_...", fitur login/cloud nonaktif dan aplikasi berjalan lokal. */
+window.AYATPLAY_FIREBASE={apiKey:"AIzaSyC-Ef2eI6wHGmp9SHIPvO3atUkrkFey6P8",authDomain:"ayatplay-16f8e.firebaseapp.com",projectId:"ayatplay-16f8e",storageBucket:"ayatplay-16f8e.firebasestorage.app",messagingSenderId:"751918187653",appId:"1:751918187653:web:79125e59eea91dc5ed95ec"};
 </script>
 
 <title>AyatPlay Kids - Petualangan Hafiz Cilik</title>
@@ -415,15 +415,14 @@ body{background-color:var(--sky);background-image:var(--pat)}
 .tab.on{background:#E3F2EA;color:var(--night)}
 #splash{background:radial-gradient(circle at 50% 44%,#1D8A78 0,#0F4E52 55%,#082A33 100%)}
 #splash::before{content:"";position:absolute;inset:0;background:var(--pat-w)}
-.sp-bsm{position:absolute;top:calc(4.5vh + env(safe-area-inset-top,0px));left:0;right:0;text-align:center;font-size:clamp(1.5rem,6.4vw,2.1rem);color:#F6DF8E;animation:spFade 1s .3s both;z-index:1}
 .sp-lant{position:absolute;top:0;width:clamp(34px,9vw,52px);transform-origin:50% 0;animation:sway 4s ease-in-out infinite;z-index:1}
 .sp-lant.l1{left:9%;margin-top:clamp(40px,9vh,72px)}.sp-lant.l2{right:9%;animation-delay:-1.5s;margin-top:clamp(70px,14vh,110px)}
 .sp-sky{position:absolute;left:0;right:0;bottom:0;width:100%;height:clamp(110px,24vh,200px);z-index:1}
-.sp-center{z-index:2}
+.sp-center{z-index:2;margin-top:-4vh}
 .sp-load{bottom:calc(clamp(110px,24vh,200px) + 14px);z-index:2}
 .sp-bar i{background:linear-gradient(90deg,#E8B63A,#F6DF8E)}
 .sp-kids{background:var(--sun);border-bottom-color:var(--sun-d)}
-@media(max-width:560px){.hero h2{padding-right:70px}.hero .lant.l1{right:20%}.hero .lant.l2{right:8%}}
+@media(max-width:560px){.hero h2{padding-right:44px}.hero .lant.l1{right:6%}.hero .lant.l2{display:none}}
 .cert-wrap{max-width:760px}
 .cert{position:relative;border:0;border-radius:18px;padding:0;background:#fff;display:block;color:var(--ink)}
 .cert-frame{padding:20px;border-radius:18px;background:linear-gradient(135deg,#0F3D42,#176A66);position:relative}
@@ -460,6 +459,17 @@ body{background-color:var(--sky);background-image:var(--pat)}
 .bsm-card{background:linear-gradient(#fff,#FFF8DD);border-color:#E9C76B}
 .qari-sel{max-width:100%;min-width:0;text-overflow:ellipsis}
 .card .qari-sel{width:100%!important}
+
+.overlay.center{align-items:center;padding:20px}
+.sheet.dialog{max-width:380px;border-radius:30px;text-align:center;padding:34px 22px 22px;position:relative;border:4px solid var(--sun);overflow:visible;background:linear-gradient(#fff,#FBFFFC)}
+.sheet.dialog::before{content:"";position:absolute;top:-24px;left:50%;width:48px;height:48px;margin-left:-24px;background:var(--star-g) center/contain no-repeat;filter:drop-shadow(0 3px 0 rgba(0,0,0,.18))}
+.dlg{display:grid;gap:10px;justify-items:center}
+.dlg .mascot{width:92px;height:92px;animation:floaty 3.6s ease-in-out infinite}
+.dlg h3{font-size:1.45rem;color:var(--night)}
+.dlg p{margin:0;font-weight:700;color:var(--muted);line-height:1.45}
+.dlg-info{background:#FFF8DD;border:2px solid var(--sun);border-radius:99px;padding:3px 16px;font-weight:800;color:#6b5200;font-size:.92rem}
+.dlg-btns{display:grid;gap:8px;width:100%;margin-top:6px}
+.dlg-risk{color:var(--coral-d);border-color:#F1C9BC}
 @media print{
   @page{size:landscape;margin:10mm}
   body *{visibility:hidden}
@@ -530,7 +540,6 @@ body{background-color:var(--sky);background-image:var(--pat)}
 </g></g></symbol></svg>
 <div id="splash" role="status" aria-label="Memuat AyatPlay Kids">
 <svg class="sp-stars" aria-hidden="true"><circle cx="65.0%" cy="63.3%" r="1.7" fill="#fff" style="animation-delay:0.27s"/><circle cx="22.8%" cy="53.2%" r="1.5" fill="#fff" style="animation-delay:0.85s"/><circle cx="80.2%" cy="23.7%" r="2.5" fill="#fff" style="animation-delay:2.19s"/><circle cx="95.3%" cy="36.3%" r="1.7" fill="#fff" style="animation-delay:1.18s"/><circle cx="44.5%" cy="40.9%" r="1.6" fill="#fff" style="animation-delay:2.11s"/><circle cx="11.8%" cy="54.6%" r="1.1" fill="#fff" style="animation-delay:0.82s"/><circle cx="44.1%" cy="37.9%" r="2.4" fill="#fff" style="animation-delay:1.70s"/><circle cx="73.5%" cy="26.0%" r="3.0" fill="#fff" style="animation-delay:0.10s"/><circle cx="6.2%" cy="28.5%" r="3.1" fill="#fff" style="animation-delay:0.22s"/><circle cx="78.1%" cy="44.6%" r="3.1" fill="#fff" style="animation-delay:0.97s"/><circle cx="76.6%" cy="55.2%" r="2.4" fill="#fff" style="animation-delay:1.74s"/><circle cx="30.3%" cy="62.0%" r="2.8" fill="#fff" style="animation-delay:2.12s"/><circle cx="63.9%" cy="33.2%" r="2.8" fill="#fff" style="animation-delay:0.72s"/><circle cx="20.5%" cy="35.1%" r="1.5" fill="#fff" style="animation-delay:0.98s"/><circle cx="50.8%" cy="61.8%" r="2.0" fill="#fff" style="animation-delay:0.46s"/><circle cx="68.3%" cy="50.3%" r="3.2" fill="#fff" style="animation-delay:0.09s"/><circle cx="71.8%" cy="12.5%" r="1.9" fill="#fff" style="animation-delay:2.15s"/><circle cx="34.1%" cy="4.6%" r="2.1" fill="#fff" style="animation-delay:2.17s"/><circle cx="57.8%" cy="2.5%" r="1.2" fill="#fff" style="animation-delay:0.81s"/><circle cx="97.1%" cy="33.9%" r="2.6" fill="#fff" style="animation-delay:1.77s"/><circle cx="47.1%" cy="7.0%" r="2.4" fill="#fff" style="animation-delay:1.19s"/><circle cx="99.2%" cy="6.7%" r="3.1" fill="#fff" style="animation-delay:2.00s"/><circle cx="63.2%" cy="6.0%" r="3.0" fill="#fff" style="animation-delay:1.59s"/><circle cx="56.4%" cy="45.7%" r="2.1" fill="#fff" style="animation-delay:1.84s"/><circle cx="59.1%" cy="39.3%" r="3.2" fill="#fff" style="animation-delay:0.21s"/><circle cx="36.7%" cy="45.6%" r="2.3" fill="#fff" style="animation-delay:0.73s"/><circle cx="28.7%" cy="27.4%" r="2.7" fill="#fff" style="animation-delay:0.66s"/><circle cx="4.2%" cy="7.1%" r="3.3" fill="#fff" style="animation-delay:2.37s"/><circle cx="84.3%" cy="59.2%" r="2.0" fill="#fff" style="animation-delay:0.93s"/><circle cx="30.6%" cy="68.7%" r="1.2" fill="#fff" style="animation-delay:1.98s"/><circle cx="1.2%" cy="26.8%" r="2.5" fill="#fff" style="animation-delay:2.41s"/><circle cx="72.6%" cy="23.6%" r="1.4" fill="#fff" style="animation-delay:1.33s"/><circle cx="28.7%" cy="6.3%" r="1.4" fill="#fff" style="animation-delay:2.35s"/><circle cx="16.6%" cy="5.0%" r="2.4" fill="#fff" style="animation-delay:2.07s"/><circle cx="68.3%" cy="55.4%" r="2.0" fill="#fff" style="animation-delay:1.05s"/><circle cx="89.9%" cy="26.8%" r="2.6" fill="#fff" style="animation-delay:0.88s"/><circle cx="17.3%" cy="58.4%" r="2.3" fill="#fff" style="animation-delay:0.47s"/><circle cx="38.1%" cy="61.2%" r="3.0" fill="#fff" style="animation-delay:1.83s"/><circle cx="80.7%" cy="37.0%" r="1.5" fill="#fff" style="animation-delay:1.91s"/><circle cx="69.8%" cy="23.7%" r="1.2" fill="#fff" style="animation-delay:1.96s"/><circle cx="48.6%" cy="17.8%" r="1.3" fill="#fff" style="animation-delay:0.20s"/><circle cx="67.7%" cy="13.5%" r="2.3" fill="#fff" style="animation-delay:1.99s"/><circle cx="40.8%" cy="17.4%" r="3.2" fill="#fff" style="animation-delay:0.46s"/><circle cx="66.5%" cy="41.9%" r="3.2" fill="#fff" style="animation-delay:0.50s"/><circle cx="17.8%" cy="2.9%" r="1.6" fill="#fff" style="animation-delay:0.23s"/><circle cx="97.0%" cy="16.4%" r="2.8" fill="#fff" style="animation-delay:0.31s"/></svg>
-<div class="sp-bsm ar" lang="ar" dir="rtl" aria-hidden="true">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
 <svg class="sp-lant l1" viewBox="0 0 60 130" aria-hidden="true"><path d="M30 0V24" stroke="#D9B04A" stroke-width="2"/><circle cx="30" cy="26" r="4" fill="#D9B04A"/>
 <path d="M16 46Q30 18 44 46Z" fill="#C9962A"/><path d="M13 46H47L53 82L45 100H15L7 82Z" fill="#F0C14B" stroke="#B8860B" stroke-width="2" stroke-linejoin="round"/>
 <path class="lant-glow" d="M22 56Q30 42 38 56V88H22Z" fill="#FFF4B8"/><path d="M30 46V100M13 66H47" stroke="#B8860B" stroke-width="1.6" opacity=".7"/>
@@ -1550,7 +1559,6 @@ function renderHome(){
   <div class="hero">
     ${starsBg()}${skylineHero()}${lanternSVG('l1')}${lanternSVG('l2')}
     <div style="position:relative">
-      <div class="ar ar-md" lang="ar" dir="rtl" style="color:#F6DF8E;text-align:left;line-height:1.9;position:relative">السَّلَامُ عَلَيْكُمْ</div>
       <h2>Assalamu'alaikum, ${esc(S.name||'Sahabat Cilik')}! 👋</h2>
       <p>Hafal Al-Qur'an sambil bermain. Dengarkan ayatnya dulu, lalu taklukkan 10 game seru dan naik level!</p>
       <div class="goal"><div class="goal-row"><span>🎯 Target hari ini</span><span>${g.n}/${g.goal} permainan</span></div><div class="bar"><i style="width:${pct}%"></i></div></div>
@@ -1582,8 +1590,19 @@ function renderHome(){
       <span class="gmeta" aria-hidden="true"><b>Level ${done}/10</b><span>⭐ ${gs}/30</span></span>
     </button>`;}).join('')}</div>`;
 }
-function openSheet(html,cls=''){ $('#sheet').className='sheet '+cls; $('#sheet').innerHTML=html; $('#overlay').classList.remove('hidden'); }
-function closeSheet(){ $('#overlay').classList.add('hidden'); $('#sheet').innerHTML=''; $('#sheet').className='sheet'; }
+let confirmRes=null;
+function openSheet(html,cls=''){ $('#sheet').className='sheet '+cls; $('#overlay').classList.toggle('center',cls==='dialog'); $('#sheet').innerHTML=html; $('#overlay').classList.remove('hidden'); }
+/* Dialog konfirmasi bertema (pengganti confirm bawaan browser). Hasil true = pilih opsi "berisiko". */
+function askConfirm(o){
+  return new Promise(res=>{
+    if(confirmRes){ const r=confirmRes; confirmRes=null; r(false); }
+    confirmRes=res;
+    openSheet(`<div class="dlg" role="alertdialog" aria-labelledby="dlg-t">${mascotSVG()}
+      <h3 id="dlg-t">${esc(o.title)}</h3><p>${esc(o.text)}</p>${o.info?`<div class="dlg-info">${esc(o.info)}</div>`:''}
+      <div class="dlg-btns"><button class="btn btn-mint btn-block" data-act="dlg-no">${esc(o.safe)}</button><button class="btn btn-ghost btn-block dlg-risk" data-act="dlg-yes">${esc(o.risk)}</button></div></div>`,'dialog');
+  });
+}
+function closeSheet(){ if(confirmRes){ const r=confirmRes; confirmRes=null; r(false); } $('#overlay').classList.add('hidden'); $('#overlay').classList.remove('center'); $('#sheet').innerHTML=''; $('#sheet').className='sheet'; }
 let sheetG=0, sheetSel=1;
 function openLevelSheet(g,sel){
   const G=GAMES[g-1], i=g-1; sheetG=g; sheetSel=sel||nextLevelFor(g);
@@ -1786,9 +1805,11 @@ const ACTIONS={
   'cert-game':t=>openCert('game',+t.dataset.g),
   print:()=>window.print(),
   'load-data':()=>loadFullData(),
+  'dlg-yes':()=>{ const r=confirmRes; confirmRes=null; closeSheet(); if(r) r(true); },
+  'dlg-no':()=>closeSheet(),
   arfont:t=>{ S.arFont=t.dataset.k; save(); applyArabic(); syncArabicUI(); sfx('tap'); },
   arsize:t=>{ S.arSize=+t.dataset.v; save(); applyArabic(); syncArabicUI(); sfx('tap'); },
-  reset:()=>{ if(confirm('Hapus semua bintang, XP, lencana, dan hafalan? Jika kamu masuk akun, data di cloud ikut dihapus.')){ const keep={name:S.name,nameAt:Date.now(),scope:S.scope,sound:S.sound,arFont:S.arFont,arSize:S.arSize}; S=Object.assign(defaults(),keep,{resetAt:Date.now()}); save(); cloudPushNow&&cloudPushNow(); updateHeader(); nav('profile'); toast('Progres sudah diatur ulang.'); } }
+  reset:async()=>{ if(await askConfirm({title:'Hapus semua progres?',text:'Bintang, XP, stiker, lencana, dan hafalan akan dihapus. Jika kamu masuk akun, data di cloud ikut dihapus.',safe:'Batal, jangan dihapus',risk:'Ya, hapus semua'})){ const keep={name:S.name,nameAt:Date.now(),scope:S.scope,sound:S.sound,arFont:S.arFont,arSize:S.arSize,qari:S.qari}; S=Object.assign(defaults(),keep,{resetAt:Date.now()}); save(); cloudPushNow&&cloudPushNow(); updateHeader(); nav('profile'); toast('Progres sudah diatur ulang.'); } }
 };
 document.addEventListener('click',e=>{
   const t=e.target.closest('[data-act]'); if(!t||t.disabled) return;
@@ -2242,7 +2263,7 @@ Object.assign(ACTIONS,{
   start:t=>startRun(+t.dataset.g,+t.dataset.l),
   lvsel:t=>openLevelSheet(+t.dataset.g,+t.dataset.l),
   'study-surah':t=>{ learnState.surah=+t.dataset.s; nav('learn'); },
-  quit:()=>{ if(!run||run.locked||confirm('Keluar dari permainan? Skor ronde ini tidak disimpan.')) nav('home'); },
+  quit:async()=>{ if(!run||run.locked||await askConfirm({title:'Yakin mau keluar?',text:'Kalau keluar sekarang, skor ronde ini tidak disimpan. Yuk selesaikan dulu, kamu pasti bisa! 🌙',info:`Soal ${run.idx+1} dari ${run.total} · ${run.correct} benar`,safe:'Lanjut main ▶',risk:'Keluar'})) nav('home'); },
   next:()=>{ run.idx++; nextQ(); },
   gplay:async t=>{ const v=vById(t.dataset.key); const r=await playOnce(v); if(r===false) audioFail(); },
   opt:t=>{ if(run.locked) return; const ok=t.dataset.ok==='1'; markOptions(t); ans(ok,run.q.v,ok?'':(run.q.wrong||'')); },
@@ -2425,7 +2446,7 @@ Object.assign(ACTIONS,{
   'fb-reset':()=>fbGuard(async()=>{const e=$('#fb-email').value.trim(); if(!e) return fbSay('Tulis emailmu dulu, lalu tekan Lupa kata sandi.'); await FB.m.sendPasswordResetEmail(FB.auth,e); fbSay('Tautan atur ulang kata sandi sudah dikirim ke emailmu.');}),
   'fb-sync':()=>cloudPushNow(),
   'fb-out':()=>fbGuard(async()=>{ await FB.m.signOut(FB.auth); toast('Kamu sudah keluar. Progres tetap ada di perangkat ini.'); }),
-  'fb-del':()=>{ if(!FB.user||!confirm('Hapus akun dan semua data di cloud? Progres di perangkat ini tetap ada.')) return;
+  'fb-del':async()=>{ if(!FB.user||!(await askConfirm({title:'Hapus akun dan data cloud?',text:'Akun dan semua data di cloud akan dihapus. Progres di perangkat ini tetap ada.',safe:'Batal',risk:'Ya, hapus akun'}))) return;
     fbGuard(async()=>{
       FB.deleting=true; if(FB.unsub){FB.unsub();FB.unsub=null;}
       const ref=FB.m.doc(FB.db,FB_COL,FB.user.uid);
