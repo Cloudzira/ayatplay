@@ -581,7 +581,7 @@ body{background-color:var(--sky);background-image:var(--pat)}
 </g></g></g></svg>
 <div class="sp-title" aria-hidden="true"><span style="animation-delay:0.75s">A</span><span style="animation-delay:0.81s">y</span><span style="animation-delay:0.87s">a</span><span style="animation-delay:0.93s">t</span><span style="animation-delay:0.99s">P</span><span style="animation-delay:1.05s">l</span><span style="animation-delay:1.11s">a</span><span style="animation-delay:1.17s">y</span></div>
 <div class="sp-kids" aria-hidden="true">Kids</div>
-<div class="sp-tag">Petualangan Hafiz Cilik</div>
+<div class="sp-tag">Petualangan</div>
 </div>
 <svg class="sp-sky" viewBox="0 0 600 150" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><g fill="#062F38">
 <path d="M0 150V112H44V96Q44 78 66 76Q88 78 88 96V150Z"/><path d="M100 150V58H116V150Z"/><path d="M97 58L108 26 119 58Z"/><path d="M92 82H124V89H92Z"/>
@@ -593,7 +593,7 @@ body{background-color:var(--sky);background-image:var(--pat)}
 <path d="M516 150V108H560V92Q560 76 580 74Q600 76 600 92V150Z"/></g>
 <g fill="#FFD24D"><circle cx="190" cy="38" r="4"/><circle cx="410" cy="16" r="4"/><circle cx="108" cy="24" r="3.5"/><circle cx="260" cy="34" r="3.5"/><circle cx="490" cy="28" r="3.5"/></g>
 <g fill="#FFD24D" opacity=".8"><path d="M174 150v-24a16 16 0 0 1 32 0v24z"/><path d="M394 150v-26a16 16 0 0 1 32 0v26z"/><rect x="300" y="128" width="8" height="12" rx="4"/><rect x="318" y="128" width="8" height="12" rx="4"/></g></svg>
-<div class="sp-load"><div class="sp-bar"><i></i></div><p id="splash-msg">Bismillah… 🌙</p></div>
+<div class="sp-load"><div class="sp-bar"><i></i></div><p id="splash-msg">🌙</p></div>
 </div>
 
 <header class="top" id="top">
@@ -2474,7 +2474,7 @@ function registerSW(){ if('serviceWorker' in navigator&&/^https?:$/.test(locatio
 /* ---------- splash screen ---------- */
 function runSplash(){
   const el=$('#splash'); if(!el) return;
-  const msgs=['Bismillah… 🌙','Menyiapkan bintang-bintang ⭐','Membuka buku ayat 📖'], m=$('#splash-msg'); let i=0;
+  const msgs=['Bismillah… 🌙',' ⭐',' 📖'], m=$('#splash-msg'); let i=0;
   const iv=setInterval(()=>{ i=(i+1)%msgs.length; if(m) m.textContent=msgs[i]; },750);
   const minMs=matchMedia('(prefers-reduced-motion: reduce)').matches?250:2300;
   const fonts=Promise.race([document.fonts?document.fonts.ready:Promise.resolve(),wait(2600)]);
