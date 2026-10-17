@@ -26,13 +26,13 @@
 /* ===== FIREBASE: isi dengan konfigurasi proyek Anda =====
    Firebase Console > Project settings > Your apps > Web app > SDK setup and configuration.
    Selama masih berisi "ISI_...", fitur login/cloud otomatis nonaktif dan aplikasi berjalan lokal. */
-window.AYATPLAY_FIREBASE={apiKey:"AIzaSyC-Ef2eI6wHGmp9SHIPvO3atUkrkFey6P8",authDomain:"ayatplay-16f8e.firebaseapp.com",projectId:"ayatplay-16f8e",storageBucket:"ayatplay-16f8e.firebasestorage.app",messagingSenderId:"751918187653",appId:"1:751918187653:web:79125e59eea91dc5ed95ec"};
+window.AYATPLAY_FIREBASE={apiKey:"ISI_API_KEY",authDomain:"ISI_PROJECT_ID.firebaseapp.com",projectId:"ISI_PROJECT_ID",storageBucket:"ISI_PROJECT_ID.appspot.com",messagingSenderId:"ISI_SENDER_ID",appId:"ISI_APP_ID"};
 </script>
 
 <title>AyatPlay Kids - Petualangan Hafiz Cilik</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Scheherazade+New:wght@400;600;700&family=Noto+Naskh+Arabic:wght@400;600;700&family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;600;700&family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js" defer></script>
 <style>
 :root{
@@ -44,7 +44,7 @@ window.AYATPLAY_FIREBASE={apiKey:"AIzaSyC-Ef2eI6wHGmp9SHIPvO3atUkrkFey6P8",authD
   --r:20px; --r-sm:14px;
   --f-ui:'Nunito',system-ui,-apple-system,'Segoe UI',sans-serif;
   --f-disp:'Baloo 2','Nunito',system-ui,sans-serif;
-  --pat:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Cg fill='none' stroke='%230A6B52' stroke-opacity='.11' stroke-width='1.4'%3E%3Crect x='20' y='20' width='24' height='24'/%3E%3Crect x='20' y='20' width='24' height='24' transform='rotate(45 32 32)'/%3E%3Ccircle cx='32' cy='32' r='3'/%3E%3C/g%3E%3C/svg%3E");--pat-w:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Cg fill='none' stroke='%23fff' stroke-opacity='.08' stroke-width='1.4'%3E%3Crect x='20' y='20' width='24' height='24'/%3E%3Crect x='20' y='20' width='24' height='24' transform='rotate(45 32 32)'/%3E%3Ccircle cx='32' cy='32' r='3'/%3E%3C/g%3E%3C/svg%3E");--strip:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='9' viewBox='0 0 16 9'%3E%3Cpath d='M8 0.5L14 4.5 8 8.5 2 4.5z' fill='%23E0AE2E'/%3E%3C/svg%3E");--strip2:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='10' viewBox='0 0 14 10'%3E%3Cpath d='M7 1L12 5 7 9 2 5z' fill='none' stroke='%23E0AE2E' stroke-width='1.4'/%3E%3C/svg%3E");--star-g:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpolygon points='50.0,2.0 64.1,16.1 83.9,16.1 83.9,35.9 98.0,50.0 83.9,64.1 83.9,83.9 64.1,83.9 50.0,98.0 35.9,83.9 16.1,83.9 16.1,64.1 2.0,50.0 16.1,35.9 16.1,16.1 35.9,16.1' fill='%23F7CF55' stroke='%23B8860B' stroke-width='2.5' stroke-linejoin='round'/%3E%3C/svg%3E");--star-e:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpolygon points='50.0,2.0 64.1,16.1 83.9,16.1 83.9,35.9 98.0,50.0 83.9,64.1 83.9,83.9 64.1,83.9 50.0,98.0 35.9,83.9 16.1,83.9 16.1,64.1 2.0,50.0 16.1,35.9 16.1,16.1 35.9,16.1' fill='%2319A27D' stroke='%230A6B52' stroke-width='2.5' stroke-linejoin='round'/%3E%3C/svg%3E");--star-x:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpolygon points='50.0,2.0 64.1,16.1 83.9,16.1 83.9,35.9 98.0,50.0 83.9,64.1 83.9,83.9 64.1,83.9 50.0,98.0 35.9,83.9 16.1,83.9 16.1,64.1 2.0,50.0 16.1,35.9 16.1,16.1 35.9,16.1' fill='%23E3ECE7' stroke='%23B7C8BF' stroke-width='2.5' stroke-linejoin='round'/%3E%3C/svg%3E");--star-w:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpolygon points='50.0,2.0 64.1,16.1 83.9,16.1 83.9,35.9 98.0,50.0 83.9,64.1 83.9,83.9 64.1,83.9 50.0,98.0 35.9,83.9 16.1,83.9 16.1,64.1 2.0,50.0 16.1,35.9 16.1,16.1 35.9,16.1' fill='%23FFFFFF' stroke='%23E0AE2E' stroke-width='2.5' stroke-linejoin='round'/%3E%3C/svg%3E");--f-ar:'Scheherazade New','Amiri Quran','Noto Naskh Arabic','Traditional Arabic','Geeza Pro','Al Bayan',serif;
+  --pat:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Cg fill='none' stroke='%230A6B52' stroke-opacity='.11' stroke-width='1.4'%3E%3Crect x='20' y='20' width='24' height='24'/%3E%3Crect x='20' y='20' width='24' height='24' transform='rotate(45 32 32)'/%3E%3Ccircle cx='32' cy='32' r='3'/%3E%3C/g%3E%3C/svg%3E");--pat-w:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Cg fill='none' stroke='%23fff' stroke-opacity='.08' stroke-width='1.4'%3E%3Crect x='20' y='20' width='24' height='24'/%3E%3Crect x='20' y='20' width='24' height='24' transform='rotate(45 32 32)'/%3E%3Ccircle cx='32' cy='32' r='3'/%3E%3C/g%3E%3C/svg%3E");--strip:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='9' viewBox='0 0 16 9'%3E%3Cpath d='M8 0.5L14 4.5 8 8.5 2 4.5z' fill='%23E0AE2E'/%3E%3C/svg%3E");--strip2:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='10' viewBox='0 0 14 10'%3E%3Cpath d='M7 1L12 5 7 9 2 5z' fill='none' stroke='%23E0AE2E' stroke-width='1.4'/%3E%3C/svg%3E");--star-g:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpolygon points='50.0,2.0 64.1,16.1 83.9,16.1 83.9,35.9 98.0,50.0 83.9,64.1 83.9,83.9 64.1,83.9 50.0,98.0 35.9,83.9 16.1,83.9 16.1,64.1 2.0,50.0 16.1,35.9 16.1,16.1 35.9,16.1' fill='%23F7CF55' stroke='%23B8860B' stroke-width='2.5' stroke-linejoin='round'/%3E%3C/svg%3E");--star-e:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpolygon points='50.0,2.0 64.1,16.1 83.9,16.1 83.9,35.9 98.0,50.0 83.9,64.1 83.9,83.9 64.1,83.9 50.0,98.0 35.9,83.9 16.1,83.9 16.1,64.1 2.0,50.0 16.1,35.9 16.1,16.1 35.9,16.1' fill='%2319A27D' stroke='%230A6B52' stroke-width='2.5' stroke-linejoin='round'/%3E%3C/svg%3E");--star-x:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpolygon points='50.0,2.0 64.1,16.1 83.9,16.1 83.9,35.9 98.0,50.0 83.9,64.1 83.9,83.9 64.1,83.9 50.0,98.0 35.9,83.9 16.1,83.9 16.1,64.1 2.0,50.0 16.1,35.9 16.1,16.1 35.9,16.1' fill='%23E3ECE7' stroke='%23B7C8BF' stroke-width='2.5' stroke-linejoin='round'/%3E%3C/svg%3E");--star-w:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpolygon points='50.0,2.0 64.1,16.1 83.9,16.1 83.9,35.9 98.0,50.0 83.9,64.1 83.9,83.9 64.1,83.9 50.0,98.0 35.9,83.9 16.1,83.9 16.1,64.1 2.0,50.0 16.1,35.9 16.1,16.1 35.9,16.1' fill='%23FFFFFF' stroke='%23E0AE2E' stroke-width='2.5' stroke-linejoin='round'/%3E%3C/svg%3E");--f-ar:'Scheherazade New','Traditional Arabic','Geeza Pro','Al Bayan',serif;
   --ar-w:600;--ar-lh:2.5;--ar-ws:.22em;--ar-scale:1.15;--ar-s2:1.09;
 }
 *{box-sizing:border-box}
@@ -455,6 +455,11 @@ body{background-color:var(--sky);background-image:var(--pat)}
 .hero{grid-template-columns:minmax(0,1fr) auto}
 .hero h2{font-size:clamp(1.35rem,6.2vw,2.4rem)}
 @media(max-width:560px){.hero{grid-template-columns:minmax(0,1fr)}}
+.la::after{content:"\00A0" attr(data-a);position:relative;left:calc(var(--la-left,0) * 1em);top:calc(var(--la-up,0) * -1em);margin-inline-end:calc(var(--la-w,.25) * -1em);pointer-events:none}
+.ayah-number-icon{color:var(--sun-d);display:inline-block;margin-inline-start:4px;font-size:.85em}
+.bsm-card{background:linear-gradient(#fff,#FFF8DD);border-color:#E9C76B}
+.qari-sel{max-width:100%;min-width:0;text-overflow:ellipsis}
+.card .qari-sel{width:100%!important}
 @media print{
   @page{size:landscape;margin:10mm}
   body *{visibility:hidden}
@@ -823,94 +828,407 @@ const RAW = [
 ["وَآخَرِينَ مِنْهُمْ لَمَّا يَلْحَقُوا بِهِمْ ۚ وَهُوَ الْعَزِيزُ الْحَكِيمُ","dan (juga) kepada kaum yang lain dari mereka yang belum berhubungan dengan mereka. Dan Dialah Yang Mahaperkasa, Mahabijaksana."],
 ["ذَٰلِكَ فَضْلُ اللَّهِ يُؤْتِيهِ مَن يَشَاءُ ۚ وَاللَّهُ ذُو الْفَضْلِ الْعَظِيمِ","Demikianlah karunia Allah, diberikan-Nya kepada siapa yang Dia kehendaki. Dan Allah memiliki karunia yang besar."]]}
 ];
+/* =====================================================================
+   GAYA MUSHAF STANDAR INDONESIA (dipindahkan dari TalqinKu)
+   ===================================================================== */
+    const MushafID = (function () {
+      const C = {
+        FATHA: 0x064E, DAMMA: 0x064F, KASRA: 0x0650, SHADDA: 0x0651, SUKUN: 0x0652,
+        SUB_ALEF: 0x0656, INV_DAMMA: 0x0657, DAGGER: 0x0670,
+        TATWEEL: 0x0640, ALEF: 0x0627, ALEF_WASLA: 0x0671, ALEF_HAMZA_ABOVE: 0x0623, ALEF_HAMZA_BELOW: 0x0625,
+        HAMZA: 0x0621, LAM: 0x0644, HEH: 0x0647, WAW: 0x0648, YEH: 0x064A, SAD: 0x0635, RA: 0x0631, TAH: 0x0637,
+        SMALL_WAW: 0x06E5, SMALL_YEH: 0x06E6, ROUND_ZERO: 0x06DF, SUKUN_ALT: 0x06E1, YEH_HAMZA: 0x0626
+      };
+      const ch = (cp) => String.fromCodePoint(cp);
+
+      // tanda yang menempel pada huruf sebelumnya (harakat, shadda, tanda waqaf kecil, dll.)
+      function isMark(cp) {
+        return (cp >= 0x0610 && cp <= 0x061A) || (cp >= 0x064B && cp <= 0x065F) || cp === 0x0670 ||
+               (cp >= 0x06D6 && cp <= 0x06DC) || (cp >= 0x06DF && cp <= 0x06E4) ||
+               (cp >= 0x06E7 && cp <= 0x06E8) || (cp >= 0x06EA && cp <= 0x06ED) || (cp >= 0x08D3 && cp <= 0x08FF);
+      }
+
+      // pecah teks menjadi "kluster": 1 huruf dasar + tanda-tandanya. Spasi = batas kata.
+      function toClusters(text) {
+        const out = [];
+        for (const c of Array.from(text)) {
+          const cp = c.codePointAt(0);
+          if (isMark(cp) && out.length && out[out.length - 1].b !== ' ') out[out.length - 1].m.push(cp);
+          else out.push({ b: c, m: [] });
+        }
+        return out;
+      }
+      const fromClusters = (cl) => cl.map(k => k.b + k.m.map(ch).join('')).join('');
+      const has = (k, cp) => k && k.m.includes(cp);
+      const drop = (k, cp) => { k.m = k.m.filter(x => x !== cp); };
+      const baseIs = (k, cp) => k && k.b.codePointAt(0) === cp;
+
+      function convert(text, opts) {
+        if (!text) return text;
+        opts = opts || {};
+        // pakai bentuk sukun yang sama dengan teks sumber (agar tampilan seragam)
+        const SUK = text.indexOf(ch(C.SUKUN_ALT)) !== -1 && text.indexOf(ch(C.SUKUN)) === -1 ? C.SUKUN_ALT : C.SUKUN;
+        let cl = toClusters(text);
+
+        // ---- 0. Kata "Shirath": di mushaf Indonesia ditulis dengan alif penuh (الصِّرَاطَ), bukan alif kecil
+        for (let i = 0; i < cl.length - 2; i++) {
+          if (baseIs(cl[i], C.SAD) && has(cl[i], C.KASRA) && baseIs(cl[i + 1], C.RA) && has(cl[i + 1], C.DAGGER) && baseIs(cl[i + 2], C.TAH)) {
+            drop(cl[i + 1], C.DAGGER);
+            cl.splice(i + 2, 0, { b: ch(C.ALEF), m: [] });
+          }
+        }
+
+        // ---- 1. Tatwil + fathah berdiri: gabungkan ke huruf sebelumnya, buang fathah miring
+        for (let i = 1; i < cl.length; i++) {
+          const k = cl[i];
+          if (baseIs(k, C.TATWEEL) && has(k, C.DAGGER) && cl[i - 1].b !== ' ') {
+            const prev = cl[i - 1];
+            drop(prev, C.FATHA);
+            k.m.forEach(x => { if (x !== C.FATHA && x !== C.KASRA && x !== C.DAMMA && !prev.m.includes(x)) prev.m.push(x); });
+            cl.splice(i, 1); i--;
+          }
+        }
+        // alif maqshurah + fathah berdiri (عَلَىٰ -> عَلٰى): fathah berdiri pindah ke huruf sebelumnya, fathah miring dibuang
+        for (let i = 1; i < cl.length; i++) {
+          const k = cl[i], prev = cl[i - 1];
+          if (baseIs(k, 0x0649) && has(k, C.DAGGER) && prev.b !== ' ' && has(prev, C.FATHA)) {
+            drop(k, C.DAGGER); drop(prev, C.FATHA); prev.m.push(C.DAGGER);
+          }
+        }
+        // fathah miring + fathah berdiri pada huruf yang sama -> cukup fathah berdiri
+        cl.forEach(k => { if (has(k, C.DAGGER)) drop(k, C.FATHA); });
+
+        // ---- 2. Waw/ya kecil penanda mad pada "ه" (لَهُۥ / بِهِۦ) -> dammah berdiri / kasrah berdiri (لَهٗ / بِهٖ)
+        for (let i = 1; i < cl.length; i++) {
+          const k = cl[i], prev = cl[i - 1];
+          if (k.m.length === 0 && baseIs(k, C.SMALL_WAW) && has(prev, C.DAMMA)) {
+            drop(prev, C.DAMMA); prev.m.push(C.INV_DAMMA); cl.splice(i, 1); i--;
+          } else if (k.m.length === 0 && baseIs(k, C.SMALL_YEH) && has(prev, C.KASRA)) {
+            drop(prev, C.KASRA); prev.m.push(C.SUB_ALEF); cl.splice(i, 1); i--;
+          }
+        }
+
+        // ---- 3. Lafaz Allah: ٱللَّهِ -> اللّٰهِ  dan  لِلَّهِ -> لِلّٰهِ
+        for (let i = 1; i < cl.length - 1; i++) {
+          const k = cl[i];
+          if (baseIs(k, C.LAM) && has(k, C.SHADDA) && has(k, C.FATHA) && !has(k, C.DAGGER)) {
+            let j = i + 1;
+            if (baseIs(cl[j], C.TATWEEL) && cl[j].m.length === 0) j++;      // ٱللَّـهِ (ada tatwil)
+            const heh = cl[j];
+            const before = cl[i - 1], before2 = cl[i - 2];
+            const afterArticle = baseIs(before, C.LAM) && before2 && (baseIs(before2, C.ALEF_WASLA) || baseIs(before2, C.ALEF));
+            const afterLi = baseIs(before, C.LAM) && has(before, C.KASRA);
+            if (heh && baseIs(heh, C.HEH) && (afterArticle || afterLi)) {
+              drop(k, C.FATHA); k.m.push(C.DAGGER);
+              if (j !== i + 1) cl.splice(i + 1, 1);
+            }
+          }
+        }
+
+        // ---- 4. Alif wasal (ٱ): jadi alif biasa. Di awal AYAT (selain "ال") diberi harakat awal; di tengah ayat polos.
+        for (let i = 0; i < cl.length; i++) {
+          if (!baseIs(cl[i], C.ALEF_WASLA)) continue;
+          cl[i].b = ch(C.ALEF);
+          // Harakat awal (kasrah/dammah) hanya untuk kata PERTAMA ayat (اِهْدِنَا). Di tengah ayat alif wasal polos (... انْفَطَرَتْ)
+          const atStart = (i === 0);
+          const next = cl[i + 1];
+          if (atStart && next && !baseIs(next, C.LAM)) {
+            // cari huruf ke-3 pada kata (ٱ + h1 + h2): bila berharakat dammah -> mulai dengan dammah, selain itu kasrah
+            let w = []; for (let j = i + 1; j < cl.length && cl[j].b !== ' '; j++) w.push(cl[j]);
+            const rootStr = w.slice(0, 3).map(k => k.b).join('');
+            const nounKasra = /^(\u0628\u0646|\u0633\u0645|\u0627?\u0645\u0631|\u062B\u0646)/.test(rootStr); // ابن، اسم، امرؤ، اثنين
+            const hamzaSeat = w[0] && (baseIs(w[0], C.YEH_HAMZA) || baseIs(w[0], C.HAMZA)); // ٱئْتُوا -> kasrah
+            // huruf bertasydid (ٱتَّقُوا) dihitung dua huruf: harakat huruf ke-2 ada pada huruf itu sendiri
+            const third = (w[0] && has(w[0], C.SHADDA)) ? w[0] : w[1];
+            const dammaStart = third && has(third, C.DAMMA) && !nounKasra && !hamzaSeat;
+            cl[i].m.push(dammaStart ? C.DAMMA : C.KASRA);
+          }
+        }
+
+        // ---- 5. Hamzah di atas/bawah alif dihilangkan (أَنْعَمْتَ -> اَنْعَمْتَ, إِيَّاكَ -> اِيَّاكَ)
+        // (hamzah yang bersukun, mis. يَأْكُلُ / فَأْتُوا, tetap dipertahankan)
+        cl.forEach(k => {
+          if ((baseIs(k, C.ALEF_HAMZA_ABOVE) || baseIs(k, C.ALEF_HAMZA_BELOW)) && !has(k, C.SUKUN) && !has(k, C.SUKUN_ALT)) k.b = ch(C.ALEF);
+        });
+        // ءَا (hamzah + fathah + alif) -> اٰ  (ءَامَنُوا -> اٰمَنُوا, ٱلْقُرْءَانَ -> الْقُرْاٰنَ)
+        for (let i = 0; i < cl.length - 1; i++) {
+          if (baseIs(cl[i], C.HAMZA) && cl[i].m.length === 1 && has(cl[i], C.FATHA) && baseIs(cl[i + 1], C.ALEF) && cl[i + 1].m.every(x => x === 0x0653)) {
+            const a = cl[i + 1];
+            if (!a.m.includes(C.DAGGER)) a.m.unshift(C.DAGGER);
+            cl.splice(i, 1);
+          }
+        }
+
+        // Font LPMQ (font resmi mushaf Indonesia) sudah menata lam-alif dengan benar -> pakai maddah standar.
+        // Font lain (mis. Scheherazade) -> pakai maddah terpisah U+06E4 agar tidak menumpuk dengan fathah lam.
+        const MADD = opts.lpmq ? 0x0653 : 0x06E4;
+
+        // ---- 5b. Lam + alif bermaddah (لَآ): maddah ditulis sebagai tanda terpisah (ۤ) agar font tidak menggabungkannya
+        //          dengan fathah lam. Hasilnya fathah tampil di atas LAM dan maddah di atas ALIF, seperti mushaf.
+        for (let i = 1; i < cl.length; i++) {
+          const k = cl[i], prev = cl[i - 1];
+          if (!baseIs(prev, C.LAM)) continue;
+          if (baseIs(k, 0x0622)) { k.b = ch(C.ALEF); k.m.push(MADD); }                          // آ (satu huruf) -> ا + maddah
+          else if (baseIs(k, C.ALEF) && has(k, 0x0653)) { drop(k, 0x0653); k.m.push(MADD); }     // ا + ٓ -> ا + maddah
+        }
+
+        // ---- 5c. Ya akhir kata yang di data ditulis ى (فِى, ٱلَّذِى, ٱلنَّبِىِّ) -> ي bertitik (فِيْ, الَّذِيْ, النَّبِيِّ)
+        for (let i = 1; i < cl.length; i++) {
+          const k = cl[i], prev = cl[i - 1];
+          if (baseIs(k, 0x0649) && !has(k, C.DAGGER) && prev.b !== ' ' && (has(prev, C.KASRA) || has(prev, C.SUB_ALEF))) k.b = ch(C.YEH);
+        }
+
+        // ---- 6. Huruf mad diberi sukun: waw setelah dammah, ya setelah kasrah
+        for (let i = 1; i < cl.length; i++) {
+          const k = cl[i], prev = cl[i - 1];
+          if (k.m.some(x => x !== 0x0653) || prev.b === ' ') continue;
+          const wordEnd = (i === cl.length - 1 || cl[i + 1].b === ' ');
+          if (baseIs(k, C.WAW) && (has(prev, C.DAMMA) || has(prev, C.INV_DAMMA))) {
+            if (wordEnd && prev.b === '\u0630') continue;          // "ذُو" tidak diberi sukun
+            k.m.push(SUK);
+          } else if (baseIs(k, C.YEH) && (has(prev, C.KASRA) || has(prev, C.SUB_ALEF))) {
+            k.m.push(SUK);
+          }
+        }
+
+        // ---- 6b. Nun sukun pada ikhfa haqiqi & idgham: nun yang di teks Madinah polos (tanpa tanda) diberi sukun
+        //          مِن جُوعٍ -> مِنْ جُوْعٍ ,  مِن رَّبِّهِمْ -> مِنْ رَّبِّهِمْ ,  عَن صَلَاتِهِمْ -> عَنْ صَلَاتِهِمْ
+        const NUN_RULE_LETTERS = new Set([
+          // ikhfa haqiqi: ت ث ج د ذ ز س ش ص ض ط ظ ف ق ك
+          0x062A, 0x062B, 0x062C, 0x062F, 0x0630, 0x0632, 0x0633, 0x0634, 0x0635, 0x0636, 0x0637, 0x0638, 0x0641, 0x0642, 0x0643,
+          // idgham: ي ر م ل و ن
+          0x064A, 0x0631, 0x0645, 0x0644, 0x0648, 0x0646
+        ]);
+        for (let i = 0; i < cl.length; i++) {
+          const k = cl[i];
+          if (!baseIs(k, 0x0646) || k.m.length !== 0) continue;          // hanya nun yang polos
+          let j = i + 1;
+          while (j < cl.length) {                                          // lompati spasi & tanda waqaf lepas
+            const cp = cl[j].b.codePointAt(0);
+            if (cl[j].b === ' ' || (cp >= 0x06D6 && cp <= 0x06DC) || cp === 0x06DE || cp === 0x06E9) j++; else break;
+          }
+          if (j < cl.length && NUN_RULE_LETTERS.has(cl[j].b.codePointAt(0))) { k.m.push(SUK); k.idg = true; }
+        }
+
+        // ---- 6c. Idgham bighunnah: ya/waw setelah nun sukun atau tanwin diberi tasydid
+        //          لَهَبٍ وَتَبَّ -> لَهَبٍ وَّتَبَّ ,  فَمَن يَعْمَلْ -> فَمَنْ يَّعْمَلْ ,  خَيْرًا يَرَهُۥ -> خَيْرًا يَّرَهٗ
+        const isWaqf = (k) => { const cp = k.b.codePointAt(0); return (cp >= 0x06D6 && cp <= 0x06DC) || cp === 0x06DE || cp === 0x06E9; };
+        const hasTanwin = (k) => k && k.m.some(x => x === 0x064B || x === 0x064C || x === 0x064D || (x >= 0x08F0 && x <= 0x08F2));
+        for (let i = 2; i < cl.length; i++) {
+          const k = cl[i];
+          if (!(baseIs(k, C.YEH) || baseIs(k, C.WAW)) || cl[i - 1].b !== ' ') continue;      // huruf pertama kata
+          if (!k.m.some(x => x === C.FATHA || x === C.DAMMA || x === C.KASRA) || has(k, C.SHADDA) || has(k, SUK)) continue;
+          let p = cl[i - 2];
+          if (!p || isWaqf(p)) continue;                                                         // ada tanda waqaf di antara -> jangan
+          if ((baseIs(p, C.ALEF) || baseIs(p, 0x0649)) && p.m.length === 0 && cl[i - 3]) p = cl[i - 3];   // tanwin fathah: خَيْرًا / هُدًى
+          if (p.idg || hasTanwin(p)) k.m.unshift(C.SHADDA);
+        }
+
+        // ---- 6d. Idgham lainnya: huruf polos sebelum huruf bertasydid diberi sukun
+        //          عَبَدتُّمْ -> عَبَدْتُّمْ ,  هُم مَّغْفِرَةٌ -> هُمْ مَّغْفِرَةٌ ,  قُل رَّبِّ -> قُلْ رَّبِّ
+        //          (lam "ال" sebelum huruf syamsiyah tidak diberi sukun: الرَّحْمٰنِ)
+        for (let i = 1; i < cl.length; i++) {
+          const k = cl[i], cp = k.b.codePointAt(0);
+          if (k.m.length !== 0 || cp < 0x0628 || cp > 0x064A) continue;
+          if (cp === C.WAW || cp === C.YEH || cp === 0x0649 || cp === C.TATWEEL) continue;
+          if (cl[i - 1].b === ' ') continue;
+          if (cp === C.LAM && baseIs(cl[i - 1], C.ALEF)) continue;                               // lam alif-lam (ta'rif)
+          let j = i + 1;
+          while (j < cl.length && (cl[j].b === ' ' || isWaqf(cl[j]))) j++;
+          if (j < cl.length && has(cl[j], C.SHADDA)) k.m.push(SUK);
+        }
+
+        // ---- 7. Tanda "huruf tidak dibaca" (۟) dibuang -> قَالُوا۟ menjadi قَالُوْا
+        cl.forEach(k => drop(k, C.ROUND_ZERO));
+
+        // ---- 8. Pemeriksaan akhir: harakat miring + berdiri pada 1 huruf -> sisakan yang berdiri saja
+        cl.forEach(k => {
+          if (has(k, C.DAGGER)) { drop(k, C.FATHA); }
+          if (has(k, C.SUB_ALEF)) drop(k, C.KASRA);
+          if (has(k, C.INV_DAMMA)) drop(k, C.DAMMA);
+        });
+
+        // ---- 9. Lam + alif: harakat di ATAS lam digambar font di atas alif (ligatur). Pindahkan ke lapisan
+        //         terpisah (span.la) yang posisinya diukur tepat di atas huruf lam. Tanda di alif (hamzah/maddah) tidak dipindah.
+        if (opts.lamOverlay) {
+          const ABOVE = new Set([0x064B, 0x064C, 0x064E, 0x064F, 0x0651, 0x0652, 0x0653, 0x0654, 0x0657, 0x0670, 0x06E1, 0x06E4, 0x08F0, 0x08F1]);
+          for (let i = 0; i < cl.length - 1; i++) {
+            const k = cl[i], nx = cl[i + 1];
+            if (!baseIs(k, C.LAM) || !baseIs(nx, C.ALEF)) continue;
+            const up = k.m.filter(x => ABOVE.has(x));
+            if (!up.length) continue;
+            up.sort((a, b) => (b === 0x0651) - (a === 0x0651));          // tasydid dulu
+            k.m = k.m.filter(x => !ABOVE.has(x));
+            k.la = up;
+          }
+          let out = '';
+          for (let i = 0; i < cl.length; i++) {
+            const k = cl[i];
+            if (k.la) {
+              const nx = cl[i + 1];
+              out += '<span class="la" data-a="' + k.la.map(ch).join('') + '">' + k.b + k.m.map(ch).join('') + nx.b + nx.m.map(ch).join('') + '</span>';
+              i++;
+            } else out += k.b + k.m.map(ch).join('');
+          }
+          return out;
+        }
+
+        return fromClusters(cl);
+      }
+
+      /* Lapisan harakat lam-alif untuk teks yang SUDAH dikonversi (dipakai setelah teks tampil di layar) */
+      function overlay(text) {
+        if (!text || text.indexOf('\u0644') === -1) return text;
+        const cl = toClusters(text);
+        const ABOVE = new Set([0x064B, 0x064C, 0x064E, 0x064F, 0x0651, 0x0652, 0x0653, 0x0654, 0x0657, 0x0670, 0x06E1, 0x06E4, 0x08F0, 0x08F1]);
+        let any = false;
+        for (let i = 0; i < cl.length - 1; i++) {
+          const k = cl[i], nx = cl[i + 1];
+          if (!baseIs(k, C.LAM) || !baseIs(nx, C.ALEF)) continue;
+          const up = k.m.filter(x => ABOVE.has(x));
+          if (!up.length) continue;
+          up.sort((a, b) => (b === 0x0651) - (a === 0x0651));
+          k.m = k.m.filter(x => !ABOVE.has(x));
+          k.la = up; any = true;
+        }
+        if (!any) return text;
+        let out = '';
+        for (let i = 0; i < cl.length; i++) {
+          const k = cl[i];
+          if (k.la) {
+            const nx = cl[i + 1];
+            out += '<span class="la" data-a="' + k.la.map(ch).join('') + '">' + k.b + k.m.map(ch).join('') + nx.b + nx.m.map(ch).join('') + '</span>';
+            i++;
+          } else out += k.b + k.m.map(ch).join('');
+        }
+        return out;
+      }
+
+      return { convert, overlay };
+    })();
 
 /* =====================================================================
-   SELURUH SURAH JUZ 28-30  —  dimuat otomatis dari sumber resmi
-   (api.alquran.cloud: teks Utsmani + terjemah Kemenag), divalidasi
-   jumlah ayatnya, lalu disimpan di perangkat (cache) agar bisa offline.
-   Data bawaan (RAW di atas) tetap dipakai sebagai cadangan.
+   PENGATURAN SURAH — disamakan dengan TalqinKu:
+   Al-Fatihah + seluruh surah Juz 28, 29, 30 (58-114), ejaan nama versi Kemenag.
+   Teks Arab : api.quran.com (Utsmani) -> diubah ke gaya Mushaf Standar Indonesia
+   Terjemah  : api.alquran.cloud (id.indonesian)
+   Data bawaan (RAW) hanya cadangan bila belum pernah memuat.
    ===================================================================== */
-const AYAT_COUNT={58:22,59:24,60:13,61:14,62:11,63:11,64:18,65:12,66:12,
-67:30,68:52,69:52,70:44,71:28,72:28,73:20,74:56,75:40,76:31,77:50,
-78:40,79:46,80:42,81:29,82:19,83:36,84:25,85:22,86:17,87:19,88:26,89:30,90:20,91:15,92:21,
-93:11,94:8,95:8,96:19,97:5,98:8,99:8,100:11,101:11,102:8,103:3,104:9,105:5,106:4,107:7,108:3,109:6,110:3,111:5,112:4,113:5,114:6};
-const SURAH_META={
-58:["Al-Mujadilah","المجادلة","Wanita yang Menggugat"],59:["Al-Hasyr","الحشر","Pengusiran"],60:["Al-Mumtahanah","الممتحنة","Wanita yang Diuji"],
-61:["As-Saff","الصف","Barisan"],62:["Al-Jumu'ah","الجمعة","Hari Jumat"],63:["Al-Munafiqun","المنافقون","Orang-orang Munafik"],
-64:["At-Taghabun","التغابن","Hari Dinampakkan Kesalahan"],65:["At-Talaq","الطلاق","Talak"],66:["At-Tahrim","التحريم","Mengharamkan"],
-67:["Al-Mulk","الملك","Kerajaan"],68:["Al-Qalam","القلم","Pena"],69:["Al-Haqqah","الحاقة","Hari Kiamat yang Pasti"],
-70:["Al-Ma'arij","المعارج","Tempat-tempat Naik"],71:["Nuh","نوح","Nabi Nuh"],72:["Al-Jinn","الجن","Jin"],
-73:["Al-Muzzammil","المزمل","Orang yang Berselimut"],74:["Al-Muddatsir","المدثر","Orang yang Berkemul"],75:["Al-Qiyamah","القيامة","Hari Kiamat"],
-76:["Al-Insan","الإنسان","Manusia"],77:["Al-Mursalat","المرسلات","Malaikat yang Diutus"],
-78:["An-Naba'","النبأ","Berita Besar"],79:["An-Nazi'at","النازعات","Malaikat yang Mencabut"],80:["'Abasa","عبس","Ia Bermuka Masam"],
-81:["At-Takwir","التكوير","Menggulung"],82:["Al-Infithar","الانفطار","Terbelah"],83:["Al-Muthaffifin","المطففين","Orang yang Curang"],
-84:["Al-Insyiqaq","الانشقاق","Terbelah"],85:["Al-Buruj","البروج","Gugusan Bintang"],86:["At-Thariq","الطارق","Yang Datang di Malam Hari"],
-87:["Al-A'la","الأعلى","Yang Mahatinggi"],88:["Al-Ghasyiyah","الغاشية","Hari Pembalasan"],89:["Al-Fajr","الفجر","Fajar"],
-90:["Al-Balad","البلد","Negeri"],91:["Asy-Syams","الشمس","Matahari"],92:["Al-Lail","الليل","Malam"],
-93:["Ad-Duha","الضحى","Waktu Duha"],94:["Al-Insyirah","الشرح","Kelapangan"],95:["At-Tin","التين","Buah Tin"],
-96:["Al-Alaq","العلق","Segumpal Darah"],97:["Al-Qadr","القدر","Kemuliaan"],98:["Al-Bayyinah","البينة","Bukti yang Nyata"],
-99:["Az-Zalzalah","الزلزلة","Guncangan"],100:["Al-Adiyat","العاديات","Kuda Perang"],101:["Al-Qari'ah","القارعة","Hari Kiamat"],
-102:["At-Takatsur","التكاثر","Bermegah-megahan"],103:["Al-Asr","العصر","Masa"],104:["Al-Humazah","الهمزة","Pengumpat"],
-105:["Al-Fil","الفيل","Gajah"],106:["Quraisy","قريش","Suku Quraisy"],107:["Al-Ma'un","الماعون","Barang yang Berguna"],
-108:["Al-Kautsar","الكوثر","Nikmat yang Banyak"],109:["Al-Kafirun","الكافرون","Orang-orang Kafir"],110:["An-Nasr","النصر","Pertolongan"],
-111:["Al-Masad","المسد","Sabut"],112:["Al-Ikhlas","الإخلاص","Memurnikan Keesaan Allah"],113:["Al-Falaq","الفلق","Waktu Subuh"],114:["An-Nas","الناس","Manusia"]};
-const juzOf=no=>no>=78?30:no>=67?29:28;
-const TOTAL_AYAT=Object.values(AYAT_COUNT).reduce((a,b)=>a+b,0);   // 1132
-const QAPI='https://api.alquran.cloud/v1/juz/';
-const DATA_KEY='ayatplay_quran_v1';
+const ALL_SURAHS=[
+ {num:1,name:"Al-Fatihah",ar:"سُورَةُ ٱلْفَاتِحَةِ",ayahs:7,mean:"Pembukaan"},
+ {num:58,name:"Al-Mujadilah",ar:"سُورَةُ ٱلْمُجَادَلَةِ",ayahs:22,mean:"Wanita yang Menggugat"},
+ {num:59,name:"Al-Hasyr",ar:"سُورَةُ ٱلْحَشْرِ",ayahs:24,mean:"Pengusiran"},
+ {num:60,name:"Al-Mumtahanah",ar:"سُورَةُ ٱلْمُمْتَحَنَةِ",ayahs:13,mean:"Wanita yang Diuji"},
+ {num:61,name:"As-Saff",ar:"سُورَةُ ٱلصَّفِّ",ayahs:14,mean:"Barisan"},
+ {num:62,name:"Al-Jumu'ah",ar:"سُورَةُ ٱلجُمُعَةِ",ayahs:11,mean:"Hari Jumat"},
+ {num:63,name:"Al-Munafiqun",ar:"سُورَةُ ٱلنَّافِقُونَ",ayahs:11,mean:"Orang-orang Munafik"},
+ {num:64,name:"At-Tagabun",ar:"سُورَةُ ٱلتَّغَابُنِ",ayahs:18,mean:"Hari Dinampakkan Kesalahan"},
+ {num:65,name:"At-Talaq",ar:"سُورَةُ ٱلطَّلَاقِ",ayahs:12,mean:"Talak"},
+ {num:66,name:"At-Tahrim",ar:"سُورَةُ ٱلتَّحْرِيمِ",ayahs:12,mean:"Mengharamkan"},
+ {num:67,name:"Al-Mulk",ar:"سُورَةُ ٱلْمُلْكِ",ayahs:30,mean:"Kerajaan"},
+ {num:68,name:"Al-Qalam",ar:"سُورَةُ ٱلْقَلَمِ",ayahs:52,mean:"Pena"},
+ {num:69,name:"Al-Haqqah",ar:"سُورَةُ ٱلْحَاقَّةِ",ayahs:52,mean:"Hari Kiamat yang Pasti"},
+ {num:70,name:"Al-Ma'arij",ar:"سُورَةُ ٱلْمَعَارِجِ",ayahs:44,mean:"Tempat-tempat Naik"},
+ {num:71,name:"Nuh",ar:"سُورَةُ نُوحٍ",ayahs:28,mean:"Nabi Nuh"},
+ {num:72,name:"Al-Jinn",ar:"سُورَةُ ٱلْجِنِّ",ayahs:28,mean:"Jin"},
+ {num:73,name:"Al-Muzzammil",ar:"سُورَةُ ٱلْمُزَّمِّلِ",ayahs:20,mean:"Orang yang Berselimut"},
+ {num:74,name:"Al-Muddassir",ar:"سُورَةُ ٱلْمُدَّثِّرِ",ayahs:56,mean:"Orang yang Berkemul"},
+ {num:75,name:"Al-Qiyamah",ar:"سُورَةُ ٱلْقِيَامَةِ",ayahs:40,mean:"Hari Kiamat"},
+ {num:76,name:"Al-Insan",ar:"سُورَةُ ٱلْإِنسَانِ",ayahs:31,mean:"Manusia"},
+ {num:77,name:"Al-Mursalat",ar:"سُورَةُ ٱلْمُرْسَلَاتِ",ayahs:50,mean:"Malaikat yang Diutus"},
+ {num:78,name:"An-Naba'",ar:"سُورَةُ ٱلنَّبَإِ",ayahs:40,mean:"Berita Besar"},
+ {num:79,name:"An-Nazi'at",ar:"سُورَةُ ٱلنَّازِعَاتِ",ayahs:46,mean:"Malaikat yang Mencabut"},
+ {num:80,name:"'Abasa",ar:"سُورَةُ عَبَسَ",ayahs:42,mean:"Ia Bermuka Masam"},
+ {num:81,name:"At-Takwir",ar:"سُورَةُ ٱلتَّكْوِيرِ",ayahs:29,mean:"Menggulung"},
+ {num:82,name:"Al-Infitar",ar:"سُورَةُ ٱلْإِنْفِطَارِ",ayahs:19,mean:"Terbelah"},
+ {num:83,name:"Al-Mutaffifin",ar:"سُورَةُ ٱلْمُطَفِّفِينَ",ayahs:36,mean:"Orang yang Curang"},
+ {num:84,name:"Al-Insyiqaq",ar:"سُورَةُ ٱلْإِنْشِقَاقِ",ayahs:25,mean:"Terbelah"},
+ {num:85,name:"Al-Buruj",ar:"سُورَةُ ٱلْبُرُوجِ",ayahs:22,mean:"Gugusan Bintang"},
+ {num:86,name:"At-Tariq",ar:"سُورَةُ ٱلطَّارِقِ",ayahs:17,mean:"Yang Datang di Malam Hari"},
+ {num:87,name:"Al-A'la",ar:"سُورَةُ ٱلْأَعْلَىٰ",ayahs:19,mean:"Yang Mahatinggi"},
+ {num:88,name:"Al-Gasyiyah",ar:"سُورَةُ ٱلْغَاشِيَةِ",ayahs:26,mean:"Hari Pembalasan"},
+ {num:89,name:"Al-Fajr",ar:"سُورَةُ ٱلْفَجْرِ",ayahs:30,mean:"Fajar"},
+ {num:90,name:"Al-Balad",ar:"سُورَةُ ٱلْبَلَدِ",ayahs:20,mean:"Negeri"},
+ {num:91,name:"Asy-Syams",ar:"سُورَةُ ٱلشَّمْسِ",ayahs:15,mean:"Matahari"},
+ {num:92,name:"Al-Lail",ar:"سُورَةُ ٱلَّيْلِ",ayahs:21,mean:"Malam"},
+ {num:93,name:"Ad-Duha",ar:"سُورَةُ ٱلضُّحَىٰ",ayahs:11,mean:"Waktu Duha"},
+ {num:94,name:"Asy-Syarh",ar:"سُورَةُ ٱلشَّرْحِ",ayahs:8,mean:"Kelapangan"},
+ {num:95,name:"At-Tin",ar:"سُورَةُ ٱلتِّينِ",ayahs:8,mean:"Buah Tin"},
+ {num:96,name:"Al-'Alaq",ar:"سُورَةُ ٱلْعَلَقِ",ayahs:19,mean:"Segumpal Darah"},
+ {num:97,name:"Al-Qadr",ar:"سُورَةُ ٱلْقَدْرِ",ayahs:5,mean:"Kemuliaan"},
+ {num:98,name:"Al-Bayyinah",ar:"سُورَةُ ٱلْبَيِّنَةِ",ayahs:8,mean:"Bukti yang Nyata"},
+ {num:99,name:"Az-Zalzalah",ar:"سُورَةُ ٱلزَّلْزَلَةِ",ayahs:8,mean:"Guncangan"},
+ {num:100,name:"Al-'Adiyat",ar:"سُورَةُ ٱلْعَادِيَاتِ",ayahs:11,mean:"Kuda Perang"},
+ {num:101,name:"Al-Qari'ah",ar:"سُورَةُ ٱلْقَارِعَةِ",ayahs:11,mean:"Hari Kiamat"},
+ {num:102,name:"At-Takasur",ar:"سُورَةُ ٱلتَّكَاثُرِ",ayahs:8,mean:"Bermegah-megahan"},
+ {num:103,name:"Al-'Asr",ar:"سُورَةُ ٱلْعَصْرِ",ayahs:3,mean:"Masa"},
+ {num:104,name:"Al-Humazah",ar:"سُورَةُ ٱلْهُمَزَةِ",ayahs:9,mean:"Pengumpat"},
+ {num:105,name:"Al-Fil",ar:"سُورَةُ ٱلْفِيلِ",ayahs:5,mean:"Gajah"},
+ {num:106,name:"Quraisy",ar:"سُورَةُ قُرَيْشٍ",ayahs:4,mean:"Suku Quraisy"},
+ {num:107,name:"Al-Ma'un",ar:"سُورَةُ ٱلْمَاعُونِ",ayahs:7,mean:"Barang yang Berguna"},
+ {num:108,name:"Al-Kausar",ar:"سُورَةُ ٱلْكَوْثَرِ",ayahs:3,mean:"Nikmat yang Banyak"},
+ {num:109,name:"Al-Kafirun",ar:"سُورَةُ ٱلْكَافِرُونَ",ayahs:6,mean:"Orang-orang Kafir"},
+ {num:110,name:"An-Nasr",ar:"سُورَةُ ٱلنَّصْرِ",ayahs:3,mean:"Pertolongan"},
+ {num:111,name:"Al-Lahab",ar:"سُورَةُ ٱللَّهَبِ",ayahs:5,mean:"Api yang Bergejolak"},
+ {num:112,name:"Al-Ikhlas",ar:"سُورَةُ ٱلْإِخْلَاصِ",ayahs:4,mean:"Memurnikan Keesaan Allah"},
+ {num:113,name:"Al-Falaq",ar:"سُورَةُ ٱلْفَلَقِ",ayahs:5,mean:"Waktu Subuh"},
+ {num:114,name:"An-Nas",ar:"سُورَةُ ٱلنَّاسِ",ayahs:6,mean:"Manusia"}
+];
+const AYAT_COUNT={}, SURAH_META={};
+ALL_SURAHS.forEach(s=>{AYAT_COUNT[s.num]=s.ayahs;SURAH_META[s.num]=[s.name,s.ar,s.mean];});
+const juzOf=no=>no===1?1:no>=78?30:no>=67?29:28;
+const TOTAL_AYAT=ALL_SURAHS.reduce((a,s)=>a+s.ayahs,0);          // 1139
+const DATA_KEY='ayatplay_quran_v2';
+const CONV_VER=1;                                                  // naikkan bila aturan konversi mushaf berubah
 let dataStatus='builtin';        // builtin | loading | full | error
-let pendingData=null;
+let loadDone=0, pendingData=null;
+const QPARTIAL={};               // surah yang sudah berhasil dimuat (agar bisa dilanjutkan bila terputus)
 
-const BASMALA='بسم الله الرحمن الرحيم';
+const BASMALA_RE=/^بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ\s*/;
+const BASMALA_NORM='بسم الله الرحمن الرحيم';
 function cleanAr(text,n,no){
-  let t=String(text).replace(/\u06DE/g,'').replace(/\s+/g,' ').trim();   // buang tanda hizb ۞
-  if(n===1&&no!==1&&no!==9){                                            // buang basmalah yang kadang ikut di ayat 1
+  let t=String(text).replace(/\u06DE/g,'').replace(/\s+/g,' ').trim();   // buang tanda hizb ۞ (agar tidak jadi "kata")
+  if(n===1&&no!==1&&no!==9){
+    t=t.replace(BASMALA_RE,'');
     const parts=t.split(' ');
-    if(parts.length>4&&normAr(parts.slice(0,4).join(' '))===BASMALA) t=parts.slice(4).join(' ');
+    if(parts.length>4&&normAr(parts.slice(0,4).join(' '))===BASMALA_NORM) t=parts.slice(4).join(' ');
   }
   return t;
 }
-/* Rakit & validasi: kembalikan daftar surah lengkap, atau lempar error bila ada yang janggal */
-function assembleQuran(arAyahs,idAyahs){
-  const by={};
-  const add=(list,field)=>list.forEach(a=>{
-    const no=a&&a.surah&&a.surah.number, n=a&&a.numberInSurah;
-    if(!AYAT_COUNT[no]||!Number.isInteger(n)||typeof a.text!=='string') throw new Error('format ayat tidak dikenal');
-    (by[no]=by[no]||{})[n]=by[no][n]||{}; by[no][n][field]=a.text;
-  });
-  add(arAyahs,'ar'); add(idAyahs,'id');
-  const out=[];
-  for(const key of Object.keys(AYAT_COUNT)){
-    const no=+key, cnt=AYAT_COUNT[no], o=by[no];
-    if(!o||Object.keys(o).length!==cnt) throw new Error(`jumlah ayat surah ${no} tidak sesuai`);
-    const v=[];
-    for(let n=1;n<=cnt;n++){
-      const e=o[n]; if(!e||!e.ar||!e.id) throw new Error(`ayat ${no}:${n} tidak lengkap`);
-      const ar=cleanAr(e.ar,n,no); if(!ar) throw new Error(`ayat ${no}:${n} kosong`);
-      v.push([ar,String(e.id).replace(/\s+/g,' ').trim()]);
-    }
-    out.push({no,v});
-  }
-  return out;
-}
+const mushafStyle=t=>{ try{ return MushafID.convert(t,{}); }catch(e){ console.warn('Gaya mushaf gagal, memakai teks asli:',e); return t; } };
+const toArabicDigits=num=>String(num).replace(/\d/g,d=>'٠١٢٣٤٥٦٧٨٩'[d]);
 const toRaw=list=>list.map(s=>{const m=SURAH_META[s.no];return {no:s.no,name:m[0],ar:m[1],mean:m[2],juz:juzOf(s.no),v:s.v};});
+
 function readCache(){
   try{
     const c=JSON.parse(localStorage.getItem(DATA_KEY)||'null');
-    if(!c||!Array.isArray(c.s)||c.s.length!==Object.keys(AYAT_COUNT).length) return null;
+    if(!c||c.cv!==CONV_VER||!Array.isArray(c.s)||c.s.length!==ALL_SURAHS.length) return null;
     for(const [no,v] of c.s){ if(!AYAT_COUNT[no]||!Array.isArray(v)||v.length!==AYAT_COUNT[no]||v.some(p=>!p[0]||!p[1])) return null; }
     return c.s.map(([no,v])=>({no,v}));
   }catch(e){return null;}
 }
-async function fetchJuz(j,ed){
-  const ctl=new AbortController(), t=setTimeout(()=>ctl.abort(),25000);
-  try{
-    const r=await fetch(QAPI+j+'/'+ed,{signal:ctl.signal});
-    if(!r.ok) throw new Error('HTTP '+r.status);
-    const d=await r.json(), a=d&&d.data&&d.data.ayahs;
-    if(!Array.isArray(a)||!a.length) throw new Error('respons kosong');
-    return a;
-  } finally{ clearTimeout(t); }
+async function fetchJSON(url,tries=3){
+  let last;
+  for(let i=0;i<tries;i++){
+    const ctl=new AbortController(), t=setTimeout(()=>ctl.abort(),25000);
+    try{ const r=await fetch(url,{signal:ctl.signal}); if(!r.ok) throw new Error('HTTP '+r.status); return await r.json(); }
+    catch(e){ last=e; await wait(400*(i+1)); }
+    finally{ clearTimeout(t); }
+  }
+  throw last;
+}
+async function fetchSurah(no){
+  const [ra,ri]=await Promise.all([
+    fetchJSON(`https://api.quran.com/api/v4/quran/verses/uthmani?chapter_number=${no}`),
+    fetchJSON(`https://api.alquran.cloud/v1/surah/${no}/id.indonesian`)]);
+  const va=ra&&ra.verses, vi=ri&&ri.data&&ri.data.ayahs, cnt=AYAT_COUNT[no];
+  if(!Array.isArray(va)||!Array.isArray(vi)||va.length!==cnt||vi.length!==cnt) throw new Error(`jumlah ayat surah ${no} tidak sesuai`);
+  const v=va.map((a,i)=>{
+    const ar=mushafStyle(cleanAr(a.text_uthmani,i+1,no)), id=String(vi[i].text||'').replace(/\s+/g,' ').trim();
+    if(!ar||!id) throw new Error(`ayat ${no}:${i+1} tidak lengkap`);
+    return [ar,id];
+  });
+  return {no,v};
 }
 function applyData(list){
   rebuildData(toRaw(list));
@@ -919,13 +1237,16 @@ function applyData(list){
 }
 async function loadFullData(){
   if(dataStatus==='loading') return;
-  const was=dataStatus; dataStatus='loading'; refreshDataUI();
+  const was=dataStatus; dataStatus='loading'; loadDone=Object.keys(QPARTIAL).length; refreshDataUI();
   try{
-    const res=await Promise.all([28,29,30].flatMap(j=>[fetchJuz(j,'quran-uthmani'),fetchJuz(j,'id.indonesian')]));
-    const list=assembleQuran([...res[0],...res[2],...res[4]],[...res[1],...res[3],...res[5]]);
-    try{ localStorage.setItem(DATA_KEY,JSON.stringify({t:Date.now(),s:list.map(s=>[s.no,s.v])})); }catch(e){}
+    const todo=ALL_SURAHS.map(s=>s.num).filter(n=>!QPARTIAL[n]);
+    let idx=0;
+    const worker=async()=>{ while(idx<todo.length){ const no=todo[idx++]; QPARTIAL[no]=await fetchSurah(no); loadDone++; refreshDataUI(); } };
+    await Promise.all(Array.from({length:4},worker));
+    const list=ALL_SURAHS.map(s=>QPARTIAL[s.num]);
+    try{ localStorage.setItem(DATA_KEY,JSON.stringify({cv:CONV_VER,t:Date.now(),s:list.map(s=>[s.no,s.v])})); }catch(e){}
     if(curView==='game'){ pendingData=list; dataStatus='full'; }
-    else{ applyData(list); toast(`📚 Semua surah Juz 28-30 siap: ${VERSES.length} ayat!`,'gold'); }
+    else{ applyData(list); toast(`📚 Semua surah siap: ${VERSES.length} ayat!`,'gold'); }
   }catch(e){
     console.warn('Gagal memuat seluruh surah:',e);
     dataStatus=(was==='full')?'full':'error';
@@ -963,13 +1284,14 @@ const normAr=s=>s.replace(/[\u064B-\u065F\u0670\u06D6-\u06ED\u0640]/g,'').replac
 const SURAHS={}, SURAH_LIST=[], VERSES=[], VMAP=new Map();
 function rebuildData(rawList){
   Object.keys(SURAHS).forEach(k=>delete SURAHS[k]); SURAH_LIST.length=0; VERSES.length=0; VMAP.clear();
-  const rank=s=>s.juz===30?[0,-s.no]:[s.juz===29?1:2,s.no];     // Juz 30 dari An-Nas ke atas, Juz 29 & 28 berurutan
+  const rank=s=>s.juz===30?[0,-s.no]:s.juz===29?[1,s.no]:s.juz===28?[2,s.no]:[3,s.no];     // Juz 30 dari An-Nas ke atas, Juz 29 & 28 berurutan
   [...rawList].sort((x,y)=>{const a=rank(x),b=rank(y);return a[0]-b[0]||a[1]-b[1];}).forEach(s=>{
     const from=s.from||1;
-    const o={no:s.no,name:s.name,ar:s.ar,mean:s.mean,juz:s.juz,verses:[]};
+    const M=SURAH_META[s.no]||[s.name,s.ar,s.mean], partial=/\(ayat/.test(s.mean||'');
+    const o={no:s.no,name:M[0],ar:M[1],mean:partial?s.mean:M[2],juz:juzOf(s.no),verses:[]};
     s.v.forEach((p,i)=>{
       const n=from+i;
-      const v={key:s.no+':'+n,s:s.no,sName:s.name,sAr:s.ar,juz:s.juz,n,i,ar:p[0],id:p[1],audio:pad(s.no)+pad(n)+'.mp3'};
+      const v={key:s.no+':'+n,s:s.no,sName:o.name,sAr:o.ar,juz:o.juz,n,i,ar:p[0],id:p[1]};
       v.words=tokenize(v.ar);
       o.verses.push(v);VERSES.push(v);VMAP.set(v.key,v);
     });
@@ -977,11 +1299,11 @@ function rebuildData(rawList){
   });
 }
 rebuildData(RAW);
-const vById=key=>VMAP.get(key);
+const vById=key=>VMAP.get(key)||preFromKey(key);
 
 /* ---------- penyimpanan ---------- */
 const KEY='ayatplay_v2';
-const defaults=()=>({name:'',xp:0,streak:0,best:0,last:'',today:{date:'',rounds:0},prog:{},memorized:{},unmem:{},resetAt:0,nameAt:0,badges:{},played:{},listened:0,plays:0,sound:true,arFont:'kid',arSize:1.15,seen:{},fails:{},retryWins:0,scope:{juz:'30',surah:''}});
+const defaults=()=>({name:'',xp:0,streak:0,best:0,last:'',today:{date:'',rounds:0},prog:{},memorized:{},unmem:{},resetAt:0,nameAt:0,badges:{},played:{},listened:0,plays:0,sound:true,arFont:'kid',arSize:1.15,qari:'github_anak',seen:{},fails:{},retryWins:0,scope:{juz:'30',surah:''}});
 function loadState(){
   let s=defaults();
   try{
@@ -1069,14 +1391,14 @@ function addXP(n){
 
 /* ---------- tulisan Arab ramah anak ---------- */
 const AR_FONTS={
-  kid:{n:'Ramah Anak',d:'Besar, tegas, harakat lega',stack:"'Scheherazade New','Amiri Quran','Noto Naskh Arabic'",w:600,lh:2.5,ws:'.22em'},
-  naskh:{n:'Naskh Jelas',d:'Bersih dan mudah dibaca',stack:"'Noto Naskh Arabic','Scheherazade New','Amiri Quran'",w:600,lh:2.4,ws:'.2em'},
-  mushaf:{n:'Mushaf Klasik',d:'Mirip mushaf cetak',stack:"'Amiri Quran','Scheherazade New','Noto Naskh Arabic'",w:400,lh:2.3,ws:'.12em'}
+  kid:{n:'Ramah Anak',d:'Tebal dan lega, mudah dibaca',stack:"'Scheherazade New'",w:600,lh:2.5,ws:'.22em'},
+  mushaf:{n:'Seperti Mushaf',d:'Tipis, mirip mushaf cetak',stack:"'Scheherazade New'",w:400,lh:2.4,ws:'.14em'}
 };
 const AR_SIZES=[[1,'Sedang'],[1.15,'Besar'],[1.3,'Sangat Besar']];
 function applyArabic(){
   const f=AR_FONTS[S.arFont]||AR_FONTS.kid, sc=+S.arSize||1.15, r=document.documentElement.style;
   r.setProperty('--f-ar',f.stack+",'Traditional Arabic','Geeza Pro','Al Bayan',serif");
+  if(typeof measureLam==='function') measureLam();
   r.setProperty('--ar-w',f.w); r.setProperty('--ar-lh',f.lh); r.setProperty('--ar-ws',f.ws);
   r.setProperty('--ar-scale',sc); r.setProperty('--ar-s2',(1+(sc-1)*.6).toFixed(3));
 }
@@ -1109,19 +1431,44 @@ function sfx(type){
 }
 const burst=(o={})=>{ if(window.confetti&&!matchMedia('(prefers-reduced-motion: reduce)').matches) confetti(Object.assign({particleCount:110,spread:75,origin:{y:.65}},o)); };
 
-/* ---------- audio qari ---------- */
-const QARI='https://everyayah.com/data/Alafasy_128kbps/';
+/* ---------- audio qari (sama dengan TalqinKu) ---------- */
+const GITHUB_RAW_BASE="https://raw.githubusercontent.com/Cloudzira/talqin/main/audio-ayat";
+const ALAFASY='https://everyayah.com/data/Alafasy_128kbps/';
+const QARIS=[
+  {id:'github_anak',name:'Anak',type:'github'},
+  {id:'mishary',name:'Syaikh Misyari Rasyid',type:'api',baseUrl:ALAFASY},
+  {id:'husary',name:'Syaikh Mahmud Khalil Al-Husary',type:'api',baseUrl:'https://everyayah.com/data/Husary_128kbps/'},
+  {id:'minshawi',name:'Syaikh Muhammad Siddiq Al-Minshawi',type:'api',baseUrl:'https://everyayah.com/data/Minshawy_Murattal_128kbps/'}
+];
+function audioUrlFor(q,s,n){
+  const fs=pad(s),fa=pad(n);
+  if(q.type==='github'){
+    if(n===0) return s===1?`${GITHUB_RAW_BASE}/${s}/000_001.mp3`:`${GITHUB_RAW_BASE}/${s}/0.mp3`;
+    return `${GITHUB_RAW_BASE}/${s}/${fs}_${fa}.mp3`;
+  }
+  if(n===0) return s===1?`${GITHUB_RAW_BASE}/1/000_002.mp3`:`${q.baseUrl}001001.mp3`;
+  return `${q.baseUrl}${fs}${fa}.mp3`;
+}
+function ayatUrls(v){
+  const q=QARIS.find(x=>x.id===S.qari)||QARIS[0], list=[audioUrlFor(q,v.s,v.n)];
+  if(q.type==='github'){ if(v.n>0) list.push(`${ALAFASY}${pad(v.s)}${pad(v.n)}.mp3`); else if(v.s!==1) list.push(`${ALAFASY}001001.mp3`); }   // cadangan bila audio "Anak" belum tersedia
+  return list;
+}
 const A=new Audio(); A.preload='auto';
 let curRes=null;
 A.addEventListener('ended',()=>{if(curRes){const r=curRes;curRes=null;r(true);}});
 A.addEventListener('error',()=>{if(curRes){const r=curRes;curRes=null;r(false);}});
 function stopAudio(){ try{A.pause();}catch(e){} if(curRes){const r=curRes;curRes=null;r(null);} }
-function playOnce(v,rate=1){
+function playUrl(url,rate){
   stopAudio();
   return new Promise(res=>{
-    curRes=res; A.src=QARI+v.audio; A.playbackRate=rate; A.preservesPitch=true;
+    curRes=res; A.src=url; A.playbackRate=rate; A.preservesPitch=true;
     const p=A.play(); if(p&&p.catch) p.catch(()=>{ if(curRes===res){curRes=null;res(false);} });
   });
+}
+async function playOnce(v,rate=1){
+  for(const u of ayatUrls(v)){ const r=await playUrl(u,rate); if(r!==false) return r; }
+  return false;
 }
 let audioErrAt=0;
 function audioFail(){ if(Date.now()-audioErrAt>4000){audioErrAt=Date.now();toast('🌐 Audio butuh internet. Cek koneksi lalu coba lagi ya!');} }
@@ -1155,11 +1502,11 @@ function scopePool(){
   return p.length?p:VERSES;
 }
 const scopeSurahs=()=>SURAH_LIST.filter(s=>S.scope.juz==='all'||String(s.juz)===String(S.scope.juz));
-const JUZ_PILLS=[['30','Juz 30'],['29','Juz 29'],['28','Juz 28'],['all','Semua Juz']];
+const JUZ_PILLS=[['30','Juz 30'],['29','Juz 29'],['28','Juz 28'],['1','Al-Fatihah'],['all','Semua']];
 function dataLine(){
   const small=scopePool().length<14?`<div class="scope-info">ℹ️ Materi ini sedikit, jadi sebagian soal diambil dari surah lain agar tiap level tetap 10 soal berbeda.</div>`:'';
-  if(dataStatus==='full') return small+`<div class="scope-info">✅ Materi lengkap: ${VERSES.length} ayat dari ${SURAH_LIST.length} surah (Juz 28, 29, 30)</div>`;
-  if(dataStatus==='loading') return `<div class="scope-info">⏳ Memuat semua surah Juz 28-30…</div>`;
+  if(dataStatus==='full') return small+`<div class="scope-info">✅ Materi lengkap: ${VERSES.length} ayat dari ${SURAH_LIST.length} surah (Al-Fatihah + Juz 28, 29, 30)</div>`;
+  if(dataStatus==='loading') return `<div class="scope-info">⏳ Memuat surah ${loadDone}/${ALL_SURAHS.length}…</div>`;
   return `<div class="scope-info">📶 Saat ini memakai ${VERSES.length} ayat bawaan. Sambungkan internet untuk membuka semua surah. <button class="btn btn-ghost btn-sm" data-act="load-data" style="margin-top:6px">Muat semua surah</button></div>`;
 }
 function scopeCard(){
@@ -1257,6 +1604,23 @@ function openLevelSheet(g,sel){
 /* ---------- BELAJAR ---------- */
 let studyToken=0;
 const learnState={surah:null,repeat:1,rate:1,cover:false};
+
+/* Ta'awudz (Al-Fatihah) dan Bismillah (surah lain kecuali At-Taubah) sebagai "ayat 0", seperti TalqinKu */
+const preCache={};
+function preAyat(no){
+  if(no===9||!AYAT_COUNT[no]) return null;
+  if(!preCache[no]) preCache[no]=no===1
+    ?{key:'1:0',s:1,n:0,sName:'Al-Fatihah',label:"Ta'awudz",ar:mushafStyle("أَعُوذُ بِٱللَّهِ مِنَ ٱلشَّيْطَٰنِ ٱلرَّجِيمِ"),id:'Aku berlindung kepada Allah dari godaan syaitan yang terkutuk.',words:[]}
+    :{key:no+':0',s:no,n:0,sName:(SURAHS[no]||{}).name||'',label:'Bismillah',ar:mushafStyle("بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ"),id:'Dengan nama Allah Yang Maha Pengasih, Maha Penyayang.',words:[]};
+  return preCache[no];
+}
+function preFromKey(key){ const m=/^(\d+):0$/.exec(key||''); return m?preAyat(+m[1]):null; }
+function preCard(no){
+  const p=preAyat(no); if(!p) return '';
+  return `<article class="ayat bsm-card" id="ay-${no}-0" data-key="${p.key}"><div class="ayat-top"><span class="no"><i class="med">0</i>${p.label}</span><button class="play" data-act="play-one" data-key="${p.key}">🔊 Dengar</button></div>
+    <div class="ar ar-lg" lang="ar" dir="rtl" style="color:var(--sun-d);text-align:center">${p.ar}</div><div class="tr">${esc(p.id)}</div></article>`;
+}
+const qariSelect=()=>`<select class="sel qari-sel" aria-label="Pilih qari" style="width:auto;padding:7px 10px;font-size:.88rem">${QARIS.map(q=>`<option value="${q.id}" ${S.qari===q.id?'selected':''}>🎙️ ${esc(q.name)}</option>`).join('')}</select>`;
 function surahProgress(s){ const n=s.verses.filter(v=>S.memorized[v.key]).length; return {n,t:s.verses.length,p:Math.round(n/s.verses.length*100)}; }
 function renderLearn(){
   if(learnState.surah) return renderSurah(learnState.surah);
@@ -1271,7 +1635,7 @@ function renderLearn(){
 function renderSurah(no){
   const s=SURAHS[no], p=surahProgress(s);
   $('#v-learn').innerHTML=`<button class="btn btn-ghost btn-sm" data-act="learn-back">⬅ Semua surah</button>
-  <div class="row" style="margin:12px 0 0;justify-content:space-between"><div><h2 style="font-size:1.7rem;color:var(--night)">${esc(s.name)}</h2><div class="muted" style="font-weight:700">${esc(s.mean)} · ${s.verses.length} ayat · Juz ${s.juz}</div></div><div class="ar ar-lg" lang="ar">${s.ar}</div></div>
+  <div class="row" style="margin:12px 0 0;justify-content:space-between"><div><h2 style="font-size:1.7rem;color:var(--night)">${esc(s.name)}</h2><div class="muted" style="font-weight:700">Surah ${s.no} · ${esc(s.mean)} · ${s.verses.length} ayat · ${s.juz===1?'Pembuka':'Juz '+s.juz}</div></div><div class="ar ar-lg" lang="ar" dir="rtl">${s.ar}</div></div>
   <div class="bar dark" style="height:12px;margin-top:10px"><i id="sp-bar" style="width:${p.p}%"></i></div><small class="muted" id="sp-txt" style="font-weight:800">${p.n}/${p.t} ayat hafal</small>
   <div class="ctrl">
     <button class="btn btn-sun btn-sm" data-act="play-all">▶ Putar semua</button>
@@ -1279,16 +1643,18 @@ function renderSurah(no){
     <span class="seg" aria-label="Ulangi tiap ayat">${[1,3,5].map(r=>`<button class="${learnState.repeat===r?'on':''}" data-act="repeat" data-r="${r}">${r}x</button>`).join('')}</span>
     <span class="seg" aria-label="Kecepatan">${[[.75,'Pelan'],[1,'Normal']].map(([r,l])=>`<button class="${learnState.rate===r?'on':''}" data-act="rate" data-r="${r}">${l}</button>`).join('')}</span>
     ${arSizeSeg(true)}
+    ${qariSelect()}
     <button class="btn btn-ghost btn-sm" data-act="cover">${learnState.cover?'👀 Buka ayat':'🙈 Tutup ayat'}</button>
   </div>
   ${learnState.cover?'<p class="hint" style="margin:0 0 10px">Ayat sedang ditutup. Coba ucapkan dari ingatan, lalu ketuk ayatnya untuk memeriksa.</p>':''}
+  ${preCard(s.no)}
   ${s.verses.map(v=>ayatCard(v)).join('')}`;
 }
 function ayatCard(v){
   const mem=!!S.memorized[v.key];
   return `<article class="ayat ${mem?'mem':''} ${learnState.cover?'cover':''}" id="ay-${v.s}-${v.n}" data-key="${v.key}">
     <div class="ayat-top"><span class="no"><i class="med">${v.n}</i>Ayat</span><span style="display:flex;gap:6px;flex-wrap:wrap"><button class="play" data-act="play-one" data-key="${v.key}">🔊 Dengar</button><button class="tick ${mem?'on':''}" data-act="mem" data-key="${v.key}" aria-pressed="${mem}">${mem?'✅ Sudah hafal':'⬜ Sudah hafal?'}</button></span></div>
-    <div class="ar ${v.words.length>18?'ar-md':'ar-lg'} cov userselect" lang="ar" dir="rtl" data-act="reveal">${v.ar}</div>
+    <div class="ar ${v.words.length>18?'ar-md':'ar-lg'} cov userselect" lang="ar" dir="rtl" data-act="reveal">${v.ar} <span class="ayah-number-icon">\u06DD${toArabicDigits(v.n)}</span></div>
     <div class="tr">${esc(v.id)}</div></article>`;
 }
 function markNow(key){
@@ -1348,6 +1714,11 @@ function renderProfile(){
     <div class="stat-row"><span class="stat">⭐ ${totalStars()} bintang</span><span class="stat">🔥 ${liveStreak()} hari beruntun</span><span class="stat">🏆 Rekor ${S.best} hari</span><span class="stat">📗 ${memCount()} ayat hafal</span></div>
     <button class="btn btn-sun" data-act="cert">🎓 Lihat Sertifikat</button>
   </div>
+  <div class="card" style="margin-top:16px;display:grid;gap:10px">
+    <h3>🎙️ Suara Qari</h3>
+    <p class="muted small" style="margin:0">Pilih suara bacaan untuk mode Belajar dan game. Suara “Anak” dibacakan oleh anak-anak; bila audionya belum tersedia, otomatis memakai qari Misyari.</p>
+    ${qariSelect()}
+  </div>
   <div class="card" style="margin-top:16px;display:grid;gap:12px">
     <h3>🔤 Tulisan Arab</h3>
     <p class="muted small" style="margin:0">Pilih bentuk dan ukuran tulisan yang paling nyaman dibaca adik-adik.</p>
@@ -1358,7 +1729,7 @@ function renderProfile(){
   ${installCard()}
   <div class="card" style="margin-top:16px;display:grid;gap:8px">
     <h3>ℹ️ Tentang AyatPlay</h3>
-    <p class="muted" style="margin:0;font-weight:600">Audio bacaan oleh Syaikh Mishary Rashid Alafasy (EveryAyah.com), sehingga butuh internet. Kemajuanmu tersimpan di perangkat ini dan, jika orang tua masuk akun, juga di cloud. Orang tua atau guru sebaiknya ikut mengoreksi bacaan anak langsung dengan guru ngaji.</p>
+    <p class="muted" style="margin:0;font-weight:600">Teks Arab dari api.quran.com (gaya Mushaf Standar Indonesia), terjemah dari Kemenag (alquran.cloud), dan audio dari suara anak serta EveryAyah.com, sehingga butuh internet. Kemajuanmu tersimpan di perangkat ini dan, jika orang tua masuk akun, juga di cloud. Orang tua atau guru sebaiknya ikut mengoreksi bacaan anak langsung dengan guru ngaji.</p>
     <button class="btn btn-ghost btn-sm" data-act="reset" style="justify-self:start">🔄 Atur ulang semua progres</button>
   </div>`;
 }
@@ -1424,6 +1795,7 @@ document.addEventListener('click',e=>{
   const f=ACTIONS[t.dataset.act]; if(f) f(t,e);
 });
 document.addEventListener('change',e=>{
+  if(e.target.classList&&e.target.classList.contains('qari-sel')){ S.qari=e.target.value; save(); $$('.qari-sel').forEach(x=>{x.value=S.qari;}); stopAudio(); toast('🎙️ Qari: '+(QARIS.find(q=>q.id===S.qari)||{}).name); return; }
   if(e.target.id==='surah-sel'){ S.scope.surah=e.target.value; save(); $('#scope-slot').innerHTML=scopeCard(); }
 });
 document.addEventListener('input',e=>{ if(e.target.id==='nm'){ S.name=e.target.value.trim().slice(0,30); S.nameAt=Date.now(); save(); } });
@@ -2089,6 +2461,54 @@ function runSplash(){
     clearInterval(iv); el.classList.add('out'); setTimeout(()=>el.remove(),650);
   });
 }
+
+
+/* ---------- perbaikan harakat lam-alif (dari TalqinKu, disesuaikan dengan bobot font) ---------- */
+let LAM_FIX_OK=false, lamBusy=false;
+async function measureLam(){
+  if(lamBusy) return; lamBusy=true;
+  try{
+    const wt=(AR_FONTS[S.arFont]||AR_FONTS.kid).w;
+    try{ await Promise.race([document.fonts.load(`${wt} 100px 'Scheherazade New'`,"\u0644\u0627"),wait(3500)]); }catch(e){}
+    const FS=100,X0=100,BASE=260,W=520,H=400;
+    const cv=document.createElement('canvas'); cv.width=W; cv.height=H;
+    const ctx=cv.getContext('2d',{willReadFrequently:true});
+    ctx.font=`${wt} ${FS}px 'Scheherazade New', serif`;
+    ctx.direction='rtl'; ctx.textAlign='left'; ctx.textBaseline='alphabetic'; ctx.fillStyle='#000';
+    const scan=text=>{
+      ctx.clearRect(0,0,W,H); ctx.fillText(text,X0,BASE);
+      const d=ctx.getImageData(0,0,W,H).data; let minX=W,maxX=-1,minY=H,maxY=-1; const top=new Array(W).fill(H);
+      for(let y=0;y<H;y++) for(let x=0;x<W;x++){ if(d[(y*W+x)*4+3]>110){ if(x<minX)minX=x; if(x>maxX)maxX=x; if(y<minY)minY=y; if(y>maxY)maxY=y; if(y<top[x])top[x]=y; } }
+      return {minX,maxX,minY,maxY,top};
+    };
+    const lig=scan('\u0644\u0627'); if(lig.maxX<0) throw new Error('ligatur tidak terukur');
+    const limit=lig.minY+.45*(lig.maxY-lig.minY), groups=[]; let cur=null;
+    for(let x=lig.minX;x<=lig.maxX;x++){ if(lig.top[x]<=limit){ if(cur&&x-cur.end<=3) cur.end=x; else{ cur={start:x,end:x}; groups.push(cur);} } }
+    if(!groups.length) throw new Error('lam tidak ditemukan');
+    const lam=groups[groups.length-1], lamX=(lam.start+lam.end)/2; let lamTop=H;
+    for(let x=lam.start;x<=lam.end;x++) lamTop=Math.min(lamTop,lig.top[x]);
+    const mk=scan('\u00A0\u064E'); if(mk.maxX<0) throw new Error('harakat tidak terukur');
+    const wN=ctx.measureText('\u00A0\u064E').width/FS, cmx=((mk.minX+mk.maxX)/2-X0)/FS;
+    const left=(lamX-X0)/FS+wN-cmx, up=(BASE-lamTop)/FS-(BASE-mk.maxY)/FS+.04;
+    if(!(up>-.3&&up<1)||!(left>-.5&&left<2)) throw new Error('hasil ukur tidak wajar');
+    const root=document.documentElement.style;
+    root.setProperty('--la-left',left.toFixed(3)); root.setProperty('--la-up',up.toFixed(3)); root.setProperty('--la-w',wN.toFixed(3));
+    LAM_FIX_OK=true; enhanceNode(document.body);
+  }catch(e){ if(!LAM_FIX_OK) LAM_FIX_OK=false; }
+  lamBusy=false;
+}
+function enhanceNode(root){
+  if(!LAM_FIX_OK||!root) return;
+  const base=root.nodeType===3?root.parentNode:root; if(!base||base.nodeType!==1) return;
+  const walker=document.createTreeWalker(base,NodeFilter.SHOW_TEXT,{acceptNode:n=>{const p=n.parentElement;return(p&&n.nodeValue.indexOf('\u0644')>-1&&p.closest('.ar')&&!p.closest('.la'))?NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_REJECT;}});
+  const nodes=[]; while(walker.nextNode()) nodes.push(walker.currentNode);
+  nodes.forEach(n=>{
+    const src=n.nodeValue.replace(/&/g,'&amp;').replace(/</g,'&lt;'), h=MushafID.overlay(src);
+    if(h!==src){ const t=document.createElement('template'); t.innerHTML=h; n.replaceWith(t.content); }
+  });
+}
+const arObserver=new MutationObserver(ms=>{ if(!LAM_FIX_OK) return; for(const m of ms) m.addedNodes.forEach(n=>{ if(n.nodeType===1||n.nodeType===3) enhanceNode(n); }); });
+arObserver.observe(document.body,{childList:true,subtree:true});
 
 /* ---------- mulai ---------- */
 (function boot(){
