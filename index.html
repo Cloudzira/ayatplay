@@ -463,6 +463,43 @@ body{background-color:var(--sky);background-image:var(--pat)}
 .dlg-btns{display:grid;gap:8px;width:100%;margin-top:6px}
 .dlg-risk{color:var(--coral-d);border-color:#F1C9BC}
 .sp-msg{margin:12px 0 0;font-weight:700;font-size:.95rem;opacity:.85;animation:spFade .8s 1.6s both}
+
+/* ===== huruf hijaiyyah ===== */
+.hij-big{font-size:clamp(3.6rem,16vw,5.6rem);line-height:1.7;color:var(--night)}
+.hij-opt{font-size:calc(2.6rem*var(--ar-s2,1));line-height:1.6}
+.hij-name{font-family:var(--f-disp);font-weight:800;font-size:2.3rem;color:var(--night);line-height:1.2}
+.hij-name.sm{font-size:1.5rem}
+.hij-hud{font-size:calc(2.8rem*var(--ar-s2,1));line-height:1.5;color:var(--night)}
+.hij-chip{flex-direction:column;padding:2px 14px 4px;min-width:66px;gap:0}
+.hij-chip .hij-ch{font-size:calc(2.4rem*var(--ar-s2,1));line-height:1.6}
+.hij-chip small{font-size:.7rem;font-weight:800;color:var(--muted);line-height:1.1}
+.hijrow{display:flex;gap:12px;align-items:center}
+.hij-g{font-size:2.6rem;line-height:1.5;min-width:70px;text-align:center;color:var(--night)}
+.hijgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+.hijcard{position:relative;background:#fff;border:3px solid var(--line);border-bottom-width:6px;border-radius:20px;padding:10px 8px 12px;display:grid;justify-items:center;gap:2px;text-align:center}
+.hijcard b{font-family:var(--f-disp);font-size:1.15rem}
+.hijcard small{font-weight:700;color:var(--muted);line-height:1.3}
+.hij-lat{font-weight:800;color:var(--mint-d)}
+.hij-no{position:absolute;top:8px;left:8px;background:var(--star-e) center/contain no-repeat;width:30px;height:30px;display:grid;place-items:center;color:#fff;font-family:var(--f-disp);font-weight:800;font-size:.72rem}
+.hij-forms{display:flex;gap:10px;margin-top:4px;padding-top:6px;border-top:2px dashed var(--line);width:100%;justify-content:center}
+.hij-forms>span{display:grid;justify-items:center}.hij-forms .ar{font-size:1.7rem;line-height:1.6}
+.hijentry{display:flex;align-items:center;gap:14px;width:100%;text-align:left;background:linear-gradient(#FFFDF3,#FFF3CF);border:3px solid #D9B04A;border-bottom-width:6px;border-radius:20px;padding:10px 16px;margin-bottom:6px}
+.hijentry .hij-big{font-size:2rem;line-height:1.5;min-width:84px;text-align:center;white-space:nowrap}
+.hijentry b{font-family:var(--f-disp);font-size:1.15rem;display:block}.hijentry small{color:var(--muted);font-weight:700}
+.hijentry .go{margin-left:auto;font-family:var(--f-disp);font-weight:800;color:var(--mint-d);white-space:nowrap}
+/* ular hijaiyyah */
+.sn-hud{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;font-weight:800;text-align:center}
+.sn-strip{display:flex;gap:4px;justify-content:center;flex-wrap:wrap}
+.sn-strip i{font-style:normal;min-width:28px;height:32px;border-radius:9px;background:#EEF3F0;border:2px solid var(--line);display:grid;place-items:center;font-weight:800;color:var(--muted)}
+.sn-strip i.ok{background:var(--ok-bg);border-color:var(--ok);color:#0B5C40}.sn-strip i.ok .ar{font-size:1.1rem;line-height:1.4}
+.sn-strip i.bad{background:var(--bad-bg);border-color:var(--bad);color:#8A1F23}.sn-strip i.now{border-color:var(--sun);background:#FFF8DD}
+.sn-wrap{position:relative;width:100%;max-width:340px;margin:0 auto;aspect-ratio:1}
+.sn-wrap canvas{display:block;width:100%;height:100%;border-radius:18px;border:3px solid var(--sun);background:#fff;touch-action:none}
+.sn-start{position:absolute;inset:0;display:grid;place-items:center;background:rgba(255,255,255,.88);border-radius:18px;text-align:center;padding:16px}
+.dpad{display:grid;grid-template-columns:repeat(3,64px);grid-template-rows:repeat(2,56px);gap:8px;justify-content:center;margin:0 auto}
+.dp{border-radius:16px;background:#EAF6F0;border:3px solid #BFDCCD;border-bottom-width:6px;font-size:1.3rem;color:var(--night);display:grid;place-items:center;touch-action:manipulation}
+.dp:active{transform:translateY(3px);border-bottom-width:3px}
+.dp.up{grid-column:2;grid-row:1}.dp.lf{grid-column:1;grid-row:2}.dp.dn{grid-column:2;grid-row:2}.dp.rt{grid-column:3;grid-row:2}
 @media print{
   @page{size:landscape;margin:10mm}
   body *{visibility:hidden}
@@ -1305,6 +1342,59 @@ function refreshDataUI(){
   if(curView==='home'){ const el=$('#scope-slot'); if(el) el.innerHTML=scopeCard(); }
   else if(curView==='learn'&&!learnState.surah) renderLearn();
 }
+
+/* =====================================================================
+   HURUF HIJAIYYAH (30)
+   - 29 huruf mengikuti tabel Pedoman Transliterasi Arab-Latin (SKB Menteri Agama
+     dan Mendikbud RI No. 158/1987 dan 0543b/U/1987): nama, lambang Latin, dan cara baca.
+   - Huruf ke-30 = Lam Alif (لا), mengikuti daftar 30 huruf yang lazim di Indonesia.
+     Lambang Latinnya "lā" diturunkan dari aturan maddah SKB yang sama (l + ā).
+   join: d = bersambung dua sisi, r = hanya bersambung dari kanan, n = tidak bersambung.
+   alt = sebutan yang lazim dipakai di TPQ/Iqra (bukan bagian dari SKB).
+   ===================================================================== */
+const HIJ=[
+ {i:1,ch:'ا',name:'Alif',lat:'–',read:'tidak dilambangkan',alt:'Alif',join:'r'},
+ {i:2,ch:'ب',name:'Ba',lat:'b',read:'be',alt:'Ba',join:'d'},
+ {i:3,ch:'ت',name:'Ta',lat:'t',read:'te',alt:'Ta',join:'d'},
+ {i:4,ch:'ث',name:'Ṡa',lat:'ṡ',read:'es (dengan titik di atas)',alt:'Tsa',join:'d'},
+ {i:5,ch:'ج',name:'Jim',lat:'j',read:'je',alt:'Jim',join:'d'},
+ {i:6,ch:'ح',name:'Ḥa',lat:'ḥ',read:'ha (dengan titik di bawah)',alt:'Ha',join:'d'},
+ {i:7,ch:'خ',name:'Kha',lat:'kh',read:'ka dan ha',alt:'Kho',join:'d'},
+ {i:8,ch:'د',name:'Dal',lat:'d',read:'de',alt:'Dal',join:'r'},
+ {i:9,ch:'ذ',name:'Żal',lat:'ż',read:'zet (dengan titik di atas)',alt:'Dzal',join:'r'},
+ {i:10,ch:'ر',name:'Ra',lat:'r',read:'er',alt:'Ro',join:'r'},
+ {i:11,ch:'ز',name:'Zai',lat:'z',read:'zet',alt:'Za',join:'r'},
+ {i:12,ch:'س',name:'Sin',lat:'s',read:'es',alt:'Sin',join:'d'},
+ {i:13,ch:'ش',name:'Syin',lat:'sy',read:'es dan ye',alt:'Syin',join:'d'},
+ {i:14,ch:'ص',name:'Ṣad',lat:'ṣ',read:'es (dengan titik di bawah)',alt:'Shod',join:'d'},
+ {i:15,ch:'ض',name:'Ḍad',lat:'ḍ',read:'de (dengan titik di bawah)',alt:'Dhod',join:'d'},
+ {i:16,ch:'ط',name:'Ṭa',lat:'ṭ',read:'te (dengan titik di bawah)',alt:'Tho',join:'d'},
+ {i:17,ch:'ظ',name:'Ẓa',lat:'ẓ',read:'zet (dengan titik di bawah)',alt:'Zho',join:'d'},
+ {i:18,ch:'ع',name:'ʻAin',lat:'ʻ',read:'koma terbalik (di atas)',alt:"'Ain",join:'d'},
+ {i:19,ch:'غ',name:'Gain',lat:'g',read:'ge',alt:'Ghoin',join:'d'},
+ {i:20,ch:'ف',name:'Fa',lat:'f',read:'ef',alt:'Fa',join:'d'},
+ {i:21,ch:'ق',name:'Qaf',lat:'q',read:'ki',alt:'Qof',join:'d'},
+ {i:22,ch:'ك',name:'Kaf',lat:'k',read:'ka',alt:'Kaf',join:'d'},
+ {i:23,ch:'ل',name:'Lam',lat:'l',read:'el',alt:'Lam',join:'d'},
+ {i:24,ch:'م',name:'Mim',lat:'m',read:'em',alt:'Mim',join:'d'},
+ {i:25,ch:'ن',name:'Nun',lat:'n',read:'en',alt:'Nun',join:'d'},
+ {i:26,ch:'و',name:'Wau',lat:'w',read:'we',alt:'Waw',join:'r'},
+ {i:27,ch:'ه',name:'Ha',lat:'h',read:'ha',alt:'Ha',join:'d'},
+ {i:28,ch:'ء',name:'Hamzah',lat:'ʼ',read:'apostrof',alt:'Hamzah',join:'n'},
+ {i:29,ch:'ي',name:'Ya',lat:'y',read:'ye',alt:'Ya',join:'d'},
+ {i:30,ch:'لا',name:'Lam Alif',lat:'lā',read:'la (Lam + Alif, bacaan panjang)',alt:'Lam Alif',join:'r',derived:true}
+];
+const HIJ_BY=Object.fromEntries(HIJ.map(h=>[h.i,h]));
+/* kelompok huruf yang bentuk dasarnya mirip (dibedakan titik/bagian kecil) */
+const HIJ_FAM=[[2,3,4,25,29],[5,6,7],[8,9],[10,11],[12,13],[14,15],[16,17],[18,19],[20,21]];
+const HIJ_FAM_OF={}; HIJ_FAM.forEach(f=>f.forEach(i=>{HIJ_FAM_OF[i]=f.filter(x=>x!==i);}));
+const ZWJ='\u200D';
+function hijForms(h){
+  if(h.join==='d') return [['awal',h.ch+ZWJ],['tengah',ZWJ+h.ch+ZWJ],['akhir',ZWJ+h.ch]];
+  if(h.join==='r') return [['akhir',ZWJ+h.ch]];
+  return [];
+}
+const hitem=h=>({hij:true,key:'h:'+h.i,h,ar:h.ch,sName:'Huruf',n:h.i});
 /* =====================================================================
    INTI APLIKASI
    ===================================================================== */
@@ -1397,7 +1487,7 @@ const RANKS=['Pemula','Santri','Pembaca','Penghafal','Penjaga Ayat','Mahir','Cen
 const BAND=l=>l<=3?'Mudah':l<=6?'Sedang':l<=9?'Sulit':'Tantangan Hafiz';
 const tierOf=l=>l<=3?1:l<=6?2:l<=9?3:4;           // 1 perunggu, 2 perak, 3 emas, 4 berlian
 const TIER_NAME=['','Perunggu','Perak','Emas','Berlian'];
-const MOTIFS=[{e:'🕌',n:'Masjid Cilik'},{e:'🌙',n:'Hilal Terang'},{e:'📖',n:'Mushaf Mulia'},{e:"🕋",n:"Ka'bah Mungil"},{e:'🌴',n:'Pohon Kurma'},{e:'🐪',n:'Unta Setia'},{e:'🕯️',n:'Pelita Ilmu'},{e:'📿',n:'Tasbih Indah'},{e:'🤲',n:'Doa Tulus'},{e:'🌟',n:'Bintang Cahaya'}];
+const MOTIFS=[{e:'🕌',n:'Masjid Cilik'},{e:'🌙',n:'Hilal Terang'},{e:'📖',n:'Mushaf Mulia'},{e:"🕋",n:"Ka'bah Mungil"},{e:'🌴',n:'Pohon Kurma'},{e:'🐪',n:'Unta Setia'},{e:'🕯️',n:'Pelita Ilmu'},{e:'📿',n:'Tasbih Indah'},{e:'🤲',n:'Doa Tulus'},{e:'🌟',n:'Bintang Cahaya'},{e:'🖋️',n:'Pena Emas'},{e:'🕊️',n:'Merpati Putih'},{e:'🐍',n:'Ular Gesit'}];
 const UCAPAN=[
   {ar:'مَا شَاءَ اللَّهُ',id:'Masya Allah, atas kehendak Allah, hebat sekali!'},
   {ar:'الْحَمْدُ لِلَّهِ',id:'Alhamdulillah, segala puji bagi Allah.'},
@@ -1413,7 +1503,7 @@ const BADGES=[
   {id:'retry',e:'💪',n:'Pantang Menyerah',d:'Lulus level setelah mencoba lagi',t:()=>(S.retryWins||0)>=1},
   {id:'stk25',e:'🎁',n:'Kolektor Stiker',d:'Kumpulkan 25 stiker',t:()=>stickerCount()>=25},
   {id:'stk50',e:'🏺',n:'Penjaga Koleksi',d:'Kumpulkan 50 stiker',t:()=>stickerCount()>=50},
-  {id:'stk100',e:'🏆',n:'Juara Koleksi',d:'Kumpulkan semua 100 stiker',t:()=>stickerCount()>=100},
+  {id:'stk100',e:'🏆',n:'Juara Koleksi',d:'Kumpulkan semua stiker',t:()=>stickerCount()>=GAMES.length*MAXL},
   {id:'gdone',e:'🎓',n:'Tamat Satu Game',d:'Selesaikan 10 level di satu game',t:()=>GAMES.some(G=>allLevels(G.id))},
   {id:'first',e:'🚀',n:'Langkah Pertama',d:'Selesaikan 1 permainan',t:()=>S.plays>=1},
   {id:'listener',e:'🎧',n:'Pendengar Setia',d:'Dengarkan 25 ayat di mode Belajar',t:()=>S.listened>=25},
@@ -1423,7 +1513,7 @@ const BADGES=[
   {id:'s3',e:'🔥',n:'Api Semangat',d:'Belajar 3 hari berturut-turut',t:()=>S.best>=3},
   {id:'s7',e:'🌋',n:'Pekan Istiqomah',d:'Belajar 7 hari berturut-turut',t:()=>S.best>=7},
   {id:'perfect',e:'💯',n:'Nilai Sempurna',d:'Raih 3 bintang di satu level',t:()=>Object.values(S.prog).some(p=>Object.values(p).some(x=>x>=3))},
-  {id:'all',e:'🎮',n:'Penjelajah Game',d:'Coba semua 10 game',t:()=>Object.keys(S.played).length>=10},
+  {id:'all',e:'🎮',n:'Penjelajah Game',d:'Coba semua game',t:()=>Object.keys(S.played).length>=GAMES.length},
   {id:'king',e:'👑',n:'Raja Level 10',d:'Selesaikan Level 10 di satu game',t:()=>Object.values(S.prog).some(p=>(p[10]||0)>=1)},
   {id:'st30',e:'🌟',n:'Kolektor Bintang',d:'Kumpulkan 30 bintang',t:()=>totalStars()>=30},
   {id:'st150',e:'🌠',n:'Pemburu Bintang',d:'Kumpulkan 150 bintang',t:()=>totalStars()>=150},
@@ -1590,7 +1680,7 @@ function nav(to){
 }
 
 /* ---------- BERANDA ---------- */
-const GCOL=[['#D8F3E8','#4DBB93'],['#FFF1C9','#E0AE2E'],['#D5F2F2','#4FB8BC'],['#DFE6FA','#7F93DB'],['#FADDE3','#E58AA0'],['#FBE4D3','#E39A6B'],['#E6F1CF','#9FC05A'],['#E8E0F7','#A48BD6'],['#D3E8EC','#5C9AA6'],['#FFEBC2','#EBA928']];
+const GCOL=[['#D8F3E8','#4DBB93'],['#FFF1C9','#E0AE2E'],['#D5F2F2','#4FB8BC'],['#DFE6FA','#7F93DB'],['#FADDE3','#E58AA0'],['#FBE4D3','#E39A6B'],['#E6F1CF','#9FC05A'],['#E8E0F7','#A48BD6'],['#D3E8EC','#5C9AA6'],['#FFEBC2','#EBA928'],['#F3E3F1','#C58AC0'],['#E2EEF9','#78A9D6'],['#E9F3D9','#7DB84A']];
 function renderHome(){
   const lv=levelInfo(S.xp), g=goalState(), pct=Math.round(g.n/g.goal*100);
   const total=VERSES.length, mem=memCount(), mp=Math.round(mem/total*100);
@@ -1599,7 +1689,7 @@ function renderHome(){
     ${starsBg()}${skylineHero()}${lanternSVG('l1')}${lanternSVG('l2')}
     <div style="position:relative">
       <h2>Assalamu'alaikum, ${esc(S.name||'Sahabat Cilik')}! 👋</h2>
-      <p>Hafal Al-Qur'an sambil bermain. Dengarkan ayatnya dulu, lalu taklukkan 10 game seru dan naik level!</p>
+      <p>Hafal Al-Qur'an sambil bermain. Dengarkan ayatnya dulu, lalu taklukkan ${GAMES.length} game seru dan naik level!</p>
       <div class="goal"><div class="goal-row"><span>🎯 Target hari ini</span><span>${g.n}/${g.goal} permainan</span></div><div class="bar"><i style="width:${pct}%"></i></div></div>
       <div class="hero-cta"><button class="btn btn-sun" data-act="nav" data-to="learn">📖 Belajar dulu</button><button class="btn btn-ghost" data-act="to-games">🎮 Main game</button></div>
     </div>
@@ -1661,7 +1751,7 @@ function openLevelSheet(g,sel){
 
 /* ---------- BELAJAR ---------- */
 let studyToken=0;
-const learnState={surah:null,repeat:1,rate:1,cover:false};
+const learnState={hij:false,surah:null,repeat:1,rate:1,cover:false};
 
 /* Ta'awudz (Al-Fatihah) dan Bismillah (surah lain kecuali At-Taubah) sebagai "ayat 0", seperti TalqinKu */
 const preCache={};
@@ -1681,9 +1771,11 @@ function preCard(no){
 const qariSelect=()=>`<select class="sel qari-sel" aria-label="Pilih qari" style="width:auto;padding:7px 10px;font-size:.88rem">${QARIS.map(q=>`<option value="${q.id}" ${S.qari===q.id?'selected':''}>🎙️ ${esc(q.name)}</option>`).join('')}</select>`;
 function surahProgress(s){ const n=s.verses.filter(v=>S.memorized[v.key]).length; return {n,t:s.verses.length,p:Math.round(n/s.verses.length*100)}; }
 function renderLearn(){
+  if(learnState.hij) return renderHij();
   if(learnState.surah) return renderSurah(learnState.surah);
   $('#v-learn').innerHTML=`<h2 class="sec-title" style="margin-top:6px">📖 Ruang Belajar</h2>
   <p class="muted" style="font-weight:700;margin-top:-4px">Dengarkan, ulang, lalu tandai ayat yang sudah kamu hafal. Hafalan jadi lebih mudah kalau didengar berulang-ulang.</p>
+  <button class="hijentry" data-act="open-hij"><span class="ar hij-big" lang="ar" dir="rtl">ا ب ت</span><span><b>Huruf Hijaiyyah</b><small>30 huruf · nama, lambang Latin resmi, dan bentuk sambung</small></span><span class="go">Buka ▶</span></button>
   <div class="pills" style="margin:10px 0 14px">${JUZ_PILLS.map(([j,l])=>`<button class="pill ${S.scope.juz===j?'on':''}" data-act="juz-learn" data-j="${j}">${l}</button>`).join('')}</div>
   <div class="surahs">${SURAH_LIST.filter(s=>S.scope.juz==='all'||String(s.juz)===String(S.scope.juz)).map(s=>{const p=surahProgress(s);return `<button class="scard" data-act="open-surah" data-s="${s.no}">
     <span class="top2"><span class="no">${s.no}</span><span class="ar ar-sm" lang="ar">${s.ar}</span></span>
@@ -1831,7 +1923,7 @@ const ACTIONS={
   game:t=>{ sfx('tap'); openLevelSheet(+t.dataset.g); },
   close:()=>closeSheet(),
   'open-surah':t=>{ learnState.surah=+t.dataset.s; renderLearn(); window.scrollTo({top:0}); },
-  'learn-back':()=>{ stopAudio(); studyToken++; learnState.surah=null; renderLearn(); },
+  'learn-back':()=>{ stopAudio(); studyToken++; learnState.surah=null; learnState.hij=false; renderLearn(); },
   'play-all':()=>playList(SURAHS[learnState.surah].verses),
   'play-one':t=>playList([vById(t.dataset.key)]),
   stop:()=>{ stopAudio(); studyToken++; markNow(null); },
@@ -1945,7 +2037,7 @@ function startTimer(sec){
 function markOptions(sel){
   $$('#stage .opt').forEach(b=>{ b.disabled=true; if(b.dataset.ok==='1') b.classList.add('ok'); else if(b===sel) b.classList.add('bad'); else b.classList.add('dim'); });
 }
-const vrow=v=>`<div class="vrow"><div class="meta"><span>${esc(v.sName)} · ayat ${v.n}</span><button class="play" data-act="gplay" data-key="${v.key}">🔊 Dengar</button></div>
+const vrow=v=>v.hij?`<div class="vrow hijrow"><div class="hij-g ar" lang="ar" dir="rtl">${v.h.ch}</div><div class="hij-t"><b>${esc(v.h.name)}</b> <span class="muted" style="font-weight:800">(${esc(v.h.lat)})</span><div class="tr">Dibaca: ${esc(v.h.read)}${v.h.alt&&v.h.alt!==v.h.name?` · sebutan lazim “${esc(v.h.alt)}”`:''}</div></div></div>`:`<div class="vrow"><div class="meta"><span>${esc(v.sName)} · ayat ${v.n}</span><button class="play" data-act="gplay" data-key="${v.key}">🔊 Dengar</button></div>
   <div class="ar ar-md userselect" lang="ar" dir="rtl" style="text-align:center">${v.ar}</div><div class="tr">${esc(v.id)}</div></div>`;
 function ans(correct,verses,msgHtml=''){
   if(!run||run.locked) return; run.locked=true;
@@ -2008,7 +2100,7 @@ function finishRun(){
     sfx('wrong');
     const need=PASS_MIN-correct, m=pick(MOTIVE), mv=m.k&&vById(m.k);
     const head=correct>=PASS_MIN-1?'Sedikit lagi!':correct>=3?'Hampir bisa, yuk coba lagi!':'Jangan menyerah, kamu pasti bisa!';
-    const surahs=[...new Map(run.missed.map(v=>[v.s,v])).values()].slice(0,3);
+    const surahs=G.hij?[]:[...new Map(run.missed.filter(v=>!v.hij).map(v=>[v.s,v])).values()].slice(0,3);
     $('#stage').innerHTML=`<div class="result lose">${mascotSVG()}
       <h2 style="font-size:1.7rem;color:var(--night)">${head}</h2>
       <p style="margin:0;font-weight:800">Kamu benar ${correct} dari ${total}. Butuh ${PASS_MIN} benar untuk lulus${l<MAXL?` dan membuka Level ${l+1}`:''}, kurang <span style="color:var(--coral-d)">${need}</span> lagi!</p>
@@ -2021,7 +2113,7 @@ function finishRun(){
         <div class="row" style="gap:8px">${surahs.map(v=>`<button class="btn btn-ghost btn-sm" data-act="study-surah" data-s="${v.s}">📖 Pelajari ${esc(v.sName)}</button>`).join('')}</div></div>`:''}
       <div style="display:grid;gap:10px;width:100%">
         <button class="btn btn-sun btn-block" data-act="start" data-g="${g}" data-l="${l}">🔄 Coba lagi</button>
-        <button class="btn btn-mint btn-block" data-act="study-surah" data-s="${(run.missed[0]||{s:Object.keys(SURAHS)[0]}).s}">📖 Belajar dulu, lalu coba lagi</button>
+        ${G.hij?`<button class="btn btn-mint btn-block" data-act="study-hij">📖 Belajar huruf dulu, lalu coba lagi</button>`:`<button class="btn btn-mint btn-block" data-act="study-surah" data-s="${(run.missed[0]||{s:Object.keys(SURAHS)[0]}).s}">📖 Belajar dulu, lalu coba lagi</button>`}
         <button class="btn btn-ghost btn-block" data-act="nav" data-to="home">🏠 Menu</button>
       </div></div>`;
   }
@@ -2038,6 +2130,9 @@ const LV={
  7:{min:[3,3,3,4,4,5,5,6,6,7],max:[3,4,5,5,6,6,7,8,9,10],mean:[1,1,1,1,1,1,1,0,0,0]},
  8:{opts:[3,3,3,4,4,4,4,4,5,5],rev:[0,0,0,.2,.3,.4,.5,.5,.6,.7],timer:[0,0,0,0,0,30,28,25,22,20]},
  9:{opts:[3,3,3,4,4,4,4,5,5,5],mode:[0,0,0,1,1,1,2,2,2,2],timer:[0,0,0,0,0,40,35,30,30,25],maxw:[6,8,10,12,14,16,18,20,22,22]},
+ 11:{n:[10,12,14,16,18,20,22,24,27,30],opts:[3,3,3,4,4,4,4,5,5,5],timer:[0,0,0,0,0,25,22,20,17,14],rev:[0,0,0,.15,.25,.3,.35,.4,.4,.45],form:[0,0,0,0,0,.2,.3,.35,.4,.45],sim:[0,0,1,1,1,1,1,1,1,1]},
+ 12:{k:[3,3,4,4,5,5,6,6,7,8],names:[1,1,1,1,0,0,0,0,0,0]},
+ 13:{speed:[340,320,300,280,260,240,220,200,185,170],board:[3,3,4,4,5,5,6,6,7,8],hint:[2,2,2,1,1,1,0,0,0,0],timer:[0,0,0,0,30,28,26,24,22,20]},
  10:{n:[3,3,3,4,4,4,5,5,5,6],min:[3,3,3,4,4,4,5,5,6,6],max:[4,5,6,6,7,8,9,10,11,12]}
 };
 
@@ -2280,6 +2375,9 @@ const D={
  7:i=>`ayat ${LV[7].min[i]}-${LV[7].max[i]} kata · ${LV[7].mean[i]?'ada arti':'tanpa arti'}`,
  8:i=>`${LV[8].opts[i]} pilihan · ${LV[8].rev[i]?Math.round(LV[8].rev[i]*100)+'% soal dari arti ke ayat':'ayat ke arti'}${tm(LV[8].timer[i])}`,
  9:i=>`${LV[9].opts[i]} pilihan · ${['acak','satu surah','satu surah, panjang mirip'][LV[9].mode[i]]}${tm(LV[9].timer[i])}`,
+ 11:i=>`${LV[11].n[i]} huruf pertama · ${LV[11].opts[i]} pilihan${LV[11].rev[i]?' · kadang nama ke huruf':''}${LV[11].form[i]?' · bentuk sambung':''}${tm(LV[11].timer[i])}`,
+ 12:i=>`urutkan ${LV[12].k[i]} huruf · ${i<6?'berurutan':'tidak berurutan rapat'}${LV[12].names[i]?' · ada nama huruf':''}`,
+ 13:i=>`kecepatan ${i+1}/10 · ${LV[13].board[i]} huruf di papan · ${({2:'huruf yang dicari terlihat',1:'hanya nama huruf',0:'tebak huruf berikutnya'})[LV[13].hint[i]]}${tm(LV[13].timer[i])}`,
  10:i=>`${LV[10].n[i]} tahap · ayat ${LV[10].min[i]}-${LV[10].max[i]} kata`
 };
 const mkLevels=id=>Array.from({length:MAXL},(_,i)=>({q:10,opts:LV[id].opts&&LV[id].opts[i],timer:(LV[id].timer&&LV[id].timer[i])||0,desc:D[id](i)}));
@@ -2293,7 +2391,10 @@ const GAMES=[
  {id:7,emoji:'🧩',name:'Susun Kata',short:'Rangkai kata-kata acak menjadi ayat utuh.',how:'Ketuk kata-kata sesuai urutan bacaan, mulai dari kata pertama.',tip:'Tekan Dengarkan, lalu susun kata sesuai urutan bunyinya.',render:r7},
  {id:8,emoji:'💡',name:'Tebak Arti',short:'Pahami makna ayat supaya hafalan makin kuat.',how:'Pilih arti yang cocok dengan ayat, atau ayat yang cocok dengan arti.',tip:'Baca arti ayat di menu Belajar. Kalau paham maknanya, hafalan jadi lebih mudah.',render:r8},
  {id:9,emoji:'🎧',name:'Dengar & Pilih',short:'Dengarkan qari, lalu pilih ayat yang dibaca.',how:'Putar suara, simak baik-baik, lalu pilih tulisan ayat yang sama.',tip:'Perhatikan kata pertama yang dibaca qari, lalu cocokkan dengan tulisannya.',render:r9},
- {id:10,emoji:'🪄',name:'Kata Menghilang',short:'Kata-kata lenyap bertahap sampai kamu hafal.',how:'Baca bersama qari. Tiap tahap, makin banyak kata yang menghilang. Ucapkan dari ingatan!',tip:'Baca ayat keras-keras 3 kali sebelum mulai, lalu coba ucapkan tanpa mengintip.',render:r10}
+ {id:10,emoji:'🪄',name:'Kata Menghilang',short:'Kata-kata lenyap bertahap sampai kamu hafal.',how:'Baca bersama qari. Tiap tahap, makin banyak kata yang menghilang. Ucapkan dari ingatan!',tip:'Baca ayat keras-keras 3 kali sebelum mulai, lalu coba ucapkan tanpa mengintip.',render:r10},
+ {id:11,emoji:'🔤',hij:true,name:'Tebak Huruf',short:'Kenali 30 huruf hijaiyyah dan namanya. Materi: huruf, bukan ayat.',how:'Lihat hurufnya lalu pilih nama yang benar, atau sebaliknya. Nama dan lambang Latin mengikuti pedoman resmi SKB. Materi game ini tidak terpengaruh pilihan juz.',tip:'Buka Belajar, lalu Huruf Hijaiyyah. Lihat bentuknya dan ucapkan namanya tiga kali.',render:r11},
+ {id:12,emoji:'🧮',hij:true,name:'Urutkan Huruf',short:'Susun huruf hijaiyyah dari Alif sampai Ya.',how:'Ketuk huruf satu per satu sesuai urutan abjad hijaiyyah, mulai dari yang paling awal. Materi game ini tidak terpengaruh pilihan juz.',tip:'Ucapkan urutannya dari Alif, Ba, Ta, lalu cari huruf yang cocok.',render:r12},
+ {id:13,emoji:'🐍',hij:true,name:'Ular Hijaiyyah',short:'Makan huruf sesuai urutan, jangan sampai salah!',how:'Gerakkan ular dengan tombol panah atau geser layar. Makan huruf yang dicari sesuai urutan hijaiyyah. Memakan huruf lain dihitung salah. Materi game ini tidak terpengaruh pilihan juz.',tip:'Hafalkan dulu urutan hurufnya di menu Belajar, lalu arahkan ular pelan-pelan.',render:r13}
 ];
 GAMES.forEach(G=>{G.levels=mkLevels(G.id);});
 
@@ -2301,7 +2402,7 @@ GAMES.forEach(G=>{G.levels=mkLevels(G.id);});
 Object.assign(ACTIONS,{
   start:t=>startRun(+t.dataset.g,+t.dataset.l),
   lvsel:t=>openLevelSheet(+t.dataset.g,+t.dataset.l),
-  'study-surah':t=>{ learnState.surah=+t.dataset.s; nav('learn'); },
+  'study-surah':t=>{ learnState.hij=false; learnState.surah=+t.dataset.s; nav('learn'); },
   quit:async()=>{ if(!run||run.locked||await askConfirm({title:'Yakin mau keluar?',text:'Kalau keluar sekarang, skor ronde ini tidak disimpan. Yuk selesaikan dulu, kamu pasti bisa! 🌙',info:`Soal ${run.idx+1} dari ${run.total} · ${run.correct} benar`,safe:'Lanjut main ▶',risk:'Keluar'})) nav('home'); },
   next:()=>{ run.idx++; nextQ(); },
   gplay:async t=>{ const v=vById(t.dataset.key); const r=await playOnce(v); if(r===false) audioFail(); },
@@ -2335,6 +2436,189 @@ Object.assign(ACTIONS,{
     const ok=q.done.every(Boolean); ans(ok,q.v,ok?'':'Susunan yang benar ada di bawah ini. Coba baca bersama qari ya!'); }
 });
 
+
+/* =====================================================================
+   GAME 11-13: HURUF HIJAIYYAH
+   ===================================================================== */
+const hijLabel=h=>`<span>${esc(h.name)}</span><small style="opacity:.7;font-weight:800">${esc(h.lat)}</small>`;
+const hijWrong=h=>`Jawaban yang benar: <b>${esc(h.name)}</b> (${esc(h.lat)}).`;
+const FORM_NAME={awal:'awal kata',tengah:'tengah kata',akhir:'akhir kata'};
+function pickHij(pool){
+  const seen=new Set(S.seen[run.g]||[]);
+  let c=pool.filter(h=>!run.used.has(h.i)&&!seen.has(h.i)); if(!c.length) c=pool.filter(h=>!run.used.has(h.i)); if(!c.length) c=pool;
+  const h=pick(c); run.used.add(h.i);
+  const a=S.seen[run.g]=(S.seen[run.g]||[]).filter(k=>k!==h.i); a.push(h.i); if(a.length>40) a.shift();
+  return h;
+}
+
+/* 11. Tebak Huruf */
+function r11(el,cfg,l){
+  const P=LV[11], i=l-1, pool=HIJ.slice(0,P.n[i]), h=pickHij(pool);
+  const rev=Math.random()<P.rev[i], forms=hijForms(h);
+  const fm=(!rev&&forms.length&&Math.random()<P.form[i])?pick(forms):null;
+  const fam=(HIJ_FAM_OF[h.i]||[]).map(x=>HIJ_BY[x]), others=HIJ.filter(x=>x.i!==h.i);
+  const groups=P.sim[i]?[fam.filter(x=>x.i<=P.n[i]),fam,pool.filter(x=>x.i!==h.i),others]:[pool.filter(x=>x.i!==h.i),others];
+  const opts=shuffle([h,...distract(h.i,cfg.opts-1,groups,x=>x.i)]);
+  run.q={v:hitem(h),wrong:hijWrong(h)};
+  const stem=rev?`<div class="mushaf"><div class="hij-name">${esc(h.name)}</div><small class="muted" style="font-weight:800">(${esc(h.lat)})</small></div>`
+    :`<div class="mushaf"><div class="ar hij-big" lang="ar" dir="rtl">${fm?fm[1]:h.ch}</div>${fm?`<span class="tag">bentuk ${FORM_NAME[fm[0]]}</span>`:''}</div>`;
+  const q=rev?'Mana huruf yang bernama ini?':fm?'Huruf apa ini? Perhatikan bentuk sambungnya.':'Apa nama huruf ini?';
+  el.innerHTML=`<div class="q-text">${q}</div>${stem}<div class="opts c3">${OPTS(opts.map(o=>({ok:o.i===h.i,html:rev?`<span class="ar hij-opt" lang="ar" dir="rtl">${o.ch}</span>`:hijLabel(o)})))}</div>`;
+  if(cfg.timer) startTimer(cfg.timer);
+}
+
+/* 12. Urutkan Huruf */
+function r12(el,cfg,l){
+  const P=LV[12], k=P.k[l-1]; let idxs;
+  if(l<=6){
+    const starts=[]; for(let s=1;s+k-1<=30;s++) starts.push(s);
+    let fresh=starts.filter(s=>!run.used.has('s'+s)); if(!fresh.length) fresh=starts;
+    const s=pick(fresh); run.used.add('s'+s); idxs=Array.from({length:k},(_,x)=>s+x);
+  } else {
+    let t=0; do{ idxs=shuffle(Array.from({length:30},(_,x)=>x+1)).slice(0,k).sort((a,b)=>a-b); }while(run.used.has('c'+idxs.join())&&t++<30);
+    run.used.add('c'+idxs.join());
+  }
+  const sorted=idxs.map(x=>HIJ_BY[x]);
+  let items=shuffle(sorted),t2=0; while(items.every((h,x)=>h.i===sorted[x].i)&&t2++<12) items=shuffle(sorted);
+  const q=run.q={v:sorted.map(hitem),sorted,items,sel:[],done:null}, names=!!P.names[l-1];
+  const chip=(h,attr,cls)=>`<button class="chip-w hij-chip ${cls}" ${attr}><span class="ar hij-ch" lang="ar" dir="rtl">${h.ch}</span>${names?`<small>${esc(h.name)}</small>`:''}</button>`;
+  const draw=()=>{
+    el.innerHTML=`<div class="q-text">Urutkan huruf hijaiyyah dari Alif sampai Ya 🔢</div>
+      <div class="hint">${l<=6?'Huruf-huruf ini berurutan di abjad hijaiyyah.':'Huruf-huruf ini tidak berurutan rapat, tapi tetap urut dari Alif ke Ya.'} Mulai dari kanan, seperti membaca Arab.</div>
+      <div class="slotrow">${q.sel.length?q.sel.map((idx,pos)=>chip(q.items[idx],`data-act="o12un" data-pos="${pos}" ${q.done?'disabled':''}`,q.done?(q.done[pos]?'ok':'bad'):'')).join(''):'<span class="hint" style="direction:ltr">Ketuk huruf di bawah, mulai dari yang paling awal</span>'}</div>
+      <div class="tray">${q.items.map((h,idx)=>chip(h,`data-act="o12pick" data-idx="${idx}" ${q.done?'disabled':''}`,q.sel.includes(idx)?'used':'')).join('')}</div>
+      <button class="btn btn-sun btn-block" data-act="o12chk" ${q.sel.length<q.items.length||q.done?'disabled':''}>Periksa urutan ✔</button>`;
+  };
+  q.draw=draw; draw();
+}
+
+/* 13. Ular Hijaiyyah (snake) */
+function quickAns(correct,item){
+  if(!run||run.locked) return;
+  run.res.push(correct); if(correct) run.correct++; else if(!run.missed.some(m=>m.key===item.key)) run.missed.push(item);
+  sfx(correct?'correct':'wrong'); $('#g-score').textContent=run.correct;
+  run.idx++; drawProg();
+  if(run.idx===5) toast('💪 Setengah jalan! Kamu pasti bisa!');
+  if(run.idx>=run.total){ run.locked=true; later(()=>finishRun(),700); }
+}
+function r13(el,cfg,l){
+  const P=LV[13], i=l-1, N=10, total=run.total, myRun=run;
+  const first=1+rnd(30-total+1), seq=Array.from({length:total},(_,k)=>HIJ_BY[first+k]);
+  const sn={snake:[{x:5,y:5},{x:4,y:5},{x:3,y:5}],dir:{x:1,y:0},nextDir:null,letters:[],ti:0,grow:0,started:false,over:false,elapsed:0,res:Array(total).fill(null)};
+  const q=run.q={v:hitem(seq[0]),sn};
+  el.innerHTML=`<div class="sn-hud" id="sn-hud"></div><div class="sn-strip" id="sn-strip"></div>
+    ${P.timer[i]?'<div class="timer" aria-hidden="true"><i id="sn-t" style="width:100%"></i></div>':''}
+    <div class="sn-wrap"><canvas id="sn" width="600" height="600" role="img" aria-label="Papan ular hijaiyyah"></canvas>
+      <div class="sn-start" id="sn-start"><div><p style="margin:0 0 12px;font-weight:800">Gerakkan ular untuk memakan huruf sesuai urutan hijaiyyah!</p><button class="btn btn-mint" data-act="sn-go">▶ Mulai</button><p class="hint" style="margin:12px 0 0">Pakai tombol panah, geser layar, atau keyboard.</p></div></div></div>
+    <div class="dpad" aria-label="Arah ular"><button class="dp up" data-act="sn-dir" data-d="up" aria-label="Atas">▲</button><button class="dp lf" data-act="sn-dir" data-d="left" aria-label="Kiri">◀</button><button class="dp dn" data-act="sn-dir" data-d="down" aria-label="Bawah">▼</button><button class="dp rt" data-act="sn-dir" data-d="right" aria-label="Kanan">▶</button></div>`;
+  const cv=$('#sn'), ctx=cv.getContext('2d'), CS=cv.width/N, target=()=>seq[sn.ti];
+  const free=(x,y)=>!sn.snake.some(c=>c.x===x&&c.y===y)&&!sn.letters.some(L=>L.x===x&&L.y===y);
+  const paused=()=>!sn.started||sn.over||run.locked||document.hidden||!$('#overlay').classList.contains('hidden');
+  function renderHud(){
+    const T=target(), prev=sn.ti>0?seq[sn.ti-1]:null, mode=sn.ti===0?2:P.hint[i];
+    $('#sn-hud').innerHTML=mode===2?`<span>Cari huruf</span><span class="ar hij-hud" lang="ar" dir="rtl">${T.ch}</span><small>${esc(T.name)} (${esc(T.lat)})</small>`
+      :mode===1?`<span>Cari huruf</span><b class="hij-name sm">${esc(T.name)}</b><small>(${esc(T.lat)})</small>`
+      :`<span>Setelah huruf</span><span class="ar hij-hud" lang="ar" dir="rtl">${prev.ch}</span><span>yang mana?</span>`;
+  }
+  function renderStrip(){
+    $('#sn-strip').innerHTML=seq.map((h,k)=>{ const r=sn.res[k]; return `<i class="${r===true?'ok':r===false?'bad':k===sn.ti&&!sn.over?'now':''}">${r===true?`<span class="ar" lang="ar" dir="rtl">${h.ch}</span>`:r===false?'✗':k===sn.ti&&!sn.over?'?':'·'}</i>`; }).join('');
+  }
+  function spawn(){
+    const T=target(), head=sn.snake[0], prev=sn.ti>0?seq[sn.ti-1]:null;
+    const fam=(HIJ_FAM_OF[T.i]||[]).map(x=>HIJ_BY[x]);
+    const dec=distract(T.i,P.board[i]-1,[prev?[prev]:[],shuffle(fam),shuffle(HIJ.filter(x=>x.i!==T.i))],x=>x.i);
+    sn.letters=[]; sn.elapsed=0;
+    [T,...dec].forEach(h=>{ let x,y,t=0; do{ x=rnd(N); y=rnd(N); t++; }while((!free(x,y)||Math.abs(x-head.x)+Math.abs(y-head.y)<3)&&t<300); sn.letters.push({idx:h.i,ch:h.ch,x,y}); });
+    renderHud(); renderStrip();
+  }
+  function advance(){ sn.ti++; if(sn.ti>=total){ sn.over=true; renderStrip(); return; } spawn(); }
+  function eat(L){
+    const T=target(), ok=L.idx===T.i; sn.res[sn.ti]=ok; quickAns(ok,hitem(T));
+    if(ok) sn.grow+=1; else toast(`Bukan itu! Yang dicari: ${T.name} (${T.lat})`);
+    advance();
+  }
+  function step(){
+    if(sn.nextDir){ if(!(sn.nextDir.x===-sn.dir.x&&sn.nextDir.y===-sn.dir.y)) sn.dir=sn.nextDir; sn.nextDir=null; }
+    const h=sn.snake[0], nx=(h.x+sn.dir.x+N)%N, ny=(h.y+sn.dir.y+N)%N;
+    const body=sn.snake.slice(0,sn.snake.length-(sn.grow>0?0:1));
+    if(body.some(c=>c.x===nx&&c.y===ny)){            // menabrak badan sendiri: ular memendek, tidak ada hukuman
+      sn.snake=[{x:h.x,y:h.y},{x:(h.x-sn.dir.x+N)%N,y:(h.y-sn.dir.y+N)%N},{x:(h.x-2*sn.dir.x+N+N)%N,y:(h.y-2*sn.dir.y+N+N)%N}]; sn.grow=0; sfx('tap');
+    }
+    sn.snake.unshift({x:nx,y:ny}); if(sn.grow>0) sn.grow--; else sn.snake.pop();
+    const L=sn.letters.find(z=>z.x===nx&&z.y===ny); if(L&&!sn.over) eat(L);
+  }
+  const rr=(x,y,w,h,r)=>{ ctx.beginPath(); ctx.moveTo(x+r,y); ctx.arcTo(x+w,y,x+w,y+h,r); ctx.arcTo(x+w,y+h,x,y+h,r); ctx.arcTo(x,y+h,x,y,r); ctx.arcTo(x,y,x+w,y,r); ctx.closePath(); };
+  function draw(now){
+    ctx.clearRect(0,0,600,600);
+    for(let y=0;y<N;y++) for(let x=0;x<N;x++){ ctx.fillStyle=(x+y)%2?'#FBFFFC':'#EEF7F1'; ctx.fillRect(x*CS,y*CS,CS,CS); }
+    const T=sn.over?null:target(), ring=T&&(sn.ti===0||P.hint[i]===2);
+    ctx.textAlign='center'; ctx.textBaseline='middle'; ctx.font=`700 ${Math.round(CS*0.7)}px 'Scheherazade New','Traditional Arabic',serif`;
+    sn.letters.forEach(L=>{
+      const px=L.x*CS, py=L.y*CS; rr(px+3,py+3,CS-6,CS-6,12); ctx.fillStyle='#FFF8DD'; ctx.fill(); ctx.lineWidth=3; ctx.strokeStyle='#D9B04A'; ctx.stroke();
+      ctx.fillStyle='#0F3D42'; ctx.fillText(L.ch,px+CS/2,py+CS/2+CS*0.06);
+      if(ring&&T&&L.idx===T.i){ const p=2+Math.sin(now/180)*2; rr(px+1-p/2,py+1-p/2,CS-2+p,CS-2+p,14); ctx.lineWidth=4; ctx.strokeStyle='#12936F'; ctx.stroke(); }
+    });
+    const n=sn.snake.length;
+    for(let k=n-1;k>=0;k--){
+      const c=sn.snake[k], px=c.x*CS, py=c.y*CS, pad=k===0?3:6+Math.min(k,6)*.4;
+      rr(px+pad,py+pad,CS-pad*2,CS-pad*2,k===0?14:11); ctx.fillStyle=k===0?'#0E8A6E':(k%2?'#19B394':'#12A07F'); ctx.fill(); ctx.lineWidth=2; ctx.strokeStyle='#0A6B52'; ctx.stroke();
+      if(k===0){
+        const d=sn.dir, ex=d.x?0:1, ey=d.y?0:1;
+        [-1,1].forEach(sd=>{ const cx=px+CS/2+d.x*CS*.16+(d.x?0:sd*CS*.17), cy=py+CS/2+d.y*CS*.16+(d.y?0:sd*CS*.17);
+          ctx.beginPath(); ctx.arc(cx,cy,CS*.1,0,6.3); ctx.fillStyle='#fff'; ctx.fill(); ctx.beginPath(); ctx.arc(cx+d.x*CS*.03,cy+d.y*CS*.03,CS*.05,0,6.3); ctx.fillStyle='#17322F'; ctx.fill(); });
+      }
+    }
+  }
+  let lastT=performance.now();
+  function anim(now){
+    if(run!==myRun||!document.getElementById('sn')) return;
+    const dt=Math.min(100,now-lastT); lastT=now;
+    if(!paused()){
+      sn.elapsed+=dt; const lim=P.timer[i]*1000;
+      if(lim){
+        const tb=$('#sn-t'); if(tb) tb.style.width=Math.max(0,100-sn.elapsed/lim*100)+'%';
+        if(sn.elapsed>lim){ const T=target(); sn.res[sn.ti]=false; quickAns(false,hitem(T)); toast('⏰ Waktu habis! Yang dicari: '+T.name); advance(); }
+      }
+    }
+    draw(now); requestAnimationFrame(anim);
+  }
+  function loop(){ if(run!==myRun||!document.getElementById('sn')) return; if(!paused()) step(); later(loop,P.speed[i]); }
+  function start(){ if(sn.started) return; sn.started=true; const s=$('#sn-start'); if(s) s.classList.add('hidden'); }
+  function setDir(dx,dy){ start(); const d=sn.nextDir||sn.dir; if(dx===-d.x&&dy===-d.y) return; sn.nextDir={x:dx,y:dy}; }
+  let tx=0,ty=0;
+  cv.addEventListener('touchstart',e=>{ const t=e.changedTouches[0]; tx=t.clientX; ty=t.clientY; e.preventDefault(); },{passive:false});
+  cv.addEventListener('touchmove',e=>e.preventDefault(),{passive:false});
+  cv.addEventListener('touchend',e=>{ const t=e.changedTouches[0], dx=t.clientX-tx, dy=t.clientY-ty; if(Math.max(Math.abs(dx),Math.abs(dy))<18) return; if(Math.abs(dx)>Math.abs(dy)) setDir(dx>0?1:-1,0); else setDir(0,dy>0?1:-1); e.preventDefault(); },{passive:false});
+  Object.assign(q,{setDir,start,step,eat,sn,seq,
+    cheat:ok=>{ const T=target(), L=sn.letters.find(z=>ok?z.idx===T.i:z.idx!==T.i)||sn.letters[0]; eat(L); }});   // dipakai pengujian
+  spawn(); draw(performance.now()); requestAnimationFrame(anim); later(loop,P.speed[i]);
+}
+document.addEventListener('keydown',e=>{
+  if(!run||run.g!==13||!run.q||!run.q.setDir||curView!=='game'||!$('#overlay').classList.contains('hidden')) return;
+  const m={ArrowUp:[0,-1],ArrowDown:[0,1],ArrowLeft:[-1,0],ArrowRight:[1,0],w:[0,-1],s:[0,1],a:[-1,0],d:[1,0]};
+  const d=m[e.key]; if(d){ e.preventDefault(); run.q.setDir(d[0],d[1]); }
+});
+Object.assign(ACTIONS,{
+  o12pick:t=>{ const q=run.q; if(run.locked||q.done) return; const i=+t.dataset.idx; if(q.sel.includes(i)) return; q.sel.push(i); sfx('tap'); q.draw(); },
+  o12un:t=>{ const q=run.q; if(run.locked||q.done) return; q.sel.splice(+t.dataset.pos,1); q.draw(); },
+  o12chk:()=>{ const q=run.q; if(run.locked||q.sel.length<q.items.length) return;
+    q.done=q.sel.map((idx,pos)=>q.items[idx].i===q.sorted[pos].i); q.draw();
+    const ok=q.done.every(Boolean); ans(ok,q.v,ok?'':'Urutan yang benar ada di bawah ini (dari Alif ke Ya).'); },
+  'sn-go':()=>run.q&&run.q.start&&run.q.start(),
+  'sn-dir':t=>{ const m={up:[0,-1],down:[0,1],left:[-1,0],right:[1,0]}[t.dataset.d]; if(run.q&&run.q.setDir) run.q.setDir(m[0],m[1]); },
+  'open-hij':()=>{ learnState.surah=null; learnState.hij=true; renderLearn(); window.scrollTo({top:0}); },
+  'study-hij':()=>{ learnState.surah=null; learnState.hij=true; nav('learn'); }
+});
+
+/* ---------- halaman belajar huruf ---------- */
+const hijCard=h=>{ const fs=hijForms(h); return `<article class="hijcard"><div class="hij-no">${h.i}</div><div class="ar hij-big" lang="ar" dir="rtl">${h.ch}</div><b>${esc(h.name)}</b><div class="hij-lat">Latin: <b>${esc(h.lat)}</b></div><small>Dibaca: ${esc(h.read)}</small>${h.alt&&h.alt!==h.name?`<small class="muted">Sebutan lazim: ${esc(h.alt)}</small>`:''}${fs.length?`<div class="hij-forms">${fs.map(([n,s])=>`<span><span class="ar" lang="ar" dir="rtl">${s}</span><small>${n}</small></span>`).join('')}</div>`:'<small class="muted">Tidak bersambung ke huruf lain</small>'}</article>`; };
+function renderHij(){
+  $('#v-learn').innerHTML=`<button class="btn btn-ghost btn-sm" data-act="learn-back">⬅ Kembali</button>
+  <h2 class="sec-title" style="margin-top:12px">🔤 Huruf Hijaiyyah</h2>
+  <p class="muted" style="font-weight:700;margin-top:-4px">30 huruf dari Alif sampai Ya. Nama, lambang Latin, dan cara baca mengikuti Pedoman Transliterasi Arab-Latin (SKB Menag dan Mendikbud No. 158/1987 dan 0543b/U/1987).</p>
+  <div class="hijgrid">${HIJ.map(hijCard).join('')}</div>
+  <p class="muted small" style="margin-top:12px">Tabel SKB memuat 29 huruf. Lam Alif (لا) ditambahkan sebagai huruf ke-30 mengikuti daftar yang lazim dipakai di Indonesia; lambang “lā” diturunkan dari aturan maddah pada pedoman yang sama.</p>`;
+}
 
 /* =====================================================================
    FIREBASE  —  login orang tua + sinkronisasi progres (local-first)
