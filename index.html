@@ -646,7 +646,7 @@ body.in-game .toast-box{bottom:auto;top:calc(52px + env(safe-area-inset-top,0px)
 .fontopt small{color:var(--muted);font-weight:700}
 .fontopt .ar{font-size:1.5rem;line-height:2.1;flex:none}
 @media(max-width:380px){.brand>span{display:none}}
-@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}html{scroll-behavior:auto}}
 </style>
 <!-- Font Awesome untuk ikon medsos & footer (Kurniapedia) -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -677,6 +677,161 @@ body.in-game .toast-box{bottom:auto;top:calc(52px + env(safe-area-inset-top,0px)
     .kurnia-icon.wa:hover { color: #00ff87; border-color: rgba(0, 255, 135, 0.6); }
     body.in-game .kurnia-footer { display: none !important; }
     @media print { .kurnia-footer { display: none !important; } }
+</style>
+<style id="pro-polish">
+/* =====================================================================
+   POLES PROFESIONAL v2
+   - lebar konten mengikuti layar (tidak ada ruang kosong di kiri-kanan)
+   - header & nav simetris, tidak terpotong di HP kecil
+   - game: header seimbang, timer terlihat jelas, dua kolom seimbang di landscape
+   ===================================================================== */
+:root{--wrap:1240px;--gut:clamp(14px,3vw,32px)}
+.wrap{max-width:var(--wrap);padding:0 var(--gut)}
+body{padding-bottom:calc(92px + env(safe-area-inset-bottom,0px))}
+body.in-game{padding-bottom:0}
+
+/* ----- header: tidak lagi terpotong di HP sempit ----- */
+.top .wrap{gap:8px}
+.brand{min-width:0;flex:0 1 auto}
+.brand>span{min-width:0}
+.chips{flex:none}
+@media(max-width:440px){
+  #h-fs{display:none}
+  .brand svg{width:36px;height:36px}
+  .brand b{font-size:1.05rem}
+}
+
+/* ----- beranda: dua kolom seimbang di layar lebar ----- */
+@media(min-width:760px){
+  #v-home{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 20px;align-items:stretch}
+  #v-home>.hero,#v-home>.sec-title,#v-home>.gal{grid-column:1/-1}
+  #v-home>#scope-slot,#v-home>.card.row{margin-top:0!important}
+  #v-home>#scope-slot>.card{height:100%}
+  #v-home>.card.row{align-content:center;align-items:center;flex-wrap:wrap}
+  #v-home>.sec-title{margin:10px 0 0}
+  .gal{grid-template-columns:repeat(auto-fill,minmax(190px,1fr))}
+  .gcard{min-height:206px}
+}
+@media(min-width:900px){
+  .hero{padding:34px 42px 112px;grid-template-columns:minmax(0,1fr) 270px;gap:34px}
+  .hero .goal{max-width:500px}
+  .hero p{font-size:1.08rem}
+  .mascot{width:150px;height:150px}
+  .mascot-box{max-width:270px;justify-self:center}
+  .hero .lant.l1{right:3%}.hero .lant.l2{right:9%}
+}
+
+/* ----- navigasi bawah: dock melayang di desktop ----- */
+@media(min-width:900px) and (min-height:560px){
+  .bottom{left:50%;right:auto;bottom:14px;transform:translateX(-50%);width:min(600px,calc(100vw - 32px));
+    border:3px solid var(--sun);border-radius:24px;box-shadow:0 12px 32px rgba(11,51,64,.28);padding:6px 8px}
+  .bottom .in{max-width:none}
+  body{padding-bottom:calc(112px + env(safe-area-inset-bottom,0px))}
+  .toast-box{bottom:calc(112px + env(safe-area-inset-bottom,0px))}
+}
+
+/* ----- HP landscape: header & menu ringkas supaya konten lega ----- */
+@media(orientation:landscape) and (max-height:520px){
+  .top{padding:calc(3px + env(safe-area-inset-top,0px)) 0 3px}
+  .top::after{display:none}
+  .brand small{display:none}
+  .brand svg{width:34px;height:34px}
+  .brand b{font-size:1.1rem}
+  .chip{padding:2px 9px;font-size:.85rem}
+  .icon-btn{width:32px;height:32px;font-size:1rem}
+  .view{padding-top:14px}
+  body{padding-bottom:calc(56px + env(safe-area-inset-bottom,0px))}
+  .bottom{padding:3px 8px calc(3px + env(safe-area-inset-bottom,0px))}
+  .bottom .in{max-width:680px}
+  .tab{display:flex;flex-direction:row;justify-content:center;align-items:center;gap:8px;padding:5px 4px;font-size:.82rem}
+  .tab span{font-size:1.25rem;line-height:1}
+  .hero{padding:16px 22px 64px}
+  .hero .skyline{height:62px}
+  .toast-box{bottom:calc(64px + env(safe-area-inset-bottom,0px))}
+  .sec-title{margin:16px 0 10px}
+}
+
+/* ----- halaman lain di layar lebar ----- */
+@media(min-width:700px){ #v-badges>.btn-block{max-width:460px} }
+@media(min-width:900px){
+  #v-profile{columns:2 420px;column-gap:20px}
+  #v-profile>*{break-inside:avoid;margin-top:0!important;margin-bottom:16px}
+  #v-profile>.sec-title{column-span:all;margin-bottom:14px!important}
+  .badges{grid-template-columns:repeat(auto-fill,minmax(170px,1fr))}
+}
+#v-learn:has(>.ayat){max-width:940px;margin-inline:auto}
+.surahs{grid-template-columns:repeat(auto-fill,minmax(240px,1fr));align-items:stretch}
+.scard{grid-template-rows:auto auto 1fr auto auto;align-content:stretch}
+.scard small:first-of-type{align-self:start}
+
+/* ----- timer soal: bar + angka detik, warna berubah saat waktu menipis ----- */
+.timer{display:flex;align-items:center;gap:10px;height:auto;background:none;border-radius:0;overflow:visible;margin:0 0 6px}
+#g-timer .timer{height:auto;margin-bottom:6px}
+#g-timer:empty{display:none}
+.timer .tbar{flex:1;height:12px;background:var(--line);border-radius:99px;overflow:hidden;box-shadow:inset 0 1px 2px rgba(0,0,0,.14)}
+.timer .tbar>i{display:block;height:100%;width:100%;border-radius:99px;background:linear-gradient(90deg,var(--mint),#7FE0B8);transform-origin:left center;will-change:transform}
+.timer.mid .tbar>i{background:linear-gradient(90deg,var(--sun-d),var(--sun))}
+.timer.low .tbar>i{background:linear-gradient(90deg,var(--coral-d),var(--coral))}
+.timer b{display:inline-flex;align-items:center;justify-content:center;min-width:76px;height:28px;padding:0 12px;border-radius:99px;
+  background:#fff;border:2px solid var(--line);font-family:var(--f-disp);font-weight:800;font-size:.9rem;color:var(--night);font-variant-numeric:tabular-nums;white-space:nowrap}
+.timer.mid b{border-color:var(--sun);background:#FFF8DD}
+.timer.low b{background:var(--bad-bg);border-color:var(--bad);color:#8A1F23}
+.timer.low:not([data-calm]) b{animation:pulse 1s infinite}
+
+/* ----- layar game: header simetris (kiri | judul | kanan) ----- */
+.gshell{max-width:min(1460px,100%)}
+@media(orientation:portrait){.gshell{max-width:780px}}
+.ghead{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:8px;align-items:center}
+.gh-l{display:flex;justify-content:flex-start;min-width:0}
+.gh-r{display:flex;gap:6px;justify-content:flex-end;align-items:center;min-width:0}
+.gh-c{min-width:0;max-width:52vw;text-align:center}
+.ghead h2{font-size:1.05rem}
+.ghead .btn{min-width:44px}
+@media(max-width:400px){.ghead .qtxt{display:none}}
+
+/* ----- soal: seimbang & simetris ----- */
+.opts>.opt:last-child:nth-child(odd){grid-column:1/-1}
+.opts.c3{grid-template-columns:repeat(2,minmax(0,1fr))}
+.opts>.opt:only-child{grid-column:1/-1}
+.stage .q-text{padding-inline:6px}
+.seqgrid{display:grid;gap:7px}
+.hij-pool{justify-content:center}
+.sn-wrap{max-width:min(380px,100%)}
+@media(orientation:portrait) and (min-height:720px){
+  #stage .opt{min-height:54px;font-size:1.02rem}
+  #stage .q-text{font-size:1.08rem}
+}
+
+/* ----- landscape: judul soal membentang, dua kolom sama tinggi, pemisah halus ----- */
+@media (orientation:landscape) and (min-aspect-ratio:5/4){
+  .stage.split{grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:0;row-gap:8px;align-items:stretch}
+  .stage.split>.q-text{grid-column:1/-1;font-size:1.08rem}
+  .stage.split>.gA,.stage.split>.gB{display:grid;gap:10px;align-content:center;justify-items:stretch;min-width:0}
+  .stage.split>.gA{padding-right:18px}
+  .stage.split>.gB{padding-left:18px;border-left:3px dotted #E3CF8E}
+  .stage:not(.split) .opts{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .stage:not(.split) .seqgrid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .stage:not(.split) .seqgrid>.seq-item:last-child:nth-child(odd){grid-column:1/-1}
+  .stage:not(.split)>.btn-block,.stage:not(.split)>.btn{justify-self:center;width:min(100%,440px)}
+  .sn-wrap{max-width:min(420px,100%)}
+  #fb{left:max(calc(10px + env(safe-area-inset-left,0px)),calc(50vw - 710px));width:min(46vw,500px)}
+}
+@media (orientation:landscape) and (max-height:420px){
+  .ghead h2{font-size:.98rem}
+}
+
+
+/* ----- layar hasil: dua kolom seimbang di landscape ----- */
+.rA,.rB{display:contents}
+@media (orientation:landscape) and (min-aspect-ratio:5/4){
+  .result{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px 0;align-items:stretch;justify-items:stretch}
+  .result>.rA,.result>.rB{display:grid;gap:8px;justify-items:center;align-content:center;min-width:0;text-align:center}
+  .result>.rA{padding-right:18px}
+  .result>.rB{padding-left:18px;border-left:3px dotted #E3CF8E}
+  .result>.res-btns{grid-column:1/-1;grid-template-columns:repeat(auto-fit,minmax(150px,1fr))!important}
+  .result .res-btns .btn-block:first-child{grid-column:auto}
+  .result .missed{max-height:26vh;text-align:left}
+}
 </style>
 </head>
 <body>
@@ -1737,7 +1892,8 @@ function audioFail(){ if(Date.now()-audioErrAt>4000){audioErrAt=Date.now();toast
 /* ---------- toast ---------- */
 function toast(msg,cls=''){
   const el=document.createElement('div'); el.className='toast '+cls; el.textContent=msg;
-  $('#toasts').appendChild(el); setTimeout(()=>el.remove(),3600);
+  const box=$('#toasts'); box.appendChild(el); while(box.children.length>3) box.firstChild.remove();   // maksimal 3 toast agar tidak menumpuk
+  setTimeout(()=>el.remove(),3600);
 }
 
 /* ---------- maskot ---------- */
@@ -2081,7 +2237,7 @@ document.addEventListener('keydown',e=>{ if(e.key==='Escape'&&!$('#overlay').cla
    ===================================================================== */
 let run=null;
 const later=(fn,ms)=>{ const id=setTimeout(fn,ms); if(run) run.tms.push(id); return id; };
-function clearGameTimers(){ if(run){ run.tms.forEach(clearTimeout); run.tms=[]; } }
+function clearGameTimers(){ stopTimer(); if(run){ run.tms.forEach(clearTimeout); run.tms=[]; } }
 const arSpan=(t,c='ar-md')=>`<span class="ar ${c}" lang="ar" dir="rtl">${t}</span>`;
 const szOf=v=>v.words.length>16?'ar-md':v.words.length>9?'ar-lg':'ar-xl';
 const mushaf=(inner,o={})=>`<div class="mushaf ${o.blur?'blur':''}">${o.badge?`<span class="badge-n">${esc(o.badge)}</span>`:''}<div class="ar ${o.v?szOf(o.v):'ar-xl'}" lang="ar" dir="rtl">${inner}</div></div>`;
@@ -2130,11 +2286,11 @@ function startRun(g,l){
   S.played[g]=1; save();
   nav('game');
   $('#v-game').innerHTML=`<div class="gshell"><div class="ghead">
-      <button class="btn btn-ghost btn-sm" data-act="quit" aria-label="Keluar dari permainan">✕ <span class="qtxt">Keluar</span></button>
-      <div><h2>${G.emoji} ${esc(G.name)}</h2><small>Level ${l} · ${RANKS[l-1]}</small></div>
-      <span class="score" aria-label="Jawaban benar">⭐ <b id="g-score">0</b></span>
+      <div class="gh-l"><button class="btn btn-ghost btn-sm" data-act="quit" aria-label="Keluar dari permainan">✕ <span class="qtxt">Keluar</span></button></div>
+      <div class="gh-c"><h2>${G.emoji} ${esc(G.name)}</h2><small>Level ${l} · ${RANKS[l-1]}</small></div>
+      <div class="gh-r"><span class="score" aria-label="Jawaban benar">⭐ <b id="g-score">0</b></span>
       <button class="icon-btn" data-act="fs" id="g-fs" aria-label="Layar penuh" title="Layar penuh">⛶</button>
-      <button class="icon-btn" data-act="sound" id="g-sound" aria-label="Suara">${S.sound?'🔊':'🔇'}</button></div>
+      <button class="icon-btn" data-act="sound" id="g-sound" aria-label="Suara">${S.sound?'🔊':'🔇'}</button></div></div>
     <div class="bsm ar" lang="ar" dir="rtl" aria-hidden="true">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
     <div class="prog" id="g-prog" aria-hidden="true"></div>
     <div id="g-timer"></div>
@@ -2155,10 +2311,37 @@ function nextQ(){
   run.G.render(st,run.cfg,run.l);
   window.scrollTo({top:0,behavior:'instant'});
 }
+/* Timer soal: dihitung dari JavaScript (bukan CSS transition), jadi tetap jalan walau
+   perangkat memakai mode "kurangi animasi". Berhenti sementara saat dialog terbuka atau tab tersembunyi. */
+let tmr=null;
+function stopTimer(){ if(tmr){ cancelAnimationFrame(tmr.raf); tmr=null; } }
+function paintTimer(root,ratio,secLeft){
+  if(!root) return;
+  const bar=root.querySelector('.tbar>i'), num=root.querySelector('b');
+  ratio=Math.max(0,Math.min(1,ratio));
+  if(bar) bar.style.transform='scaleX('+ratio+')';
+  if(num) num.textContent='⏱ '+Math.max(0,Math.ceil(secLeft))+' dtk';
+  const low=secLeft<=5||ratio<=.25;
+  root.classList.toggle('low',low); root.classList.toggle('mid',!low&&ratio<=.55);
+  root.setAttribute('aria-valuenow',Math.max(0,Math.ceil(secLeft)));
+}
 function startTimer(sec){
-  $('#g-timer').innerHTML=`<div class="timer" aria-hidden="true"><i id="tfill" style="transition:width ${sec}s linear"></i></div>`;
-  requestAnimationFrame(()=>requestAnimationFrame(()=>{const f=$('#tfill'); if(f) f.style.width='0%';}));
-  later(()=>{ if(!run.locked){ markOptions(null); ans(false,run.q.v,'Waktu habis! ⏰ Ini jawabannya:'); } },sec*1000);
+  stopTimer();
+  const box=$('#g-timer'); if(!box) return;
+  box.innerHTML='<div class="timer" id="tm" role="timer" aria-label="Sisa waktu"><span class="tbar" aria-hidden="true"><i id="tfill"></i></span><b>⏱ '+sec+' dtk</b></div>';
+  const root=$('#tm'), total=sec*1000, myRun=run, t={raf:0};
+  let left=total, last=performance.now();
+  tmr=t; paintTimer(root,1,sec);
+  const tick=now=>{
+    if(tmr!==t||run!==myRun||run.locked) return;
+    const paused=document.hidden||!$('#overlay').classList.contains('hidden');
+    if(!paused) left-=Math.min(250,Math.max(0,now-last));
+    last=now;
+    paintTimer(root,left/total,left/1000);
+    if(left<=0){ stopTimer(); if(!run.locked){ markOptions(null); ans(false,run.q.v,'Waktu habis! ⏰ Ini jawabannya:'); } return; }
+    t.raf=requestAnimationFrame(tick);
+  };
+  t.raf=requestAnimationFrame(tick);
 }
 function markOptions(sel){
   $$('#stage .opt').forEach(b=>{ b.disabled=true; if(b.dataset.ok==='1') b.classList.add('ok'); else if(b===sel) b.classList.add('bad'); else b.classList.add('dim'); });
@@ -2167,7 +2350,6 @@ const vrow=v=>v.hij?`<div class="vrow hijrow"><div class="hij-g ar" lang="ar" di
   <div class="ar ar-md userselect" lang="ar" dir="rtl" style="text-align:center">${v.ar}</div><div class="tr">${esc(v.id)}</div></div>`;
 function ans(correct,verses,msgHtml=''){
   if(!run||run.locked) return; run.locked=true;
-  const f=$('#tfill'); if(f){ f.style.transition='none'; f.style.width=getComputedStyle(f).width; }
   clearGameTimers();
   const list=Array.isArray(verses)?verses:[verses];
   run.res.push(correct); if(correct) run.correct++;
@@ -2205,16 +2387,18 @@ function finishRun(){
     for(let i=0;i<st;i++) later(()=>sfx('star'),500+i*350);
     const M=MOTIFS[g-1], tr=tierOf(l,g), u=pick(UCAPAN), tamat=(l===ML&&full);
     const title=tamat?`Game ${esc(G.name)} Tamat! 👑`:`Level ${l} Selesai!`;
-    $('#stage').innerHTML=`<div class="result win">${mascotSVG('cheer')}
+    $('#stage').innerHTML=`<div class="result win"><div class="rA">${mascotSVG('cheer')}
       <div class="ucapan"><div class="ar ar-lg" lang="ar" dir="rtl">${u.ar}</div><small>${esc(u.id)}</small></div>
       <h2 style="font-size:1.7rem;color:var(--night)">${title}</h2>
       <p class="muted" style="margin:0;font-weight:700">Kamu lulus dengan ${correct} dari ${total} soal benar!</p>
       <div class="big-stars" role="img" aria-label="${st} dari 3 bintang">${[1,2,3].map(x=>`<span class="${x<=st?'pop':'off'}" style="--i:${x}">⭐</span>`).join('')}</div>
+      </div><div class="rB">
       <div class="sticker t${tr}" role="img" aria-label="Stiker ${esc(M.n)} level ${l}"><span class="stk-new">${first?'Baru!':'Koleksi'}</span><span class="stk-e">${M.e}</span><b>${esc(M.n)}</b><small>Level ${l} · ${RANKS[l-1]} · ${TIER_NAME[tr]}</small></div>
       <div class="stat-row"><span class="stat">✅ ${correct}/${total} benar</span><span class="stat">⚡ +${xp} XP</span>${bonus?`<span class="stat">🎁 Bonus lulus +${bonus} XP</span>`:''}${master?`<span class="stat">👑 Bonus tamat +${master} XP</span>`:''}${gained?`<span class="stat">🌟 +${gained} bintang</span>`:''}</div>
       ${first&&l<ML?`<div class="tag" style="font-size:1rem">🔓 Level ${l+1} (${RANKS[l]}) terbuka!</div>`:''}
       ${retry?'<div class="tag" style="font-size:1rem">💪 Pantang menyerah! Berhasil setelah mencoba lagi.</div>':''}
       ${st<3?`<p class="hint" style="margin:0">Dapat ${Math.ceil(total*.9)} benar untuk meraih 3 bintang ⭐⭐⭐</p>`:'<p class="hint" style="margin:0">Nilai sempurna! Kamu luar biasa!</p>'}
+      </div>
       <div class="res-btns" style="display:grid;gap:10px;width:100%">
         ${tamat?`<button class="btn btn-sun btn-block" data-act="cert-game" data-g="${g}">🎓 Ambil sertifikat ${esc(G.name)}</button>`:''}
         ${l<ML?`<button class="btn btn-mint btn-block" data-act="start" data-g="${g}" data-l="${l+1}">Lanjut ke Level ${l+1} ➡️</button>`:`<button class="btn btn-mint btn-block" data-act="nav" data-to="home">🎮 Pilih game lain</button>`}
@@ -2226,16 +2410,18 @@ function finishRun(){
     const need=pm-correct, m=pick(MOTIVE), mv=m.k&&vById(m.k);
     const head=correct>=pm-1?'Sedikit lagi!':correct>=3?'Hampir bisa, yuk coba lagi!':'Jangan menyerah, kamu pasti bisa!';
     const surahs=G.hij?[]:[...new Map(run.missed.filter(v=>!v.hij).map(v=>[v.s,v])).values()].slice(0,3);
-    $('#stage').innerHTML=`<div class="result lose">${mascotSVG()}
+    $('#stage').innerHTML=`<div class="result lose"><div class="rA">${mascotSVG()}
       <h2 style="font-size:1.7rem;color:var(--night)">${head}</h2>
       <p style="margin:0;font-weight:800">Kamu benar ${correct} dari ${total}. Butuh ${pm} benar untuk lulus${l<ML?` dan membuka Level ${l+1}`:''}, kurang <span style="color:var(--coral-d)">${need}</span> lagi!</p>
       <div class="need" role="img" aria-label="${correct} dari ${pm} benar yang dibutuhkan">${Array.from({length:total},(_,i)=>`<i class="${i<correct?'on':''} ${i===pm-1?'goal':''}"></i>`).join('')}</div>
       <small class="muted" style="font-weight:700;margin-top:-6px">Garis emas = batas lulus</small>
       <div class="mot">${mv?`<div class="ar ar-md" lang="ar" dir="rtl">${mv.ar}</div><small>“${esc(mv.id)}” (QS ${esc(mv.sName)}: ${mv.n})</small>`:`<b>${esc(m.t)}</b>`}</div>
+      </div><div class="rB">
       ${tries>=2?`<div class="tag" style="font-size:.95rem">💛 Sudah ${tries} kali mencoba. Kamu hebat karena tidak menyerah!</div>`:''}
       <p class="hint" style="margin:0">💡 Tips: ${esc(G.tip)}</p>
       ${run.missed.length?`<div class="missed"><h3 style="font-size:1.1rem">Ayat yang perlu diulang</h3>${run.missed.slice(0,4).map(vrow).join('')}
         <div class="row" style="gap:8px">${surahs.map(v=>`<button class="btn btn-ghost btn-sm" data-act="study-surah" data-s="${v.s}">📖 Pelajari ${esc(v.sName)}</button>`).join('')}</div></div>`:''}
+      </div>
       <div class="res-btns" style="display:grid;gap:10px;width:100%">
         <button class="btn btn-sun btn-block" data-act="start" data-g="${g}" data-l="${l}">🔄 Coba lagi</button>
         ${G.hij?`<button class="btn btn-mint btn-block" data-act="study-hij">📖 Belajar huruf dulu, lalu coba lagi</button>`:`<button class="btn btn-mint btn-block" data-act="study-surah" data-s="${(run.missed[0]||{s:Object.keys(SURAHS)[0]}).s}">📖 Belajar dulu, lalu coba lagi</button>`}
@@ -2328,7 +2514,7 @@ function r3(el,cfg,l){
   const q=run.q={v:win,sel:[],done:null};
   const draw=()=>{
     el.innerHTML=`<div class="q-text">Ketuk ayat sesuai urutannya (1, 2, 3, …) dari ayat pertama Surah ${esc(s.name)}</div>
-      <div class="gb" style="display:grid;gap:7px">${items.map((v,idx)=>{ const pos=q.sel.indexOf(idx); return `<button class="seq-item ${pos>=0?'picked':''} ${q.done&&pos>=0?(q.done[pos]?'ok':'bad'):''}" data-act="o3pick" data-idx="${idx}" ${q.done?'disabled':''} aria-label="${pos>=0?'Urutan '+(pos+1):'Belum diurutkan'}"><span class="seq-n">${pos>=0?pos+1:'·'}</span>${arSpan(v.ar,'ar-sm')}</button>`; }).join('')}</div>
+      <div class="gb seqgrid">${items.map((v,idx)=>{ const pos=q.sel.indexOf(idx); return `<button class="seq-item ${pos>=0?'picked':''} ${q.done&&pos>=0?(q.done[pos]?'ok':'bad'):''}" data-act="o3pick" data-idx="${idx}" ${q.done?'disabled':''} aria-label="${pos>=0?'Urutan '+(pos+1):'Belum diurutkan'}"><span class="seq-n">${pos>=0?pos+1:'·'}</span>${arSpan(v.ar,'ar-sm')}</button>`; }).join('')}</div>
       <button class="btn btn-sun btn-block" data-act="o3chk" ${q.sel.length<items.length||q.done?'disabled':''}>Periksa urutan ✔</button>`;
   };
   q.draw=draw; q.items=items; draw();
@@ -2635,7 +2821,7 @@ function r13(el,cfg,l){
   const sn={snake:[{x:5,y:5},{x:4,y:5},{x:3,y:5}],dir:{x:1,y:0},nextDir:null,letters:[],ti:0,grow:0,started:false,over:false,elapsed:0,res:Array(total).fill(null)};
   const q=run.q={v:hitem(seq[0]),sn};
   el.innerHTML=`<div class="sn-hud" id="sn-hud"></div><div class="sn-strip" id="sn-strip"></div>
-    ${P.timer[i]?'<div class="timer" aria-hidden="true"><i id="sn-t" style="width:100%"></i></div>':''}
+    ${P.timer[i]?`<div class="timer" id="sn-tm" role="timer" aria-label="Sisa waktu"><span class="tbar" aria-hidden="true"><i></i></span><b>⏱ ${P.timer[i]} dtk</b></div>`:''}
     <div class="sn-wrap"><canvas id="sn" width="600" height="600" role="img" aria-label="Papan ular hijaiyyah"></canvas>
       <div class="sn-start" id="sn-start"><div><p style="margin:0 0 12px;font-weight:800">Gerakkan ular untuk memakan huruf sesuai urutan hijaiyyah!</p><button class="btn btn-mint" data-act="sn-go">▶ Mulai</button><p class="hint" style="margin:12px 0 0">Pakai tombol panah, geser layar, atau keyboard.</p></div></div></div>
     <div class="dpad" aria-label="Arah ular"><button class="dp up" data-act="sn-dir" data-d="up" aria-label="Atas">▲</button><button class="dp lf" data-act="sn-dir" data-d="left" aria-label="Kiri">◀</button><button class="dp dn" data-act="sn-dir" data-d="down" aria-label="Bawah">▼</button><button class="dp rt" data-act="sn-dir" data-d="right" aria-label="Kanan">▶</button></div>`;
@@ -2704,7 +2890,7 @@ function r13(el,cfg,l){
     if(!paused()){
       sn.elapsed+=dt; const lim=P.timer[i]*1000;
       if(lim){
-        const tb=$('#sn-t'); if(tb) tb.style.width=Math.max(0,100-sn.elapsed/lim*100)+'%';
+        paintTimer($('#sn-tm'),1-sn.elapsed/lim,(lim-sn.elapsed)/1000);
         if(sn.elapsed>lim){ const T=target(); sn.res[sn.ti]=false; quickAns(false,hitem(T)); toast('⏰ Waktu habis! Yang dicari: '+T.name); advance(); }
       }
     }
@@ -2776,8 +2962,10 @@ function autoSplit(st){
   if(!st||st.querySelector(':scope > .gA')) return;
   const kids=[...st.children], bi=kids.findIndex(k=>k.matches(B_START));
   if(bi<1) return;
+  const head=kids[0].matches('.q-text')?1:0;                       // judul soal tetap di atas, membentang dua kolom
+  if(!kids.slice(head,bi).some(k=>!k.matches('.q-text,.hint'))) return;   // kolom kiri harus punya isi visual, bila tidak: satu kolom lebar
   const A=document.createElement('div'), B=document.createElement('div'); A.className='gA'; B.className='gB';
-  kids.forEach((k,i)=>(i<bi?A:B).appendChild(k));
+  kids.forEach((k,i)=>{ if(i>=head) (i<bi?A:B).appendChild(k); });
   B.querySelectorAll(':scope > .dpad').forEach(d=>A.appendChild(d));     // tombol arah ular di kolom kiri
   st.append(A,B);
 }
@@ -2789,14 +2977,19 @@ function fitStage(){
   const cs=getComputedStyle(area), padY=parseFloat(cs.paddingTop)+parseFloat(cs.paddingBottom), padX=parseFloat(cs.paddingLeft)+parseFloat(cs.paddingRight);
   const availH=area.clientHeight-padY, availW=area.clientWidth-padX;
   if(availH<=0||availW<=0) return;
-  const land=matchMedia(LAND_Q).matches, W=Math.min(availW,land?1000:740);
+  const land=matchMedia(LAND_Q).matches, W=Math.min(availW,land?1440:760);
   st.style.transform='none';
-  const Hat=sc=>{ st.style.width=(W/sc)+'px'; return st.offsetHeight; };      // makin kecil skala, makin lebar tata letaknya
-  let s=FIT_MIN, H;
-  if(Hat(1)<=availH) s=1;
-  else { let lo=FIT_MIN, hi=1; for(let k=0;k<9;k++){ const mid=(lo+hi)/2; if(Hat(mid)*mid<=availH){ s=mid; lo=mid; } else hi=mid; } }
-  H=Hat(s);
-  st.style.transform=`scale(${s})`;
+  const Hat=sc=>{ st.style.width=(W/sc)+'px'; return st.offsetHeight*sc; };       // tinggi yang tampak pada skala sc
+  const smax=Math.max(1,Math.min(land?2:1.5,W/(land?760:340)));              // boleh membesar agar layar terisi, tapi tata letak tetap lega
+  let s=1, lo, hi;
+  if(Hat(1)<=availH){
+    if(smax>1){ lo=1; hi=smax; if(Hat(hi)<=availH) lo=hi; else for(let k=0;k<9;k++){ const mid=(lo+hi)/2; if(Hat(mid)<=availH) lo=mid; else hi=mid; } s=lo; }
+  } else {
+    s=FIT_MIN; lo=FIT_MIN; hi=1; for(let k=0;k<9;k++){ const mid=(lo+hi)/2; if(Hat(mid)<=availH){ s=mid; lo=mid; } else hi=mid; }
+  }
+  for(let g=0;g<24&&s>FIT_MIN&&Hat(s)>availH;g++) s=Math.max(FIT_MIN,s-.03);      // pengaman bila tata letak berubah saat skala berubah
+  Hat(s); const H=st.offsetHeight;
+  st.style.transform='scale('+s+')';
   holder.style.width=W+'px'; holder.style.height=Math.ceil(H*s)+'px';
   area.dataset.fit=s.toFixed(2);
 }
