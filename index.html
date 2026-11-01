@@ -832,6 +832,64 @@ body.in-game{padding-bottom:0}
   .result .res-btns .btn-block:first-child{grid-column:auto}
   .result .missed{max-height:26vh;text-align:left}
 }
+
+/* ===== TAJWID ===== */
+.tj{color:#C2410C}
+.taj-big{font-size:clamp(2.2rem,10vw,3.5rem);line-height:1.9;color:var(--night);text-align:center}
+.taj-sub{font-size:1.5rem;line-height:1.8;color:var(--mint-d);text-align:center}
+.taj-opt{font-size:1.45rem;line-height:1.9;color:var(--night)}
+.taj-let{font-size:1.35rem;line-height:1.9;letter-spacing:.12em;color:var(--night)}
+#stage .taj-big{font-size:clamp(2rem,9vw,3.1rem);line-height:1.8}
+#stage .taj-opt{font-size:1.3rem;line-height:1.8}
+.opt .taj-opt{display:block;text-align:center}
+.pairs{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px 14px;align-items:stretch;width:100%}
+.pcol{display:grid;gap:8px;align-content:center}
+.pbtn{min-height:56px;padding:8px 10px;border-radius:16px;border:3px solid #B8DCCB;border-bottom-width:6px;background:#E8F4EE;
+  font-family:var(--f-body,inherit);font-weight:800;font-size:.95rem;color:var(--ink);display:flex;align-items:center;justify-content:center;text-align:center;line-height:1.35;cursor:pointer;min-width:0}
+.pbtn.name{background:#FFF8E1;border-color:#EBD58C}
+.pbtn:active{transform:translateY(3px);border-bottom-width:3px}
+.pbtn.sel{border-color:var(--sun);background:#FFF0BF;transform:translateY(2px);box-shadow:0 0 0 4px rgba(232,182,58,.3)}
+.pbtn.done{background:var(--ok-bg);border-color:var(--ok);color:#0B5C40;opacity:.8}
+.pbtn.shake{animation:shake .4s;border-color:var(--bad);background:var(--bad-bg)}
+.tajrow .meta{display:flex;justify-content:space-between;gap:8px}
+/* materi */
+.tajpage{max-width:1100px;margin-inline:auto}
+.tajintro{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin:12px 0}
+.tajintro>div{display:grid;gap:4px;font-weight:600;color:#3E5A57}
+.tajintro b{color:var(--night);font-family:var(--f-disp)}
+.taj-table{display:grid;gap:8px;margin:12px 0 16px}
+.taj-table .trow{display:grid;grid-template-columns:minmax(120px,1fr) minmax(0,1.4fr) minmax(0,1.3fr);gap:10px;align-items:center;padding:10px 14px;border-radius:16px;background:#fff;border:3px solid var(--line);border-left:8px solid var(--tc)}
+.taj-table .trow b{font-family:var(--f-disp);color:var(--night)}
+.taj-table .trow .ar{font-size:1.25rem;line-height:1.8;text-align:center;letter-spacing:.1em}
+.taj-table .trow small{font-weight:700;color:var(--muted)}
+@media(max-width:560px){.taj-table .trow{grid-template-columns:1fr;gap:2px}.taj-table .trow .ar{text-align:left;direction:rtl}}
+.tajgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px;align-items:stretch}
+.tajcard{background:#fff;border:3px solid var(--line);border-top:8px solid var(--tc);border-radius:20px;padding:14px;display:grid;gap:8px;align-content:start}
+.tajcard header{display:flex;align-items:center;gap:10px}
+.tajcard header .tag{margin-left:auto;text-align:center}
+.tajno{width:34px;height:34px;border-radius:50%;background:var(--tc);color:#fff;display:grid;place-items:center;font-family:var(--f-disp);font-weight:800;flex:none}
+.tajname h3{font-size:1.15rem;color:var(--night);margin:0}
+.tajname .ar{font-size:1.1rem;line-height:1.7;color:var(--muted)}
+.tajhuruf{display:grid;gap:2px;justify-items:center;padding:8px;border-radius:14px;background:#F4FAF6;border:2px dashed var(--line);text-align:center}
+.tajhuruf .ar{font-size:1.6rem;line-height:1.8;letter-spacing:.16em;color:var(--night)}
+.tajhuruf small,.tajex small{font-weight:700;color:var(--muted)}
+.tajcard p{margin:0;font-weight:600;color:#3E5A57;font-size:.93rem}
+.tajex{display:grid;gap:6px}
+.tajex .ex{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:4px 10px;border-radius:12px;background:#FFFBEA;border:2px solid #F0E2A8}
+.tajnote{margin-top:14px;display:grid;gap:6px;background:#FFFBEA;border-color:#EBD58C}
+.tajnote p{margin:0;font-weight:600;color:#3E5A57}
+
+/* penyempurnaan tampilan game tajwid */
+.pcol{align-content:stretch;grid-auto-rows:1fr}
+.taj-let{font-size:1.1rem;line-height:1.6;letter-spacing:.06em}
+.gh-c h2{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media(max-width:440px){#g-fs{display:none}}
+@media(orientation:landscape) and (max-height:520px){
+  .pbtn{min-height:40px;padding:3px 8px;border-bottom-width:4px;font-size:.88rem}
+  .pcol{gap:5px}.pairs{gap:5px 12px}
+  .phint{display:none}
+  .taj-opt{font-size:1.2rem;line-height:1.6}
+}
 </style>
 </head>
 <body>
@@ -1765,7 +1823,7 @@ const RANKS=['Pemula','Santri','Pembaca','Penghafal','Penjaga Ayat','Mahir','Cen
 const BAND=l=>l<=3?'Mudah':l<=6?'Sedang':l<=9?'Sulit':'Tantangan Hafiz';
 const tierOf=(l,g)=>(g&&maxL(g)===1)?3:(l<=3?1:l<=6?2:l<=9?3:4);           // 1 perunggu, 2 perak, 3 emas, 4 berlian
 const TIER_NAME=['','Perunggu','Perak','Emas','Berlian'];
-const MOTIFS=[{e:'🕌',n:'Masjid Cilik'},{e:'🌙',n:'Hilal Terang'},{e:'📖',n:'Mushaf Mulia'},{e:"🕋",n:"Ka'bah Mungil"},{e:'🌴',n:'Pohon Kurma'},{e:'🐪',n:'Unta Setia'},{e:'🕯️',n:'Pelita Ilmu'},{e:'📿',n:'Tasbih Indah'},{e:'🤲',n:'Doa Tulus'},{e:'🌟',n:'Bintang Cahaya'},{e:'🖋️',n:'Pena Emas'},{e:'🕊️',n:'Merpati Putih'},{e:'🐍',n:'Ular Gesit'}];
+const MOTIFS=[{e:'🕌',n:'Masjid Cilik'},{e:'🌙',n:'Hilal Terang'},{e:'📖',n:'Mushaf Mulia'},{e:"🕋",n:"Ka'bah Mungil"},{e:'🌴',n:'Pohon Kurma'},{e:'🐪',n:'Unta Setia'},{e:'🕯️',n:'Pelita Ilmu'},{e:'📿',n:'Tasbih Indah'},{e:'🤲',n:'Doa Tulus'},{e:'🌟',n:'Bintang Cahaya'},{e:'🖋️',n:'Pena Emas'},{e:'🕊️',n:'Merpati Putih'},{e:'🐍',n:'Ular Gesit'},{e:'💎',n:'Permata Tajwid'},{e:'🌿',n:'Daun Zaitun'},{e:'🪙',n:'Dinar Emas'}];
 const UCAPAN=[
   {ar:'مَا شَاءَ اللَّهُ',id:'Masya Allah, atas kehendak Allah, hebat sekali!'},
   {ar:'الْحَمْدُ لِلَّهِ',id:'Alhamdulillah, segala puji bagi Allah.'},
@@ -1959,7 +2017,7 @@ function nav(to){
 }
 
 /* ---------- BERANDA ---------- */
-const GCOL=[['#D8F3E8','#4DBB93'],['#FFF1C9','#E0AE2E'],['#D5F2F2','#4FB8BC'],['#DFE6FA','#7F93DB'],['#FADDE3','#E58AA0'],['#FBE4D3','#E39A6B'],['#E6F1CF','#9FC05A'],['#E8E0F7','#A48BD6'],['#D3E8EC','#5C9AA6'],['#FFEBC2','#EBA928'],['#F3E3F1','#C58AC0'],['#E2EEF9','#78A9D6'],['#E9F3D9','#7DB84A']];
+const GCOL=[['#D8F3E8','#4DBB93'],['#FFF1C9','#E0AE2E'],['#D5F2F2','#4FB8BC'],['#DFE6FA','#7F93DB'],['#FADDE3','#E58AA0'],['#FBE4D3','#E39A6B'],['#E6F1CF','#9FC05A'],['#E8E0F7','#A48BD6'],['#D3E8EC','#5C9AA6'],['#FFEBC2','#EBA928'],['#F3E3F1','#C58AC0'],['#E2EEF9','#78A9D6'],['#E9F3D9','#7DB84A'],['#FFE3E0','#E97C70'],['#E1F0D6','#74B35A'],['#E9E2FA','#9A86DA']];
 function renderHome(){
   const lv=levelInfo(S.xp), g=goalState(), pct=Math.round(g.n/g.goal*100);
   const total=VERSES.length, mem=memCount(), mp=Math.round(mem/total*100);
@@ -2030,7 +2088,7 @@ function openLevelSheet(g,sel){
 
 /* ---------- BELAJAR ---------- */
 let studyToken=0;
-const learnState={hij:false,surah:null,repeat:1,rate:1,cover:false};
+const learnState={hij:false,taj:false,surah:null,repeat:1,rate:1,cover:false};
 
 /* Ta'awudz (Al-Fatihah) dan Bismillah (surah lain kecuali At-Taubah) sebagai "ayat 0", seperti TalqinKu */
 const preCache={};
@@ -2050,11 +2108,13 @@ function preCard(no){
 const qariSelect=()=>`<select class="sel qari-sel" aria-label="Pilih qari" style="width:auto;padding:7px 10px;font-size:.88rem">${QARIS.map(q=>`<option value="${q.id}" ${S.qari===q.id?'selected':''}>🎙️ ${esc(q.name)}</option>`).join('')}</select>`;
 function surahProgress(s){ const n=s.verses.filter(v=>S.memorized[v.key]).length; return {n,t:s.verses.length,p:Math.round(n/s.verses.length*100)}; }
 function renderLearn(){
+  if(learnState.taj) return renderTaj();
   if(learnState.hij) return renderHij();
   if(learnState.surah) return renderSurah(learnState.surah);
   $('#v-learn').innerHTML=`<h2 class="sec-title" style="margin-top:6px">📖 Ruang Belajar</h2>
   <p class="muted" style="font-weight:700;margin-top:-4px">Dengarkan, ulang, lalu tandai ayat yang sudah kamu hafal. Hafalan jadi lebih mudah kalau didengar berulang-ulang.</p>
   <button class="hijentry" data-act="open-hij"><span class="ar hij-big" lang="ar" dir="rtl">ا ب ت</span><span><b>Huruf Hijaiyyah</b><small>30 huruf · nama, lambang Latin resmi, dan bentuk sambung</small></span><span class="go">Buka ▶</span></button>
+  <button class="hijentry tajentry" data-act="open-taj"><span class="ar hij-big" lang="ar" dir="rtl">نْ ـً</span><span><b>Tajwid: Hukum Nun Sukun &amp; Tanwin</b><small>5 hukum bacaan · huruf, cara baca, dan contoh ayat</small></span><span class="go">Buka ▶</span></button>
   <div class="pills" style="margin:10px 0 14px">${JUZ_PILLS.map(([j,l])=>`<button class="pill ${S.scope.juz===j?'on':''}" data-act="juz-learn" data-j="${j}">${l}</button>`).join('')}</div>
   <div class="surahs">${SURAH_LIST.filter(s=>S.scope.juz==='all'||String(s.juz)===String(S.scope.juz)).map(s=>{const p=surahProgress(s);return `<button class="scard" data-act="open-surah" data-s="${s.no}">
     <span class="top2"><span class="no">${s.no}</span><span class="ar ar-sm" lang="ar">${s.ar}</span></span>
@@ -2202,7 +2262,7 @@ const ACTIONS={
   game:t=>{ sfx('tap'); openLevelSheet(+t.dataset.g); },
   close:()=>closeSheet(),
   'open-surah':t=>{ learnState.surah=+t.dataset.s; renderLearn(); window.scrollTo({top:0}); },
-  'learn-back':()=>{ stopAudio(); studyToken++; learnState.surah=null; learnState.hij=false; renderLearn(); },
+  'learn-back':()=>{ stopAudio(); studyToken++; learnState.surah=null; learnState.hij=false; learnState.taj=false; renderLearn(); },
   'play-all':()=>playList(SURAHS[learnState.surah].verses),
   'play-one':t=>playList([vById(t.dataset.key)]),
   stop:()=>{ stopAudio(); studyToken++; markNow(null); },
@@ -2346,7 +2406,7 @@ function startTimer(sec){
 function markOptions(sel){
   $$('#stage .opt').forEach(b=>{ b.disabled=true; if(b.dataset.ok==='1') b.classList.add('ok'); else if(b===sel) b.classList.add('bad'); else b.classList.add('dim'); });
 }
-const vrow=v=>v.hij?`<div class="vrow hijrow"><div class="hij-g ar" lang="ar" dir="rtl">${v.h.ch}</div><div class="hij-t"><b>${esc(v.h.name)}</b> <span class="muted" style="font-weight:800">(${esc(v.h.lat)})</span><div class="tr">Huruf ke-${v.h.i}${hijAlt(v.h)?` · sebutan lain “${esc(hijAlt(v.h))}”`:''}</div></div></div>`:`<div class="vrow"><div class="meta"><span>${esc(v.sName)} · ayat ${v.n}</span><button class="play" data-act="gplay" data-key="${v.key}">🔊 Dengar</button></div>
+const vrow=v=>v.taj?tajRow(v):v.hij?`<div class="vrow hijrow"><div class="hij-g ar" lang="ar" dir="rtl">${v.h.ch}</div><div class="hij-t"><b>${esc(v.h.name)}</b> <span class="muted" style="font-weight:800">(${esc(v.h.lat)})</span><div class="tr">Huruf ke-${v.h.i}${hijAlt(v.h)?` · sebutan lain “${esc(hijAlt(v.h))}”`:''}</div></div></div>`:`<div class="vrow"><div class="meta"><span>${esc(v.sName)} · ayat ${v.n}</span><button class="play" data-act="gplay" data-key="${v.key}">🔊 Dengar</button></div>
   <div class="ar ar-md userselect" lang="ar" dir="rtl" style="text-align:center">${v.ar}</div><div class="tr">${esc(v.id)}</div></div>`;
 function ans(correct,verses,msgHtml=''){
   if(!run||run.locked) return; run.locked=true;
@@ -2409,7 +2469,7 @@ function finishRun(){
     sfx('wrong');
     const need=pm-correct, m=pick(MOTIVE), mv=m.k&&vById(m.k);
     const head=correct>=pm-1?'Sedikit lagi!':correct>=3?'Hampir bisa, yuk coba lagi!':'Jangan menyerah, kamu pasti bisa!';
-    const surahs=G.hij?[]:[...new Map(run.missed.filter(v=>!v.hij).map(v=>[v.s,v])).values()].slice(0,3);
+    const surahs=(G.hij||G.taj)?[]:[...new Map(run.missed.filter(v=>!v.hij).map(v=>[v.s,v])).values()].slice(0,3);
     $('#stage').innerHTML=`<div class="result lose"><div class="rA">${mascotSVG()}
       <h2 style="font-size:1.7rem;color:var(--night)">${head}</h2>
       <p style="margin:0;font-weight:800">Kamu benar ${correct} dari ${total}. Butuh ${pm} benar untuk lulus${l<ML?` dan membuka Level ${l+1}`:''}, kurang <span style="color:var(--coral-d)">${need}</span> lagi!</p>
@@ -2419,12 +2479,12 @@ function finishRun(){
       </div><div class="rB">
       ${tries>=2?`<div class="tag" style="font-size:.95rem">💛 Sudah ${tries} kali mencoba. Kamu hebat karena tidak menyerah!</div>`:''}
       <p class="hint" style="margin:0">💡 Tips: ${esc(G.tip)}</p>
-      ${run.missed.length?`<div class="missed"><h3 style="font-size:1.1rem">Ayat yang perlu diulang</h3>${run.missed.slice(0,4).map(vrow).join('')}
+      ${run.missed.length?`<div class="missed"><h3 style="font-size:1.1rem">${G.taj?'Hukum yang perlu diulang':'Ayat yang perlu diulang'}</h3>${run.missed.slice(0,4).map(vrow).join('')}
         <div class="row" style="gap:8px">${surahs.map(v=>`<button class="btn btn-ghost btn-sm" data-act="study-surah" data-s="${v.s}">📖 Pelajari ${esc(v.sName)}</button>`).join('')}</div></div>`:''}
       </div>
       <div class="res-btns" style="display:grid;gap:10px;width:100%">
         <button class="btn btn-sun btn-block" data-act="start" data-g="${g}" data-l="${l}">🔄 Coba lagi</button>
-        ${G.hij?`<button class="btn btn-mint btn-block" data-act="study-hij">📖 Belajar huruf dulu, lalu coba lagi</button>`:`<button class="btn btn-mint btn-block" data-act="study-surah" data-s="${(run.missed[0]||{s:Object.keys(SURAHS)[0]}).s}">📖 Belajar dulu, lalu coba lagi</button>`}
+        ${G.taj?`<button class="btn btn-mint btn-block" data-act="study-taj">📖 Belajar tajwid dulu, lalu coba lagi</button>`:G.hij?`<button class="btn btn-mint btn-block" data-act="study-hij">📖 Belajar huruf dulu, lalu coba lagi</button>`:`<button class="btn btn-mint btn-block" data-act="study-surah" data-s="${(run.missed[0]||{s:Object.keys(SURAHS)[0]}).s}">📖 Belajar dulu, lalu coba lagi</button>`}
         <button class="btn btn-ghost btn-block" data-act="nav" data-to="home">🏠 Menu</button>
       </div></div>`;
   }
@@ -2444,7 +2504,10 @@ const LV={
  11:{n:[10,12,14,16,18,20,22,24,27,30],opts:[3,3,3,4,4,4,4,5,5,5],timer:[0,0,0,0,0,25,22,20,17,14],rev:[0,0,0,.15,.25,.3,.35,.4,.4,.45],form:[0,0,0,0,0,.2,.3,.35,.4,.45],sim:[0,0,1,1,1,1,1,1,1,1]},
  12:{q:30},
  13:{speed:[340,320,300,280,260,240,220,200,185,170],board:[3,3,4,4,5,5,6,6,7,8],hint:[2,2,2,1,1,1,0,0,0,0],timer:[0,0,0,0,30,28,26,24,22,20]},
- 10:{n:[3,3,3,4,4,4,5,5,5,6],min:[3,3,3,4,4,4,5,5,6,6],max:[4,5,6,6,7,8,9,10,11,12]}
+ 10:{n:[3,3,3,4,4,4,5,5,5,6],min:[3,3,3,4,4,4,5,5,6,6],max:[4,5,6,6,7,8,9,10,11,12]},
+ 14:{rules:[3,3,4,4,5,5,5,5,5,5],opts:[3,3,4,4,5,5,5,5,5,5],hl:[1,1,1,1,1,1,0,0,0,0],hint:[1,1,1,0,0,0,0,0,0,0],timer:[0,0,0,0,0,25,22,20,17,14]},
+ 15:{rules:[3,3,4,4,5,5,5,5,5,5],opts:[3,3,3,4,4,4,4,5,5,5],hl:[1,1,1,1,1,0,0,0,0,0],hint:[2,2,1,1,0,0,0,0,0,0],timer:[0,0,0,0,0,30,28,25,22,20]},
+ 16:{q:6,pairs:[3,3,3,4,4,4,5,5,5,5],mode:[0,0,1,1,1,2,2,2,2,2],err:[3,3,2,2,2,2,1,1,1,1],timer:[0,0,0,0,0,0,50,45,40,35]}
 };
 
 /* =====================================================================
@@ -2688,7 +2751,10 @@ const D={
  11:i=>`${LV[11].n[i]} huruf pertama · ${LV[11].opts[i]} pilihan${LV[11].rev[i]?' · kadang nama ke huruf':''}${LV[11].form[i]?' · bentuk sambung':''}${tm(LV[11].timer[i])}`,
  12:()=>'susun semua 30 huruf dari Alif sampai Ya · urutan acak tiap main · lulus jika 18 posisi benar',
  13:i=>`kecepatan ${i+1}/10 · ${LV[13].board[i]} huruf di papan · ${({2:'huruf yang dicari terlihat',1:'hanya nama huruf',0:'tebak huruf berikutnya'})[LV[13].hint[i]]}${tm(LV[13].timer[i])}`,
- 10:i=>`${LV[10].n[i]} tahap · ayat ${LV[10].min[i]}-${LV[10].max[i]} kata`
+ 10:i=>`${LV[10].n[i]} tahap · ayat ${LV[10].min[i]}-${LV[10].max[i]} kata`,
+ 14:i=>`${LV[14].rules[i]} hukum · ${LV[14].opts[i]} pilihan · ${LV[14].hl[i]?'huruf diberi warna':'tanpa warna petunjuk'}${tm(LV[14].timer[i])}`,
+ 15:i=>`${LV[15].rules[i]} hukum · ${LV[15].opts[i]} contoh · ${LV[15].hl[i]?'huruf diberi warna':'tanpa warna petunjuk'}${tm(LV[15].timer[i])}`,
+ 16:i=>`${LV[16].pairs[i]} pasang · ${['contoh ke nama','huruf & ciri ke nama','campuran'][LV[16].mode[i]]} · salah maksimal ${LV[16].err[i]}${tm(LV[16].timer[i])}`
 };
 const mkLevels=id=>Array.from({length:(GAMES[id-1].maxL||MAXL)},(_,i)=>({q:LV[id].q||10,opts:LV[id].opts&&LV[id].opts[i],timer:(LV[id].timer&&LV[id].timer[i])||0,desc:D[id](i)}));
 const GAMES=[
@@ -2704,15 +2770,239 @@ const GAMES=[
  {id:10,emoji:'🪄',name:'Kata Menghilang',short:'Kata-kata lenyap bertahap sampai kamu hafal.',how:'Baca bersama qari. Tiap tahap, makin banyak kata yang menghilang. Ucapkan dari ingatan!',tip:'Baca ayat keras-keras 3 kali sebelum mulai, lalu coba ucapkan tanpa mengintip.',render:r10},
  {id:11,emoji:'🔤',hij:true,name:'Tebak Huruf',short:'Kenali 30 huruf hijaiyyah dan namanya. Materi: huruf, bukan ayat.',how:'Lihat hurufnya lalu pilih nama yang benar, atau sebaliknya. Nama dan tulisan Latin memakai penulisan yang lazim di Indonesia. Materi game ini tidak terpengaruh pilihan juz.',tip:'Buka Belajar, lalu Huruf Hijaiyyah. Lihat bentuknya dan ucapkan namanya tiga kali.',render:r11},
  {id:12,emoji:'🧮',hij:true,maxL:1,name:'Urutkan Huruf',short:'Susun 30 huruf acak dari Alif sampai Ya.',how:'Semua 30 huruf hijaiyyah muncul dalam urutan acak. Ketuk satu per satu mulai dari Alif sampai Ya. Urutannya berbeda setiap kali main. Materi game ini tidak terpengaruh pilihan juz.',passText:'Ada 30 huruf. Lulus jika minimal 18 huruf kamu ketuk dengan benar pada percobaan pertama, lalu kamu mendapat stiker dan sertifikat game ini.',tip:'Nyanyikan urutannya dari Alif, Ba, Ta, Tsa, lalu cari hurufnya. Buka Belajar, Huruf Hijaiyyah untuk melihat urutan lengkap.',render:r12},
- {id:13,emoji:'🐍',hij:true,name:'Ular Hijaiyyah',short:'Makan huruf sesuai urutan, jangan sampai salah!',how:'Gerakkan ular dengan tombol panah atau geser layar. Makan huruf yang dicari sesuai urutan hijaiyyah. Memakan huruf lain dihitung salah. Materi game ini tidak terpengaruh pilihan juz.',tip:'Hafalkan dulu urutan hurufnya di menu Belajar, lalu arahkan ular pelan-pelan.',render:r13}
+ {id:13,emoji:'🐍',hij:true,name:'Ular Hijaiyyah',short:'Makan huruf sesuai urutan, jangan sampai salah!',how:'Gerakkan ular dengan tombol panah atau geser layar. Makan huruf yang dicari sesuai urutan hijaiyyah. Memakan huruf lain dihitung salah. Materi game ini tidak terpengaruh pilihan juz.',tip:'Hafalkan dulu urutan hurufnya di menu Belajar, lalu arahkan ular pelan-pelan.',render:r13},
+ {id:14,emoji:'🔔',taj:true,name:'Tebak Hukum Tajwid',short:'Nun sukun atau tanwin ini hukumnya apa? Pilih namanya!',how:'Lihat contoh bacaan dengan huruf berwarna, lalu pilih nama hukum bacaannya: Izhar Halqi, Idgham Bighunnah, Idgham Bilaghunnah, Iqlab, atau Ikhfa Haqiqi. Materi game ini tidak terpengaruh pilihan juz.',tip:'Buka Belajar, lalu Tajwid. Lihat huruf sesudah nun sukun atau tanwin, lalu cocokkan dengan kelompok hurufnya.',render:r14},
+ {id:15,emoji:'🔎',taj:true,name:'Cari Hukum Tajwid',short:'Cari contoh bacaan yang sesuai dengan hukum yang diminta.',how:'Sebuah nama hukum bacaan diberikan. Pilih contoh bacaan yang hukumnya sama. Di level tinggi, huruf berwarna tidak ditampilkan lagi. Materi game ini tidak terpengaruh pilihan juz.',tip:'Hafalkan kelompok hurufnya: 6 huruf halqi, يَنْمُو, ل ر, ب, dan sisanya ikhfa.',render:r15},
+ {id:16,emoji:'🤝',taj:true,name:'Pasangkan Hukum',short:'Cocokkan contoh, huruf, atau ciri bacaan dengan nama hukumnya.',how:'Ketuk satu kartu di kiri, lalu ketuk nama hukum yang cocok di kanan. Setiap babak punya batas kesalahan, makin tinggi level makin ketat. Materi game ini tidak terpengaruh pilihan juz.',passText:'Tiap level berisi 6 babak mencocokkan. Satu babak dihitung benar jika kesalahannya tidak melebihi batas level. Lulus jika minimal 4 babak benar, lalu kamu mendapat stiker dan level berikutnya terbuka.',tip:'Mulai dari pasangan yang paling kamu yakini, supaya pilihan yang tersisa makin sedikit.',render:r16}
 ];
 GAMES.forEach(G=>{G.levels=mkLevels(G.id);});
+
+/* =====================================================================
+   TAJWID: HUKUM NUN SUKUN & TANWIN
+   Game 14 Tebak Hukum Tajwid, 15 Cari Hukum Tajwid, 16 Pasangkan Hukum
+   + halaman materi di menu Belajar
+   Tanda ‹ › pada contoh = bagian yang diberi warna (nun sukun/tanwin + huruf sesudahnya)
+   ===================================================================== */
+const TAJ_ORDER=['izhar','iqlab','ikhfa','bighunnah','bilaghunnah'];       // urutan dari yang paling mudah dibedakan
+const TAJ_RULES=[
+  {k:'izhar',n:'Izhar Halqi',ar:'إِظْهَارٌ حَلْقِيٌّ',arti:'Jelas',col:'#2E9E78',
+   huruf:'ء ه ع ح غ خ',hnote:'6 huruf halqi (huruf tenggorokan)',ciri:'Dibaca jelas, tanpa dengung',
+   cara:'Dibaca jelas dan terang, tanpa dengung.',sebab:'Nun sukun atau tanwin bertemu salah satu huruf halqi (huruf yang keluar dari tenggorokan).'},
+  {k:'bighunnah',n:'Idgham Bighunnah',ar:'إِدْغَامٌ بِغُنَّةٍ',arti:'Melebur dengan dengung',col:'#4B5FB8',
+   huruf:'ي ن م و',hnote:'4 huruf, kuncinya dibaca “yanmu” (يَنْمُو)',ciri:'Dilebur dan didengungkan',
+   cara:'Nun sukun atau tanwin dilebur ke huruf sesudahnya dan dibaca dengan dengung.',sebab:'Bertemu huruf ي ن م atau و, dan keduanya berada pada dua kata yang berbeda.'},
+  {k:'bilaghunnah',n:'Idgham Bilaghunnah',ar:'إِدْغَامٌ بِلَا غُنَّةٍ',arti:'Melebur tanpa dengung',col:'#B84A26',
+   huruf:'ل ر',hnote:'2 huruf',ciri:'Dilebur tanpa dengung',
+   cara:'Nun sukun atau tanwin dilebur ke huruf sesudahnya tanpa dengung.',sebab:'Bertemu huruf ل atau ر.'},
+  {k:'iqlab',n:'Iqlab',ar:'إِقْلَابٌ',arti:'Menukar',col:'#A8749E',
+   huruf:'ب',hnote:'1 huruf',ciri:'Ditukar menjadi mim lalu didengungkan',
+   cara:'Bunyi nun atau tanwin ditukar menjadi mim, bibir dirapatkan, lalu dibaca dengan dengung.',sebab:'Bertemu huruf ب.'},
+  {k:'ikhfa',n:'Ikhfa Haqiqi',ar:'إِخْفَاءٌ حَقِيقِيٌّ',arti:'Samar',col:'#B8860B',
+   huruf:'ت ث ج د ذ ز س ش ص ض ط ظ ف ق ك',hnote:'15 huruf, yaitu semua huruf sisanya',ciri:'Dibaca samar dengan dengung',
+   cara:'Dibaca samar, di antara izhar dan idgham, dengan dengung.',sebab:'Bertemu salah satu dari 15 huruf ikhfa.'}
+];
+const TAJ_BY=Object.fromEntries(TAJ_RULES.map(r=>[r.k,r]));
+const TAJ_CONF={izhar:['ikhfa'],iqlab:['ikhfa'],ikhfa:['iqlab','izhar'],bighunnah:['bilaghunnah'],bilaghunnah:['bighunnah']};   // hukum yang sering tertukar
+const TAJ_EX=[
+  /* izhar halqi */
+  ['izhar','مَ‹نْ› ‹آ›مَنَ','QS Al-Baqarah: 62','ء'],
+  ['izhar','مِ‹نْ› ‹عِ›لْمٍ','QS Al-Kahf: 5','ع'],
+  ['izhar','مِ‹نْ› ‹هَ›ادٍ','QS Ar-Ra‘d: 33','ه'],
+  ['izhar','حَكِي‹مٌ› ‹عَ›لِيمٌ','QS Al-An‘am: 83','ع'],
+  ['izhar','مِ‹نْ› ‹خَ›يْرٍ','QS Al-Baqarah: 272','خ'],
+  ['izhar','أَ‹نْ›‹عَ›مْتَ عَلَيْهِمْ','QS Al-Fatihah: 7','ع'],
+  ['izhar','مِ‹نْ› ‹غِ›لٍّ','QS Al-A‘raf: 43','غ'],
+  ['izhar','عَذَا‹بٌ› ‹أَ›لِيمٌ','QS Al-Baqarah: 10','ء'],
+  ['izhar','جُرُ‹فٍ› ‹هَ›ارٍ','QS At-Taubah: 109','ه'],
+  ['izhar','سَلَا‹مٌ› ‹هِ›يَ','QS Al-Qadr: 5','ه'],
+  ['izhar','مِ‹نْ› ‹حَ›يْثُ','QS Al-Baqarah: 149','ح'],
+  ['izhar','يَ‹نْ›‹هَ›وْنَ','QS Al-A‘raf: 165','ه'],
+  /* idgham bighunnah */
+  ['bighunnah','مَ‹نْ› ‹يَ›قُولُ','QS Al-Baqarah: 8','ي'],
+  ['bighunnah','مِ‹نْ› ‹نَ›ارٍ','QS Ar-Rahman: 15','ن'],
+  ['bighunnah','مِ‹نْ› ‹مَ›اءٍ','QS Ath-Thariq: 6','م'],
+  ['bighunnah','مِ‹نْ› ‹وَ›لِيٍّ','QS Al-Baqarah: 107','و'],
+  ['bighunnah','يَوْمَئِ‹ذٍ› ‹يَ›صْدُرُ','QS Az-Zalzalah: 6','ي'],
+  ['bighunnah','خَيْ‹رًا› ‹يَ›رَهُ','QS Az-Zalzalah: 7','ي'],
+  ['bighunnah','يَوْمَئِ‹ذٍ› ‹نَ›اعِمَةٌ','QS Al-Ghasyiyah: 8','ن'],
+  ['bighunnah','كِتَا‹بٌ› ‹مَ›رْقُومٌ','QS Al-Muthaffifin: 9','م'],
+  ['bighunnah','عَذَا‹بٌ› ‹وَ›اصِبٌ','QS Ash-Shaffat: 9','و'],
+  ['bighunnah','وَمَ‹نْ› ‹يَ›عْمَلْ','QS Az-Zalzalah: 7','ي'],
+  /* idgham bilaghunnah */
+  ['bilaghunnah','مِ‹نْ› ‹رَ›بِّهِمْ','QS Al-Baqarah: 5','ر'],
+  ['bilaghunnah','غَفُو‹رٌ› ‹رَ›حِيمٌ','QS Al-Baqarah: 173','ر'],
+  ['bilaghunnah','هُ‹دًى› ‹لِ›لْمُتَّقِينَ','QS Al-Baqarah: 2','ل'],
+  ['bilaghunnah','مِ‹نْ› ‹لَ›دُنْهُ','QS Al-Kahf: 2','ل'],
+  ['bilaghunnah','وَمَ‹نْ› ‹لَ›مْ يَحْكُمْ','QS Al-Ma’idah: 44','ل'],
+  ['bilaghunnah','رَءُو‹فٌ› ‹رَ›حِيمٌ','QS Al-Baqarah: 143','ر'],
+  ['bilaghunnah','مَ‹نْ› ‹رَ›بُّ السَّمَاوَاتِ','QS Ar-Ra‘d: 16','ر'],
+  ['bilaghunnah','يَوْمَئِ‹ذٍ› ‹لَ›ا تَنْفَعُ','QS Thaha: 109','ل'],
+  /* iqlab */
+  ['iqlab','مِ‹نْ› ‹بَ›عْدِ','QS Al-Baqarah: 27','ب'],
+  ['iqlab','أَ‹نْ›‹بِ›ئْهُمْ','QS Al-Baqarah: 33','ب'],
+  ['iqlab','سَمِي‹عًا› ‹بَ›صِيرًا','QS An-Nisa: 58','ب'],
+  ['iqlab','عَلِي‹مٌ› ‹بِ›ذَاتِ الصُّدُورِ','QS Ali Imran: 119','ب'],
+  ['iqlab','مِ‹نْ› ‹بَ›يْنِ','QS An-Nahl: 66','ب'],
+  ['iqlab','لَيُ‹نْ›‹بَ›ذَنَّ','QS Al-Humazah: 4','ب'],
+  ['iqlab','صُ‹مٌّ› ‹بُ›كْمٌ','QS Al-Baqarah: 18','ب'],
+  ['iqlab','بَصِي‹رٌ› ‹بِ›الْعِبَادِ','QS Ali Imran: 15','ب'],
+  ['iqlab','وَأَمَّا مَ‹نْ› ‹بَ›خِلَ','QS Al-Lail: 8','ب'],
+  /* ikhfa haqiqi */
+  ['ikhfa','مِ‹نْ› ‹قَ›بْلِ','QS Al-Baqarah: 4','ق'],
+  ['ikhfa','مِ‹نْ› ‹تَ›حْتِهَا','QS Al-Baqarah: 25','ت'],
+  ['ikhfa','كُ‹نْ›‹تُ›مْ','QS Al-Baqarah: 23','ت'],
+  ['ikhfa','مَ‹نْ› ‹جَ›اءَ','QS Al-An‘am: 160','ج'],
+  ['ikhfa','مِ‹نْ› ‹ذَ›كَرٍ','QS Al-Hujurat: 13','ذ'],
+  ['ikhfa','مِ‹نْ› ‹شَ›رِّ','QS Al-Falaq: 2','ش'],
+  ['ikhfa','يَ‹نْ›‹صُ›رُكُمْ','QS Ali Imran: 160','ص'],
+  ['ikhfa','مَ‹نْ› ‹زَ›كَّاهَا','QS Asy-Syams: 9','ز'],
+  ['ikhfa','جَنَّا‹تٍ› ‹تَ›جْرِي','QS Al-Baqarah: 25','ت'],
+  ['ikhfa','كِرَا‹مًا› ‹كَ›اتِبِينَ','QS Al-Infithar: 11','ك'],
+  ['ikhfa','يَوْ‹مًا› ‹ثَ›قِيلًا','QS Al-Insan: 27','ث'],
+  ['ikhfa','عَذَا‹بٌ› ‹شَ›دِيدٌ','QS Ali Imran: 4','ش'],
+  ['ikhfa','ظِ‹لًّا› ‹ظَ›لِيلًا','QS An-Nisa: 57','ظ'],
+  ['ikhfa','وَمَ‹نْ› ‹دَ›خَلَهُ','QS Ali Imran: 97','د'],
+  ['ikhfa','مَا‹ءً› ‹ثَ›جَّاجًا','QS An-Naba’: 14','ث']
+].map((e,i)=>({id:'e'+i,r:e[0],t:e[1],ref:e[2],l:e[3]}));
+
+const tajHL=t=>t.replace(/‹/g,'<span class="tj">').replace(/›/g,'</span>');
+const tajPlain=t=>t.replace(/[‹›]/g,'');
+const tajItem=(r,ex)=>({taj:true,key:'t:'+r.k+(ex?':'+ex.id:''),r,ex:ex||null});
+const tajLabel=r=>`<span>${esc(r.n)}</span><small class="ar" lang="ar" dir="rtl" style="opacity:.72;font-weight:700">${r.ar}</small>`;
+function tajRow(v){
+  const r=v.r, e=v.ex;
+  return `<div class="vrow tajrow"><div class="meta"><span><b>${esc(r.n)}</b> · ${esc(r.arti)}</span></div>
+    <div class="ar ar-md" lang="ar" dir="rtl" style="text-align:center">${e?tajHL(e.t):r.huruf}</div>
+    <div class="tr">${esc(r.cara)}${e&&e.ref?` (${esc(e.ref)})`:''}</div></div>`;
+}
+function pickTajRule(rules){
+  const c=rules.filter(r=>r.k!==run.lastRule), r=pick(c.length?c:rules); run.lastRule=r.k; return r;
+}
+function pickTajEx(r){
+  const all=TAJ_EX.filter(e=>e.r===r.k), seen=new Set(S.seen[run.g]||[]);
+  let c=all.filter(e=>!run.used.has(e.id)&&!seen.has(e.id)); if(!c.length) c=all.filter(e=>!run.used.has(e.id)); if(!c.length) c=all;
+  const e=pick(c); run.used.add(e.id);
+  const a=S.seen[run.g]=(S.seen[run.g]||[]).filter(k=>k!==e.id); a.push(e.id); if(a.length>40) a.shift();
+  return e;
+}
+const tajPool=n=>TAJ_ORDER.slice(0,n).map(k=>TAJ_BY[k]);
+
+/* 14. Tebak Hukum Tajwid: contoh bacaan, pilih nama hukumnya */
+function r14(el,cfg,l){
+  const P=LV[14], i=l-1, rules=tajPool(P.rules[i]);
+  const r=pickTajRule(rules), ex=pickTajEx(r), n=Math.min(cfg.opts,rules.length);
+  const conf=(TAJ_CONF[r.k]||[]).map(k=>TAJ_BY[k]).filter(x=>rules.includes(x));
+  const opts=shuffle([r,...distract(r.k,n-1,[conf,rules],x=>x.k)]);
+  run.q={v:tajItem(r,ex),wrong:`Jawaban yang benar: <b>${esc(r.n)}</b>. ${esc(r.cara)}`};
+  const hl=P.hl[i], hint=P.hint[i];
+  el.innerHTML=`<div class="q-text">${hl?'Apa hukum bacaan pada huruf yang berwarna?':'Apa hukum bacaan nun sukun atau tanwin pada contoh ini?'}</div>
+    <div class="mushaf"><div class="ar taj-big" lang="ar" dir="rtl">${hl?tajHL(ex.t):tajPlain(ex.t)}</div>${hint?`<span class="tag">Huruf sesudahnya: <span class="ar" lang="ar" dir="rtl">${ex.l}</span></span>`:''}</div>
+    <div class="opts c3">${OPTS(opts.map(o=>({ok:o.k===r.k,html:tajLabel(o)})))}</div>`;
+  if(cfg.timer) startTimer(cfg.timer);
+}
+
+/* 15. Cari Hukum Tajwid: nama hukum diberikan, cari contoh yang tepat */
+function r15(el,cfg,l){
+  const P=LV[15], i=l-1, rules=tajPool(P.rules[i]);
+  const r=pickTajRule(rules), ex=pickTajEx(r), n=Math.min(cfg.opts,rules.length);
+  const conf=(TAJ_CONF[r.k]||[]).map(k=>TAJ_BY[k]).filter(x=>rules.includes(x));
+  const dist=distract(r.k,n-1,[conf,rules],x=>x.k).map(o=>({r:o,ex:pick(TAJ_EX.filter(e=>e.r===o.k))}));
+  const opts=shuffle([{r,ex},...dist]);
+  run.q={v:tajItem(r,ex),wrong:`Contoh <b>${esc(r.n)}</b> yang benar ada pada tulisan berikut:`};
+  const hl=P.hl[i], hint=P.hint[i];
+  el.innerHTML=`<div class="q-text">Cari contoh bacaan yang hukumnya:</div>
+    <div class="mushaf"><div class="hij-name">${esc(r.n)}</div><div class="ar taj-sub" lang="ar" dir="rtl">${r.ar}</div>${hint?`<span class="tag">${hint>=2?esc(r.ciri)+' · ':''}huruf: ${r.k==='ikhfa'?esc(r.hnote):`<span class="ar" lang="ar" dir="rtl">${r.huruf}</span>`}</span>`:''}</div>
+    <div class="opts c3">${OPTS(opts.map(o=>({ok:o.r.k===r.k,html:`<span class="ar taj-opt" lang="ar" dir="rtl">${hl?tajHL(o.ex.t):tajPlain(o.ex.t)}</span>`})))}</div>`;
+  if(cfg.timer) startTimer(cfg.timer);
+}
+
+/* 16. Pasangkan Hukum: cocokkan contoh / huruf / ciri dengan nama hukumnya */
+function r16(el,cfg,l){
+  const P=LV[16], i=l-1, n=P.pairs[i], mode=P.mode[i];
+  const rules=shuffle(TAJ_ORDER.slice(0,Math.min(5,n+1))).slice(0,n).map(k=>TAJ_BY[k]);
+  const kinds=mode===0?['ex']:mode===1?['huruf','ciri']:['ex','huruf','ciri'];
+  const left=rules.map(r=>{
+    const kd=pick(kinds); let ex=null, html;
+    if(kd==='ex'){ ex=pickTajEx(r); html=`<span class="ar taj-opt" lang="ar" dir="rtl">${tajHL(ex.t)}</span>`; }
+    else if(kd==='huruf') html=`<span class="ar taj-let" lang="ar" dir="rtl">${r.huruf}</span>`;
+    else html=esc(r.ciri);
+    return {k:r.k,r,ex,html};
+  });
+  const q=run.q={v:rules.map(r=>tajItem(r,left.find(x=>x.k===r.k).ex)),left:shuffle(left),right:shuffle(rules.map(r=>({k:r.k,r}))),
+    selL:null,doneL:new Set(),doneR:new Set(),err:0,allow:P.err[i],flashL:-1,flashR:-1,done:false};
+  const hintTxt=mode===0?'Ketuk satu contoh di kiri, lalu ketuk nama hukumnya di kanan.':mode===1?'Ketuk satu huruf atau ciri bacaan di kiri, lalu nama hukumnya di kanan.':'Ketuk satu kartu di kiri, lalu ketuk nama hukum yang cocok di kanan.';
+  q.draw=()=>{
+    el.innerHTML=`<div class="q-text">Pasangkan hukum bacaan dengan namanya 🤝</div><div class="hint phint">${hintTxt}</div>
+      <div class="pairs gb"><div class="pcol">${q.left.map((x,j)=>`<button class="pbtn ${q.doneL.has(j)?'done':''} ${q.selL===j?'sel':''} ${q.flashL===j?'shake':''}" data-act="o16l" data-i="${j}" ${q.doneL.has(j)?'disabled':''}>${x.html}</button>`).join('')}</div>
+      <div class="pcol">${q.right.map((x,j)=>`<button class="pbtn name ${q.doneR.has(j)?'done':''} ${q.flashR===j?'shake':''}" data-act="o16r" data-i="${j}" ${q.doneR.has(j)?'disabled':''}><span>${esc(x.r.n)}</span></button>`).join('')}</div></div>
+      <div class="hint phint">Salah: <b>${q.err}</b> · batas ${q.allow}</div>`;
+  };
+  q.draw();
+  if(cfg.timer) startTimer(cfg.timer);
+}
+function o16pick(side,j){
+  const q=run&&run.q; if(!q||!q.left||run.locked||q.done) return;
+  if(side==='l'){ if(q.doneL.has(j)) return; q.selL=q.selL===j?null:j; sfx('tap'); q.draw(); return; }
+  if(q.doneR.has(j)||q.selL==null){ if(q.selL==null) toast('👈 Pilih dulu satu kartu di sebelah kiri.'); return; }
+  const L=q.left[q.selL], R=q.right[j];
+  if(L.k===R.k){
+    q.doneL.add(q.selL); q.doneR.add(j); q.selL=null; sfx('correct'); q.flashL=q.flashR=-1; q.draw();
+    if(q.doneL.size===q.left.length){
+      q.done=true;
+      later(()=>ans(q.err<=q.allow,q.v,q.err===0?'Sempurna, tanpa salah! 🎯':`Selesai dengan ${q.err} kesalahan (batas ${q.allow}).`),600);
+    }
+  } else {
+    q.err++; q.flashL=q.selL; q.flashR=j; q.selL=null; sfx('wrong'); q.draw();
+    later(()=>{ if(run&&run.q===q&&!q.done){ q.flashL=q.flashR=-1; q.draw(); } },450);
+  }
+}
+Object.assign(ACTIONS,{
+  o16l:t=>o16pick('l',+t.dataset.i),
+  o16r:t=>o16pick('r',+t.dataset.i),
+  'open-taj':()=>{ learnState.surah=null; learnState.hij=false; learnState.taj=true; renderLearn(); window.scrollTo({top:0}); },
+  'study-taj':()=>{ learnState.surah=null; learnState.hij=false; learnState.taj=true; nav('learn'); }
+});
+
+/* ---------- halaman materi tajwid (menu Belajar) ---------- */
+const TAJ_SHOW=['izhar','bighunnah','bilaghunnah','iqlab','ikhfa'];
+function tajCard(k,n){
+  const r=TAJ_BY[k], exs=TAJ_EX.filter(e=>e.r===k).slice(0,3);
+  return `<article class="tajcard" style="--tc:${r.col}">
+    <header><span class="tajno">${n}</span><div class="tajname"><h3>${esc(r.n)}</h3><div class="ar" lang="ar" dir="rtl">${r.ar}</div></div><span class="tag">${esc(r.arti)}</span></header>
+    <div class="tajhuruf"><small>Huruf</small><div class="ar" lang="ar" dir="rtl">${r.huruf}</div><small>${esc(r.hnote)}</small></div>
+    <p><b>Cara baca:</b> ${esc(r.cara)}</p>
+    <p><b>Sebab:</b> ${esc(r.sebab)}</p>
+    <div class="tajex"><small>Contoh (bagian berwarna):</small>${exs.map(e=>`<div class="ex"><div class="ar taj-opt" lang="ar" dir="rtl">${tajHL(e.t)}</div><small>${esc(e.ref)}</small></div>`).join('')}</div>
+  </article>`;
+}
+function renderTaj(){
+  $('#v-learn').innerHTML=`<div class="tajpage"><button class="btn btn-ghost btn-sm" data-act="learn-back">⬅ Kembali</button>
+  <h2 class="sec-title" style="margin-top:12px">🔔 Tajwid: Hukum Nun Sukun & Tanwin</h2>
+  <p class="muted" style="font-weight:700;margin-top:-4px">Ada lima hukum bacaan ketika <b>nun sukun</b> atau <b>tanwin</b> bertemu huruf hijaiyyah. Kenali huruf sesudahnya, maka hukumnya langsung ketahuan.</p>
+  <div class="card tajintro">
+    <div><b>Nun sukun (نْ)</b><span>huruf nun yang mati, tanpa harakat. Bisa di tengah atau di akhir kata, contoh: <span class="ar" lang="ar" dir="rtl">مِنْ</span>, <span class="ar" lang="ar" dir="rtl">أَنْعَمْتَ</span>.</span></div>
+    <div><b>Tanwin (ـً ـٍ ـٌ)</b><span>bunyi “n” di akhir kata benda: fathatain, kasratain, dhammatain. Contoh: <span class="ar" lang="ar" dir="rtl">عَلِيمٌ</span>, <span class="ar" lang="ar" dir="rtl">سَمِيعًا</span>.</span></div>
+  </div>
+  <div class="taj-table" role="table" aria-label="Ringkasan lima hukum">
+    ${TAJ_SHOW.map(k=>{const r=TAJ_BY[k];return `<div class="trow" style="--tc:${r.col}"><b>${esc(r.n)}</b><span class="ar" lang="ar" dir="rtl">${r.huruf}</span><small>${esc(r.ciri)}</small></div>`;}).join('')}
+  </div>
+  <div class="tajgrid">${TAJ_SHOW.map((k,i)=>tajCard(k,i+1)).join('')}</div>
+  <div class="card tajnote"><b>💡 Catatan penting</b>
+    <p>Idgham bighunnah hanya berlaku jika nun sukun dan huruf idgham berada pada <b>dua kata berbeda</b>. Jika berada dalam satu kata, dibaca izhar (disebut izhar mutlak), contoh: <span class="ar" lang="ar" dir="rtl">الدُّنْيَا</span>, <span class="ar" lang="ar" dir="rtl">صِنْوَانٌ</span>, <span class="ar" lang="ar" dir="rtl">قِنْوَانٌ</span>, <span class="ar" lang="ar" dir="rtl">بُنْيَانٌ</span>.</p>
+    <p>Cara cepat mengingat: kenali dulu <b>6 huruf halqi</b> (izhar), <b>ي ن م و</b> (idgham bighunnah), <b>ل ر</b> (idgham bilaghunnah), dan <b>ب</b> (iqlab). Selain itu, hukumnya ikhfa.</p>
+  </div>
+  <div class="row" style="gap:10px;margin-top:14px;flex-wrap:wrap">
+    <button class="btn btn-sun" data-act="game" data-g="14">🔔 Main Tebak Hukum</button>
+    <button class="btn btn-mint" data-act="game" data-g="15">🔎 Main Cari Hukum</button>
+    <button class="btn btn-ghost" data-act="game" data-g="16">🤝 Main Pasangkan</button>
+  </div></div>`;
+}
 
 /* ---------- aksi game ---------- */
 Object.assign(ACTIONS,{
   start:t=>startRun(+t.dataset.g,+t.dataset.l),
   lvsel:t=>openLevelSheet(+t.dataset.g,+t.dataset.l),
-  'study-surah':t=>{ learnState.hij=false; learnState.surah=+t.dataset.s; nav('learn'); },
+  'study-surah':t=>{ learnState.hij=false; learnState.taj=false; learnState.surah=+t.dataset.s; nav('learn'); },
   quit:async()=>{ if(!run||run.locked||await askConfirm({title:'Yakin mau keluar?',text:'Kalau keluar sekarang, skor ronde ini tidak disimpan. Yuk selesaikan dulu, kamu pasti bisa! 🌙',info:`Soal ${run.idx+1} dari ${run.total} · ${run.correct} benar`,safe:'Lanjut main ▶',risk:'Keluar'})) nav('home'); },
   next:()=>{ run.idx++; nextQ(); },
   gplay:async t=>{ const v=vById(t.dataset.key); const r=await playOnce(v); if(r===false) audioFail(); },
@@ -2917,8 +3207,8 @@ Object.assign(ACTIONS,{
   o12hint:()=>{ const q=run.q; if(!q||run.locked) return; q.hinted=true; q.draw(); },
   'sn-go':()=>run.q&&run.q.start&&run.q.start(),
   'sn-dir':t=>{ const m={up:[0,-1],down:[0,1],left:[-1,0],right:[1,0]}[t.dataset.d]; if(run.q&&run.q.setDir) run.q.setDir(m[0],m[1]); },
-  'open-hij':()=>{ learnState.surah=null; learnState.hij=true; renderLearn(); window.scrollTo({top:0}); },
-  'study-hij':()=>{ learnState.surah=null; learnState.hij=true; nav('learn'); }
+  'open-hij':()=>{ learnState.surah=null; learnState.taj=false; learnState.hij=true; renderLearn(); window.scrollTo({top:0}); },
+  'study-hij':()=>{ learnState.surah=null; learnState.taj=false; learnState.hij=true; nav('learn'); }
 });
 
 /* ---------- halaman belajar huruf ---------- */
