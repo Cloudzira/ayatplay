@@ -651,35 +651,29 @@ body.in-game .toast-box{bottom:auto;top:calc(52px + env(safe-area-inset-top,0px)
 @media(max-width:380px){.brand>span{display:none}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}html{scroll-behavior:auto}}
 </style>
-<!-- Font Awesome untuk ikon medsos & footer (Kurniapedia) -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<!-- Medsos & footer Kurniapedia: ikon SVG sendiri (tanpa Font Awesome), warna mengikuti tema aplikasi -->
 <style>
-    .glass-panel {
-        background: rgba(15, 23, 42, 0.65);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-    }
-    /* Efek warna neon khusus saat kursor diarahkan (hover) */
-    .kurnia-icon {
-        width: 2rem;
-        height: 2rem;
-        border-radius: 9999px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #cbd5e1;
-        font-size: 0.75rem;
-        transition: all 0.3s ease;
-        text-decoration: none;
-    }
-    .kurnia-icon.ig:hover { color: #00f2fe; border-color: rgba(0, 242, 254, 0.6); }
-    .kurnia-icon.tt:hover { color: #bd00ff; border-color: rgba(189, 0, 255, 0.6); }
-    .kurnia-icon.web:hover { color: #ff007f; border-color: rgba(255, 0, 127, 0.6); }
-    .kurnia-icon.wa:hover { color: #00ff87; border-color: rgba(0, 255, 135, 0.6); }
-    body.in-game .kurnia-footer { display: none !important; }
-    @media print { .kurnia-footer { display: none !important; } }
+    .kurnia-footer{width:100%;padding:24px var(--gut,16px) 10px}
+    .kf-card{max-width:520px;margin:0 auto;background:var(--paper);border:3px solid var(--line);border-radius:var(--r);box-shadow:0 4px 0 var(--line);padding:16px 14px 14px;text-align:center}
+    .kf-title{margin:0 0 12px;font-weight:800;font-size:.95rem;color:var(--night);letter-spacing:.1px}
+    .kf-row{display:flex;justify-content:center;gap:10px}
+    .kf-link{--c:var(--mint);--cd:var(--mint-d);flex:1 1 0;max-width:96px;min-width:0;display:flex;flex-direction:column;align-items:center;gap:6px;text-decoration:none;color:var(--ink);-webkit-tap-highlight-color:transparent}
+    .kf-ic{width:50px;height:50px;border-radius:50%;display:grid;place-items:center;color:var(--cd);
+      background:color-mix(in srgb,var(--c) 14%,#fff);border:2px solid color-mix(in srgb,var(--c) 45%,#fff);transition:transform .2s,background .2s,color .2s,border-color .2s}
+    .kf-ic svg{width:24px;height:24px}
+    .kf-lb{font-weight:800;font-size:.8rem;line-height:1.1;color:var(--ink)}
+    .kf-link:hover .kf-ic,.kf-link:focus-visible .kf-ic{background:var(--c);border-color:var(--cd);color:#fff;transform:translateY(-2px)}
+    .kf-link:focus-visible{outline:3px solid var(--sun);outline-offset:4px;border-radius:14px}
+    .kf-link.ig{--c:var(--coral);--cd:var(--coral-d)}
+    .kf-link.tt{--c:var(--grape);--cd:var(--grape-d)}
+    .kf-link.web{--c:var(--sun);--cd:#8A6405}
+    .kf-link.wa{--c:var(--mint);--cd:var(--mint-d)}
+    .kf-foot{margin:14px 0 0;padding-top:12px;border-top:2px dashed var(--line);font-weight:700;font-size:.85rem;color:var(--muted)}
+    .kf-heart{color:var(--bad);font-size:1.05em}
+    .kf-foot a{color:var(--mint-d);font-weight:900;text-decoration:none;border-bottom:2px solid var(--sun)}
+    .kf-foot a:hover,.kf-foot a:focus-visible{color:var(--night)}
+    body.in-game .kurnia-footer{display:none!important}
+    @media print{.kurnia-footer{display:none!important}}
 </style>
 <style id="pro-polish">
 /* =====================================================================
@@ -1008,29 +1002,17 @@ body.in-game{padding-bottom:0}
 </main>
 
 <!-- Bagian Bawah Halaman (Social Media & Footer) -->
-<div class="kurnia-footer" style="width: 100%; padding: 24px 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px;">
-
-    <!-- Social Media Icon Bar -->
-    <div id="socialMediaRow" style="display: flex; align-items: center; justify-content: center; gap: 10px;">
-        <a href="https://instagram.com/kurniapedia" target="_blank" rel="noopener noreferrer" class="glass-panel kurnia-icon ig" aria-label="Instagram Kurniapedia">
-            <i class="fa-brands fa-instagram"></i>
-        </a>
-        <a href="https://tiktok.com/@kurniapedia" target="_blank" rel="noopener noreferrer" class="glass-panel kurnia-icon tt" aria-label="TikTok Kurniapedia">
-            <i class="fa-brands fa-tiktok"></i>
-        </a>
-        <a href="https://kurniapedia.my.id" target="_blank" rel="noopener noreferrer" class="glass-panel kurnia-icon web" aria-label="Website Kurniapedia">
-            <i class="fa-solid fa-globe"></i>
-        </a>
-        <a href="https://wa.me/+6285870906050" target="_blank" rel="noopener noreferrer" class="glass-panel kurnia-icon wa" aria-label="WhatsApp Kurniapedia">
-            <i class="fa-brands fa-whatsapp"></i>
-        </a>
-    </div>
-
-    <!-- Footer -->
-    <footer style="text-align: center; font-size: 11px; color: #64748b; font-family: sans-serif;">
-         <p style="margin: 0;">Crafted with <span style="color: #ff007f;">♥</span> by <span style="color: #00f2fe; font-weight: 600; text-shadow: 0 0 10px rgba(0,242,254,0.4);">Kurniapedia</span> 2026</p>
-    </footer>
-
+<div class="kurnia-footer">
+  <div class="kf-card">
+    <p class="kf-title">Ikuti &amp; hubungi Kurniapedia</p>
+    <nav class="kf-row" aria-label="Media sosial Kurniapedia">
+      <a href="https://instagram.com/kurniapedia" target="_blank" rel="noopener noreferrer" class="kf-link ig" aria-label="Instagram Kurniapedia"><span class="kf-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg></span><span class="kf-lb">Instagram</span></a>
+      <a href="https://tiktok.com/@kurniapedia" target="_blank" rel="noopener noreferrer" class="kf-link tt" aria-label="TikTok Kurniapedia"><span class="kf-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3v11.2a3.7 3.7 0 1 1-3.7-3.7"/><path d="M14 3c.3 2.7 2 4.3 5 4.6"/></svg></span><span class="kf-lb">TikTok</span></a>
+      <a href="https://kurniapedia.my.id" target="_blank" rel="noopener noreferrer" class="kf-link web" aria-label="Website Kurniapedia"><span class="kf-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg></span><span class="kf-lb">Website</span></a>
+      <a href="https://wa.me/+6285870906050" target="_blank" rel="noopener noreferrer" class="kf-link wa" aria-label="WhatsApp Kurniapedia"><span class="kf-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.2 20.8l1.3-4.6A8.7 8.7 0 1 1 8 19.6l-4.8 1.2z"/><path d="M9.2 8.6c-.4.9-.2 2 .8 3.4 1 1.4 2.2 2.3 3.5 2.6.9.2 1.6-.4 1.9-1l-1.7-1-.8.7c-.8-.3-1.6-1-2.1-1.8l.6-.8-.9-1.8-.7.3z" fill="currentColor" stroke="none"/></svg></span><span class="kf-lb">WhatsApp</span></a>
+    </nav>
+    <footer class="kf-foot">Crafted with <span class="kf-heart" aria-label="cinta">♥</span> by <a href="https://kurniapedia.my.id" target="_blank" rel="noopener noreferrer">Kurniapedia</a> 2026</footer>
+  </div>
 </div>
 
 <nav class="bottom" aria-label="Menu utama">
