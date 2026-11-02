@@ -60,8 +60,11 @@ h1,h2,h3,h4{font-family:var(--f-disp);margin:0;line-height:1.15}
 .noselect,.btn,.opt,.chip-w,.gcard,.tab{user-select:none;-webkit-user-select:none}
 
 /* ===== Arabic typography (fixed): one rule family, never inherits UI font ===== */
+.ar{unicode-bidi:isolate}
+/* span di dalam teks Arab (warna tajwid, dll.) TIDAK boleh isolate, kalau tidak huruf bersambung terputus */
+.ar *{unicode-bidi:normal}
 .ar,.ar *{
-  font-family:var(--f-ar)!important;direction:rtl;unicode-bidi:isolate;
+  font-family:var(--f-ar)!important;direction:rtl;
   letter-spacing:0!important;word-spacing:var(--ar-ws,.2em);text-transform:none;font-weight:var(--ar-w,600);
   font-kerning:normal;font-feature-settings:"kern","liga","calt","mark","mkmk";
   text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;
@@ -834,7 +837,7 @@ body.in-game{padding-bottom:0}
 }
 
 /* ===== TAJWID ===== */
-.tj{color:#C2410C}
+.tj{color:#C2410C;display:inline;unicode-bidi:normal}
 .taj-big{font-size:clamp(2.2rem,10vw,3.5rem);line-height:1.9;color:var(--night);text-align:center}
 .taj-sub{font-size:1.5rem;line-height:1.8;color:var(--mint-d);text-align:center}
 .taj-opt{font-size:1.45rem;line-height:1.9;color:var(--night)}
