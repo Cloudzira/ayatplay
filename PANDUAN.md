@@ -36,7 +36,7 @@ Letakkan di folder atau subdomain tersendiri agar `sw.js` tidak bertabrakan deng
 - Daftar surah: Al-Fatihah + seluruh Juz 28, 29, 30 (58 surah, 1.139 ayat) dengan ejaan nama versi Kemenag (At-Tagabun, Al-Muddassir, Asy-Syarh, Al-Kausar, Al-Lahab, dst.).
 - Teks Arab dimuat dari api.quran.com (Utsmani) lalu diubah ke gaya Mushaf Standar Indonesia memakai pengolah yang sama dengan TalqinKu, termasuk perbaikan harakat lam-alif. Font: Scheherazade New.
 - Terjemah: api.alquran.cloud (id.indonesian). Data disimpan di perangkat sehingga bisa offline setelah pemuatan pertama; bila gagal, dipakai 165 ayat bawaan.
-- Audio/qari sama dengan TalqinKu: Anak (bawaan, dari repo GitHub), Misyari Rasyid, Al-Husary, Al-Minshawi. Bila audio "Anak" belum ada, otomatis memakai Misyari.
+- Audio qari dari EveryAyah.com (gratis, tanpa API key): Misyari Rasyid Al-Afasy (bawaan), Al-Husary, Al-Minshawi, Abdul Basit, Maher Al-Muaiqly, As-Sudais, Asy-Syuraim, Al-Hudhaify, Abu Bakr Asy-Syatiri, Hani Ar-Rifai, dan Muhammad Ayyub. Bila file qari pilihan gagal dimuat, otomatis memakai Misyari.
 - Mode Belajar menampilkan Ta'awudz (Al-Fatihah) atau Bismillah (surah lain kecuali At-Taubah) dan simbol nomor ayat ۝.
 - Sebelum dirilis publik, sebaiknya ditashih LPMQ Kemenag.
 

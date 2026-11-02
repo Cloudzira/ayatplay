@@ -1777,12 +1777,13 @@ const vById=key=>VMAP.get(key)||preFromKey(key);
 
 /* ---------- penyimpanan ---------- */
 const KEY='ayatplay_v2';
-const defaults=()=>({name:'',xp:0,streak:0,best:0,last:'',today:{date:'',rounds:0},prog:{},memorized:{},unmem:{},resetAt:0,nameAt:0,badges:{},played:{},listened:0,plays:0,sound:true,arFont:'kid',arSize:1.15,qari:'github_anak',seen:{},fails:{},retryWins:0,scope:{juz:'30',surah:''}});
+const defaults=()=>({name:'',xp:0,streak:0,best:0,last:'',today:{date:'',rounds:0},prog:{},memorized:{},unmem:{},resetAt:0,nameAt:0,badges:{},played:{},listened:0,plays:0,sound:true,arFont:'kid',arSize:1.15,qari:'mishary',seen:{},fails:{},retryWins:0,scope:{juz:'30',surah:''}});
 function loadState(){
   let s=defaults();
   try{
     const raw=localStorage.getItem(KEY);
     if(raw) s=Object.assign(s,JSON.parse(raw));
+    if(s.qari==='github_anak') s.qari='mishary';
     else{ // pindahkan XP dari versi lama
       const old=parseInt(localStorage.getItem('ayatplay_xp')||'0',10);
       if(old>0) s.xp=old;
@@ -1908,27 +1909,30 @@ function sfx(type){
 }
 const burst=(o={})=>{ if(window.confetti&&!matchMedia('(prefers-reduced-motion: reduce)').matches) confetti(Object.assign({particleCount:110,spread:75,origin:{y:.65}},o)); };
 
-/* ---------- audio qari (sama dengan TalqinKu) ---------- */
-const GITHUB_RAW_BASE="https://raw.githubusercontent.com/Cloudzira/talqin/main/audio-ayat";
-const ALAFASY='https://everyayah.com/data/Alafasy_128kbps/';
+/* ---------- audio qari: EveryAyah.com (gratis, tanpa API key, pola SSSAAA.mp3) ---------- */
+const EVERY='https://everyayah.com/data/';
+const ALAFASY=EVERY+'Alafasy_128kbps/';
 const QARIS=[
-  {id:'github_anak',name:'Anak',type:'github'},
-  {id:'mishary',name:'Syaikh Misyari Rasyid',type:'api',baseUrl:ALAFASY},
-  {id:'husary',name:'Syaikh Mahmud Khalil Al-Husary',type:'api',baseUrl:'https://everyayah.com/data/Husary_128kbps/'},
-  {id:'minshawi',name:'Syaikh Muhammad Siddiq Al-Minshawi',type:'api',baseUrl:'https://everyayah.com/data/Minshawy_Murattal_128kbps/'}
+  {id:'mishary',name:'Syaikh Misyari Rasyid Al-Afasy',type:'api',baseUrl:ALAFASY},
+  {id:'husary',name:'Syaikh Mahmud Khalil Al-Husary',type:'api',baseUrl:EVERY+'Husary_128kbps/'},
+  {id:'minshawi',name:'Syaikh Muhammad Siddiq Al-Minshawi',type:'api',baseUrl:EVERY+'Minshawy_Murattal_128kbps/'},
+  {id:'abdulbasit',name:'Syaikh Abdul Basit Abdus Samad',type:'api',baseUrl:EVERY+'Abdul_Basit_Murattal_192kbps/'},
+  {id:'muaiqly',name:'Syaikh Maher Al-Muaiqly',type:'api',baseUrl:EVERY+'Maher_AlMuaiqly_64kbps/'},
+  {id:'sudais',name:'Syaikh Abdurrahman As-Sudais',type:'api',baseUrl:EVERY+'Abdurrahmaan_As-Sudais_192kbps/'},
+  {id:'shuraim',name:'Syaikh Sa\u2019ud Asy-Syuraim',type:'api',baseUrl:EVERY+'Saood_ash-Shuraym_128kbps/'},
+  {id:'hudhaify',name:'Syaikh Ali Al-Hudhaify',type:'api',baseUrl:EVERY+'Hudhaify_128kbps/'},
+  {id:'shatri',name:'Syaikh Abu Bakr Asy-Syatiri',type:'api',baseUrl:EVERY+'Abu_Bakr_Ash-Shaatree_128kbps/'},
+  {id:'rifai',name:'Syaikh Hani Ar-Rifai',type:'api',baseUrl:EVERY+'Hani_Rifai_192kbps/'},
+  {id:'ayyub',name:'Syaikh Muhammad Ayyub',type:'api',baseUrl:EVERY+'Muhammad_Ayyoub_128kbps/'}
 ];
+const curQari=()=>QARIS.find(x=>x.id===S.qari)||QARIS[0];   // pilihan lama (mis. \"Anak\") otomatis jadi qari pertama
 function audioUrlFor(q,s,n){
-  const fs=pad(s),fa=pad(n);
-  if(q.type==='github'){
-    if(n===0) return s===1?`${GITHUB_RAW_BASE}/${s}/000_001.mp3`:`${GITHUB_RAW_BASE}/${s}/0.mp3`;
-    return `${GITHUB_RAW_BASE}/${s}/${fs}_${fa}.mp3`;
-  }
-  if(n===0) return s===1?`${GITHUB_RAW_BASE}/1/000_002.mp3`:`${q.baseUrl}001001.mp3`;
-  return `${q.baseUrl}${fs}${fa}.mp3`;
+  if(n===0) return `${q.baseUrl}001001.mp3`;   // basmalah
+  return `${q.baseUrl}${pad(s)}${pad(n)}.mp3`;
 }
 function ayatUrls(v){
-  const q=QARIS.find(x=>x.id===S.qari)||QARIS[0], list=[audioUrlFor(q,v.s,v.n)];
-  if(q.type==='github'){ if(v.n>0) list.push(`${ALAFASY}${pad(v.s)}${pad(v.n)}.mp3`); else if(v.s!==1) list.push(`${ALAFASY}001001.mp3`); }   // cadangan bila audio "Anak" belum tersedia
+  const q=curQari(), list=[audioUrlFor(q,v.s,v.n)];
+  if(q.baseUrl!==ALAFASY) list.push(audioUrlFor({baseUrl:ALAFASY},v.s,v.n));   // cadangan bila file qari pilihan gagal dimuat
   return list;
 }
 const A=new Audio(); A.preload='auto';
@@ -2108,7 +2112,7 @@ function preCard(no){
   return `<article class="ayat bsm-card" id="ay-${no}-0" data-key="${p.key}"><div class="ayat-top"><span class="no"><i class="med">0</i>${p.label}</span><button class="play" data-act="play-one" data-key="${p.key}">🔊 Dengar</button></div>
     <div class="ar ar-lg" lang="ar" dir="rtl" style="color:var(--sun-d);text-align:center">${p.ar}</div><div class="tr">${esc(p.id)}</div></article>`;
 }
-const qariSelect=()=>`<select class="sel qari-sel" aria-label="Pilih qari" style="width:auto;padding:7px 10px;font-size:.88rem">${QARIS.map(q=>`<option value="${q.id}" ${S.qari===q.id?'selected':''}>🎙️ ${esc(q.name)}</option>`).join('')}</select>`;
+const qariSelect=()=>`<select class="sel qari-sel" aria-label="Pilih qari" style="width:auto;padding:7px 10px;font-size:.88rem">${QARIS.map(q=>`<option value="${q.id}" ${curQari().id===q.id?'selected':''}>🎙️ ${esc(q.name)}</option>`).join('')}</select>`;
 function surahProgress(s){ const n=s.verses.filter(v=>S.memorized[v.key]).length; return {n,t:s.verses.length,p:Math.round(n/s.verses.length*100)}; }
 function renderLearn(){
   if(learnState.taj) return renderTaj();
@@ -2208,7 +2212,7 @@ function renderProfile(){
   </div>
   <div class="card" style="margin-top:16px;display:grid;gap:10px">
     <h3>🎙️ Suara Qari</h3>
-    <p class="muted small" style="margin:0">Pilih suara bacaan untuk mode Belajar dan game. Suara “Anak” dibacakan oleh anak-anak; bila audionya belum tersedia, otomatis memakai qari Misyari.</p>
+    <p class="muted small" style="margin:0">Pilih suara bacaan untuk mode Belajar dan game. Tersedia 11 qari; bila audio qari pilihan belum bisa dimuat, otomatis memakai qari Misyari.</p>
     ${qariSelect()}
   </div>
   <div class="card" style="margin-top:16px;display:grid;gap:12px">
@@ -2221,7 +2225,7 @@ function renderProfile(){
   ${installCard()}
   <div class="card" style="margin-top:16px;display:grid;gap:8px">
     <h3>ℹ️ Tentang AyatPlay</h3>
-    <p class="muted" style="margin:0;font-weight:600">Teks Arab dari api.quran.com (gaya Mushaf Standar Indonesia), terjemah dari Kemenag (alquran.cloud), dan audio dari suara anak serta EveryAyah.com, sehingga butuh internet. Kemajuanmu tersimpan di perangkat ini dan, jika orang tua masuk akun, juga di cloud. Orang tua atau guru sebaiknya ikut mengoreksi bacaan anak langsung dengan guru ngaji.</p>
+    <p class="muted" style="margin:0;font-weight:600">Teks Arab dari api.quran.com (gaya Mushaf Standar Indonesia), terjemah dari Kemenag (alquran.cloud), dan audio qari dari <a href="https://everyayah.com/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">EveryAyah.com</a>, sehingga butuh internet. Kemajuanmu tersimpan di perangkat ini dan, jika orang tua masuk akun, juga di cloud. Orang tua atau guru sebaiknya ikut mengoreksi bacaan anak langsung dengan guru ngaji.</p>
     <button class="btn btn-ghost btn-sm" data-act="reset" style="justify-self:start">🔄 Atur ulang semua progres</button>
   </div>`;
 }
