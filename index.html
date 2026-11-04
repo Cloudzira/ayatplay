@@ -1907,29 +1907,64 @@ const QARIS=[
   {id:'ayyub',name:'Syaikh Muhammad Ayyub',type:'api',baseUrl:EVERY+'Muhammad_Ayyoub_128kbps/'}
 ];
 const curQari=()=>QARIS.find(x=>x.id===S.qari)||QARIS[0];   // pilihan lama (mis. \"Anak\") otomatis jadi qari pertama
-function audioUrlFor(q,s,n){
-  if(n===0) return `${q.baseUrl}001001.mp3`;   // basmalah
-  return `${q.baseUrl}${pad(s)}${pad(n)}.mp3`;
+/* Server cadangan: bila everyayah.com lambat/terblokir, otomatis dicoba server lain,
+   lalu (bila perlu) diganti suara Misyari yang punya 3 server. */
+const QC_CDN='https://verses.quran.foundation/', ISL_CDN='https://cdn.islamic.app/quran/audio/';
+const MIRRORS={
+  mishary:{qc:'Alafasy/mp3',isl:'ar.alafasy'},
+  husary:{qc:'Husary/mp3'},
+  minshawi:{qc:'Minshawi/Murattal/mp3'},
+  abdulbasit:{qc:'AbdulBaset/Murattal/mp3'},
+  sudais:{qc:'Sudais/mp3',isl:'ar.abdurrahmaansudais'},
+  shuraim:{qc:'Shuraym/mp3'}
+};
+const AYAH_COUNTS=[7,286,200,176,120,165,206,75,129,109,123,111,43,52,99,128,111,110,98,135,112,78,118,64,77,227,93,88,69,60,34,30,73,54,45,83,182,88,75,85,54,53,89,59,37,35,38,29,18,45,60,49,62,55,78,96,29,22,24,13,14,11,11,18,12,12,30,52,52,44,28,28,20,56,40,31,50,40,46,42,29,19,36,25,22,17,19,26,30,20,15,21,11,8,8,19,5,8,8,11,11,8,3,9,5,4,7,3,6,3,5,4,5,6];
+const globalAyah=(s,n)=>{ let t=0; for(let i=0;i<s-1;i++) t+=AYAH_COUNTS[i]; return t+n; };
+function srcFor(q,s,n){                       // daftar server untuk satu qari
+  if(n===0){ s=1; n=1; }                      // basmalah = Al-Fatihah ayat 1
+  const f=`${pad(s)}${pad(n)}.mp3`, m=MIRRORS[q.id]||{}, out=[q.baseUrl+f];
+  if(m.qc) out.push(`${QC_CDN}${m.qc}/${f}`);
+  if(m.isl) out.push(`${ISL_CDN}${m.isl}/${globalAyah(s,n)}.mp3`);
+  return out;
 }
 function ayatUrls(v){
-  const q=curQari(), list=[audioUrlFor(q,v.s,v.n)];
-  if(q.baseUrl!==ALAFASY) list.push(audioUrlFor({baseUrl:ALAFASY},v.s,v.n));   // cadangan bila file qari pilihan gagal dimuat
-  return list;
+  const q=curQari(); let list=srcFor(q,v.s,v.n); const own=list.length;
+  if(q.id!==QARIS[0].id) list=list.concat(srcFor(QARIS[0],v.s,v.n));   // pengganti: suara Misyari
+  return {list,own};
 }
 const A=new Audio(); A.preload='auto';
 let curRes=null;
 A.addEventListener('ended',()=>{if(curRes){const r=curRes;curRes=null;r(true);}});
 A.addEventListener('error',()=>{if(curRes){const r=curRes;curRes=null;r(false);}});
 function stopAudio(){ try{A.pause();}catch(e){} if(curRes){const r=curRes;curRes=null;r(null);} }
+const PLAY_TIMEOUT=9000, BAD_TTL=180000, badHosts={};   // server yang macet diingat 3 menit
+const hostOf=u=>{ try{return new URL(u).hostname;}catch(e){return '';} };
+const isBad=h=>badHosts[h]&&(Date.now()-badHosts[h])<BAD_TTL;
 function playUrl(url,rate){
   stopAudio();
   return new Promise(res=>{
     curRes=res; A.src=url; A.playbackRate=rate; A.preservesPitch=true;
-    const p=A.play(); if(p&&p.catch) p.catch(()=>{ if(curRes===res){curRes=null;res(false);} });
+    // bila 9 detik belum mulai berbunyi -> anggap server macet, coba server berikutnya
+    const t=setTimeout(()=>{ if(curRes===res){ curRes=null; badHosts[hostOf(url)]=Date.now(); try{A.pause();}catch(e){} res(false); } },PLAY_TIMEOUT);
+    const p=A.play();
+    if(p&&p.then) p.then(()=>clearTimeout(t),()=>{ clearTimeout(t); if(curRes===res){curRes=null;res(false);} });
   });
 }
+let fbToastAt=0;
 async function playOnce(v,rate=1){
-  for(const u of ayatUrls(v)){ const r=await playUrl(u,rate); if(r!==false) return r; }
+  const {list,own}=ayatUrls(v), failed=new Set();
+  const skipBad=list.some(u=>!isBad(hostOf(u)));      // lewati server macet, selama masih ada yang lain
+  for(let i=0;i<list.length;i++){
+    const h=hostOf(list[i]);
+    if(skipBad&&isBad(h)) continue;
+    if(i>=own&&failed.has(h)) continue;
+    const r=await playUrl(list[i],rate);
+    if(r!==false){
+      if(i>=own&&Date.now()-fbToastAt>30000){ fbToastAt=Date.now(); toast('🎙️ Suara qari pilihan sedang gagal, memakai suara Misyari.'); }
+      return r;
+    }
+    failed.add(h);
+  }
   return false;
 }
 let audioErrAt=0;
