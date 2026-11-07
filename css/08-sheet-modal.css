@@ -1,0 +1,109 @@
+/* =====================================================================
+   Lembar dan dialog
+   Lembar bawah (bottom sheet) dan dialog.
+   ===================================================================== */
+
+/* ===== sheet / modal ===== */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(20,26,70,.55);
+  backdrop-filter: blur(3px);
+  z-index: 60;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 0;
+}
+
+.sheet {
+  background: #fff;
+  width: 100%;
+  max-width: 560px;
+  border-radius: 28px 28px 0 0;
+  padding: 20px 18px calc(22px + env(safe-area-inset-bottom,0px));
+  max-height: 92vh;
+  overflow: auto;
+  animation: up .25s ease-out;
+}
+
+@media(min-width:640px) {
+  .overlay {
+    align-items: center;
+    padding: 20px;
+  }
+  .sheet {
+    border-radius: 28px;
+  }
+}
+
+@keyframes up {
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+.sheet-head {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.sheet-head .gicon {
+  flex: none;
+}
+
+.lv {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 18px;
+  border: 3px solid var(--line);
+  margin-top: 10px;
+  background: #fff;
+  width: 100%;
+  text-align: left;
+}
+
+.lv.locked {
+  opacity: .55;
+  background: #F1F5F2;
+}
+
+.lv-emo {
+  font-size: 1.8rem;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: var(--sky);
+  display: grid;
+  place-items: center;
+  flex: none;
+}
+
+.lv b {
+  font-family: var(--f-disp);
+  font-size: 1.1rem;
+  display: block;
+  line-height: 1.2;
+}
+
+.lv small {
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.lv .go {
+  margin-left: auto;
+  font-family: var(--f-disp);
+  font-weight: 800;
+  color: var(--mint-d);
+}

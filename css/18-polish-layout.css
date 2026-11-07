@@ -1,0 +1,264 @@
+/* =====================================================================
+   Poles profesional: tata letak
+   Header, beranda dua kolom, menu bawah, HP landscape.
+   ===================================================================== */
+
+/* =====================================================================
+POLES PROFESIONAL v2
+- lebar konten mengikuti layar (tidak ada ruang kosong di kiri-kanan)
+- header & nav simetris, tidak terpotong di HP kecil
+- game: header seimbang, timer terlihat jelas, dua kolom seimbang di landscape
+===================================================================== */
+
+:root {
+  --wrap: 1240px;
+  --gut: clamp(14px,3vw,32px);
+}
+
+.wrap {
+  max-width: var(--wrap);
+  padding: 0 var(--gut);
+}
+
+body {
+  padding-bottom: calc(92px + env(safe-area-inset-bottom,0px));
+}
+
+body.in-game {
+  padding-bottom: 0;
+}
+
+/* ----- header: tidak lagi terpotong di HP sempit ----- */
+
+.top .wrap {
+  gap: 8px;
+}
+
+.brand {
+  min-width: 0;
+  flex: 0 1 auto;
+}
+
+.brand>span {
+  min-width: 0;
+}
+
+.chips {
+  flex: none;
+}
+
+@media(max-width:440px) {
+  #h-fs {
+    display: none;
+  }
+  .brand svg {
+    width: 36px;
+    height: 36px;
+  }
+  .brand b {
+    font-size: 1.05rem;
+  }
+}
+
+/* ----- beranda: dua kolom seimbang di layar lebar ----- */
+
+@media(min-width:760px) {
+  #v-home {
+    display: grid;
+    grid-template-columns: repeat(2,minmax(0,1fr));
+    gap: 18px 20px;
+    align-items: stretch;
+  }
+  #v-home>.hero,
+  #v-home>.sec-title,
+  #v-home>.gal {
+    grid-column: 1/-1;
+  }
+  #v-home>#scope-slot,
+  #v-home>.card.row {
+    margin-top: 0!important;
+  }
+  #v-home>#scope-slot>.card {
+    height: 100%;
+  }
+  #v-home>.card.row {
+    align-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  #v-home>.sec-title {
+    margin: 10px 0 0;
+  }
+  .gal {
+    grid-template-columns: repeat(auto-fill,minmax(190px,1fr));
+  }
+  .gcard {
+    min-height: 206px;
+  }
+}
+
+@media(min-width:900px) {
+  .hero {
+    padding: 34px 42px 112px;
+    grid-template-columns: minmax(0,1fr) 270px;
+    gap: 34px;
+  }
+  .hero .goal {
+    max-width: 500px;
+  }
+  .hero p {
+    font-size: 1.08rem;
+  }
+  .mascot {
+    width: 150px;
+    height: 150px;
+  }
+  .mascot-box {
+    max-width: 270px;
+    justify-self: center;
+  }
+  .hero .lant.l1 {
+    right: 3%;
+  }
+  .hero .lant.l2 {
+    right: 9%;
+  }
+}
+
+/* ----- navigasi bawah: dock melayang di desktop ----- */
+
+@media(min-width:900px) and (min-height:560px) {
+  .bottom {
+    left: 50%;
+    right: auto;
+    bottom: 14px;
+    transform: translateX(-50%);
+    width: min(600px,calc(100vw - 32px));
+    border: 3px solid var(--sun);
+    border-radius: 24px;
+    box-shadow: 0 12px 32px rgba(11,51,64,.28);
+    padding: 6px 8px;
+  }
+  .bottom .in {
+    max-width: none;
+  }
+  body {
+    padding-bottom: calc(112px + env(safe-area-inset-bottom,0px));
+  }
+  .toast-box {
+    bottom: calc(112px + env(safe-area-inset-bottom,0px));
+  }
+}
+
+/* ----- HP landscape: header & menu ringkas supaya konten lega ----- */
+
+@media(orientation:landscape) and (max-height:520px) {
+  .top {
+    padding: calc(3px + env(safe-area-inset-top,0px)) 0 3px;
+  }
+  .top::after {
+    display: none;
+  }
+  .brand small {
+    display: none;
+  }
+  .brand svg {
+    width: 34px;
+    height: 34px;
+  }
+  .brand b {
+    font-size: 1.1rem;
+  }
+  .chip {
+    padding: 2px 9px;
+    font-size: .85rem;
+  }
+  .icon-btn {
+    width: 32px;
+    height: 32px;
+    font-size: 1rem;
+  }
+  .view {
+    padding-top: 14px;
+  }
+  body {
+    padding-bottom: calc(56px + env(safe-area-inset-bottom,0px));
+  }
+  .bottom {
+    padding: 3px 8px calc(3px + env(safe-area-inset-bottom,0px));
+  }
+  .bottom .in {
+    max-width: 680px;
+  }
+  .tab {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 4px;
+    font-size: .82rem;
+  }
+  .tab span {
+    font-size: 1.25rem;
+    line-height: 1;
+  }
+  .hero {
+    padding: 16px 22px 64px;
+  }
+  .hero .skyline {
+    height: 62px;
+  }
+  .toast-box {
+    bottom: calc(64px + env(safe-area-inset-bottom,0px));
+  }
+  .sec-title {
+    margin: 16px 0 10px;
+  }
+}
+
+/* ----- halaman lain di layar lebar ----- */
+
+@media(min-width:700px) {
+  #v-badges>.btn-block {
+    max-width: 460px;
+  }
+}
+
+@media(min-width:900px) {
+  #v-profile {
+    columns: 2 420px;
+    column-gap: 20px;
+  }
+  #v-profile>* {
+    break-inside: avoid;
+    margin-top: 0!important;
+    margin-bottom: 16px;
+  }
+  #v-profile>.sec-title {
+    column-span: all;
+    margin-bottom: 14px!important;
+  }
+  .badges {
+    grid-template-columns: repeat(auto-fill,minmax(170px,1fr));
+  }
+}
+
+#v-learn:has(>.ayat) {
+  max-width: 940px;
+  margin-inline: auto;
+}
+
+.surahs {
+  grid-template-columns: repeat(auto-fill,minmax(240px,1fr));
+  align-items: stretch;
+}
+
+.scard {
+  grid-template-rows: auto auto 1fr auto auto;
+  align-content: stretch;
+}
+
+.scard small:first-of-type {
+  align-self: start;
+}

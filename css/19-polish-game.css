@@ -1,0 +1,280 @@
+/* =====================================================================
+   Poles profesional: layar game
+   Timer, header game simetris, soal seimbang, layar hasil.
+   ===================================================================== */
+
+/* ----- timer soal: bar + angka detik, warna berubah saat waktu menipis ----- */
+
+.timer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: auto;
+  background: none;
+  border-radius: 0;
+  overflow: visible;
+  margin: 0 0 6px;
+}
+
+#g-timer .timer {
+  height: auto;
+  margin-bottom: 6px;
+}
+
+#g-timer:empty {
+  display: none;
+}
+
+.timer .tbar {
+  flex: 1;
+  height: 12px;
+  background: var(--line);
+  border-radius: 99px;
+  overflow: hidden;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,.14);
+}
+
+.timer .tbar>i {
+  display: block;
+  height: 100%;
+  width: 100%;
+  border-radius: 99px;
+  background: linear-gradient(90deg,var(--mint),#7FE0B8);
+  transform-origin: left center;
+  will-change: transform;
+}
+
+.timer.mid .tbar>i {
+  background: linear-gradient(90deg,var(--sun-d),var(--sun));
+}
+
+.timer.low .tbar>i {
+  background: linear-gradient(90deg,var(--coral-d),var(--coral));
+}
+
+.timer b {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 76px;
+  height: 28px;
+  padding: 0 12px;
+  border-radius: 99px;
+  background: #fff;
+  border: 2px solid var(--line);
+  font-family: var(--f-disp);
+  font-weight: 800;
+  font-size: .9rem;
+  color: var(--night);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.timer.mid b {
+  border-color: var(--sun);
+  background: #FFF8DD;
+}
+
+.timer.low b {
+  background: var(--bad-bg);
+  border-color: var(--bad);
+  color: #8A1F23;
+}
+
+.timer.low:not([data-calm]) b {
+  animation: pulse 1s infinite;
+}
+
+/* ----- layar game: header simetris (kiri | judul | kanan) ----- */
+
+.gshell {
+  max-width: min(1460px,100%);
+}
+
+@media(orientation:portrait) {
+  .gshell {
+    max-width: 780px;
+  }
+}
+
+.ghead {
+  display: grid;
+  grid-template-columns: minmax(0,1fr) auto minmax(0,1fr);
+  gap: 8px;
+  align-items: center;
+}
+
+.gh-l {
+  display: flex;
+  justify-content: flex-start;
+  min-width: 0;
+}
+
+.gh-r {
+  display: flex;
+  gap: 6px;
+  justify-content: flex-end;
+  align-items: center;
+  min-width: 0;
+}
+
+.gh-c {
+  min-width: 0;
+  max-width: 52vw;
+  text-align: center;
+}
+
+.ghead h2 {
+  font-size: 1.05rem;
+}
+
+.ghead .btn {
+  min-width: 44px;
+}
+
+@media(max-width:400px) {
+  .ghead .qtxt {
+    display: none;
+  }
+}
+
+/* ----- soal: seimbang & simetris ----- */
+
+.opts>.opt:last-child:nth-child(odd) {
+  grid-column: 1/-1;
+}
+
+.opts.c3 {
+  grid-template-columns: repeat(2,minmax(0,1fr));
+}
+
+.opts>.opt:only-child {
+  grid-column: 1/-1;
+}
+
+.stage .q-text {
+  padding-inline: 6px;
+}
+
+.seqgrid {
+  display: grid;
+  gap: 7px;
+}
+
+.hij-pool {
+  justify-content: center;
+}
+
+.sn-wrap {
+  max-width: min(380px,100%);
+}
+
+@media(orientation:portrait) and (min-height:720px) {
+  #stage .opt {
+    min-height: 54px;
+    font-size: 1.02rem;
+  }
+  #stage .q-text {
+    font-size: 1.08rem;
+  }
+}
+
+/* ----- landscape: judul soal membentang, dua kolom sama tinggi, pemisah halus ----- */
+
+@media (orientation:landscape) and (min-aspect-ratio:5/4) {
+  .stage.split {
+    grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+    column-gap: 0;
+    row-gap: 8px;
+    align-items: stretch;
+  }
+  .stage.split>.q-text {
+    grid-column: 1/-1;
+    font-size: 1.08rem;
+  }
+  .stage.split>.gA,
+  .stage.split>.gB {
+    display: grid;
+    gap: 10px;
+    align-content: center;
+    justify-items: stretch;
+    min-width: 0;
+  }
+  .stage.split>.gA {
+    padding-right: 18px;
+  }
+  .stage.split>.gB {
+    padding-left: 18px;
+    border-left: 3px dotted #E3CF8E;
+  }
+  .stage:not(.split) .opts {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+  }
+  .stage:not(.split) .seqgrid {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+  }
+  .stage:not(.split) .seqgrid>.seq-item:last-child:nth-child(odd) {
+    grid-column: 1/-1;
+  }
+  .stage:not(.split)>.btn-block,
+  .stage:not(.split)>.btn {
+    justify-self: center;
+    width: min(100%,440px);
+  }
+  .sn-wrap {
+    max-width: min(420px,100%);
+  }
+  #fb {
+    left: max(calc(10px + env(safe-area-inset-left,0px)),calc(50vw - 710px));
+    width: min(46vw,500px);
+  }
+}
+
+@media (orientation:landscape) and (max-height:420px) {
+  .ghead h2 {
+    font-size: .98rem;
+  }
+}
+
+/* ----- layar hasil: dua kolom seimbang di landscape ----- */
+
+.rA,
+.rB {
+  display: contents;
+}
+
+@media (orientation:landscape) and (min-aspect-ratio:5/4) {
+  .result {
+    grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+    gap: 8px 0;
+    align-items: stretch;
+    justify-items: stretch;
+  }
+  .result>.rA,
+  .result>.rB {
+    display: grid;
+    gap: 8px;
+    justify-items: center;
+    align-content: center;
+    min-width: 0;
+    text-align: center;
+  }
+  .result>.rA {
+    padding-right: 18px;
+  }
+  .result>.rB {
+    padding-left: 18px;
+    border-left: 3px dotted #E3CF8E;
+  }
+  .result>.res-btns {
+    grid-column: 1/-1;
+    grid-template-columns: repeat(auto-fit,minmax(150px,1fr))!important;
+  }
+  .result .res-btns .btn-block:first-child {
+    grid-column: auto;
+  }
+  .result .missed {
+    max-height: 26vh;
+    text-align: left;
+  }
+}

@@ -1,0 +1,67 @@
+/* =====================================================================
+   Pilihan font dan penyesuaian kecil
+   Tombol pilihan font Arab, layar sangat sempit, dan mode kurangi animasi.
+   ===================================================================== */
+
+.fontopt {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  text-align: left;
+  padding: 10px 14px;
+  border-radius: 18px;
+  border: 3px solid var(--line);
+  background: #fff;
+}
+
+.fontopt.on {
+  border-color: var(--mint);
+  background: #E7F8F3;
+}
+
+.fontopt {
+  flex-wrap: wrap;
+}
+
+.fontopt>span:first-child {
+  flex: 1 1 150px;
+}
+
+.fontopt b {
+  font-family: var(--f-disp);
+  font-size: 1.05rem;
+  display: block;
+  line-height: 1.2;
+}
+
+.fontopt small {
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.fontopt .ar {
+  font-size: 1.5rem;
+  line-height: 2.1;
+  flex: none;
+}
+
+@media(max-width:380px) {
+  .brand>span {
+    display: none;
+  }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: .001ms!important;
+    animation-iteration-count: 1!important;
+    transition-duration: .001ms!important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}

@@ -1,0 +1,92 @@
+/* =====================================================================
+   Puzzle Huruf Hijaiyyah (game 17)
+   Papan kepingan, kartu contoh huruf, dan keadaan kepingan.
+   ===================================================================== */
+
+.pz-ref {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  padding: 8px 14px;
+  text-align: center;
+}
+
+.pz-ref .hij-big {
+  font-size: 3.4rem;
+  line-height: 1.5;
+}
+
+.pz-board {
+  display: grid;
+  grid-template-columns: repeat(var(--cols,2),1fr);
+  grid-template-rows: repeat(var(--rows,2),1fr);
+  gap: 4px;
+  width: min(100%,320px);
+  aspect-ratio: 1/1;
+  margin: 0 auto;
+  padding: 6px;
+  direction: ltr;
+  background: #E3F2EA;
+  border: 3px solid #B8DCCB;
+  border-radius: 20px;
+}
+
+.pz-piece {
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+  padding: 0;
+  overflow: hidden;
+  background: #FFF8DD;
+  border: 2px solid #D9B04A;
+  border-radius: 10px;
+  box-shadow: 0 3px 0 #C99A2E;
+  transition: transform .12s,border-color .12s,background .12s;
+}
+
+.pz-piece svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.pz-piece:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 #C99A2E;
+}
+
+.pz-piece.sel {
+  background: #E8ECFF;
+  border-color: var(--grape);
+  box-shadow: 0 0 0 4px rgba(75,95,184,.3);
+  transform: scale(.94);
+}
+
+.pz-piece.ok {
+  background: #E3F8EE;
+  border-color: var(--mint);
+  box-shadow: 0 3px 0 var(--mint-d);
+}
+
+.pz-piece.done {
+  background: var(--ok-bg);
+  border-color: var(--ok);
+  box-shadow: none;
+  pointer-events: none;
+}
+
+.pz-foot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-weight: 800;
+  color: var(--muted);
+}
+
+.pz-foot b {
+  color: var(--night);
+}

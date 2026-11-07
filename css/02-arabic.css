@@ -1,0 +1,58 @@
+/* =====================================================================
+   Tipografi tulisan Arab
+   Aturan font Arab agar tidak mengikuti font antarmuka.
+   ===================================================================== */
+
+/* ===== Arabic typography (fixed): one rule family, never inherits UI font ===== */
+
+.ar {
+  unicode-bidi: isolate;
+}
+
+/* span di dalam teks Arab (warna tajwid, dll.) TIDAK boleh isolate, kalau tidak huruf bersambung terputus */
+
+.ar * {
+  unicode-bidi: normal;
+}
+
+.ar,
+.ar * {
+  font-family: var(--f-ar)!important;
+  direction: rtl;
+  letter-spacing: 0!important;
+  word-spacing: var(--ar-ws,.2em);
+  text-transform: none;
+  font-weight: var(--ar-w,600);
+  font-kerning: normal;
+  font-feature-settings: "kern","liga","calt","mark","mkmk";
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+.ar {
+  line-height: var(--ar-lh,2.5);
+  padding-block: .25em;
+  overflow: visible;
+}
+
+.ar-xl {
+  font-size: calc(clamp(2rem,6.4vw,3rem)*var(--ar-scale,1));
+}
+
+.ar-lg {
+  font-size: calc(clamp(1.7rem,5.2vw,2.4rem)*var(--ar-scale,1));
+}
+
+.ar-md {
+  font-size: calc(clamp(1.45rem,4.4vw,1.9rem)*var(--ar-scale,1));
+}
+
+.ar-sm {
+  font-size: calc(1.3rem*var(--ar-s2,1));
+  line-height: 2.1;
+}
+
+.userselect {
+  user-select: text;
+  -webkit-user-select: text;
+}

@@ -1,0 +1,89 @@
+/* =====================================================================
+   Kartu game
+   Kartu daftar permainan di beranda.
+   ===================================================================== */
+
+/* ===== game cards ===== */
+
+.gal {
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(160px,1fr));
+  gap: 14px;
+}
+
+.gcard {
+  position: relative;
+  text-align: left;
+  border-radius: 22px;
+  padding: 14px;
+  border: 3px solid var(--bd);
+  background: var(--bg);
+  box-shadow: 0 6px 0 var(--bd);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-height: 196px;
+  transition: transform .15s,box-shadow .15s;
+}
+
+.gcard:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 9px 0 var(--bd);
+}
+
+.gcard:active {
+  transform: translateY(4px);
+  box-shadow: 0 2px 0 var(--bd);
+}
+
+.gicon {
+  width: 54px;
+  height: 54px;
+  border-radius: 16px;
+  background: #fff;
+  display: grid;
+  place-items: center;
+  font-size: 1.9rem;
+  border: 3px solid var(--bd);
+}
+
+.gcard h3 {
+  font-size: 1.1rem;
+  color: var(--ink);
+}
+
+.gcard p {
+  margin: 0;
+  font-size: .8rem;
+  color: #3E5A57;
+  font-weight: 600;
+  line-height: 1.35;
+  flex: 1;
+}
+
+.gstars {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.gstars i {
+  font-style: normal;
+  font-size: .95rem;
+  filter: grayscale(1) opacity(.45);
+}
+
+.gstars i.on {
+  filter: none;
+}
+
+.gnum {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  font-family: var(--f-disp);
+  font-weight: 800;
+  font-size: .95rem;
+  color: var(--bd);
+  opacity: .9;
+}

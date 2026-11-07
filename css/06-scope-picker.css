@@ -1,0 +1,49 @@
+/* =====================================================================
+   Pilihan materi
+   Kapsul pilihan juz/surah.
+   ===================================================================== */
+
+/* ===== scope picker ===== */
+
+.scope {
+  display: grid;
+  gap: 12px;
+}
+
+.pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pill {
+  padding: 9px 16px;
+  border-radius: 999px;
+  border: 2px solid var(--line);
+  background: #fff;
+  font-weight: 800;
+  color: var(--night);
+}
+
+.pill.on {
+  background: var(--mint);
+  border-color: var(--mint-d);
+  color: #fff;
+}
+
+select.sel {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 2px solid var(--line);
+  background: #fff;
+  font: inherit;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.scope-info {
+  font-weight: 700;
+  color: var(--muted);
+  font-size: .92rem;
+}

@@ -1,0 +1,167 @@
+/* =====================================================================
+   Hero beranda
+   Panel sambutan di beranda.
+   ===================================================================== */
+
+/* ===== hero ===== */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  border-radius: 28px;
+  color: #fff;
+  padding: 24px 22px;
+  background: radial-gradient(circle at 85% 20%,#4b5bd6 0,transparent 45%),linear-gradient(160deg,#0F3D42 0%,#176A66 60%,#3C4FB5 100%);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 18px;
+  align-items: center;
+  border: 4px solid #fff;
+  box-shadow: 0 10px 30px rgba(31,42,104,.25);
+}
+
+.hero .stars-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: .85;
+}
+
+.hero h2 {
+  font-size: clamp(1.6rem,4.6vw,2.4rem);
+  position: relative;
+}
+
+.hero p {
+  margin: 6px 0 0;
+  opacity: .92;
+  position: relative;
+  max-width: 46ch;
+}
+
+.goal {
+  margin-top: 14px;
+  position: relative;
+  max-width: 360px;
+}
+
+.goal-row {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 800;
+  font-size: .9rem;
+  margin-bottom: 5px;
+}
+
+.bar {
+  height: 14px;
+  background: rgba(255,255,255,.22);
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.bar>i {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg,var(--sun),#FFE48A);
+  border-radius: 99px;
+  transition: width .6s cubic-bezier(.2,.8,.2,1);
+}
+
+.bar.dark {
+  background: var(--line);
+}
+
+.bar.dark>i {
+  background: linear-gradient(90deg,var(--mint),#5FE0C3);
+}
+
+.hero-cta {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+  position: relative;
+}
+
+.mascot-box {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  max-width: 200px;
+}
+
+.mascot {
+  width: 128px;
+  height: 128px;
+  filter: drop-shadow(0 8px 14px rgba(0,0,0,.3));
+  animation: floaty 3.6s ease-in-out infinite;
+}
+
+.mascot .eye {
+  transform-origin: center;
+  transform-box: fill-box;
+  animation: blink 4.5s infinite;
+}
+
+.mascot.cheer {
+  animation: hop .7s ease;
+}
+
+.bubble {
+  background: #fff;
+  color: var(--ink);
+  border-radius: 18px;
+  padding: 8px 12px;
+  font-weight: 700;
+  font-size: .85rem;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 4px 0 rgba(0,0,0,.12);
+}
+
+.bubble:before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  margin-left: -8px;
+  border: 8px solid transparent;
+  border-top: 0;
+  border-bottom-color: #fff;
+}
+
+@keyframes floaty {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-2deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(2deg);
+  }
+}
+
+@keyframes hop {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  40% {
+    transform: translateY(-22px) scale(1.12);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes blink {
+  0%,
+  92%,
+  100% {
+    transform: scaleY(1);
+  }
+  95% {
+    transform: scaleY(.1);
+  }
+}

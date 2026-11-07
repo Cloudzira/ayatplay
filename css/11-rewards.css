@@ -1,0 +1,179 @@
+/* =====================================================================
+   Hadiah dan motivasi
+   Stiker, lencana, dan kartu motivasi.
+   ===================================================================== */
+
+/* ===== hadiah & motivasi ===== */
+
+.big-stars span.pop {
+  display: inline-block;
+  animation: starPop .6s cubic-bezier(.2,1.7,.4,1) both;
+  animation-delay: calc(var(--i)*.35s + .2s);
+}
+
+@keyframes starPop {
+  0% {
+    transform: scale(0) rotate(-90deg);
+    opacity: 0;
+  }
+  100% {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+.sticker {
+  --tb: #C98A4B;
+  --tbg: #FFEBD6;
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 2px;
+  padding: 16px 28px 12px;
+  border-radius: 24px;
+  border: 5px solid var(--tb);
+  background: linear-gradient(160deg,#fff,var(--tbg));
+  box-shadow: 0 8px 0 var(--tb),0 16px 28px rgba(0,0,0,.18);
+  animation: stkIn .8s 1s cubic-bezier(.2,1.5,.4,1) both;
+  text-align: center;
+}
+
+.sticker.t2 {
+  --tb: #9AA7BD;
+  --tbg: #EAF0FA;
+}
+
+.sticker.t3 {
+  --tb: #F2B705;
+  --tbg: #FFF3C2;
+}
+
+.sticker b {
+  font-family: var(--f-disp);
+  font-size: 1.1rem;
+  line-height: 1.15;
+}
+
+.sticker small {
+  color: var(--muted);
+  font-weight: 800;
+}
+
+.stk-e {
+  font-size: 4rem;
+  line-height: 1.15;
+  display: block;
+  animation: wob 2.4s 2s ease-in-out infinite;
+}
+
+.stk-new {
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  background: var(--coral);
+  color: #fff;
+  font-family: var(--f-disp);
+  font-weight: 800;
+  font-size: .85rem;
+  border-radius: 99px;
+  padding: 1px 12px;
+  transform: rotate(8deg);
+  border-bottom: 3px solid var(--coral-d);
+}
+
+@keyframes stkIn {
+  0% {
+    transform: scale(.2) rotate(-25deg);
+    opacity: 0;
+  }
+  100% {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+@keyframes wob {
+  0%,
+  100% {
+    transform: rotate(-6deg);
+  }
+  50% {
+    transform: rotate(6deg) scale(1.06);
+  }
+}
+
+.sticker.sm {
+  padding: 10px 6px 8px;
+  border-width: 3px;
+  box-shadow: 0 4px 0 var(--tb);
+  animation: none;
+}
+
+.sticker.sm .stk-e {
+  font-size: 2.2rem;
+  animation: none;
+}
+
+.sticker.sm b {
+  font-size: .85rem;
+}
+
+.sticker.sm small {
+  font-size: .72rem;
+}
+
+.sticker.lock {
+  opacity: .5;
+  filter: grayscale(1);
+}
+
+.stkgrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(112px,1fr));
+  gap: 12px;
+}
+
+.mot {
+  background: #FFF8DD;
+  border: 3px solid var(--sun);
+  border-radius: 20px;
+  padding: 12px 14px;
+  display: grid;
+  gap: 4px;
+  text-align: center;
+  width: 100%;
+}
+
+.need {
+  display: flex;
+  gap: 5px;
+  width: 100%;
+  max-width: 360px;
+}
+
+.need i {
+  flex: 1;
+  height: 16px;
+  border-radius: 99px;
+  background: var(--line);
+}
+
+.need i.on {
+  background: var(--mint);
+}
+
+.need i.goal {
+  outline: 3px solid var(--sun);
+  outline-offset: 1px;
+}
+
+.missed {
+  width: 100%;
+  display: grid;
+  gap: 8px;
+  text-align: left;
+}
+
+.result .hint {
+  max-width: 42ch;
+}

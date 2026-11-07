@@ -1,0 +1,164 @@
+/* =====================================================================
+   Splash screen
+   Layar pembuka berlogo.
+   ===================================================================== */
+
+/* ===== splash screen ===== */
+
+#splash {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(circle at 50% 38%,#4254C9 0,#2A3787 55%,#171F55 100%);
+  color: #fff;
+  overflow: hidden;
+  transition: opacity .55s ease,transform .55s ease;
+}
+
+#splash.out {
+  opacity: 0;
+  transform: scale(1.06);
+  pointer-events: none;
+}
+
+.sp-stars {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.sp-stars circle {
+  animation: tw 2.6s ease-in-out infinite;
+}
+
+@keyframes tw {
+  0%,
+  100% {
+    opacity: .2;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.sp-center {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+  padding: 20px;
+  margin-top: -6vh;
+}
+
+.sp-mark {
+  width: min(66vw,310px,36vh);
+  height: auto;
+  filter: drop-shadow(0 16px 26px rgba(0,0,0,.35));
+  animation: spPop .95s cubic-bezier(.2,1.4,.4,1) both;
+}
+
+@keyframes spPop {
+  0% {
+    transform: scale(.3) rotate(-12deg);
+    opacity: 0;
+  }
+  100% {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+.sp-star {
+  animation: spBob 2.4s ease-in-out .95s infinite;
+  transform-box: fill-box;
+  transform-origin: 50% 85%;
+}
+
+@keyframes spBob {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-2deg);
+  }
+  50% {
+    transform: translateY(-9px) rotate(2deg);
+  }
+}
+
+.sp-sp {
+  animation: tw 1.8s ease-in-out infinite;
+}
+
+.sp-mark .eye {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: blink 4s 1.6s infinite;
+}
+
+.sp-title {
+  font-family: var(--f-disp);
+  font-weight: 800;
+  font-size: clamp(2.5rem,12vw,3.8rem);
+  display: flex;
+  line-height: 1;
+  text-shadow: 0 4px 0 rgba(0,0,0,.28);
+}
+
+.sp-title span {
+  display: inline-block;
+  animation: spLetter .6s cubic-bezier(.2,1.6,.4,1) both;
+}
+
+@keyframes spLetter {
+  0% {
+    transform: translateY(26px) scale(.4);
+    opacity: 0;
+  }
+  100% {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+.sp-kids {
+  font-family: var(--f-disp);
+  font-weight: 800;
+  font-size: 1.15rem;
+  background: var(--sun);
+  color: #3b2b00;
+  border-radius: 12px;
+  padding: 0 16px;
+  border-bottom: 4px solid var(--sun-d);
+  animation: spLetter .6s 1.35s cubic-bezier(.2,1.6,.4,1) both;
+}
+
+.sp-tag {
+  margin-top: 6px;
+  font-weight: 700;
+  opacity: .92;
+  animation: spFade .8s 1.5s both;
+}
+
+@keyframes spFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: .92;
+  }
+}
+
+.btn-danger {
+  color: var(--bad);
+  border-color: #F5C2C4;
+}
+
+.small {
+  font-size: .85rem;
+  line-height: 1.45;
+}
+
+@media(prefers-reduced-motion:reduce) {
+}

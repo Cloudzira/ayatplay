@@ -1,0 +1,73 @@
+/* =====================================================================
+   Tombol
+   Tombol besar ramah anak.
+   ===================================================================== */
+
+/* ===== buttons (chunky, kid-friendly) ===== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--f-disp);
+  font-weight: 700;
+  font-size: 1.05rem;
+  padding: 11px 20px;
+  border-radius: 16px;
+  border-bottom: 5px solid rgba(0,0,0,.22);
+  transition: transform .08s,filter .15s;
+  min-height: 48px;
+}
+
+.btn:hover {
+  filter: brightness(1.05);
+}
+
+.btn:active {
+  transform: translateY(3px);
+  border-bottom-width: 2px;
+}
+
+.btn[disabled] {
+  opacity: .45;
+  pointer-events: none;
+}
+
+.btn-sun {
+  background: var(--sun);
+  color: #3b2b00;
+}
+
+.btn-mint {
+  background: var(--mint);
+  color: #fff;
+}
+
+.btn-grape {
+  background: var(--grape);
+  color: #fff;
+}
+
+.btn-coral {
+  background: var(--coral);
+  color: #fff;
+}
+
+.btn-ghost {
+  background: #fff;
+  color: var(--night);
+  border: 2px solid var(--line);
+  border-bottom-width: 5px;
+}
+
+.btn-sm {
+  padding: 7px 14px;
+  font-size: .92rem;
+  min-height: 40px;
+  border-radius: 13px;
+}
+
+.btn-block {
+  width: 100%;
+}
