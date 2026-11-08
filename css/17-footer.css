@@ -101,11 +101,6 @@
   --cd: #8A6405;
 }
 
-.kf-link.wa {
-  --c: var(--mint);
-  --cd: var(--mint-d);
-}
-
 .kf-foot {
   margin: 14px 0 0;
   padding-top: 12px;
