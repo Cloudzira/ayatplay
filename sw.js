@@ -1,6 +1,6 @@
 /* Service worker AyatPlay Kids: aplikasi tetap terbuka saat offline.
    Audio qari, API Qur'an, dan Firebase sengaja TIDAK di-cache di sini. */
-const V = 'ayatplay-v20';
+const V = 'ayatplay-v22';
 const SHELL = [
   // halaman dan ikon
   './',

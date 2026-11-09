@@ -89,3 +89,10 @@
     max-width: min(420px,100%);
   }
 }
+
+/* di HP/tablet (layar sentuh) cukup ketuk layar, tombol panah disembunyikan */
+@media (pointer:coarse) {
+  .pm-pad {
+    display: none;
+  }
+}

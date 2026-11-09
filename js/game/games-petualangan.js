@@ -42,7 +42,7 @@ function r18(el, cfg, l) {
       <div class="pm-start" id="pm-start"><div><p style="margin:0 0 10px;font-weight:800;font-size:1.05rem">Makan huruf yang dicari sesuai urutan hijaiyyah!</p>
         <p class="pm-legend"><span>🌙 Kamu</span><span>👻 Si Nakal: hindari!</span><span>⭐ Bintang: si Nakal takut</span></p>
         <button class="btn btn-mint" data-act="pm-go">▶ Mulai petualangan</button>
-        <p class="hint" style="margin:12px 0 0">Pakai tombol panah, geser layar, atau keyboard (panah / WASD).</p></div></div></div>
+        <p class="hint" style="margin:12px 0 0">Ketuk layar ke arah yang kamu mau (atas, bawah, kiri, kanan dari si Bulan Emas), atau pakai tombol panah dan keyboard.</p></div></div></div>
     <div class="pm-hearts" id="pm-hearts" role="status"></div>
     <div class="pm-pad" aria-label="Arah petualang"><button class="dp" data-act="pm-dir" data-d="left" aria-label="Kiri">◀</button><button class="dp" data-act="pm-dir" data-d="up" aria-label="Atas">▲</button><button class="dp" data-act="pm-dir" data-d="down" aria-label="Bawah">▼</button><button class="dp" data-act="pm-dir" data-d="right" aria-label="Kanan">▶</button></div></div>`;
 
@@ -428,12 +428,19 @@ function r18(el, cfg, l) {
     }
     hero.next = { x: dx, y: dy };
   }
+  function tapSteer(cx, cy) {
+    const r = cv.getBoundingClientRect(), hp = posOf(hero);
+    const dx = (cx - r.left) / r.width * SZ - (hp.x + .5) * CS, dy = (cy - r.top) / r.height * SZ - (hp.y + .5) * CS;
+    if (Math.max(Math.abs(dx), Math.abs(dy)) < CS * .3) return start();
+    if (Math.abs(dx) > Math.abs(dy)) setDir(dx > 0 ? 1 : -1, 0); else setDir(0, dy > 0 ? 1 : -1);
+  }
+  cv.addEventListener('click', e => tapSteer(e.clientX, e.clientY));   // mouse di laptop
   let tx = 0, ty = 0;
   cv.addEventListener('touchstart', e => { const t = e.changedTouches[0]; tx = t.clientX; ty = t.clientY; e.preventDefault(); }, { passive: false });
   cv.addEventListener('touchmove', e => e.preventDefault(), { passive: false });
   cv.addEventListener('touchend', e => {
     const t = e.changedTouches[0], dx = t.clientX - tx, dy = t.clientY - ty;
-    if (Math.max(Math.abs(dx), Math.abs(dy)) < 18) return;
+    if (Math.max(Math.abs(dx), Math.abs(dy)) < 18) { tapSteer(t.clientX, t.clientY); e.preventDefault(); return; }   // ketuk saja: belok ke arah yang diketuk
     if (Math.abs(dx) > Math.abs(dy)) setDir(dx > 0 ? 1 : -1, 0); else setDir(0, dy > 0 ? 1 : -1);
     e.preventDefault();
   }, { passive: false });
