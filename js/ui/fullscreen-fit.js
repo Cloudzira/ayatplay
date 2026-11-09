@@ -42,7 +42,7 @@ function syncFS() {
 ['fullscreenchange', 'webkitfullscreenchange'].forEach(ev => document.addEventListener(ev, syncFS));
 ACTIONS.fs = () => toggleFS();
 const FIT_MIN = .56;
-const B_START = '.opts,.tray,.mgrid,.hij-pool,.sn-wrap,.pm-wrap,.rn-wrap,.gb,.pz-board';
+const B_START = '.opts,.tray,.mgrid,.hij-pool,.sn-wrap,.pm-box,.gb,.pz-board';
 const LAND_Q = '(orientation:landscape) and (min-aspect-ratio:5/4)';
 let fitQueued = false, splitBusy = false, stageMO = null, areaRO = null;
 

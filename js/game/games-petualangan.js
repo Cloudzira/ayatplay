@@ -38,17 +38,14 @@ function r18(el, cfg, l) {
 
   el.innerHTML = `<div class="sn-hud" id="pm-hud"></div><div class="sn-strip" id="pm-strip"></div>
     ${P.timer[i] ? `<div class="timer" id="pm-tm" role="timer" aria-label="Sisa waktu"><span class="tbar" aria-hidden="true"><i></i></span><b>⏱ ${P.timer[i]} dtk</b></div>` : ''}
-    <div class="pm-wrap"><canvas id="pm" width="${SZ}" height="${SZ}" role="img" aria-label="Labirin petualangan huruf hijaiyyah"></canvas>
+    <div class="pm-box"><div class="pm-wrap"><canvas id="pm" width="${SZ}" height="${SZ}" role="img" aria-label="Labirin petualangan huruf hijaiyyah"></canvas>
       <div class="pm-start" id="pm-start"><div><p style="margin:0 0 10px;font-weight:800;font-size:1.05rem">Makan huruf yang dicari sesuai urutan hijaiyyah!</p>
         <p class="pm-legend"><span>🌙 Kamu</span><span>👻 Si Nakal: hindari!</span><span>⭐ Bintang: si Nakal takut</span></p>
         <button class="btn btn-mint" data-act="pm-go">▶ Mulai petualangan</button>
         <p class="hint" style="margin:12px 0 0">Pakai tombol panah, geser layar, atau keyboard (panah / WASD).</p></div></div></div>
     <div class="pm-hearts" id="pm-hearts" role="status"></div>
-    <div class="dpad pm-dock" id="pm-dock" aria-label="Arah petualang"><button class="dp up" data-act="pm-dir" data-d="up" aria-label="Atas">▲</button><button class="dp lf" data-act="pm-dir" data-d="left" aria-label="Kiri">◀</button><button class="dp dn" data-act="pm-dir" data-d="down" aria-label="Bawah">▼</button><button class="dp rt" data-act="pm-dir" data-d="right" aria-label="Kanan">▶</button></div>`;
+    <div class="pm-pad" aria-label="Arah petualang"><button class="dp" data-act="pm-dir" data-d="left" aria-label="Kiri">◀</button><button class="dp" data-act="pm-dir" data-d="up" aria-label="Atas">▲</button><button class="dp" data-act="pm-dir" data-d="down" aria-label="Bawah">▼</button><button class="dp" data-act="pm-dir" data-d="right" aria-label="Kanan">▶</button></div></div>`;
 
-  const dock = $('#pm-dock');                              // tombol panah dipindah ke dasar layar game
-  if (dock && $('#gmain')) { dock.remove(); $('#gmain').appendChild(dock); }
-  const dropDock = () => { const d = $('#pm-dock'); if (d) d.remove(); };
   const cv = $('#pm'), ctx = cv.getContext('2d'), target = () => seq[pm.ti];
   const wd = (a, b) => { const d = Math.abs(a - b); return Math.min(d, W - d); };   // jarak horizontal dengan terowongan
   const open = (x, y) => y >= 0 && y < H && rows[y][((x % W) + W) % W] !== '#';
@@ -390,7 +387,7 @@ function r18(el, cfg, l) {
   /* ---------- putaran utama ---------- */
   let lastT = performance.now();
   function anim(now) {
-    if (run !== myRun || !document.getElementById('pm')) { dropDock(); return; }
+    if (run !== myRun || !document.getElementById('pm')) return;
     const dt = Math.min(.05, (now - lastT) / 1000);
     lastT = now;
     if (!paused()) {
@@ -409,7 +406,6 @@ function r18(el, cfg, l) {
       }
     }
     draw(now);
-    if (pm.over) dropDock();
     requestAnimationFrame(anim);
   }
   function start() {

@@ -12,11 +12,11 @@ function r19(el, cfg, l) {
   const rn = { ti: 0, started: false, over: false, t: 0, lane: Math.floor(N / 2), lx: Math.floor(N / 2), letters: [], fb: 0, fbLane: -1, fbOk: false, res: Array(total).fill(null), off: 0, resolved: false };
   const q = run.q = { v: hitem(seq[0]), rn };
   el.innerHTML = `<div class="sn-hud" id="rn-hud"></div><div class="sn-strip" id="rn-strip"></div>
-    <div class="rn-wrap"><canvas id="rn" width="${SZ}" height="${SZ}" role="img" aria-label="Jalan pelari huruf hijaiyyah"></canvas>
+    <div class="pm-box"><div class="rn-wrap"><canvas id="rn" width="${SZ}" height="${SZ}" role="img" aria-label="Jalan pelari huruf hijaiyyah"></canvas>
       <div class="pm-start" id="rn-start"><div><p style="margin:0 0 12px;font-weight:800;font-size:1.05rem">Pindah jalur dan tangkap huruf yang dicari!</p>
         <button class="btn btn-mint" data-act="rn-go">▶ Lari!</button>
         <p class="hint" style="margin:12px 0 0">Tombol kiri/kanan, geser layar, atau keyboard (panah / A D).</p></div></div></div>
-    <div class="rn-pad" aria-label="Pindah jalur"><button class="dp" data-act="rn-dir" data-d="-1" aria-label="Jalur kiri">◀</button><button class="dp" data-act="rn-dir" data-d="1" aria-label="Jalur kanan">▶</button></div>`;
+    <div class="rn-pad" aria-label="Pindah jalur"><button class="dp" data-act="rn-dir" data-d="-1" aria-label="Jalur kiri">◀</button><button class="dp" data-act="rn-dir" data-d="1" aria-label="Jalur kanan">▶</button></div></div>`;
   const cv = $('#rn'), ctx = cv.getContext('2d'), target = () => seq[rn.ti];
   const paused = () => !rn.started || rn.over || run.locked || document.hidden || !$('#overlay').classList.contains('hidden');
   const pp = t => Math.pow(t, 2.2);
