@@ -62,7 +62,6 @@ function autoSplit(st) {
         if (i >= head)
             (i < bi ? A : B).appendChild(k);
     });
-    B.querySelectorAll(':scope > .dpad').forEach(d => A.appendChild(d)); // tombol arah ular di kolom kiri
     st.append(A, B);
 }
 
@@ -75,6 +74,13 @@ function fitStage() {
     splitBusy = true;
     autoSplit(st);
     splitBusy = false;
+    const gA = st.querySelector(':scope > .gA'), gB = st.querySelector(':scope > .gB');
+    if (gA && gB) {                                           // tombol arah: kolom kiri di landscape, di bawah papan di portrait
+        const landNow = matchMedia(LAND_Q).matches, dp = [...gA.querySelectorAll(':scope > .dpad,:scope > .rn-pad'), ...gB.querySelectorAll(':scope > .dpad,:scope > .rn-pad')];
+        splitBusy = true;
+        dp.forEach(d => (landNow ? gA : gB).appendChild(d));
+        splitBusy = false;
+    }
     st.classList.toggle('split', !!st.querySelector(':scope > .gA'));
     const cs = getComputedStyle(area), padY = parseFloat(cs.paddingTop) + parseFloat(cs.paddingBottom), padX = parseFloat(cs.paddingLeft) + parseFloat(cs.paddingRight);
     const availH = area.clientHeight - padY, availW = area.clientWidth - padX;
