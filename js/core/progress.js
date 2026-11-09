@@ -36,7 +36,7 @@ const RANKS = ['Pemula', 'Santri', 'Pembaca', 'Penghafal', 'Penjaga Ayat', 'Mahi
 const BAND = l => l <= 3 ? 'Mudah' : l <= 6 ? 'Sedang' : l <= 9 ? 'Sulit' : 'Tantangan Hafiz';
 const tierOf = (l, g) => (g && maxL(g) === 1) ? 3 : (l <= 3 ? 1 : l <= 6 ? 2 : l <= 9 ? 3 : 4); // 1 perunggu, 2 perak, 3 emas, 4 berlian
 const TIER_NAME = ['', 'Perunggu', 'Perak', 'Emas', 'Berlian'];
-const MOTIFS = [{ e: '🕌', n: 'Masjid Cilik' }, { e: '🌙', n: 'Hilal Terang' }, { e: '📖', n: 'Mushaf Mulia' }, { e: "🕋", n: "Ka'bah Mungil" }, { e: '🌴', n: 'Pohon Kurma' }, { e: '🐪', n: 'Unta Setia' }, { e: '🕯️', n: 'Pelita Ilmu' }, { e: '📿', n: 'Tasbih Indah' }, { e: '🤲', n: 'Doa Tulus' }, { e: '🌟', n: 'Bintang Cahaya' }, { e: '🖋️', n: 'Pena Emas' }, { e: '🕊️', n: 'Merpati Putih' }, { e: '🐍', n: 'Ular Gesit' }, { e: '💎', n: 'Permata Tajwid' }, { e: '🌿', n: 'Daun Zaitun' }, { e: '🪙', n: 'Dinar Emas' }, { e: '🖼️', n: 'Kepingan Emas' }];
+const MOTIFS = [{ e: '🕌', n: 'Masjid Cilik' }, { e: '🌙', n: 'Hilal Terang' }, { e: '📖', n: 'Mushaf Mulia' }, { e: "🕋", n: "Ka'bah Mungil" }, { e: '🌴', n: 'Pohon Kurma' }, { e: '🐪', n: 'Unta Setia' }, { e: '🕯️', n: 'Pelita Ilmu' }, { e: '📿', n: 'Tasbih Indah' }, { e: '🤲', n: 'Doa Tulus' }, { e: '🌟', n: 'Bintang Cahaya' }, { e: '🖋️', n: 'Pena Emas' }, { e: '🕊️', n: 'Merpati Putih' }, { e: '🐍', n: 'Ular Gesit' }, { e: '💎', n: 'Permata Tajwid' }, { e: '🌿', n: 'Daun Zaitun' }, { e: '🪙', n: 'Dinar Emas' }, { e: '🖼️', n: 'Kepingan Emas' }, { e: '🧭', n: 'Kompas Petualang' }];
 const UCAPAN = [
     { ar: 'مَا شَاءَ اللَّهُ', id: 'Masya Allah, atas kehendak Allah, hebat sekali!' },
     { ar: 'الْحَمْدُ لِلَّهِ', id: 'Alhamdulillah, segala puji bagi Allah.' },

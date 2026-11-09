@@ -71,7 +71,7 @@ Skrip dimuat berurutan oleh `index.html`. Urutannya penting: file di bawah boleh
 | `js/core/` | Inti aplikasi: fungsi bantu, penyusun data, penyimpanan progres, level dan lencana, tombol (ACTIONS) |
 | `js/services/` | Layanan: pemuat data Al-Qur'an, suara, audio qari, Firebase, PWA |
 | `js/ui/` | Tampilan: komponen bersama, beranda, belajar, hadiah/profil, layar penuh, splash |
-| `js/game/` | Mesin game, tabel level, 17 game, dan `registry.js` (daftar GAMES, dimuat paling akhir) |
+| `js/game/` | Mesin game, tabel level, 18 game, dan `registry.js` (daftar GAMES, dimuat paling akhir) |
 | `js/main.js` | Titik mulai, dijalankan terakhir |
 
 ### Cara menambah game baru
