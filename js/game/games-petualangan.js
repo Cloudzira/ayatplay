@@ -44,8 +44,11 @@ function r18(el, cfg, l) {
         <button class="btn btn-mint" data-act="pm-go">▶ Mulai petualangan</button>
         <p class="hint" style="margin:12px 0 0">Pakai tombol panah, geser layar, atau keyboard (panah / WASD).</p></div></div></div>
     <div class="pm-hearts" id="pm-hearts" role="status"></div>
-    <div class="dpad" aria-label="Arah petualang"><button class="dp up" data-act="pm-dir" data-d="up" aria-label="Atas">▲</button><button class="dp lf" data-act="pm-dir" data-d="left" aria-label="Kiri">◀</button><button class="dp dn" data-act="pm-dir" data-d="down" aria-label="Bawah">▼</button><button class="dp rt" data-act="pm-dir" data-d="right" aria-label="Kanan">▶</button></div>`;
+    <div class="dpad pm-dock" id="pm-dock" aria-label="Arah petualang"><button class="dp up" data-act="pm-dir" data-d="up" aria-label="Atas">▲</button><button class="dp lf" data-act="pm-dir" data-d="left" aria-label="Kiri">◀</button><button class="dp dn" data-act="pm-dir" data-d="down" aria-label="Bawah">▼</button><button class="dp rt" data-act="pm-dir" data-d="right" aria-label="Kanan">▶</button></div>`;
 
+  const dock = $('#pm-dock');                              // tombol panah dipindah ke dasar layar game
+  if (dock && $('#gmain')) { dock.remove(); $('#gmain').appendChild(dock); }
+  const dropDock = () => { const d = $('#pm-dock'); if (d) d.remove(); };
   const cv = $('#pm'), ctx = cv.getContext('2d'), target = () => seq[pm.ti];
   const wd = (a, b) => { const d = Math.abs(a - b); return Math.min(d, W - d); };   // jarak horizontal dengan terowongan
   const open = (x, y) => y >= 0 && y < H && rows[y][((x % W) + W) % W] !== '#';
@@ -387,7 +390,7 @@ function r18(el, cfg, l) {
   /* ---------- putaran utama ---------- */
   let lastT = performance.now();
   function anim(now) {
-    if (run !== myRun || !document.getElementById('pm')) return;
+    if (run !== myRun || !document.getElementById('pm')) { dropDock(); return; }
     const dt = Math.min(.05, (now - lastT) / 1000);
     lastT = now;
     if (!paused()) {
@@ -406,6 +409,7 @@ function r18(el, cfg, l) {
       }
     }
     draw(now);
+    if (pm.over) dropDock();
     requestAnimationFrame(anim);
   }
   function start() {
