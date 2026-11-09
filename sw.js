@@ -1,6 +1,6 @@
 /* Service worker AyatPlay Kids: aplikasi tetap terbuka saat offline.
    Audio qari, API Qur'an, dan Firebase sengaja TIDAK di-cache di sini. */
-const V = 'ayatplay-v15';
+const V = 'ayatplay-v16';
 const SHELL = [
   // halaman dan ikon
   './',
@@ -33,6 +33,7 @@ const SHELL = [
   'css/20-tajwid.css',
   'css/21-puzzle-hijaiyyah.css',
   'css/22-petualangan.css',
+  'css/23-pelari.css',
   'js/config.js',
   'js/core/actions.js',
   'js/core/arabic-text.js',
@@ -49,6 +50,7 @@ const SHELL = [
   'js/game/games-hijaiyyah.js',
   'js/game/games-puzzle.js',
   'js/game/games-petualangan.js',
+  'js/game/games-pelari.js',
   'js/game/games-tajwid.js',
   'js/game/levels.js',
   'js/game/registry.js',

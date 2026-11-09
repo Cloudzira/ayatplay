@@ -5,7 +5,7 @@
 'use strict';
 
 /* ---------- BERANDA ---------- */
-const GCOL = [['#D8F3E8', '#4DBB93'], ['#FFF1C9', '#E0AE2E'], ['#D5F2F2', '#4FB8BC'], ['#DFE6FA', '#7F93DB'], ['#FADDE3', '#E58AA0'], ['#FBE4D3', '#E39A6B'], ['#E6F1CF', '#9FC05A'], ['#E8E0F7', '#A48BD6'], ['#D3E8EC', '#5C9AA6'], ['#FFEBC2', '#EBA928'], ['#F3E3F1', '#C58AC0'], ['#E2EEF9', '#78A9D6'], ['#E9F3D9', '#7DB84A'], ['#FFE3E0', '#E97C70'], ['#E1F0D6', '#74B35A'], ['#E9E2FA', '#9A86DA'], ['#E3F1FA', '#6FA8D6'], ['#DDF6EE', '#2FB58F']];
+const GCOL = [['#D8F3E8', '#4DBB93'], ['#FFF1C9', '#E0AE2E'], ['#D5F2F2', '#4FB8BC'], ['#DFE6FA', '#7F93DB'], ['#FADDE3', '#E58AA0'], ['#FBE4D3', '#E39A6B'], ['#E6F1CF', '#9FC05A'], ['#E8E0F7', '#A48BD6'], ['#D3E8EC', '#5C9AA6'], ['#FFEBC2', '#EBA928'], ['#F3E3F1', '#C58AC0'], ['#E2EEF9', '#78A9D6'], ['#E9F3D9', '#7DB84A'], ['#FFE3E0', '#E97C70'], ['#E1F0D6', '#74B35A'], ['#E9E2FA', '#9A86DA'], ['#E3F1FA', '#6FA8D6'], ['#DDF6EE', '#2FB58F'], ['#FFF0D6', '#E8A33D']];
 
 function renderHome() {
     const lv = levelInfo(S.xp), g = goalState(), pct = Math.round(g.n / g.goal * 100);
