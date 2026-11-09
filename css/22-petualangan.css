@@ -58,3 +58,18 @@
     max-width: min(420px,100%);
   }
 }
+
+/* tombol panah menempel di dasar layar game */
+.pm-dock {
+  flex: none;
+  margin: 0 auto;
+  padding: 4px 0 calc(6px + env(safe-area-inset-bottom,0px));
+}
+
+@media (orientation:landscape) and (max-height:520px) {
+  .pm-dock {
+    grid-template-columns: repeat(3,52px);
+    grid-template-rows: repeat(2,42px);
+    gap: 5px;
+  }
+}
