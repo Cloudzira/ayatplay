@@ -55,10 +55,12 @@ Letakkan di folder atau subdomain tersendiri agar `sw.js` tidak bertabrakan deng
 - Pengaturan level ada di `LV[17]` (`js/game/levels.js`), logika game di `js/game/games-puzzle.js`, gayanya di `css/21-puzzle-hijaiyyah.css`.
 
 ## 5b. Pesawat Pencari Ayat (game 20)
-- Soal berupa misi: satu surah dan beberapa ayat berurutan (misalnya QS Abasa ayat 1-5). Pesawat terbang mencari ayat 1, lalu ayat 2, dan seterusnya. Tiap ayat adalah satu gelombang awan = satu soal (10 soal per level).
+- Soal berupa misi: satu surah dan beberapa ayat berurutan (misalnya QS Al-Lahab ayat 1-3). Tiap level berisi beberapa misi dari surah yang berbeda. Satu gelombang awan = satu soal (10 soal per level).
 - Tiap awan memuat potongan ayat asli Al-Qur'an. Satu awan benar, awan lain salah. Tidak ada ayat buatan atau ayat yang diubah.
-- Materi mengikuti pilihan juz atau surah di beranda. Bila surah terpilih terlalu pendek untuk satu misi, misi diambil dari surah lain.
-- Kesulitan naik per level: awan 3 sampai 5 jalur, awan makin cepat, potongan ayat 5 sampai 3 kata (kadang bagian akhir ayat), awan salah makin mirip (surah lain, ayat bertetangga, ayat serupa), petunjuk arti makin sedikit (tombol Intip arti tidak dihitung poin), awan berkabut di level 8-10, dan langit berubah dari siang ke malam.
+- Ayat yang panjang dipotong menjadi 2-4 awan berurutan (di level tinggi dipotong per 1-2 kata, level 10 per kata).
+- Pesawat bisa pindah jalur (atas/bawah) dan maju/mundur. Maju mempercepat waktu dan membuat pesawat langsung menyerbu awan, mundur mengerem agar ada waktu berpikir. Kendali: tombol ◀ ▲ ▼ ▶ (◀ ▶ ditahan), geser layar, atau keyboard (panah atau WASD).
+- Materi mengikuti pilihan juz atau surah di beranda. Bila surah terpilih terlalu pendek, misi diambil dari surah lain.
+- Kesulitan naik per level: awan 3 sampai 5 jalur, awan makin cepat, potongan makin pendek, awan salah makin mirip, petunjuk arti makin sedikit (tombol Intip arti tidak dihitung poin), awan berkabut di level 8-10, dan langit berubah dari siang ke malam.
 - Pengaturan level ada di `LV[20]` (`js/game/levels.js`), logika game di `js/game/games-pesawat.js`, gayanya di `css/24-pesawat.css`.
 
 ## 6. Layar penuh dan tampilan game satu layar

@@ -118,8 +118,14 @@
 
 .pl-pad {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
+  grid-template-columns: repeat(4,1fr);
+  gap: 8px;
+}
+
+.pl-pad .dp {
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .pl-pad .dp {
@@ -130,4 +136,15 @@
   .pm-box.pl-box {
     max-width: min(560px,100%);
   }
+}
+
+#pl-strip i {
+  white-space: nowrap;
+}
+
+#pl-strip i sup {
+  font-size: .62em;
+  line-height: 0;
+  margin-inline-start: 1px;
+  vertical-align: super;
 }

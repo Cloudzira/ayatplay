@@ -24,9 +24,10 @@ const LV = {
     17: { n: [10, 12, 14, 16, 18, 20, 22, 24, 27, 30], cols: [2, 2, 3, 3, 3, 3, 4, 4, 4, 4], rows: [2, 2, 2, 2, 3, 3, 3, 3, 4, 4], hint: [2, 2, 2, 1, 1, 1, 0, 0, 0, 0], timer: [0, 0, 0, 0, 0, 60, 60, 70, 80, 75] },
     18: { hero: 3.4, speed: [1.1, 1.3, 1.55, 1.8, 2.0, 2.2, 2.4, 2.6, 2.8, 3.0], ghosts: [1, 1, 2, 2, 2, 3, 3, 3, 4, 4], chase: [.2, .3, .4, .5, .55, .6, .68, .75, .8, .85], board: [3, 3, 4, 4, 5, 5, 6, 6, 7, 7], stars: [2, 2, 2, 1, 1, 1, 1, 1, 1, 1], scare: [8, 8, 7, 7, 6, 6, 5, 5, 5, 4], maze: [0, 1, 0, 1, 2, 0, 1, 2, 1, 2], hint: [2, 2, 2, 1, 1, 1, 0, 0, 0, 0], timer: [0, 0, 0, 0, 40, 36, 32, 30, 28, 26] },
     19: { speed: [.28, .31, .34, .37, .4, .43, .47, .51, .55, .6], lanes: [3, 3, 3, 3, 3, 5, 5, 5, 5, 5], hint: [2, 2, 2, 1, 1, 1, 0, 0, 0, 0] },
-    // 20 Pesawat Pencari Ayat. route: jumlah ayat tiap misi (jumlahnya 10 = 10 soal). rows: jumlah awan/jalur. speed: kecepatan awan.
-    // fw: jumlah kata maksimal di awan. dis: jenis awan salah (0 surah lain, 1 campuran, 2 ayat bertetangga, 3 ayat mirip).
-    // hint: 2 arti selalu tampil, 1 arti hanya di ayat pertama misi, 0 tanpa arti. part: 0 awal ayat, 2 awal atau akhir ayat acak.
-    // begin: peluang misi mulai dari ayat pertama surah. fog: 0 tanpa kabut, 1 kabut ringan, 2 kabut tebal. sky: 0 siang, 1 sore, 2 senja, 3 malam.
-    20: { route: [[3, 3, 4], [3, 3, 4], [4, 3, 3], [5, 5], [5, 5], [5, 5], [6, 4], [6, 4], [7, 3], [10]], rows: [3, 3, 3, 4, 4, 4, 4, 5, 5, 5], speed: [.15, .16, .17, .18, .2, .22, .24, .27, .3, .33], fw: [5, 5, 5, 4, 4, 4, 3, 3, 3, 3], dis: [0, 1, 1, 2, 2, 2, 3, 3, 3, 3], hint: [2, 2, 2, 1, 1, 1, 1, 0, 0, 0], part: [0, 0, 0, 0, 2, 2, 2, 2, 2, 2], begin: [1, 1, 1, .7, .5, .5, .3, .3, .2, .2], fog: [0, 0, 0, 0, 0, 0, 0, 1, 1, 2], sky: [0, 0, 0, 1, 1, 1, 2, 2, 2, 3] }
+    // 20 Pesawat Pencari Ayat. route: jumlah ayat tiap misi (tiap misi dari surah berbeda; misi ditambah otomatis sampai 10 soal).
+    // rows: jumlah awan/jalur. speed: kecepatan awan. fw: jumlah kata maksimal per awan (ayat lebih panjang dipotong jadi beberapa awan berurutan).
+    // cap: jumlah potongan maksimal per ayat. mw: jumlah gelombang maksimal per misi (agar surah tiap level bervariasi). dis: jenis awan salah (0 surah lain, 1 campuran, 2 bagian lain ayat yang sama + ayat bertetangga, 3 ditambah yang mirip).
+    // hint: 2 arti selalu tampil, 1 arti hanya di awal misi, 0 tanpa arti. begin: peluang misi mulai dari ayat pertama surah.
+    // fog: 0 tanpa kabut, 1 kabut ringan, 2 kabut tebal. sky: 0 siang, 1 sore, 2 senja, 3 malam.
+    20: { route: [[2, 2, 2, 2, 2], [2, 2, 2, 2, 2], [3, 2, 3, 2], [3, 3, 3, 3], [3, 3, 3, 3], [4, 3, 3, 3], [4, 3, 3, 3], [3, 3, 3, 3, 3], [4, 4, 4], [5, 5, 5]], rows: [3, 3, 3, 4, 4, 4, 4, 5, 5, 5], speed: [.15, .16, .17, .18, .2, .22, .24, .27, .3, .33], fw: [5, 4, 4, 3, 3, 3, 2, 2, 2, 1], cap: [3, 3, 3, 3, 3, 3, 3, 3, 4, 4], mw: [4, 4, 4, 3, 3, 3, 3, 3, 3, 4], dis: [0, 1, 1, 2, 2, 2, 3, 3, 3, 3], hint: [2, 2, 2, 1, 1, 1, 1, 0, 0, 0], begin: [1, 1, .8, .6, .5, .4, .3, .3, .2, .2], fog: [0, 0, 0, 0, 0, 0, 0, 1, 1, 2], sky: [0, 0, 0, 1, 1, 1, 2, 2, 2, 3] }
 };
