@@ -54,6 +54,13 @@ Letakkan di folder atau subdomain tersendiri agar `sw.js` tidak bertabrakan deng
 - Kepingan yang tampilannya sama persis (misalnya kepingan kosong pada huruf Alif) dianggap sama, jadi anak tidak perlu menebak kepingan kosong yang mana. Bila hurufnya terlalu sederhana, jumlah kepingan dikurangi otomatis.
 - Pengaturan level ada di `LV[17]` (`js/game/levels.js`), logika game di `js/game/games-puzzle.js`, gayanya di `css/21-puzzle-hijaiyyah.css`.
 
+## 5b. Pesawat Pencari Ayat (game 20)
+- Soal berupa misi: satu surah dan beberapa ayat berurutan (misalnya QS Abasa ayat 1-5). Pesawat terbang mencari ayat 1, lalu ayat 2, dan seterusnya. Tiap ayat adalah satu gelombang awan = satu soal (10 soal per level).
+- Tiap awan memuat potongan ayat asli Al-Qur'an. Satu awan benar, awan lain salah. Tidak ada ayat buatan atau ayat yang diubah.
+- Materi mengikuti pilihan juz atau surah di beranda. Bila surah terpilih terlalu pendek untuk satu misi, misi diambil dari surah lain.
+- Kesulitan naik per level: awan 3 sampai 5 jalur, awan makin cepat, potongan ayat 5 sampai 3 kata (kadang bagian akhir ayat), awan salah makin mirip (surah lain, ayat bertetangga, ayat serupa), petunjuk arti makin sedikit (tombol Intip arti tidak dihitung poin), awan berkabut di level 8-10, dan langit berubah dari siang ke malam.
+- Pengaturan level ada di `LV[20]` (`js/game/levels.js`), logika game di `js/game/games-pesawat.js`, gayanya di `css/24-pesawat.css`.
+
 ## 6. Layar penuh dan tampilan game satu layar
 - Tombol ⛶ ada di header (beranda, belajar, dll.) dan di bar game. Di Android dan laptop langsung masuk layar penuh; di iPhone Safari tidak didukung browser, jadi aplikasi menampilkan petunjuk "Tambahkan ke Layar Utama" (setelah dipasang, aplikasi sudah layar penuh dan tombolnya disembunyikan).
 - Saat bermain, header aplikasi dan menu bawah disembunyikan; hanya bar game ringkas (Keluar, judul, skor, layar penuh, suara) dan soal yang tampil.
@@ -71,7 +78,7 @@ Skrip dimuat berurutan oleh `index.html`. Urutannya penting: file di bawah boleh
 | `js/core/` | Inti aplikasi: fungsi bantu, penyusun data, penyimpanan progres, level dan lencana, tombol (ACTIONS) |
 | `js/services/` | Layanan: pemuat data Al-Qur'an, suara, audio qari, Firebase, PWA |
 | `js/ui/` | Tampilan: komponen bersama, beranda, belajar, hadiah/profil, layar penuh, splash |
-| `js/game/` | Mesin game, tabel level, 19 game, dan `registry.js` (daftar GAMES, dimuat paling akhir) |
+| `js/game/` | Mesin game, tabel level, 20 game, dan `registry.js` (daftar GAMES, dimuat paling akhir) |
 | `js/main.js` | Titik mulai, dijalankan terakhir |
 
 ### Cara menambah game baru

@@ -1,0 +1,133 @@
+/* Game 20: Pesawat Pencari Ayat (terbang mencari awan berisi ayat) */
+
+.pl-hud {
+  display: grid;
+  gap: 3px;
+  justify-items: center;
+  text-align: center;
+  font-weight: 800;
+  line-height: 1.25;
+  min-height: 6.6rem;
+  align-content: start;
+}
+
+.pl-top {
+  display: flex;
+  gap: 4px 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  font-size: .92rem;
+  color: var(--night);
+}
+
+.pl-mis {
+  background: var(--night);
+  color: #FFE9A6;
+  border-radius: 999px;
+  padding: 1px 10px;
+  font-size: .78rem;
+}
+
+.pl-find {
+  font-family: var(--f-disp);
+  font-size: 1.15rem;
+  color: var(--night);
+}
+
+.pl-n {
+  color: var(--coral-d);
+  font-size: 1.5rem;
+}
+
+.pl-part {
+  display: inline-block;
+  font-family: var(--f-body, inherit);
+  font-size: .72rem;
+  font-weight: 800;
+  color: var(--muted);
+}
+
+.pl-extra {
+  min-height: 2.7rem;
+  display: grid;
+  gap: 4px;
+  justify-items: center;
+  align-content: start;
+  width: 100%;
+}
+
+.pl-prev,
+.pl-arti {
+  font-size: .85rem;
+  max-width: 100%;
+}
+
+.pl-prev .ar {
+  font-size: 1.2rem;
+  color: var(--night);
+}
+
+.pl-arti {
+  font-style: italic;
+  color: #3E5A57;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+#pl-strip {
+  gap: 3px;
+  flex-wrap: nowrap;
+}
+
+#pl-strip i {
+  min-width: 22px;
+  height: 27px;
+  padding: 0 3px;
+  border-radius: 8px;
+  font-size: .82rem;
+}
+
+#pl-strip i.gap {
+  margin-inline-start: 7px;
+}
+
+.pl-wrap {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.pl-wrap canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  border: 3px solid var(--sun);
+  background: #47B5EE;
+  box-shadow: 0 10px 26px rgba(10,42,51,.3);
+  touch-action: none;
+  cursor: pointer;
+}
+
+.pm-box.pl-box {
+  max-width: min(380px,100%);
+}
+
+.pl-pad {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.pl-pad .dp {
+  height: 50px;
+}
+
+@media (orientation:landscape) and (min-aspect-ratio:5/4) {
+  .pm-box.pl-box {
+    max-width: min(560px,100%);
+  }
+}
