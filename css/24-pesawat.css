@@ -83,11 +83,14 @@
 }
 
 #pl-strip i {
-  min-width: 22px;
+  flex: 1 1 0;
+  min-width: 0;
+  max-width: 34px;
   height: 27px;
-  padding: 0 3px;
+  padding: 0 1px;
   border-radius: 8px;
-  font-size: .82rem;
+  font-size: .8rem;
+  overflow: hidden;
 }
 
 #pl-strip i.gap {
@@ -147,4 +150,100 @@
   line-height: 0;
   margin-inline-start: 1px;
   vertical-align: super;
+}
+
+/* Teks tidak boleh keluar dari kotaknya */
+.pl-hud,
+.pl-top,
+.pl-find,
+.pl-extra {
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+.pl-top b {
+  max-width: 100%;
+}
+
+.pl-prev {
+  display: block;
+  text-align: center;
+}
+
+/* Layar awal: pilih juz */
+.pl-start {
+  overflow: auto;
+  place-items: center;
+  padding: 10px;
+}
+
+.pl-start-in {
+  width: 100%;
+  max-width: 100%;
+}
+
+.pl-start-t {
+  margin: 0 0 8px;
+  font-weight: 800;
+  font-size: 1rem;
+  line-height: 1.3;
+}
+
+.pl-juz {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+  margin: 0 0 6px;
+}
+
+.pl-chip {
+  border: 2px solid rgba(255,255,255,.35);
+  background: rgba(255,255,255,.1);
+  color: #fff;
+  border-radius: 999px;
+  padding: 6px 14px;
+  font: inherit;
+  font-weight: 800;
+  font-size: .92rem;
+  cursor: pointer;
+}
+
+.pl-chip.on {
+  background: var(--sun);
+  border-color: var(--sun);
+  color: var(--night);
+}
+
+.pl-juz-info {
+  margin: 0 0 10px;
+  font-size: .78rem;
+  color: #BFE9E0;
+}
+
+.pl-start-h {
+  margin: 10px 0 0;
+  font-size: .78rem;
+  line-height: 1.3;
+}
+
+@media (max-height: 520px), (orientation:landscape) and (min-aspect-ratio:5/4) {
+  .pl-start-t {
+    font-size: .88rem;
+    margin-bottom: 5px;
+  }
+
+  .pl-chip {
+    padding: 4px 11px;
+    font-size: .82rem;
+  }
+
+  .pl-juz-info {
+    margin-bottom: 6px;
+  }
+
+  .pl-start-h {
+    display: none;
+  }
 }

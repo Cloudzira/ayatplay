@@ -59,7 +59,7 @@ Letakkan di folder atau subdomain tersendiri agar `sw.js` tidak bertabrakan deng
 - Tiap awan memuat potongan ayat asli Al-Qur'an. Satu awan benar, awan lain salah. Tidak ada ayat buatan atau ayat yang diubah.
 - Ayat yang panjang dipotong menjadi 2-4 awan berurutan (di level tinggi dipotong per 1-2 kata, level 10 per kata).
 - Pesawat bisa pindah jalur (atas/bawah) dan maju/mundur. Maju mempercepat waktu dan membuat pesawat langsung menyerbu awan, mundur mengerem agar ada waktu berpikir. Kendali: tombol ◀ ▲ ▼ ▶ (◀ ▶ ditahan), geser layar, atau keyboard (panah atau WASD).
-- Materi mengikuti pilihan juz atau surah di beranda. Bila surah terpilih terlalu pendek, misi diambil dari surah lain.
+- Materi dipilih di layar awal game ini (Juz 30, 29, 28, atau Semua) dan tidak terpengaruh pilihan juz atau surah di beranda. Tidak ada surah yang berulang dalam satu ronde (selama jumlah surah di juz itu cukup).
 - Kesulitan naik per level: awan 3 sampai 5 jalur, awan makin cepat, potongan makin pendek, awan salah makin mirip, petunjuk arti makin sedikit (tombol Intip arti tidak dihitung poin), awan berkabut di level 8-10, dan langit berubah dari siang ke malam.
 - Pengaturan level ada di `LV[20]` (`js/game/levels.js`), logika game di `js/game/games-pesawat.js`, gayanya di `css/24-pesawat.css`.
 

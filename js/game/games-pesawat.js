@@ -4,7 +4,9 @@
    potongan ayat. Satu awan berisi potongan yang dicari, awan lain berisi potongan yang salah.
 
    Soal berupa "misi": satu surah dan beberapa ayat berurutan (misalnya QS Al-Lahab ayat 1-3).
-   Tiap level berisi beberapa misi dari surah yang berbeda-beda.
+   Tiap level berisi beberapa misi dari surah yang berbeda-beda (tidak ada surah yang berulang dalam satu ronde).
+   Materi dipilih lewat pilihan juz di layar awal game ini (Juz 30 / 29 / 28 / Semua), terpisah dari
+   pilihan juz atau surah di beranda, supaya pilihan satu surah di beranda tidak mengunci game ini.
    Ayat yang panjang tidak dipaksakan masuk satu awan: ayat dipotong menjadi 2-3 bagian
    (di level tinggi dipotong per 1-2 kata), dan tiap bagian dicari berurutan di gelombang sendiri.
    Satu gelombang = satu soal (10 soal per level).
@@ -25,6 +27,9 @@ const PL_MARK = /\u00A0[\u06D6-\u06DC\u06DE\u06E9]+/g;   // tanda waqaf berdiri 
 const PL_K = 2;                                           // kepadatan piksel kanvas (makin besar makin tajam)
 const PL_FB = .9;                                         // lama umpan balik setelah pesawat menyentuh awan (detik)
 const PL_SLIDE = .18;                                     // bagian awal gelombang saat awan masuk dari kanan layar
+const PL_JUZ = [['30', 'Juz 30'], ['29', 'Juz 29'], ['28', 'Juz 28'], ['all', 'Semua']];
+const plJuzNow = () => (S.plJuz && PL_JUZ.some(j => j[0] === String(S.plJuz)) && plSurahs(String(S.plJuz)).length) ? String(S.plJuz) : '30';
+const plSurahs = juz => { const l = SURAH_LIST.filter(s => juz === 'all' || String(s.juz) === juz); return l.length ? l : SURAH_LIST; };
 const PL_SKY = [
   { c: ['#47B5EE', '#A5E0F8', '#FFF3CF'], sun: [.82, .12, '#FFF4B8'], text: '#0F3D42' },                       // siang
   { c: ['#3F8FD8', '#F2C987', '#FFE8B5'], sun: [.82, .2, '#FFE08A'], text: '#0F3D42' },                          // sore
@@ -50,12 +55,12 @@ const plText = (words, pre, post) => (pre ? '… ' : '') + words.join(' ') + (po
 /* Memilih satu misi: surah + ayat berurutan. Surah dipilih acak dan diutamakan yang belum dipakai
    pada ronde ini dan belum muncul baru-baru ini, supaya soal selalu bervariasi. */
 function plMission(want, ctx) {
-  const { scope, recent, usedS, usedV, begin, fw, cap } = ctx;
-  let c = SURAH_LIST.filter(s => scope.has(s.no) && s.verses.length >= want);
-  if (!c.length) c = SURAH_LIST.filter(s => scope.has(s.no));
-  if (!c.length) c = SURAH_LIST.filter(s => s.verses.length >= want);
-  if (!c.length) c = SURAH_LIST;
-  const pool = [c.filter(s => !usedS.has(s.no) && !recent.has(s.no)), c.filter(s => !usedS.has(s.no)), c];
+  const { surahs, recent, usedS, usedV, begin, fw, cap } = ctx;
+  let c = surahs.filter(s => !usedS.has(s.no) && s.verses.length >= want);          // surah yang belum dipakai di ronde ini
+  if (!c.length) c = surahs.filter(s => !usedS.has(s.no));
+  if (!c.length) c = surahs.filter(s => s.verses.length >= want);                   // semua surah sudah terpakai: baru boleh mengulang
+  if (!c.length) c = surahs;
+  const pool = [c.filter(s => !recent.has(s.no)), c];
   const s = pick(pool.find(g => g.length)), n = s.verses.length, k = Math.min(want, n);
   const starts = [Math.random() < begin ? 0 : rnd(n - k + 1)];
   for (let t = 0; t < 9; t++) starts.push(rnd(n - k + 1));
@@ -71,14 +76,22 @@ function plMission(want, ctx) {
 }
 
 /* Menyusun semua gelombang (soal) untuk satu level. Mengembalikan { route, waves }. */
-function plPlan(lengths, begin, fw, cap, mw, total) {
-  const scope = new Set(scopePool().map(v => v.s));
+function plPlan(lengths, begin, fw, cap, mw, total, juz) {
   S.seen = S.seen || {};
-  const ctx = { scope, recent: new Set(S.seen[20] || []), usedS: new Set(), usedV: new Set(), begin, fw, cap }, waves = [];
+  const ctx = { surahs: plSurahs(juz), recent: new Set(S.seen[20] || []), usedS: new Set(), usedV: new Set(), begin, fw, cap }, waves = [];
+  let lens = lengths, budget = mw;
+  if (ctx.surahs.length < lens.length) {                                // surah di juz ini lebih sedikit dari jumlah misi: misi dikurangi dan dipanjangkan, surah tidak diulang
+    budget = Math.ceil(total / ctx.surahs.length);
+    lens = Array(ctx.surahs.length).fill(budget);
+  }
   for (let li = 0; waves.length < total && li < 30; li++) {
-    const m = plMission(lengths[Math.min(li, lengths.length - 1)], ctx), mi = li;
-    let used = 0;                                                       // tiap misi dibatasi mw gelombang supaya surahnya bervariasi
-    m.vs.forEach(v => { if (used >= mw) return; plChunks(v, fw, cap).forEach(ch => { waves.push({ mi, s: m.s, v, ch }); used++; }); });
+    const m = plMission(lens[Math.min(li, lens.length - 1)], ctx), mi = li;
+    let used = 0;                                                       // tiap misi dibatasi budget gelombang supaya surahnya bervariasi
+    m.vs.forEach(v => {
+      const cs = plChunks(v, fw, cap);
+      if (used >= budget || (used > 0 && used + cs.length > budget)) return;
+      cs.slice(0, budget - used).forEach(ch => { waves.push({ mi, s: m.s, v, ch }); used++; });
+    });
   }
   waves.length = Math.min(waves.length, total);
   const route = [];                                                   // kelompokkan ulang per misi (misi yang terpotong di ujung tetap dihitung)
@@ -91,8 +104,7 @@ function plPlan(lengths, begin, fw, cap, mw, total) {
     const r = route[W.mi];
     if (!r.vs.includes(W.v)) r.vs.push(W.v);
   });
-  S.seen[20] = [...(S.seen[20] || []), ...ctx.usedS].slice(-24);
-  return { route, waves };
+  return { route, waves, used: [...ctx.usedS], pool: ctx.surahs.length };
 }
 
 /* Memilih potongan penyesat (selalu potongan ayat asli).
@@ -125,16 +137,19 @@ function r20(el, cfg, l) {
   const rowH = (SH - 2 * TOPY) / N, CW = land ? 380 : 330, CH = Math.min(rowH * .88, land ? 118 : 148), PS = Math.min(1, rowH / 96);
   const NOSE = 48 * PS, PXMIN = PX - 26 * PS, PXMAX = SW * .5;
   const rowY = r => TOPY + rowH * (r + .5), clampRow = r => Math.max(0, Math.min(N - 1, r)), clampX = x => Math.max(PXMIN, Math.min(PXMAX, x));
-  const { route, waves } = plPlan(P.route[i], P.begin[i], FW, CAP, P.mw[i], total);
+  let juz = plJuzNow(), route, waves, plan;
+  const makePlan = () => { plan = plPlan(P.route[i], P.begin[i], FW, CAP, P.mw[i], total, juz); route = plan.route; waves = plan.waves; };
+  makePlan();
   const pl = { ti: 0, started: false, over: false, t: 0, phase: 'in', pass: 0, fb: 0, banner: 0, lane: Math.floor(N / 2), py: rowY(Math.floor(N / 2)), cx: PX, tx: PX, hold: 0, hitX: 0, tilt: 0, spin: 0, shake: 0, clouds: [], res: Array(total).fill(null), peeked: false, combo: 0, hit: -1, ok: false, off: 0, trail: 0, parts: [] };
   const q = run.q = { v: waves[0].v, pl };
+  Object.defineProperties(q, { waves: { get: () => waves }, route: { get: () => route } });
 
   el.innerHTML = `<div class="pl-hud" id="pl-hud"></div><div class="sn-strip" id="pl-strip"></div>
     <div class="pm-box pl-box"><div class="pl-wrap" style="aspect-ratio:${SW}/${SH}"><canvas id="pl" width="${SW * K}" height="${SH * K}" role="img" aria-label="Langit tempat pesawat mencari awan yang berisi ayat"></canvas>
-      <div class="pm-start" id="pl-start"><div><p style="margin:0 0 10px;font-weight:800;font-size:1.05rem">Terbangkan pesawat ke awan yang berisi ayat yang dicari!</p>
-        <p class="pm-legend"><span>☁️ Satu awan benar</span><span>▶ Maju = lebih cepat</span><span>◀ Mundur = mengerem</span></p>
+      <div class="pm-start pl-start" id="pl-start"><div class="pl-start-in"><p class="pl-start-t">Pilih materi, lalu terbangkan pesawat ke awan yang berisi ayat yang dicari!</p>
+        <div class="pl-juz" id="pl-juz" role="group" aria-label="Pilih juz"></div><p class="pl-juz-info" id="pl-juz-info"></p>
         <button class="btn btn-mint" data-act="pl-go">▶ Terbang!</button>
-        <p class="hint" style="margin:12px 0 0">Ketuk jalur awan atau tombol ▲ ▼ untuk pindah jalur. Tahan ◀ ▶ (atau geser kiri/kanan, atau keyboard) untuk mundur dan maju.</p></div></div></div>
+        <p class="hint pl-start-h">Ketuk jalur awan atau tombol ▲ ▼ untuk pindah jalur. Tahan ▶ untuk maju (lebih cepat) dan ◀ untuk mundur (mengerem).</p></div></div></div>
       <div class="rn-pad pl-pad" aria-label="Kendali pesawat"><button class="dp pl-hb" data-hd="-1" aria-label="Mundur, mengerem">◀</button><button class="dp" data-act="pl-dir" data-d="-1" aria-label="Terbang ke jalur atas">▲</button><button class="dp" data-act="pl-dir" data-d="1" aria-label="Terbang ke jalur bawah">▼</button><button class="dp pl-hb" data-hd="1" aria-label="Maju, lebih cepat">▶</button></div></div>
     <div class="sr" id="pl-live" aria-live="polite"></div>`;
 
@@ -173,7 +188,7 @@ function r20(el, cfg, l) {
   function renderStrip() {
     $('#pl-strip').innerHTML = waves.map((W, k) => {
       const r = pl.res[k], now = k === pl.ti && !pl.over;
-      return `<i class="${r === true ? 'ok' : r === false ? 'bad' : r === 'peek' ? 'now' : now ? 'now' : ''}${W.first && k ? ' gap' : ''}">${r === false ? '✗' : r === 'peek' ? '💡' : (r === true || now) ? W.v.n + sup(W) : '·'}</i>`;
+      return `<i class="${r === true ? 'ok' : r === false ? 'bad' : r === 'peek' ? 'now' : now ? 'now' : ''}${W.first && k ? ' gap' : ''}"><span>${r === false ? '✗' : r === 'peek' ? '💡' : (r === true || now) ? W.v.n + sup(W) : '·'}</span></i>`;
     }).join('');
   }
 
@@ -304,8 +319,12 @@ function r20(el, cfg, l) {
     if (ta > .02) {
       ctx.globalAlpha = alpha * ta;
       ctx.fillStyle = c.state === 'bad' ? '#8A1F23' : c.state === 'ok' ? '#0B5C40' : SKY.text;
-      ctx.font = `700 ${c.fit.fs}px ${PL_FONT}`;
-      const lh = c.fit.fs * 1.45, y0 = y + CH * .05 - (c.fit.lines.length - 1) * lh / 2;
+      let fs = c.fit.fs;                                          // jaga tulisan tetap di dalam awan, apa pun font yang sedang terpakai
+      ctx.font = `700 ${fs}px ${PL_FONT}`;
+      const wide = Math.max(...c.fit.lines.map(ln => ctx.measureText(ln).width)), maxW = CW * .74, maxH = CH * .8;
+      fs = Math.max(11, Math.min(fs * (wide > maxW ? maxW / wide : 1), maxH / (1.45 * c.fit.lines.length)));
+      ctx.font = `700 ${fs}px ${PL_FONT}`;
+      const lh = fs * 1.45, y0 = y + CH * .05 - (c.fit.lines.length - 1) * lh / 2;
       c.fit.lines.forEach((ln, k) => ctx.fillText(ln, x, y0 + k * lh));
     }
     if (ta < .98) {
@@ -383,8 +402,13 @@ function r20(el, cfg, l) {
       ctx.globalAlpha = al * .9; ctx.fillStyle = '#0A2F40'; rr(ctx, SW * .09, SH * .33, SW * .82, 118, 22); ctx.fill();
       ctx.globalAlpha = al; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.direction = 'ltr';
       ctx.fillStyle = '#FFD65A'; ctx.font = `800 17px ${PL_LATIN}`; ctx.fillText(`MISI ${W.mi + 1} DARI ${route.length}`, SW / 2, SH * .33 + 24);
-      ctx.fillStyle = '#fff'; ctx.font = `800 26px ${PL_LATIN}`; ctx.fillText(`QS ${m.s.name} · ayat ${first.n}${last.n !== first.n ? '–' + last.n : ''}`, SW / 2, SH * .33 + 56);
-      ctx.direction = 'rtl'; ctx.fillStyle = '#BFE9E0'; ctx.font = `700 28px ${PL_FONT}`; ctx.fillText(m.s.ar, SW / 2, SH * .33 + 94);
+      const ttl = `QS ${m.s.name} · ayat ${first.n}${last.n !== first.n ? '–' + last.n : ''}`, lim = SW * .76;
+      ctx.fillStyle = '#fff'; ctx.font = `800 26px ${PL_LATIN}`;
+      const tf = Math.min(26, 26 * lim / Math.max(1, ctx.measureText(ttl).width));          // nama surah panjang: kecilkan agar muat di spanduk
+      ctx.font = `800 ${tf}px ${PL_LATIN}`; ctx.fillText(ttl, SW / 2, SH * .33 + 56);
+      ctx.direction = 'rtl'; ctx.fillStyle = '#BFE9E0'; ctx.font = `700 28px ${PL_FONT}`;
+      const af = Math.min(28, 28 * lim / Math.max(1, ctx.measureText(m.s.ar).width));
+      ctx.font = `700 ${af}px ${PL_FONT}`; ctx.fillText(m.s.ar, SW / 2, SH * .33 + 94);
       ctx.globalAlpha = 1;
     }
   }
@@ -400,7 +424,27 @@ function r20(el, cfg, l) {
   }
 
   /* ---------- kendali ---------- */
-  function start() { if (pl.started) return; pl.started = true; const s = $('#pl-start'); if (s) s.classList.add('hidden'); }
+  function start() {
+    if (pl.started) return;
+    pl.started = true;
+    S.seen = S.seen || {};
+    S.seen[20] = [...(S.seen[20] || []), ...plan.used].slice(-24);                // catat surah ronde ini agar ronde berikutnya cenderung beda
+    S.plJuz = juz;
+    save();
+    const s = $('#pl-start'); if (s) s.classList.add('hidden');
+  }
+  function renderJuz() {
+    $('#pl-juz').innerHTML = PL_JUZ.filter(j => j[0] === 'all' || SURAH_LIST.some(s => String(s.juz) === j[0])).map(j => `<button class="pl-chip${j[0] === juz ? ' on' : ''}" data-act="pl-juz" data-j="${j[0]}" aria-pressed="${j[0] === juz}">${j[1]}</button>`).join('');
+    const n = plan.pool;
+    $('#pl-juz-info').textContent = `${n} surah tersedia${n < route.length ? ', sebagian surah akan muncul lebih dari sekali' : ''}`;
+  }
+  function setJuz(j) {                                                                           // ganti materi sebelum terbang: susun ulang soal
+    if (pl.started || j === juz) return;
+    juz = j; S.plJuz = j;
+    makePlan();
+    pl.ti = 0; pl.res = Array(total).fill(null); pl.combo = 0;
+    spawn(); renderJuz();
+  }
   const live = () => pl.phase === 'in' && !pl.over;
   function move(d) { start(); if (live()) pl.lane = clampRow(pl.lane + d); }
   function moveX(d) { start(); if (live()) pl.tx = clampX(pl.tx + d * 70); }                    // geser kiri/kanan: maju atau mundur satu langkah
@@ -425,10 +469,11 @@ function r20(el, cfg, l) {
     b.addEventListener('lostpointercapture', off);
   });
   Object.assign(q, {
-    move, moveX, setHold, start, peek, update, pl, waves, route,
+    move, moveX, setHold, setJuz, start, peek, update, pl,
     cheat: ok => { const c = pl.clouds.find(z => ok ? z.ok : !z.ok); if (c) { pl.lane = c.row; pl.py = rowY(c.row); } pl.banner = 0; pl.t = 1; update(0); }   // untuk uji otomatis
   });
   spawn();
+  renderJuz();
   draw(performance.now());
   requestAnimationFrame(anim);
   if (document.fonts && document.fonts.load) {                                                    // ukur ulang tulisan setelah font Arab siap
@@ -451,5 +496,6 @@ document.addEventListener('keyup', e => {
 Object.assign(ACTIONS, {
   'pl-go': () => run.q && run.q.start && run.q.start(),
   'pl-dir': t => run.q && run.q.move && run.q.move(+t.dataset.d),
-  'pl-peek': () => run.q && run.q.peek && run.q.peek()
+  'pl-peek': () => run.q && run.q.peek && run.q.peek(),
+  'pl-juz': t => run.q && run.q.setJuz && run.q.setJuz(t.dataset.j)
 });
