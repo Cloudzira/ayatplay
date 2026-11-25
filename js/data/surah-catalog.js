@@ -7,14 +7,14 @@
 /* =====================================================================
    PENGATURAN SURAH — disamakan dengan TalqinKu:
    Al-Fatihah + seluruh surah Juz 27, 28, 29, 30 (51-114), ejaan nama versi Kemenag.
-   Juz 27 dimulai dari Az-Zariyat ayat 31 (entri memakai from: 31, total: 60), lalu At-Tur sampai Al-Hadid.
+   Juz 27 memuat Az-Zariyat (seluruh 60 ayat, dari ayat 1) lalu At-Tur sampai Al-Hadid.
    Teks Arab : api.quran.com (Utsmani) -> diubah ke gaya Mushaf Standar Indonesia
    Terjemah  : api.alquran.cloud (id.indonesian)
    Data bawaan (RAW) hanya cadangan bila belum pernah memuat.
    ===================================================================== */
 const ALL_SURAHS = [
     { num: 1, name: "Al-Fatihah", ar: "سُورَةُ ٱلْفَاتِحَةِ", ayahs: 7, mean: "Pembukaan" },
-    { num: 51, name: "Az-Zariyat", ar: "سُورَةُ ٱلذَّارِيَاتِ", ayahs: 30, from: 31, total: 60, mean: "Angin yang Menerbangkan (ayat 31-60)" },
+    { num: 51, name: "Az-Zariyat", ar: "سُورَةُ ٱلذَّارِيَاتِ", ayahs: 60, mean: "Angin yang Menerbangkan" },
     { num: 52, name: "At-Tur", ar: "سُورَةُ ٱلطُّورِ", ayahs: 49, mean: "Bukit" },
     { num: 53, name: "An-Najm", ar: "سُورَةُ ٱلنَّجْمِ", ayahs: 62, mean: "Bintang" },
     { num: 54, name: "Al-Qamar", ar: "سُورَةُ ٱلْقَمَرِ", ayahs: 55, mean: "Bulan" },

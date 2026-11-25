@@ -35,9 +35,9 @@ Letakkan di folder atau subdomain tersendiri agar `sw.js` tidak bertabrakan deng
 - Aturan lulus ada di konstanta `PASS_MIN` (`js/core/progress.js`), tabel kesulitan per level ada di `LV` pada `js/game/levels.js`.
 
 ## 4. Materi (disamakan dengan TalqinKu)
-- Daftar surah: Al-Fatihah + seluruh Juz 27, 28, 29, 30 (65 surah, 1.538 ayat) dengan ejaan nama versi Kemenag (At-Tagabun, Al-Muddassir, Asy-Syarh, Al-Kausar, Al-Lahab, dst.).
-- Juz 27 (399 ayat): Az-Zariyat ayat 31-60 (30 ayat), At-Tur (49), An-Najm (62), Al-Qamar (55), Ar-Rahman (78), Al-Waqi'ah (96), Al-Hadid (29). Teks Arab dan terjemahnya dimuat dari internet seperti surah lain lalu disimpan di perangkat; tidak ada ayat Juz 27 di data bawaan, jadi tombol Juz 27 baru muncul setelah datanya berhasil dimuat. Pengguna lama tidak perlu mengosongkan data: hanya 7 surah baru yang diunduh.
-- Surah yang dimulai dari tengah (Az-Zariyat) dicatat di `ALL_SURAHS` dengan `from: 31, total: 60`; Bismillah tidak ditampilkan untuknya.
+- Daftar surah: Al-Fatihah + seluruh Juz 27, 28, 29, 30 (65 surah, 1.568 ayat) dengan ejaan nama versi Kemenag (At-Tagabun, Al-Muddassir, Asy-Syarh, Al-Kausar, Al-Lahab, dst.).
+- Juz 27 (429 ayat): Az-Zariyat (60 ayat, seluruh surah dari ayat 1), At-Tur (49), An-Najm (62), Al-Qamar (55), Ar-Rahman (78), Al-Waqi'ah (96), Al-Hadid (29). Teks Arab dan terjemahnya dimuat dari internet seperti surah lain lalu disimpan di perangkat; tidak ada ayat Juz 27 di data bawaan, jadi tombol Juz 27 baru muncul setelah datanya berhasil dimuat. Pengguna lama tidak perlu mengosongkan data: hanya 7 surah baru yang diunduh.
+- Az-Zariyat dimuat utuh dari ayat 1 (secara mushaf ayat 1-30 masih Juz 26, tetapi di aplikasi surahnya dimasukkan ke Juz 27). Bila ingin surah yang dimulai dari tengah, pakai `from` dan `total` di `ALL_SURAHS`.
 - Ayat yang berulang dalam satu surah (refrain Ar-Rahman, Al-Qamar) tidak dipakai di Urutkan Ayat agar urutannya tidak ambigu.
 - Teks Arab dimuat dari api.quran.com (Utsmani) lalu diubah ke gaya Mushaf Standar Indonesia memakai pengolah yang sama dengan TalqinKu, termasuk perbaikan harakat lam-alif. Font: Scheherazade New.
 - Terjemah: api.alquran.cloud (id.indonesian). Data disimpan di perangkat sehingga bisa offline setelah pemuatan pertama; bila gagal, dipakai 165 ayat bawaan.
