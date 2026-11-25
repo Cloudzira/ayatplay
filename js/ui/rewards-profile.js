@@ -93,6 +93,6 @@ function openCert(kind, g) {
     }
     const lv = levelInfo(S.xp);
     openSheet(certHTML({ title: 'Sertifikat Hafiz Cilik', sub: 'AyatPlay Kids · Petualangan Hafiz Cilik',
-        body: 'yang telah giat belajar dan bermain untuk menghafal Al-Qur\'an (Juz 28, 29, 30). Semoga Allah memberkahi ilmu dan hafalanmu.',
+        body: 'yang telah giat belajar dan bermain untuk menghafal Al-Qur\'an (Juz 27, 28, 29, 30). Semoga Allah memberkahi ilmu dan hafalanmu.',
         stats: [`⭐ ${totalStars()} bintang`, `⚡ ${S.xp} XP`, `📗 ${memCount()} ayat hafal`, `🎁 ${stickerCount()}/${totalLevels()} stiker`, `🏅 Level ${lv.L}: ${esc(lv.title)}`] }), 'wide');
 }

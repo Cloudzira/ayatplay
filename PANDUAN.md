@@ -35,7 +35,10 @@ Letakkan di folder atau subdomain tersendiri agar `sw.js` tidak bertabrakan deng
 - Aturan lulus ada di konstanta `PASS_MIN` (`js/core/progress.js`), tabel kesulitan per level ada di `LV` pada `js/game/levels.js`.
 
 ## 4. Materi (disamakan dengan TalqinKu)
-- Daftar surah: Al-Fatihah + seluruh Juz 28, 29, 30 (58 surah, 1.139 ayat) dengan ejaan nama versi Kemenag (At-Tagabun, Al-Muddassir, Asy-Syarh, Al-Kausar, Al-Lahab, dst.).
+- Daftar surah: Al-Fatihah + seluruh Juz 27, 28, 29, 30 (65 surah, 1.538 ayat) dengan ejaan nama versi Kemenag (At-Tagabun, Al-Muddassir, Asy-Syarh, Al-Kausar, Al-Lahab, dst.).
+- Juz 27 (399 ayat): Az-Zariyat ayat 31-60 (30 ayat), At-Tur (49), An-Najm (62), Al-Qamar (55), Ar-Rahman (78), Al-Waqi'ah (96), Al-Hadid (29). Teks Arab dan terjemahnya dimuat dari internet seperti surah lain lalu disimpan di perangkat; tidak ada ayat Juz 27 di data bawaan, jadi tombol Juz 27 baru muncul setelah datanya berhasil dimuat. Pengguna lama tidak perlu mengosongkan data: hanya 7 surah baru yang diunduh.
+- Surah yang dimulai dari tengah (Az-Zariyat) dicatat di `ALL_SURAHS` dengan `from: 31, total: 60`; Bismillah tidak ditampilkan untuknya.
+- Ayat yang berulang dalam satu surah (refrain Ar-Rahman, Al-Qamar) tidak dipakai di Urutkan Ayat agar urutannya tidak ambigu.
 - Teks Arab dimuat dari api.quran.com (Utsmani) lalu diubah ke gaya Mushaf Standar Indonesia memakai pengolah yang sama dengan TalqinKu, termasuk perbaikan harakat lam-alif. Font: Scheherazade New.
 - Terjemah: api.alquran.cloud (id.indonesian). Data disimpan di perangkat sehingga bisa offline setelah pemuatan pertama; bila gagal, dipakai 165 ayat bawaan.
 - Audio qari dari EveryAyah.com (gratis, tanpa API key): Misyari Rasyid Al-Afasy (bawaan), Al-Husary, Al-Minshawi, Abdul Basit, Maher Al-Muaiqly, As-Sudais, Asy-Syuraim, Al-Hudhaify, Abu Bakr Asy-Syatiri, Hani Ar-Rifai, dan Muhammad Ayyub. Bila file qari pilihan gagal dimuat, otomatis memakai Misyari.
@@ -59,7 +62,7 @@ Letakkan di folder atau subdomain tersendiri agar `sw.js` tidak bertabrakan deng
 - Tiap awan memuat potongan ayat asli Al-Qur'an. Satu awan benar, awan lain salah. Tidak ada ayat buatan atau ayat yang diubah.
 - Ayat yang panjang dipotong menjadi 2-4 awan berurutan (di level tinggi dipotong per 1-2 kata, level 10 per kata).
 - Pesawat bisa pindah jalur (atas/bawah) dan maju/mundur. Maju mempercepat waktu dan membuat pesawat langsung menyerbu awan, mundur mengerem agar ada waktu berpikir. Kendali: tombol ◀ ▲ ▼ ▶ (◀ ▶ ditahan), geser layar, atau keyboard (panah atau WASD).
-- Materi dipilih di layar awal game ini (Juz 30, 29, 28, atau Semua) dan tidak terpengaruh pilihan juz atau surah di beranda. Tidak ada surah yang berulang dalam satu ronde (selama jumlah surah di juz itu cukup).
+- Materi dipilih di layar awal game ini (Juz 30, 29, 28, 27, atau Semua) dan tidak terpengaruh pilihan juz atau surah di beranda. Tidak ada surah yang berulang dalam satu ronde (selama jumlah surah di juz itu cukup).
 - Kesulitan naik per level: awan 3 sampai 5 jalur, awan makin cepat, potongan makin pendek, awan salah makin mirip, petunjuk arti makin sedikit (tombol Intip arti tidak dihitung poin), awan berkabut di level 8-10, dan langit berubah dari siang ke malam.
 - Pengaturan level ada di `LV[20]` (`js/game/levels.js`), logika game di `js/game/games-pesawat.js`, gayanya di `css/24-pesawat.css`.
 

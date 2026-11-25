@@ -1,18 +1,26 @@
 /* =====================================================================
    Katalog surah
-   Al-Fatihah + seluruh surah Juz 28, 29, 30 (58 surah) dengan ejaan nama versi Kemenag.
+   Al-Fatihah + seluruh surah Juz 27, 28, 29, 30 (65 surah) dengan ejaan nama versi Kemenag.
    ===================================================================== */
 'use strict';
 
 /* =====================================================================
    PENGATURAN SURAH — disamakan dengan TalqinKu:
-   Al-Fatihah + seluruh surah Juz 28, 29, 30 (58-114), ejaan nama versi Kemenag.
+   Al-Fatihah + seluruh surah Juz 27, 28, 29, 30 (51-114), ejaan nama versi Kemenag.
+   Juz 27 dimulai dari Az-Zariyat ayat 31 (entri memakai from: 31, total: 60), lalu At-Tur sampai Al-Hadid.
    Teks Arab : api.quran.com (Utsmani) -> diubah ke gaya Mushaf Standar Indonesia
    Terjemah  : api.alquran.cloud (id.indonesian)
    Data bawaan (RAW) hanya cadangan bila belum pernah memuat.
    ===================================================================== */
 const ALL_SURAHS = [
     { num: 1, name: "Al-Fatihah", ar: "سُورَةُ ٱلْفَاتِحَةِ", ayahs: 7, mean: "Pembukaan" },
+    { num: 51, name: "Az-Zariyat", ar: "سُورَةُ ٱلذَّارِيَاتِ", ayahs: 30, from: 31, total: 60, mean: "Angin yang Menerbangkan (ayat 31-60)" },
+    { num: 52, name: "At-Tur", ar: "سُورَةُ ٱلطُّورِ", ayahs: 49, mean: "Bukit" },
+    { num: 53, name: "An-Najm", ar: "سُورَةُ ٱلنَّجْمِ", ayahs: 62, mean: "Bintang" },
+    { num: 54, name: "Al-Qamar", ar: "سُورَةُ ٱلْقَمَرِ", ayahs: 55, mean: "Bulan" },
+    { num: 55, name: "Ar-Rahman", ar: "سُورَةُ ٱلرَّحْمَٰنِ", ayahs: 78, mean: "Yang Maha Pengasih" },
+    { num: 56, name: "Al-Waqi'ah", ar: "سُورَةُ ٱلْوَاقِعَةِ", ayahs: 96, mean: "Hari Kiamat" },
+    { num: 57, name: "Al-Hadid", ar: "سُورَةُ ٱلْحَدِيدِ", ayahs: 29, mean: "Besi" },
     { num: 58, name: "Al-Mujadilah", ar: "سُورَةُ ٱلْمُجَادَلَةِ", ayahs: 22, mean: "Wanita yang Menggugat" },
     { num: 59, name: "Al-Hasyr", ar: "سُورَةُ ٱلْحَشْرِ", ayahs: 24, mean: "Pengusiran" },
     { num: 60, name: "Al-Mumtahanah", ar: "سُورَةُ ٱلْمُمْتَحَنَةِ", ayahs: 13, mean: "Wanita yang Diuji" },
@@ -71,11 +79,13 @@ const ALL_SURAHS = [
     { num: 113, name: "Al-Falaq", ar: "سُورَةُ ٱلْفَلَقِ", ayahs: 5, mean: "Waktu Subuh" },
     { num: 114, name: "An-Nas", ar: "سُورَةُ ٱلنَّاسِ", ayahs: 6, mean: "Manusia" }
 ];
-const AYAT_COUNT = {}, SURAH_META = {};
+const AYAT_COUNT = {}, SURAH_META = {}, SURAH_FROM = {}, SURAH_TOTAL = {};
 ALL_SURAHS.forEach(s => {
-    AYAT_COUNT[s.num] = s.ayahs;
+    AYAT_COUNT[s.num] = s.ayahs;       // jumlah ayat yang dipakai di aplikasi
+    SURAH_FROM[s.num] = s.from || 1;   // nomor ayat pertama yang dipakai
+    SURAH_TOTAL[s.num] = s.total || s.ayahs; // jumlah ayat surah penuh (untuk memeriksa data dari internet)
     SURAH_META[s.num] = [s.name, s.ar, s.mean];
 });
 
-const juzOf = no => no === 1 ? 1 : no >= 78 ? 30 : no >= 67 ? 29 : 28;
+const juzOf = no => no === 1 ? 1 : no >= 78 ? 30 : no >= 67 ? 29 : no >= 58 ? 28 : 27;
 const TOTAL_AYAT = ALL_SURAHS.reduce((a, s) => a + s.ayahs, 0); // 1139

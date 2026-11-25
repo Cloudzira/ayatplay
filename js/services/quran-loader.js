@@ -36,22 +36,27 @@ const mushafStyle = t => {
 const toArabicDigits = num => String(num).replace(/\d/g, d => '٠١٢٣٤٥٦٧٨٩'[d]);
 const toRaw = list => list.map(s => {
     const m = SURAH_META[s.no];
-    return { no: s.no, name: m[0], ar: m[1], mean: m[2], juz: juzOf(s.no), v: s.v };
+    return { no: s.no, name: m[0], ar: m[1], mean: m[2], juz: juzOf(s.no), from: SURAH_FROM[s.no], v: s.v };
 });
 
+/* Membaca data tersimpan. Surah yang sudah ada tetap dipakai; surah baru (misalnya Juz 27) dimuat sendiri. */
 function readCache() {
+    const none = { list: [], complete: false };
     try {
         const c = JSON.parse(localStorage.getItem(DATA_KEY) || 'null');
-        if (!c || c.cv !== CONV_VER || !Array.isArray(c.s) || c.s.length !== ALL_SURAHS.length)
-            return null;
+        if (!c || c.cv !== CONV_VER || !Array.isArray(c.s))
+            return none;
+        const list = [];
         for (const [no, v] of c.s) {
             if (!AYAT_COUNT[no] || !Array.isArray(v) || v.length !== AYAT_COUNT[no] || v.some(p => !p[0] || !p[1]))
-                return null;
+                continue;
+            list.push({ no, v });
+            QPARTIAL[no] = { no, v };
         }
-        return c.s.map(([no, v]) => ({ no, v }));
+        return { list, complete: list.length === ALL_SURAHS.length };
     }
     catch (e) {
-        return null;
+        return none;
     }
 }
 
@@ -81,13 +86,14 @@ async function fetchSurah(no) {
         fetchJSON(`https://api.quran.com/api/v4/quran/verses/uthmani?chapter_number=${no}`),
         fetchJSON(`https://api.alquran.cloud/v1/surah/${no}/id.indonesian`)
     ]);
-    const va = ra && ra.verses, vi = ri && ri.data && ri.data.ayahs, cnt = AYAT_COUNT[no];
-    if (!Array.isArray(va) || !Array.isArray(vi) || va.length !== cnt || vi.length !== cnt)
+    const va = ra && ra.verses, vi = ri && ri.data && ri.data.ayahs, total = SURAH_TOTAL[no], from = SURAH_FROM[no];
+    if (!Array.isArray(va) || !Array.isArray(vi) || va.length !== total || vi.length !== total)
         throw new Error(`jumlah ayat surah ${no} tidak sesuai`);
-    const v = va.map((a, i) => {
-        const ar = mushafStyle(cleanAr(a.text_uthmani, i + 1, no)), id = String(vi[i].text || '').replace(/\s+/g, ' ').trim();
+    const v = va.slice(from - 1).map((a, j) => {
+        const n = from + j;
+        const ar = mushafStyle(cleanAr(a.text_uthmani, n, no)), id = String(vi[n - 1].text || '').replace(/\s+/g, ' ').trim();
         if (!ar || !id)
-            throw new Error(`ayat ${no}:${i + 1} tidak lengkap`);
+            throw new Error(`ayat ${no}:${n} tidak lengkap`);
         return [ar, id];
     });
     return { no, v };
@@ -97,6 +103,8 @@ function applyData(list) {
     rebuildData(toRaw(list));
     if (S.scope.surah && !SURAHS[S.scope.surah])
         S.scope.surah = '';
+    if (S.scope.juz !== 'all' && !SURAH_LIST.some(x => String(x.juz) === String(S.scope.juz)))
+        S.scope.juz = '30';
     dataStatus = 'full';
 }
 
@@ -130,7 +138,7 @@ async function loadFullData() {
         }
         else {
             applyData(list);
-            toast(`📚 Semua surah siap: ${VERSES.length} ayat!`, 'gold');
+            toast(`📚 Semua surah Juz 27-30 siap: ${VERSES.length} ayat!`, 'gold');
         }
     }
     catch (e) {

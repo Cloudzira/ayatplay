@@ -26,7 +26,7 @@ function rebuildData(rawList) {
     SURAH_LIST.length = 0;
     VERSES.length = 0;
     VMAP.clear();
-    const rank = s => s.juz === 30 ? [0, -s.no] : s.juz === 29 ? [1, s.no] : s.juz === 28 ? [2, s.no] : [3, s.no]; // Juz 30 dari An-Nas ke atas, Juz 29 & 28 berurutan
+    const rank = s => s.juz === 30 ? [0, -s.no] : s.juz === 29 ? [1, s.no] : s.juz === 28 ? [2, s.no] : s.juz === 27 ? [3, s.no] : [4, s.no]; // Juz 30 dari An-Nas ke atas, Juz 29, 28, 27 berurutan, Al-Fatihah terakhir
     [...rawList].sort((x, y) => {
         const a = rank(x), b = rank(y);
         return a[0] - b[0] || a[1] - b[1];

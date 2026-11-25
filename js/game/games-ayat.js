@@ -68,6 +68,8 @@ function r3(el, cfg, l) {
         list.forEach(s => {
             for (let st = 0; st + kk <= s.verses.length; st++) {
                 const w = s.verses.slice(st, st + kk);
+                if (new Set(w.map(x => normAr(x.ar))).size < w.length)
+                    continue; // ayat berulang (mis. refrain Ar-Rahman) tidak bisa diurutkan dengan adil
                 if (w.reduce((n, v) => n + v.words.length, 0) <= Math.min(40 + 14 * kk, Math.max(16, Math.round(innerHeight / 16))))
                     out.push(w);
             }

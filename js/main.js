@@ -8,8 +8,11 @@
 (function boot() {
     applyArabic();
     const cached = readCache();
-    if (cached)
-        applyData(cached);
+    if (cached.list.length) {
+        applyData(cached.list);
+        if (!cached.complete)
+            dataStatus = 'builtin'; // ada surah baru (mis. Juz 27) yang belum dimuat
+    }
     updateHeader();
     nav('home');
     runSplash();

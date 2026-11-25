@@ -5,7 +5,7 @@
 
    Soal berupa "misi": satu surah dan beberapa ayat berurutan (misalnya QS Al-Lahab ayat 1-3).
    Tiap level berisi beberapa misi dari surah yang berbeda-beda (tidak ada surah yang berulang dalam satu ronde).
-   Materi dipilih lewat pilihan juz di layar awal game ini (Juz 30 / 29 / 28 / Semua), terpisah dari
+   Materi dipilih lewat pilihan juz di layar awal game ini (Juz 30 / 29 / 28 / 27 / Semua), terpisah dari
    pilihan juz atau surah di beranda, supaya pilihan satu surah di beranda tidak mengunci game ini.
    Ayat yang panjang tidak dipaksakan masuk satu awan: ayat dipotong menjadi 2-3 bagian
    (di level tinggi dipotong per 1-2 kata), dan tiap bagian dicari berurutan di gelombang sendiri.
@@ -27,7 +27,7 @@ const PL_MARK = /\u00A0[\u06D6-\u06DC\u06DE\u06E9]+/g;   // tanda waqaf berdiri 
 const PL_K = 2;                                           // kepadatan piksel kanvas (makin besar makin tajam)
 const PL_FB = .9;                                         // lama umpan balik setelah pesawat menyentuh awan (detik)
 const PL_SLIDE = .18;                                     // bagian awal gelombang saat awan masuk dari kanan layar
-const PL_JUZ = [['30', 'Juz 30'], ['29', 'Juz 29'], ['28', 'Juz 28'], ['all', 'Semua']];
+const PL_JUZ = [['30', 'Juz 30'], ['29', 'Juz 29'], ['28', 'Juz 28'], ['27', 'Juz 27'], ['all', 'Semua']];
 const plJuzNow = () => (S.plJuz && PL_JUZ.some(j => j[0] === String(S.plJuz)) && plSurahs(String(S.plJuz)).length) ? String(S.plJuz) : '30';
 const plSurahs = juz => { const l = SURAH_LIST.filter(s => juz === 'all' || String(s.juz) === juz); return l.length ? l : SURAH_LIST; };
 const PL_SKY = [

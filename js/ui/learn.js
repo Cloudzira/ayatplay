@@ -12,8 +12,8 @@ const learnState = { hij: false, taj: false, surah: null, repeat: 1, rate: 1, co
 const preCache = {};
 
 function preAyat(no) {
-    if (no === 9 || !AYAT_COUNT[no])
-        return null;
+    if (no === 9 || !AYAT_COUNT[no] || SURAH_FROM[no] > 1)
+        return null; // At-Taubah dan surah yang dimulai dari tengah (mis. Az-Zariyat ayat 31) tanpa Bismillah
     if (!preCache[no])
         preCache[no] = no === 1
             ? { key: '1:0', s: 1, n: 0, sName: 'Al-Fatihah', label: "Ta'awudz", ar: mushafStyle("أَعُوذُ بِٱللَّهِ مِنَ ٱلشَّيْطَٰنِ ٱلرَّجِيمِ"), id: 'Aku berlindung kepada Allah dari godaan syaitan yang terkutuk.', words: [] }
@@ -52,7 +52,7 @@ function renderLearn() {
   <p class="muted" style="font-weight:700;margin-top:-4px">Dengarkan, ulang, lalu tandai ayat yang sudah kamu hafal. Hafalan jadi lebih mudah kalau didengar berulang-ulang.</p>
   <button class="hijentry" data-act="open-hij"><span class="ar hij-big" lang="ar" dir="rtl">ا ب ت</span><span><b>Huruf Hijaiyyah</b><small>30 huruf · nama, lambang Latin resmi, dan bentuk sambung</small></span><span class="go">Buka ▶</span></button>
   <button class="hijentry tajentry" data-act="open-taj"><span class="ar hij-big" lang="ar" dir="rtl">نْ ـً</span><span><b>Tajwid: Hukum Nun Sukun &amp; Tanwin</b><small>5 hukum bacaan · huruf, cara baca, dan contoh ayat</small></span><span class="go">Buka ▶</span></button>
-  <div class="pills" style="margin:10px 0 14px">${JUZ_PILLS.map(([j, l]) => `<button class="pill ${S.scope.juz === j ? 'on' : ''}" data-act="juz-learn" data-j="${j}">${l}</button>`).join('')}</div>
+  <div class="pills" style="margin:10px 0 14px">${juzPills().map(([j, l]) => `<button class="pill ${S.scope.juz === j ? 'on' : ''}" data-act="juz-learn" data-j="${j}">${l}</button>`).join('')}</div>
   <div class="surahs">${SURAH_LIST.filter(s => S.scope.juz === 'all' || String(s.juz) === String(S.scope.juz)).map(s => {
         const p = surahProgress(s);
         return `<button class="scard" data-act="open-surah" data-s="${s.no}">
