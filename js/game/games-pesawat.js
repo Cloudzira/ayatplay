@@ -22,6 +22,7 @@
 
 /* ---------- 1. Pengaturan umum ---------- */
 const PL_FONT = "'Scheherazade New','Traditional Arabic',serif";
+const plFb = fs => `700 ${fs}px ${PL_FONT}`;   // font cadangan untuk kata yang tidak memakai glyph QCF4
 const PL_LATIN = "'Baloo 2','Nunito',system-ui,sans-serif";
 const PL_MARK = /\u00A0[\u06D6-\u06DC\u06DE\u06E9]+/g;   // tanda waqaf berdiri sendiri, dibuang dari awan agar tidak sesak
 const PL_K = 2;                                           // kepadatan piksel kanvas (makin besar makin tajam)
@@ -157,15 +158,17 @@ function r20(el, cfg, l) {
   const paused = () => !pl.started || pl.over || document.hidden || !$('#overlay').classList.contains('hidden');
 
   /* ---------- tulisan di awan ---------- */
+  /* lebar teks; memakai font Mushaf Madinah (QCF4) bila font-nya sudah termuat, bila belum memakai font biasa */
+  const mw = (t, fs) => (typeof QCF !== 'undefined' && QCF.canvasReady(t)) ? QCF.measure(ctx, t, fs, plFb) : ctx.measureText(t).width;
   function fitText(text) {
     const maxW = CW * .72, words = text.split(' ');
     ctx.direction = 'rtl';
     for (let fs = land ? 34 : 36; fs >= 16; fs -= 2) {
       ctx.font = `700 ${fs}px ${PL_FONT}`;
-      if (fs * 1.45 <= CH * .56 && ctx.measureText(text).width <= maxW) return { fs, lines: [text] };
+      if (fs * 1.45 <= CH * .56 && mw(text, fs) <= maxW) return { fs, lines: [text] };
       if (N <= 4 && words.length >= 3 && fs * 2.9 <= CH * .8) {
         const mid = Math.ceil(words.length / 2), a = words.slice(0, mid).join(' '), b = words.slice(mid).join(' ');
-        if (Math.max(ctx.measureText(a).width, ctx.measureText(b).width) <= maxW) return { fs, lines: [a, b] };
+        if (Math.max(mw(a, fs), mw(b, fs)) <= maxW) return { fs, lines: [a, b] };
       }
     }
     return { fs: 16, lines: [text] };
@@ -197,6 +200,10 @@ function r20(el, cfg, l) {
     const W = waves[pl.ti], pre = W.ch.k > 0, post = W.ch.k < W.ch.tot - 1;
     const items = shuffle([{ v: W.v, ok: true, text: plText(W.ch.words, pre, post) }, ...plDistract(W, N - 1, P.dis[i], FW, CAP).map(o => ({ v: o.v, ok: false, text: o.text }))]);
     pl.clouds = items.map((it, r) => ({ row: r, v: it.v, ok: it.ok, text: it.text, state: '', fit: fitText(it.text) }));
+    if (typeof QCF !== 'undefined' && QCF.enabled()) {                  // muat font Mushaf Madinah untuk awan ini, lalu ukur ulang tulisannya
+      const cl = pl.clouds;
+      QCF.preload(cl.map(c => c.text)).then(() => { if (pl.clouds === cl) cl.forEach(c => { c.fit = fitText(c.text); }); });
+    }
     pl.t = 0; pl.phase = 'in'; pl.pass = 0; pl.fb = 0; pl.hit = -1; pl.peeked = false; pl.spin = 0; pl.shake = 0; pl.tx = PX;
     pl.banner = W.first ? 1.2 : 0;
     q.v = W.v;
@@ -321,11 +328,14 @@ function r20(el, cfg, l) {
       ctx.fillStyle = c.state === 'bad' ? '#8A1F23' : c.state === 'ok' ? '#0B5C40' : SKY.text;
       let fs = c.fit.fs;                                          // jaga tulisan tetap di dalam awan, apa pun font yang sedang terpakai
       ctx.font = `700 ${fs}px ${PL_FONT}`;
-      const wide = Math.max(...c.fit.lines.map(ln => ctx.measureText(ln).width)), maxW = CW * .74, maxH = CH * .8;
+      const wide = Math.max(...c.fit.lines.map(ln => mw(ln, fs))), maxW = CW * .74, maxH = CH * .8;
       fs = Math.max(11, Math.min(fs * (wide > maxW ? maxW / wide : 1), maxH / (1.45 * c.fit.lines.length)));
       ctx.font = `700 ${fs}px ${PL_FONT}`;
-      const lh = fs * 1.45, y0 = y + CH * .05 - (c.fit.lines.length - 1) * lh / 2;
-      c.fit.lines.forEach((ln, k) => ctx.fillText(ln, x, y0 + k * lh));
+      const lh = fs * ((typeof QCF !== 'undefined' && c.fit.lines.length > 1 && QCF.canvasReady(c.fit.lines[0])) ? 1.75 : 1.45), y0 = y + CH * .05 - (c.fit.lines.length - 1) * lh / 2;
+      c.fit.lines.forEach((ln, k) => {
+        if (typeof QCF !== 'undefined' && QCF.canvasReady(ln)) QCF.draw(ctx, ln, x, y0 + k * lh, fs, plFb);
+        else ctx.fillText(ln, x, y0 + k * lh);
+      });
     }
     if (ta < .98) {
       ctx.globalAlpha = alpha * (1 - ta) * .75; ctx.fillStyle = '#7F9FB8';

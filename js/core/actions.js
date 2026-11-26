@@ -90,6 +90,16 @@ const ACTIONS = {
         syncArabicUI();
         sfx('tap');
     },
+    qcf: () => {
+        const on = !QCF.enabled();
+        QCF.setEnabled(on);
+        save();
+        $$('[data-act=qcf]').forEach(b => {
+            b.classList.toggle('on', on);
+            b.setAttribute('aria-pressed', on);
+        });
+        sfx('tap');
+    },
     arsize: t => {
         S.arSize = +t.dataset.v;
         save();

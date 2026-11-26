@@ -96,3 +96,15 @@ Skrip dimuat berurutan oleh `index.html`. Urutannya penting: file di bawah boleh
 ## Privasi
 Yang disimpan di cloud hanya: nama panggilan, XP, bintang, lencana, dan ayat yang ditandai hafal.
 Pengguna bisa menghapus akun dan data cloud dari menu Aku.
+
+## Font ayat Mushaf Madinah (QCF4)
+
+Ayat dan potongan ayat di semua game, Mode Belajar, dan kanvas Pesawat memakai font QCF4 (Mushaf Madinah, Kompleks Raja Fahd).
+Sumber: https://github.com/MohamadHajjRabee/quran-qcf4
+
+- Peta glyph per kata: `js/data/qcf4-map.js` (Al-Fatihah + Juz 27-30). Pengganti: `js/ui/qcf4.js`, gaya: `css/25-qcf4.css`.
+- Font TIDAK dibundel (lisensi melarang redistribusi); dimuat dari jsDelivr (dikunci ke satu commit) lalu disimpan service worker.
+- Bisa dimatikan di Profil > Tulisan Arab > Mushaf Madinah (QCF4).
+- Tajwid berwarna dan huruf hijaiyyah tetap memakai font lama (QCF4 satu glyph per kata, huruf tidak bisa diwarnai).
+- Kata yang tidak lolos pemeriksaan kecocokan otomatis memakai font lama. Cek di konsol: `QCF.stats`.
+- Menambah surah: butuh peta glyph baru untuk surah itu (dibuat dari `pages/*.json` repo QCF4).

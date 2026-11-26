@@ -100,7 +100,7 @@ function enhanceNode(root) {
         return;
     const walker = document.createTreeWalker(base, NodeFilter.SHOW_TEXT, { acceptNode: n => {
             const p = n.parentElement;
-            return (p && n.nodeValue.indexOf('\u0644') > -1 && p.closest('.ar') && !p.closest('.la')) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+            return (p && n.nodeValue.indexOf('\u0644') > -1 && p.closest('.ar') && !p.closest('.la') && !p.closest('.qw') && !(typeof QCF !== 'undefined' && QCF.owns(n))) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
         } });
     const nodes = [];
     while (walker.nextNode())

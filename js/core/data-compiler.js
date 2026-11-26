@@ -45,6 +45,8 @@ function rebuildData(rawList) {
         SURAHS[s.no] = o;
         SURAH_LIST.push(o);
     });
+    if (typeof QCF !== 'undefined')
+        QCF.index(VERSES); // pasangkan kata ayat dengan glyph font QCF4 (js/ui/qcf4.js)
 }
 
 rebuildData(RAW);

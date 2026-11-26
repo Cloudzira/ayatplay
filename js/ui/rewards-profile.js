@@ -50,7 +50,8 @@ function renderProfile() {
   </div>
   <div class="card" style="margin-top:16px;display:grid;gap:12px">
     <h3>🔤 Tulisan Arab</h3>
-    <p class="muted small" style="margin:0">Pilih bentuk dan ukuran tulisan yang paling nyaman dibaca adik-adik.</p>
+    <p class="muted small" style="margin:0">Ayat memakai font Mushaf Madinah (QCF4). Dua pilihan bentuk di bawahnya dipakai untuk tulisan Arab selain ayat (huruf, tajwid) dan bila font Madinah dimatikan.</p>
+    <button class="fontopt ${QCF.enabled() ? 'on' : ''}" data-act="qcf" aria-pressed="${QCF.enabled()}"><span><b>Mushaf Madinah (QCF4)</b><small>Ayat tampil seperti Mushaf Madinah cetakan Kompleks Raja Fahd. Butuh internet saat pertama dipakai.</small></span><span class="ar" lang="ar" dir="rtl" data-qsample="112:1" aria-hidden="true"></span></button>
     ${Object.entries(AR_FONTS).map(([k, f]) => `<button class="fontopt ${S.arFont === k ? 'on' : ''}" data-act="arfont" data-k="${k}" aria-pressed="${S.arFont === k}"><span><b>${f.n}</b><small>${f.d}</small></span><span class="ar" lang="ar" dir="rtl" style="font-family:${f.stack},serif!important;font-weight:${f.w}">قُلْ هُوَ اللَّهُ أَحَدٌ</span></button>`).join('')}
     <div class="row"><b>Ukuran</b>${arSizeSeg(false)}</div>
   </div>
@@ -61,12 +62,14 @@ function renderProfile() {
     <p class="muted" style="margin:0;font-weight:600">Teks Arab dari api.quran.com (gaya Mushaf Standar Indonesia), terjemah dari Kemenag (alquran.cloud), dan audio qari dari <a href="https://everyayah.com/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">EveryAyah.com</a>, sehingga butuh internet. Kemajuanmu tersimpan di perangkat ini dan, jika orang tua masuk akun, juga di cloud. Orang tua atau guru sebaiknya ikut mengoreksi bacaan anak langsung dengan guru ngaji.</p>
     <button class="btn btn-ghost btn-sm" data-act="reset" style="justify-self:start">🔄 Atur ulang semua progres</button>
   </div>`;
+    if (typeof QCF !== 'undefined')
+        QCF.fillSamples($('#v-profile'));
 }
 
 function certHTML(o) {
     return `<div class="cert-wrap"><div class="cert" id="cert"><div class="cert-frame"><div class="cert-in">
     <span class="corner c1"></span><span class="corner c2"></span><span class="corner c3"></span><span class="corner c4"></span>
-    <div class="cert-bsm ar" lang="ar" dir="rtl">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+    <div class="cert-bsm ar" lang="ar" dir="rtl" data-qverse="1:1">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
     <div class="cert-emblem">${emblemSVG()}</div>
     <h3>${o.title}</h3><div class="cert-sub">${o.sub}</div>
     <div class="cert-given">Dengan bangga diberikan kepada</div>

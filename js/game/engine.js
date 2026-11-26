@@ -119,7 +119,7 @@ function startRun(g, l) {
       <div class="gh-r"><span class="score" aria-label="Jawaban benar">⭐ <b id="g-score">0</b></span>
       <button class="icon-btn" data-act="fs" id="g-fs" aria-label="Layar penuh" title="Layar penuh">⛶</button>
       <button class="icon-btn" data-act="sound" id="g-sound" aria-label="Suara">${S.sound ? '🔊' : '🔇'}</button></div></div>
-    <div class="bsm ar" lang="ar" dir="rtl" aria-hidden="true">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+    <div class="bsm ar" lang="ar" dir="rtl" aria-hidden="true" data-qverse="1:1">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
     <div class="prog" id="g-prog" aria-hidden="true"></div>
     <div id="g-timer"></div>
     <div id="gmain"><div id="garea"><div id="gfit"><div class="stage" id="stage"></div></div></div><div id="fb"></div></div></div>`;

@@ -13,6 +13,8 @@
         if (!cached.complete)
             dataStatus = 'builtin'; // ada surah baru (mis. Juz 27) yang belum dimuat
     }
+    if (typeof QCF !== 'undefined')
+        QCF.warm(VERSES.filter(v => String(v.juz) === (S.scope.juz === 'all' ? '30' : String(S.scope.juz)))); // unduh font ayat Juz terpilih saat senggang
     updateHeader();
     nav('home');
     runSplash();

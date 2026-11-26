@@ -1,0 +1,23 @@
+/* =====================================================================
+   Font ayat Mushaf Madinah (QCF4)
+   Gaya untuk kata ayat yang diganti glyph QCF4 oleh js/ui/qcf4.js.
+   Satu kata = satu kotak inline-block; bidi-override menjaga urutan kanan-ke-kiri
+   (karakter glyph QCF4 berada di area pribadi Unicode sehingga dianggap kiri-ke-kanan).
+   ===================================================================== */
+
+.ar .qw {
+  display: inline-block;
+  direction: rtl;
+  unicode-bidi: bidi-override;
+  white-space: nowrap;
+  font-weight: 400!important;
+  font-style: normal;
+  font-synthesis: none;
+  font-size: calc(1em*var(--qk,1.3));
+  font-feature-settings: normal!important;
+  font-kerning: none;
+  letter-spacing: 0!important;
+  word-spacing: 0!important;
+  vertical-align: baseline;
+  text-rendering: auto;
+}
